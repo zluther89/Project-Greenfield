@@ -17,7 +17,7 @@ File structure
       - Thunk/middleware.js
   - index.js
   - index.html
-  - stylesheet.css
+  - App.css
 
 - Server [Folder]
   - index.js
