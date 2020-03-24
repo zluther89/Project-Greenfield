@@ -7,7 +7,12 @@
   background-color: rgb(162, 162, 233);
 }
 
-.jumbotron {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
+.jumbotron-fluid {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  margin-bottom: 0px !important;
+}
+
+#specialOffer {
+  background-color: white;
 }
