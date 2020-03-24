@@ -2,17 +2,45 @@
   text-align: center;
 }
 
-.overview {
-  height: 500px;
+.overviewFull {
+  height: 800px;
   background-color: rgb(162, 162, 233);
 }
 
+.overviewBanner {
+  height: 10%;
+}
+
+.overviewMain {
+  background-color: rgb(162, 162, 233);
+  margin: 0px;
+  height: 65%;
+}
+
+.overviewBottom {
+  height: 25%;
+  background-color: pink;
+}
+
 .jumbotron-fluid {
-  padding-top: 5px !important;
-  padding-bottom: 5px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
   margin-bottom: 0px !important;
 }
 
 #specialOffer {
   background-color: white;
+}
+
+.imageGallery {
+  background-color: bisque;
+}
+
+.productInfo {
+  background-color: yellowgreen;
+  height: 100%;
+}
+
+.overviewRow {
+  height: 100%;
 }
