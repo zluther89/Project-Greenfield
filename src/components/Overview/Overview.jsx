@@ -9,8 +9,11 @@ export default class Overview extends React.Component {
 
   render() {
     return (
-      <div className="overview">
-        <Banner />
+      <div>
+        <div className="overview">
+          <Banner />
+        </div>
+        <div id="overviewContent"></div>
       </div>
     );
   }
