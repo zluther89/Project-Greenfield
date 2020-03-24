@@ -3,6 +3,11 @@
 }
 
 .overview {
-  height: 200px;
-  background-color: blue;
+  height: 500px;
+  background-color: rgb(162, 162, 233);
+}
+
+.jumbotron {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
