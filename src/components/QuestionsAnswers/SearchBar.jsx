@@ -1,4 +1,5 @@
 import React from "react";
+import Form from "react-bootstrap/Form";
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -8,12 +9,19 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form>
-        <div className="form-group">
-          <label>Questions & Answers</label>
-          <input className="form-control"></input>
-        </div>
-      </form>
+      <div>
+        <Form>
+          <Form.Group controlId="QuestionSearch">
+            <Form.Label>Questions and Answers</Form.Label>
+            <Form.Control
+              type="question"
+              placeholder=" Have a Question? Search for answers..."
+              size="sm"
+            />
+            <Form.Text className="text-muted"></Form.Text>
+          </Form.Group>
+        </Form>
+      </div>
     );
   }
 }

@@ -1,6 +1,9 @@
 import React from "react";
 import Questions from "./MasterQAContainer/Questions.jsx";
 import SearchBar from "./SearchBar.jsx";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 class QuestionAnswers extends React.Component {
   constructor(props) {
@@ -11,18 +14,21 @@ class QuestionAnswers extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <div>
+        <div></div>
+        <Container>
+          <Row>
+            {" "}
             <SearchBar />
-          </div>
-        </div>
-        <div>
-          <Questions />
-        </div>
-        <div>
-          <button variant="primary">More Answered Questions</button>{" "}
-          <button variant="primary">Add A question</button>
-        </div>
+          </Row>
+          <Row>
+            {" "}
+            <Questions />
+          </Row>
+          <Row>
+            <button variant="primary">More Answered Questions</button>
+            <button variant="primary">Add A question +</button>
+          </Row>
+        </Container>
       </div>
     );
   }
