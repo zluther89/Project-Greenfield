@@ -1,4 +1,5 @@
 import React from "react";
+import Banner from "./Banner";
 
 export default class Overview extends React.Component {
   constructor(props) {
@@ -7,6 +8,10 @@ export default class Overview extends React.Component {
   }
 
   render() {
-    return <div>Overview</div>;
+    return (
+      <div className="overview">
+        <Banner />
+      </div>
+    );
   }
 }
