@@ -1,10 +1,10 @@
-import React from "react";
-import Overview from "./components/Overview/Overview";
-import QuestionAnswers from "./components/QuestionsAnswers/QuestionsAnswers";
-import RatingReviews from "./components/RatingsReviews/RatingReviews";
-import RelatedProducts from "./components/RelatedItemsCompare/RelatedItemsCompare";
+import React from 'react';
+import Overview from './components/Overview/Overview';
+import QuestionAnswers from './components/QuestionsAnswers/QuestionsAnswers';
+import RatingReviews from './components/RatingsReviews/RatingReviews';
+import RelatedProducts from './components/RelatedProducts/RelatedProducts';
 
-import "./App.css";
+import './App.css';
 
 function App() {
   return (
