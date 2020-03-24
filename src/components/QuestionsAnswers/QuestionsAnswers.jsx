@@ -12,13 +12,17 @@ class QuestionAnswers extends React.Component {
     return (
       <div>
         <div>
-          <SearchBar />
+          <div>
+            <SearchBar />
+          </div>
         </div>
         <div>
           <Questions />
         </div>
-        <button>More Answered Questions</button>
-        <button>Add A question</button>
+        <div>
+          <button variant="primary">More Answered Questions</button>{" "}
+          <button variant="primary">Add A question</button>
+        </div>
       </div>
     );
   }

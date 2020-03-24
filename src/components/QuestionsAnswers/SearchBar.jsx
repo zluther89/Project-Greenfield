@@ -8,12 +8,12 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div>
-        <form>
-          <label>stuff</label>
-          <input></input>
-        </form>
-      </div>
+      <form>
+        <div className="form-group">
+          <label>Questions & Answers</label>
+          <input className="form-control"></input>
+        </div>
+      </form>
     );
   }
 }
