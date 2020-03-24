@@ -7,6 +7,6 @@ export default class Overview extends React.Component {
   }
 
   render() {
-    return <div>Overview</div>;
+    return <h1>Overview</h1>;
   }
 }
