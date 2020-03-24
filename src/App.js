@@ -1,8 +1,8 @@
 import React from "react";
-import Overview from "./components/Overview";
-import QuestionAnswers from "./components/QuestionAnswers";
-import RatingReviews from "./components/RatingReviews";
-import RelatedProducts from "./components/RelatedProducts";
+import Overview from "./components/Overview/Overview";
+import QuestionAnswers from "./components/QuestionsAnswers/QuestionsAnswers";
+import RatingReviews from "./components/RatingsReviews/RatingReviews";
+import RelatedProducts from "./components/RelatedItemsCompare/RelatedItemsCompare";
 
 import "./App.css";
 
