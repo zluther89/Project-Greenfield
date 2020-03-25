@@ -2,39 +2,47 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.overviewFull {
+  height: 800px;
+  background-color: rgb(162, 162, 233);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.overviewBanner {
+  height: 10%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.overviewMain {
+  background-color: rgb(162, 162, 233);
+  margin: 0px;
+  height: 65%;
 }
 
-.App-link {
-  color: #61dafb;
+.overviewBottom {
+  height: 25%;
+  background-color: pink;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.jumbotron-fluid {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+#specialOffer {
+  background-color: white;
+}
+
+.imageGallery {
+  background-color: bisque;
+}
+
+.productInfo {
+  background-color: yellowgreen;
+  height: 100%;
+}
+
+.overviewRow {
+  height: 100%;
 }
 
 /* css code for RatingReviews component */
