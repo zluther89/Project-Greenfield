@@ -1,4 +1,5 @@
 import React from "react";
+import Answers from "./Answers";
 
 class Question extends React.Component {
   constructor(props) {
@@ -8,6 +9,9 @@ class Question extends React.Component {
     };
   }
 
+  //get question from props
+  //render question and answer as child component
+
   render() {
     return (
       <tbody>
@@ -15,15 +19,7 @@ class Question extends React.Component {
           <td>Q:</td>
           <td>This is a question??</td>
         </tr>
-        <tr>
-          <td>A:</td>
-          <td>This is an answer!</td>
-          <td>Test</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>This is another answer!!!! ANSWER</td>
-        </tr>
+        <Answers />
       </tbody>
     );
   }
