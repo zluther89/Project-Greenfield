@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
 }
 
 .overviewFull {
@@ -48,11 +47,11 @@
 /* css code for RatingReviews component */
 /* rating&reviews box */
 .RatingReviews {
-  position:relative;
+  position: relative;
   top: 40%;
   left: 25%;
-  width:90em;
-  height:50em;
+  width: 90em;
+  height: 50em;
   margin-top: -9em; /*set to a negative number 1/2 of your height*/
   margin-left: -15em; /*set to a negative number 1/2 of your width*/
   border: 1px solid #ccc;
@@ -73,4 +72,33 @@
 .right-half {
   float: right;
   width: 50%;
+}
+
+.styleSelectorContainer {
+  height: 100%;
+}
+
+.productReviews {
+  height: 5%;
+  background-color: white;
+}
+
+.productName {
+  height: 20%;
+  background-color: chocolate;
+}
+
+.addToBag {
+  height: 15%;
+  background-color: bisque;
+}
+
+.sizeQuantitySelect {
+  height: 25%;
+  background-color: cadetblue;
+}
+
+.styleSelect {
+  height: 35%;
+  background-color: crimson;
 }
