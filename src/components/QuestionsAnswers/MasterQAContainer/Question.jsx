@@ -14,7 +14,6 @@ class Question extends React.Component {
 
   render() {
     let questionID = this.props.q.question_id;
-
     return (
       <tbody>
         <tr>

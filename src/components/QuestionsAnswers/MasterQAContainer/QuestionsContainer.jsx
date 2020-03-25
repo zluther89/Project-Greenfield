@@ -23,7 +23,7 @@ class QuestionsContainer extends React.Component {
   sortQuestionsReturn() {
     let questions = this.props.questionSet.slice(0);
     questions.sort((a, b) =>
-      a.question_helpfulness > b.question_helpfulness ? 1 : -1
+      a.question_helpfulness > b.question_helpfulness ? -1 : 1
     );
 
     return questions;
@@ -46,7 +46,7 @@ class QuestionsContainer extends React.Component {
       <div>
         <Table borderless responsive>
           {loadedQuestions.map(question => {
-            return <Question q={question} />;
+            return <Question key={question.question_id} q={question} />;
           })}
         </Table>
       </div>

@@ -10,7 +10,8 @@ class Answers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answers: []
+      answers: [],
+      numberToRender: 2
     };
   }
 
@@ -19,28 +20,37 @@ class Answers extends React.Component {
   }
 
   setAnswers(id) {
-    this.getAnswers(id).then(res =>
-      this.setState({ answers: res.data.results })
-    );
+    this.getAnswers(id).then(res => {
+      this.setState({ answers: res.data.results }, () => {
+        console.log("answers state", this.state);
+      });
+    });
   }
 
   componentDidMount() {
-    this.setAnswers("3");
+    this.setAnswers(this.props.questionID);
   }
 
   render() {
-    console.log("answers props", this.props);
+    //Note: for formatting reasons, answer 1 is hardcoded, the rest are conditionally rendered based on a number in state
+    let answer1 = this.state.answers[0] ? this.state.answers[0].body : null;
+    let additionalAnswers = this.state.answers
+      .slice(1, this.state.numberToRender)
+      .map(answer => {
+        return (
+          <tr key={answer.answer_id}>
+            <td></td>
+            <td>{answer.body}</td>
+          </tr>
+        );
+      });
     return (
       <>
         <tr>
           <td>A:</td>
-          <td>This is an answer!</td>
-          <td>Test</td>
+          <td>{answer1}</td>
         </tr>
-        <tr>
-          <td></td>
-          <td>This is another answer!!!! ANSWER</td>
-        </tr>
+        {additionalAnswers}
       </>
     );
   }
