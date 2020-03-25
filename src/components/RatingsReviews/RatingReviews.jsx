@@ -1,5 +1,7 @@
 import React from "react";
 import { Plus } from "react-feather";
+import RatingBreakdown from "./RatingBreakdown"
+// import ReviewsList from "./ReviewsList"
 export default class RatingReviews extends React.Component {
   constructor(props) {
     super(props);
@@ -8,36 +10,29 @@ export default class RatingReviews extends React.Component {
 
   render() {
     return (
-      <div className="RatingReviews">
-        <div className="card ">
-          <div className="card-header">RATINGS & REVIEWS</div>
-          <div className="card-body"></div>
-          <section className="container">
-            <div className="left-half text-left">
-              <h1 >Left Half</h1>
-              <p>
-                Weekends don't count unless you spend them doing something
-                completely pointless.
-              </p>
-              </div>
-            <div className="right-half text-left">
-              <h1>Right Half</h1>
-              <h3>
-                If your knees aren't green by the end of the day, you ought to
-                seriously re-examine your life.
-              </h3>
-            </div>
-          </section>
-          <div className="card text-center">
-            <div className="card-body">
-              <button className="btn btn-outline-secondary btn-lg RatingButton" style={{"margin-left":"500px"}}>
-                <strong>MORE REVIEWS</strong>
-              </button>
-              <button className="btn btn-outline-secondary btn-lg RatingButton">
-                <strong className="RightMargin">ADD A REVIEW</strong>
-                <Plus color="black" size={20} style={{"margin-bottom":"5px"}}/>
-              </button>
-            </div>
+      <div className="container RatingReviewsOverView">
+        <div className="row RatingReviewsTitle">
+          <div className="col-3 ">RATINGS & REVIEWS</div>
+        </div>
+        <div className="row RatingReviewsBody ">
+          <div className="col-4"><RatingBreakdown /></div>
+          <div className="col-8">2</div>
+        </div>
+        <div className="row justify-content-end RatingReviewsFoot ">
+          <div className="col-3 ">
+            <button className="btn btn-outline-secondary btn-lg RatingButton">
+              <strong>MORE REVIEWS</strong>
+            </button>
+          </div>
+          <div className="col-3 ">
+            <button className="btn btn-outline-secondary btn-lg RatingButton">
+              {" "}
+              <strong className="RightMargin">ADD A REVIEW</strong>{" "}
+              <Plus
+                size={20}
+                style={{ "margin-bottom": "0.3em" }}
+              />
+            </button>
           </div>
         </div>
       </div>
