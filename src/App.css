@@ -104,24 +104,16 @@
   background-color: crimson;
 }
 
-/* .item {
-  background-size: cover;
-  background-position: 50% 50%;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.item img {
-  visibility: hidden;
-} */
-
-.carousel-inner img {
+#overviewCarousel img {
   display: block;
-
   margin: 0 auto;
   background-size: cover;
   background-position: 50% 50%;
   min-width: 100%;
-  height: 550px;
+  height: 35em;
   max-width: none;
+}
+
+.styleCircles {
+  margin: 10px;
 }
