@@ -161,6 +161,35 @@ grade-progress-box:after {
   margin: auto;
 }
 
+.carousel-control-prev {
+  margin-left: -10em;
+}
+
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-size: 100%, 100%;
+  background-image: none;
+}
+
+.carousel-control-next {
+  margin-right: 10em;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 200%;
+  color: black;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 200%;
+  color: black;
+}
+
 .circles {
   margin-left: 15px;
   margin-right: 15px;
