@@ -1,14 +1,40 @@
 import React from "react";
-import Questions from "./MasterQAContainer/Questions.jsx";
+import QuestionsContainer from "./MasterQAContainer/QuestionsContainer.jsx";
 import SearchBar from "./SearchBar.jsx";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { setNewQuestion } from "../Redux/ActionCreators.js";
+import Axios from "axios";
+import { connect } from "react-redux";
+// import { setNewAnswer } from "../Redux/ActionCreators.js";
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setNewQuestion: questionObj => dispatch(setNewQuestion(questionObj))
+    // setNewAnswer: answerList => dispatch(setNewAnswer(answerList))
+  };
+};
+
+const mapStateToProps = state => ({
+  questionSet: state.questionSet
+});
 
 class QuestionAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  componentDidMount() {
+    this.setNewQuestion("1");
+    setTimeout(() => console.log(this.props), 500);
+  }
+
+  getQuestions(id) {
+    return Axios.get(`http://3.134.102.30/qa/${id}?count=10000000`);
+  }
+
+  setNewQuestion(id) {
+    this.getQuestions(id).then(res => this.props.setNewQuestion(res.data));
   }
 
   render() {
@@ -17,7 +43,7 @@ class QuestionAnswers extends React.Component {
         <div></div>
         <Container>
           {" "}
-          <SearchBar /> <Questions />
+          <SearchBar /> <QuestionsContainer />
           <button variant="primary">More Answered Questions</button>
           <button variant="primary">Add A question +</button>
         </Container>
@@ -26,4 +52,4 @@ class QuestionAnswers extends React.Component {
   }
 }
 
-export default QuestionAnswers;
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionAnswers);
