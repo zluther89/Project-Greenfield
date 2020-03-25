@@ -264,3 +264,10 @@ grade-progress-box:after {
   border-color: black;
 }
 
+.productInfoBox {
+  margin: 20px;
+}
+
+.productDescriptionBox {
+  border-right: 2px solid #ccc;
+}
