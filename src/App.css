@@ -3,7 +3,6 @@
 
 .overviewFull {
   height: 800px;
-  background-color: rgb(162, 162, 233);
 }
 
 .overviewBanner {
@@ -11,14 +10,12 @@
 }
 
 .overviewMain {
-  background-color: rgb(162, 162, 233);
   margin: 0px;
   height: 70%;
 }
 
 .overviewBottom {
   height: 20%;
-  background-color: pink;
 }
 
 .jumbotron-fluid {
@@ -28,16 +25,13 @@
 }
 
 #specialOffer {
-  background-color: white;
 }
 
 .imageGallery {
-  background-color: bisque;
   height: 100%;
 }
 
 .productInfo {
-  background-color: yellowgreen;
   height: 100%;
 }
 
@@ -56,7 +50,6 @@
   margin-top: -9em; /*set to a negative number 1/2 of your height*/
   margin-left: -15em; /*set to a negative number 1/2 of your width*/
   border: 1px solid #ccc;
-  background-color: #f3f3f3;
 }
 .RatingButton {
   margin: 20px;
@@ -101,7 +94,10 @@
 
 .styleSelect {
   height: 35%;
-  background-color: crimson;
+}
+
+.styleSelectBox {
+  height: 100%;
 }
 
 #overviewCarousel img {
@@ -114,6 +110,29 @@
   max-width: none;
 }
 
+.circles {
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+
+.rounded-circle {
+  height: 25%;
+}
+
+.styleSelectorDiv {
+  height: 100%;
+}
+
+.styleSelectRow {
+  height: 95%;
+  overflow: hidden;
+}
+
+.selectedStyleTitle {
+  height: 5%;
+}
+
 .styleCircles {
-  margin: 10px;
+  height: ;
 }
