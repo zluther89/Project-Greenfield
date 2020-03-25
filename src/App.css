@@ -120,8 +120,8 @@ grade-progress-box:after {
   background: linear-gradient(to right, #f23f5c, #fea94e 100%);
 
   background: -webkit-linear-gradient(left, #f23f5c, #fea94e 100%);
+}
 
-=======
 .productReviews {
   height: 5%;
 }
@@ -226,7 +226,7 @@ grade-progress-box:after {
   -webkit-background-size: 100% 100% !important;
 
   background-size: 100% 100% !important;
-
+}
 
 .styleSelectorDiv {
   height: 100%;
