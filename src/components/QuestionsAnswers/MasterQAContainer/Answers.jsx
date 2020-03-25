@@ -26,12 +26,10 @@ class Answers extends React.Component {
 
   componentDidMount() {
     this.setAnswers("3");
-    setTimeout(() => {
-      console.log("answers state", this.state);
-    }, 500);
   }
 
   render() {
+    console.log("answers props", this.props);
     return (
       <>
         <tr>

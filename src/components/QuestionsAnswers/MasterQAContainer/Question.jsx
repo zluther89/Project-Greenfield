@@ -13,13 +13,15 @@ class Question extends React.Component {
   //render question and answer as child component
 
   render() {
+    let questionID = this.props.q.question_id;
+
     return (
       <tbody>
         <tr>
           <td>Q:</td>
-          <td>This is a question??</td>
+          <td>{this.props.q.question_body}</td>
         </tr>
-        <Answers />
+        <Answers questionID={questionID} />
       </tbody>
     );
   }
