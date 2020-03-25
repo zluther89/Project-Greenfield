@@ -114,6 +114,12 @@
   max-width: none;
 }
 
+#relatedCarousel {
+  width: 80%;
+  margin: auto;
+}
+
 .styleCircles {
   margin: 10px;
 }
+
