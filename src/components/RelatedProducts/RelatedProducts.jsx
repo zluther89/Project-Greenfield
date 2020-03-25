@@ -25,8 +25,8 @@ export default class RelatedProducts extends React.Component {
       <div>
         <h2 align='left'>Related Products</h2>
         <Carousel
-          autoPlay="false"
-          data-interval="false"
+          autoPlay={false}
+          data-interval={false}
           id="relatedCarousel"
           wrap="false"
         >  
