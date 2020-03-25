@@ -10,7 +10,7 @@ export default class ImageGallery extends React.Component {
   render() {
     return (
       <div className="carouselContainer">
-        <div className="row imageCarousel">
+        <div className="imageCarousel">
           {" "}
           <Carousel />
         </div>
