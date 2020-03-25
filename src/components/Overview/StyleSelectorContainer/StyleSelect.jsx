@@ -1,5 +1,10 @@
 import React from "react";
 
+import Image from "react-bootstrap/Image";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 export default class StyleSelect extends React.Component {
   constructor(props) {
     super(props);
@@ -19,26 +24,47 @@ export default class StyleSelect extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>STYLE > SELECTED STYLE</p>
+      <div className="styleSelectorDiv container-fluid">
         <div class="styleSelectBox container-fluid">
           {" "}
-          <div className="row">
-            {" "}
-            {this.state.testPics.map(pic => {
-              return (
-                <div class="col-xs-3 col-sm-3 col-md-3 cold-xl-3 styleCircles">
-                  <img
-                    display="inline-block"
-                    src={pic}
-                    class="rounded-circle"
-                    alt="Joe"
-                    float="left"
-                    height="70px"
-                  />
-                </div>
-              );
-            })}
+          <p className="row selectedStyleTitle">STYLE > SELECTED STYLE</p>
+          <div className="row styleSelectRow">
+            <Container>
+              <Row>
+                {this.state.testPics.slice(0, 4).map(pic => {
+                  return (
+                    <Col xs={6} md={3} lg={3}>
+                      <Image
+                        width="60%"
+                        class="styleCircles"
+                        src={pic}
+                        roundedCircle
+                        fluid
+                        responsive
+                        style={{ margin: 10 }}
+                      />
+                    </Col>
+                  );
+                })}
+              </Row>
+              <Row>
+                {this.state.testPics.slice(4).map(pic => {
+                  return (
+                    <Col xs={6} md={3} lg={3}>
+                      <Image
+                        width="60%"
+                        class="styleCircles"
+                        src={pic}
+                        roundedCircle
+                        fluid
+                        responsive
+                        style={{ margin: 10 }}
+                      />
+                    </Col>
+                  );
+                })}
+              </Row>
+            </Container>
           </div>
         </div>
       </div>

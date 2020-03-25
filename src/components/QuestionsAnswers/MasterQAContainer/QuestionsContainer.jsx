@@ -37,6 +37,13 @@ class QuestionsContainer extends React.Component {
   //note. each question has answer children
 
   render() {
+    let styles = {
+      backgroundColor: "lightblue",
+      height: "200px",
+      width: "100%",
+      overflowY: "scroll"
+    };
+
     let loadedQuestions = this.sortQuestionsReturn().slice(
       0,
       this.state.numberOfLoaded
@@ -44,11 +51,13 @@ class QuestionsContainer extends React.Component {
 
     return (
       <div>
-        <Table borderless responsive>
-          {loadedQuestions.map(question => {
-            return <Question key={question.question_id} q={question} />;
-          })}
-        </Table>
+        <div style={styles}>
+          <Table borderless>
+            {loadedQuestions.map(question => {
+              return <Question key={question.question_id} q={question} />;
+            })}
+          </Table>
+        </div>
       </div>
     );
   }
