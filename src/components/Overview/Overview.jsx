@@ -1,8 +1,8 @@
 import React from "react";
 import Banner from "./Banner";
-import ProductInfo from "./ProductInfo";
+import ProductInfo from "./ProductInfo/ProductInfo";
 import ImageGallery from "./ImageGallery/ImageGallery";
-import StyleSelector from "./StyleSelector";
+import StyleSelectorContainer from "./StyleSelectorContainer/StyleSelectorContainer";
 
 export default class Overview extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class Overview extends React.Component {
                 <ImageGallery />
               </div>
               <div className="productInfo col-xs-5 col-sm-5 col-md-5">
-                <StyleSelector />
+                <StyleSelectorContainer />
               </div>
             </div>
           </div>

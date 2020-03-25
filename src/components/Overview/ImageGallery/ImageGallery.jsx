@@ -1,4 +1,5 @@
 import React from "react";
+import Carousel from "./Carousel";
 
 export default class ImageGallery extends React.Component {
   constructor(props) {
@@ -7,6 +8,13 @@ export default class ImageGallery extends React.Component {
   }
 
   render() {
-    return <div>ImageGallery</div>;
+    return (
+      <div className="carouselContainer">
+        <div className="row imageCarousel">
+          {" "}
+          <Carousel />
+        </div>
+      </div>
+    );
   }
 }
