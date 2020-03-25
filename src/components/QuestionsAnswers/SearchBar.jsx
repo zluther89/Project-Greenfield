@@ -10,7 +10,7 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div>
-        <Form>
+        <Form style={{ width: "100%" }}>
           <Form.Group controlId="QuestionSearch">
             <Form.Label>Questions and Answers</Form.Label>
             <Form.Control
