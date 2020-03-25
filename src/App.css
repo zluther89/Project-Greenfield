@@ -13,11 +13,11 @@
 .overviewMain {
   background-color: rgb(162, 162, 233);
   margin: 0px;
-  height: 65%;
+  height: 70%;
 }
 
 .overviewBottom {
-  height: 25%;
+  height: 20%;
   background-color: pink;
 }
 

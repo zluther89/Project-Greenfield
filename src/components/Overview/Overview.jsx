@@ -1,6 +1,6 @@
 import React from "react";
 import Banner from "./Banner";
-import ProductInfo from "./ProductInfo";
+import ProductInfo from "./ProductInfo/ProductInfo";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import StyleSelectorContainer from "./StyleSelectorContainer/StyleSelectorContainer";
 
