@@ -10,10 +10,10 @@ export default class ProductInfo extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid productInfoBox">
         <div className="row">
           {" "}
-          <div class="col-xs-7 col-sm-7 col-md-7">
+          <div class="col-xs-7 col-sm-7 col-md-7 productDescriptionBox">
             <ProductDescription />
           </div>
           <div class="col-xs-5 col-sm-5 col-md-5">
