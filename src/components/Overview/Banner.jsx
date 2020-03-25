@@ -3,9 +3,9 @@ import React from "react";
 export default function Banner() {
   return (
     <div>
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-5">Best Website Ever</h1>
+      <div className="jumbotron jumbotron-fluid">
+        <div className="container">
+          <h1 className="display-5">Best Website Ever</h1>
         </div>
       </div>
 
