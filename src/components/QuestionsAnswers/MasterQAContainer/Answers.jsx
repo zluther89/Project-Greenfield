@@ -19,9 +19,17 @@ class Answers extends React.Component {
     return Axios.get(`http://3.134.102.30/qa/${id}/answers`);
   }
 
+  sortAnswers(array) {
+    let answers = array.slice(0);
+    answers.sort((a, b) => (a.helpfulness > b.helpfulness ? -1 : 1));
+
+    return answers;
+  }
+
   setAnswers(id) {
     this.getAnswers(id).then(res => {
-      this.setState({ answers: res.data.results }, () => {
+      let sortedAnswers = this.sortAnswers(res.data.results);
+      this.setState({ answers: sortedAnswers }, () => {
         console.log("answers state", this.state);
       });
     });
