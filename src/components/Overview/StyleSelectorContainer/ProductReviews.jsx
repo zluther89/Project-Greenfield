@@ -7,6 +7,10 @@ export default class ProductReviews extends React.Component {
   }
 
   render() {
-    return <div>ProductReviews</div>;
+    return (
+      <div>
+        <p>Stars ..... Read All Reviews Link</p>
+      </div>
+    );
   }
 }

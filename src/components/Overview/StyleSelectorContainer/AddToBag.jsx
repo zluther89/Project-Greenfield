@@ -7,6 +7,10 @@ export default class AddToBag extends React.Component {
   }
 
   render() {
-    return <div>AddToBag</div>;
+    return (
+      <div>
+        <h3>Add To Bag Button</h3>
+      </div>
+    );
   }
 }

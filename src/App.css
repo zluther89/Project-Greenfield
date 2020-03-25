@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
 }
 
 .overviewFull {
@@ -90,7 +89,7 @@
 }
 
 .addToBag {
-  height: 10%;
+  height: 15%;
   background-color: bisque;
 }
 
@@ -100,6 +99,6 @@
 }
 
 .styleSelect {
-  height: 40%;
+  height: 35%;
   background-color: crimson;
 }
