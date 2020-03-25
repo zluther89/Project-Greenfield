@@ -28,15 +28,18 @@ export default class RelatedProducts extends React.Component {
           autoPlay={false}
           data-interval={false}
           id="relatedCarousel"
-          wrap="false"
         >  
+ 
             {this.state.relatedProducts.map( (product,i) => {
               return (
                 <Carousel.Item key={i}>
-                  <ProductCard product={product}/>
-                </Carousel.Item>
+                  
+                    <ProductCard product={product}/>
+                 
+                 </Carousel.Item>
               )
             })}
+   
         </Carousel>
       </div>
     );
