@@ -7,6 +7,12 @@ export default class StyleSelect extends React.Component {
   }
 
   render() {
-    return <div>StyleSelect</div>;
+    return (
+      <div>
+        <p>STYLE > SELECTED STYLE</p>
+        <h3>0 0 0 0 0 0 </h3>
+        <h3>0 0 0 0 0 0 </h3>
+      </div>
+    );
   }
 }
