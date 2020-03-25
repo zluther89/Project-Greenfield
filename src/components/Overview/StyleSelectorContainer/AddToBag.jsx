@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 
 export default class AddToBag extends React.Component {
   constructor(props) {
@@ -9,7 +10,8 @@ export default class AddToBag extends React.Component {
   render() {
     return (
       <div>
-        <h3>Add To Bag Button</h3>
+        {" "}
+        <Button id="button-add-to-bag">ADD TO BAG</Button>
       </div>
     );
   }

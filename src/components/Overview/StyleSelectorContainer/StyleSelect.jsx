@@ -35,13 +35,13 @@ export default class StyleSelect extends React.Component {
                   return (
                     <Col xs={6} md={3} lg={3}>
                       <Image
-                        width="60%"
+                        width="85%"
                         class="styleCircles"
                         src={pic}
                         roundedCircle
                         fluid
                         responsive
-                        style={{ margin: 10 }}
+                        style={{ margin: 5 }}
                       />
                     </Col>
                   );
@@ -52,13 +52,13 @@ export default class StyleSelect extends React.Component {
                   return (
                     <Col xs={6} md={3} lg={3}>
                       <Image
-                        width="60%"
+                        width="85%"
                         class="styleCircles"
                         src={pic}
                         roundedCircle
                         fluid
                         responsive
-                        style={{ margin: 10 }}
+                        style={{ margin: 5 }}
                       />
                     </Col>
                   );
