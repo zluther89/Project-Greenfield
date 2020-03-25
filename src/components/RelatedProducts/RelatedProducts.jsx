@@ -28,7 +28,6 @@ export default class RelatedProducts extends React.Component {
           autoPlay={false}
           data-interval={false}
           id="relatedCarousel"
-          wrap="false"
         >  
             {this.state.relatedProducts.map( (product,i) => {
               return (

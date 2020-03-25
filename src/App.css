@@ -171,16 +171,10 @@ grade-progress-box:after {
   height: 25%;
 }
 .grade-star-bg {
-
-
   position: relative;
-
   display: table-cell;
-
   width: 4.46rem;
-
   height: .5rem;
-
   overflow: hidden;
 
   margin-right: .22rem;
