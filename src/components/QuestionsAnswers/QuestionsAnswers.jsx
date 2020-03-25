@@ -26,7 +26,6 @@ class QuestionAnswers extends React.Component {
 
   componentDidMount() {
     this.setNewQuestion("1");
-    setTimeout(() => console.log(this.props), 500);
   }
 
   getQuestions(id) {
@@ -34,7 +33,9 @@ class QuestionAnswers extends React.Component {
   }
 
   setNewQuestion(id) {
-    this.getQuestions(id).then(res => this.props.setNewQuestion(res.data));
+    this.getQuestions(id).then(res =>
+      this.props.setNewQuestion(res.data.results)
+    );
   }
 
   render() {

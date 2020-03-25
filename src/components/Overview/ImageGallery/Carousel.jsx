@@ -10,6 +10,7 @@ export default class ImageCarousel extends React.Component {
   render() {
     return (
       <Carousel
+        id="overviewCarousel"
         autoPlay={false}
         interval={1000000}
         controls={true}
@@ -18,21 +19,21 @@ export default class ImageCarousel extends React.Component {
       >
         <Carousel.Item>
           <img
-            className="d-block w-100 h-80"
+            className="overview d-block w-100 img-fluid align-content-center mx-auto"
             src="https://avatars1.githubusercontent.com/u/12416599?s=460&u=dd647676df3df2357c7aa8045c1a5e14fbcec5ac&v=4"
             alt="First slide"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="d-block w-100 img-fluid align-content-center mx-auto"
             src="https://avatars1.githubusercontent.com/u/12416599?s=460&u=dd647676df3df2357c7aa8045c1a5e14fbcec5ac&v=4"
             alt="Third slide"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="d-block w-100 img-fluid align-content-center mx-auto"
             src="https://avatars1.githubusercontent.com/u/12416599?s=460&u=dd647676df3df2357c7aa8045c1a5e14fbcec5ac&v=4"
             alt="Third slide"
           />
