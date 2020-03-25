@@ -1,5 +1,4 @@
-.App {
-}
+
 
 .overviewFull {
   height: 800px;
@@ -41,35 +40,86 @@
 
 /* css code for RatingReviews component */
 /* rating&reviews box */
-.RatingReviews {
-  position: relative;
-  top: 40%;
-  left: 25%;
-  width: 90em;
-  height: 50em;
-  margin-top: -9em; /*set to a negative number 1/2 of your height*/
-  margin-left: -15em; /*set to a negative number 1/2 of your width*/
-  border: 1px solid #ccc;
+
+.RatingReviewsTitle{
+  height: 5%;
 }
-.RatingButton {
-  margin: 20px;
+.RatingReviewsBody{
+  height: 85%;
 }
-.RightMargin {
-  margin-right: 20px;
+.RatingReviewsFoot{
+  height: 10%;
 }
 
-/* Pattern styles */
-.left-half {
-  float: left;
-  width: 50%;
-}
-.right-half {
-  float: right;
-  width: 50%;
+/* css code for Stars */
+grade-progress-box:after {
+
+
+  content: "";
+
+  display: block;
+
+  clear: both;
+
+  visibility: hidden;
+
+  overflow: hidden;
+
 }
 
-.styleSelectorContainer {
+.grade-progress-bg {
+
+  display: table-cell;
+
+  vertical-align: middle;
+
+  width: 4.3rem;
+
+  height: .14rem;
+
+  overflow: hidden;
+
+}
+
+.grade-star-gradual {
+
+  height: 0.16rem;
+
+  -webkit-border-radius: .15rem;
+
+  border-radius: .15rem;
+
+  overflow: hidden;
+
+  background: #e5e5e5;
+
+}
+
+.grade-star-gradual span.progress {
+
+  width: 0;
+
   height: 100%;
+
+  display: block;
+
+  -webkit-border-radius: .15rem;
+
+  border-radius: .15rem;
+
+  -webkit-transition: width 1s ease-out;
+
+  -o-transition: width 1s ease-out;
+
+  transition: width 1s ease-out;
+
+  background: -webkit-gradient(linear, left top, right top, from(#f23f5c), to(#fea94e));
+
+  background: -o-linear-gradient(left, #f23f5c, #fea94e 100%);
+
+  background: linear-gradient(to right, #f23f5c, #fea94e 100%);
+
+  background: -webkit-linear-gradient(left, #f23f5c, #fea94e 100%);
 }
 
 .productReviews {
@@ -119,6 +169,63 @@
 
 .rounded-circle {
   height: 25%;
+}
+.grade-star-bg {
+
+
+  position: relative;
+
+  display: table-cell;
+
+  width: 4.46rem;
+
+  height: .5rem;
+
+  overflow: hidden;
+
+  margin-right: .22rem;
+
+  vertical-align: middle;
+
+}
+
+.grade-star-gradual {
+
+  height: 0.16rem;
+
+  -webkit-border-radius: .15rem;
+
+  border-radius: .15rem;
+
+  overflow: hidden;
+
+  background: #e5e5e5;
+
+}
+
+.grade-star-bg .grade-star-gradual {
+
+  height: 100%;
+
+}
+
+.grade-star-img {
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background: url(data:image/png;base64,) no-repeat;
+
+  -webkit-background-size: 100% 100% !important;
+
+  background-size: 100% 100% !important;
 }
 
 .styleSelectorDiv {
