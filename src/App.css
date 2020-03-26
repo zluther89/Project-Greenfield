@@ -52,7 +52,7 @@
 /* css code for Stars */
 .grade-star-img {
   position: absolute;
-  border:hidden;
+  border: hidden;
   top: 0;
   left: 3.3%;
   width: 49.5%;
@@ -62,6 +62,8 @@
   background-size: 100% 100% !important;
 }
 /* end */
+
+/*matt*/
 .productReviews {
   height: 5%;
 }
@@ -112,13 +114,6 @@
 .rounded-circle {
   height: 25%;
 }
-
-
-
-
-
-
-
 
 .styleSelectorDiv {
   height: 100%;
