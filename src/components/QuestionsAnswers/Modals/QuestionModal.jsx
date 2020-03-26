@@ -3,6 +3,21 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Axios from "axios";
+import { connect } from "react-redux";
+import { getQuestionsThunk } from "../../Redux/ThunkMiddleware.js";
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getQuestionsThunk: id => dispatch(getQuestionsThunk(id))
+  };
+};
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    questionSet: state.questionSet,
+    onHide: ownProps.onHide
+  };
+};
 
 class QuestionModal extends React.Component {
   constructor(props) {
@@ -28,12 +43,16 @@ class QuestionModal extends React.Component {
   }
 
   handleSubmit() {
+    let id = "4"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
     let questionObj = { ...this.state };
     delete questionObj.renderModal;
     this.postQuestion(questionObj)
+      .then(() => this.props.getQuestionsThunk(id))
       .then(res => console.log("response from post question", res))
       .catch(err => console.log("error from post question", err));
+
     this.props.onHide();
+    setTimeout(() => console.log(this.props), 2000);
   }
 
   render() {
@@ -85,4 +104,4 @@ class QuestionModal extends React.Component {
   }
 }
 
-export default QuestionModal;
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionModal);
