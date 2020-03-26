@@ -14,26 +14,30 @@ export default class StyleSelectorContainer extends React.Component {
 
   render() {
     return (
-      <div class="styleSelectorContainer">
-        <div class="productReviews">
+      <div className="styleSelectorContainer">
+        <div className="productReviews">
           {" "}
           <ProductReviews />
         </div>
         <div className="productName">
           {" "}
-          <ProductName />
+          <ProductName
+            name={this.props.data.name}
+            category={this.props.data.category}
+            price={this.props.data.default_price}
+          />
         </div>
         <div className="styleSelect">
           {" "}
-          <StyleTest />
+          <StyleTest styleData={this.props.styleData} />
         </div>
         <div className="sizeQuantitySelect">
           {" "}
-          <SizeQuantitySelect />
+          <SizeQuantitySelect styleData={this.props.styleData} />
         </div>
         <div className="addToBag">
           {" "}
-          <AddToBag />
+          <AddToBag styleData={this.props.styleData} />
         </div>
       </div>
     );

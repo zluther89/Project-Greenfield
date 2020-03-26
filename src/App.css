@@ -130,17 +130,14 @@ grade-progress-box:after {
   height: 55%;
   display: flex;
   flex-direction: column;
-  border: 2px solid pink;
 }
 
 .sizeQuantitySelect {
   height: 10%;
-  background-color: #f23f5c;
 }
 
 .addToBag {
   height: 10%;
-  background-color: #fea94e;
 }
 
 .styleSelectBox {
@@ -273,29 +270,24 @@ grade-progress-box:after {
 }
 
 .productDescriptionBox {
-  border-right: 2px solid #ccc;
 }
 
-#photos {
+.square img {
   height: 100%;
-  background-color: #eee;
-  white-space: nowrap;
-  width: 100%;
-  display: table;
-}
-
-.logo-image {
-  vertical-align: middle;
-  padding: 13px;
-  display: table-cell;
-}
-
-.logo-image img {
   width: 100%;
 }
 
-#circlePhotoBox {
-  max-height: inherit;
-  flex: 1 1 auto;
-  overflow-y: auto;
+.square {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.styleSquareBox {
+  height: 100%;
+  margin-top: 5%;
+}
+
+.container {
+  columns: 3 auto;
 }
