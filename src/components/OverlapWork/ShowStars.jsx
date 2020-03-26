@@ -1,6 +1,5 @@
 import Axios from "axios";
 import React from "react"
-import FiveStars from "../../image/five_stars_empty_mid.png"
 class ShowStars extends React.Component{
   constructor(props) {
     super(props)
@@ -12,7 +11,7 @@ class ShowStars extends React.Component{
   componentDidMount() {
     this.GetReviewMet()
   }
-  GetReviewMet(product_id = 2) {
+  GetReviewMet(product_id = 14) {
     let count = 0;
     let sum =0
     Axios.get(`http://3.134.102.30/reviews/${product_id}/meta`)
@@ -26,7 +25,24 @@ class ShowStars extends React.Component{
         //get the one round number
         const roundedRating = Math.round(rating * 10) / 10
         //get percentage
-        const ratingPercen = Math.round(roundedRating /5 *100)
+        //first get the number whose denominator is ten
+        const NumberInTen = rating
+        //get int part
+        const Int = parseInt(NumberInTen)
+        const modul = NumberInTen - Int
+        let ratingPercen
+        if (modul >= 0 & modul < 0.125) {
+          ratingPercen = Int
+        } else if (modul >= 0.125 & modul < 0.375) {
+          ratingPercen = Int + 0.48
+        }else if (modul >= 0.375  & modul< 0.625) {
+          ratingPercen = Int + 0.6
+        }else if (  modul >= 0.625 & modul< 0.875) {
+          ratingPercen = Int + 0.7
+        }else {
+          ratingPercen = Int + 1
+        }
+        ratingPercen=20*ratingPercen
         this.setState({rating:roundedRating,ratingPercen:ratingPercen})
       }
       )
@@ -35,8 +51,8 @@ class ShowStars extends React.Component{
   }
   render() {
     return (
-      <div class="progress" style={{"height":"2rem"}}>
-        <div class="progress-bar progress-bar-striped progress-bar-animated  " style={{ "width": `${this.state.ratingPercen}%` }} role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ><img className="grade-star-img "></img></div>
+      <div class="progress border-0" style={{"height":"30"},{"width":"50%"}}>
+        <div class="progress-bar progress-bar-striped progress-bar-animated  " style={{ "width": `${this.state.ratingPercen}%` }} role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ><img style={{ "border": "hidden" }}className="grade-star-img "></img></div>
 </div>
     )
 
