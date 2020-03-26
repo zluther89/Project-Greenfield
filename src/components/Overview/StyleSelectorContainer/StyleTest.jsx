@@ -8,7 +8,7 @@ export default class StyleTest extends React.Component {
 
   render() {
     return (
-      <div class="styleSquareBox container">
+      <div class="styleSquareBox containerOverview">
         {this.props.styleData.results &&
           this.props.styleData.results.map(picture => {
             return (

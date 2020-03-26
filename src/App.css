@@ -269,9 +269,6 @@ grade-progress-box:after {
   margin: 20px;
 }
 
-.productDescriptionBox {
-}
-
 .square img {
   height: 100%;
   width: 100%;
@@ -288,8 +285,6 @@ grade-progress-box:after {
   margin-top: 5%;
 }
 
-.container {
+.containerOverview {
   columns: 3 auto;
 }
-
-
