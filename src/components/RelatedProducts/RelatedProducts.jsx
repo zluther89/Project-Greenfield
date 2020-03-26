@@ -29,9 +29,10 @@ export default class RelatedProducts extends React.Component {
         for (let item of data) {
           axios.get(`http://3.134.102.30/products/${item.id}/styles`).then(({data}) => {
             productInfo[item.id] = data.results[0].photos[0].thumbnail_url
+          }).then( () => {
+            this.setState({productInfo: productInfo})
           })
         }
-        this.setState({productInfo: productInfo})
       });
     });
   }
