@@ -12,6 +12,7 @@ export default class RelatedProducts extends React.Component {
       relatedProducts: [],
       outfit:[],
       productInfo: {},
+      features: {},
       showModal: false
     }; 
     this.handleClick = this.handleClick.bind(this)
@@ -35,6 +36,7 @@ export default class RelatedProducts extends React.Component {
         }
       });
     });
+    
   }
 
   render() {
