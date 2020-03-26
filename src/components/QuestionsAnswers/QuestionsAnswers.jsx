@@ -2,21 +2,28 @@ import React from "react";
 import QuestionsContainer from "./MasterQAContainer/QuestionsContainer.jsx";
 import SearchBar from "./SearchBar.jsx";
 import Container from "react-bootstrap/Container";
-import { setNewQuestion } from "../Redux/ActionCreators.js";
+import {
+  setNewQuestion,
+  setNewNumOfQuestions
+} from "../Redux/ActionCreators.js";
 import Axios from "axios";
 import QuestionModalButton from "./Modals/QuestionModalButton.jsx";
 import { connect } from "react-redux";
+import Button from "react-bootstrap/Button";
+
 // import { setNewAnswer } from "../Redux/ActionCreators.js";
 
 const mapDispatchToProps = dispatch => {
   return {
-    setNewQuestion: questionObj => dispatch(setNewQuestion(questionObj))
+    setNewQuestion: questionObj => dispatch(setNewQuestion(questionObj)),
+    setNewNumOfQuestions: number => dispatch(setNewNumOfQuestions(number))
     // setNewAnswer: answerList => dispatch(setNewAnswer(answerList))
   };
 };
 
 const mapStateToProps = state => ({
-  questionSet: state.questionSet
+  questionSet: state.questionSet,
+  numOfQuestions: state.numOfQuestions
 });
 
 class QuestionAnswers extends React.Component {
@@ -39,6 +46,15 @@ class QuestionAnswers extends React.Component {
     );
   }
 
+  clickHandler(numberOfQuestions) {
+    let totalQuestions =
+      this.props.questionSet.length > 2 ? this.props.questionSet.length : 2;
+    let newNumOfQuestions =
+      this.props.numOfQuestions === 2 ? totalQuestions : 2;
+    this.props.setNewNumOfQuestions(newNumOfQuestions);
+    console.log(this.props);
+  }
+
   render() {
     return (
       <div>
@@ -46,7 +62,9 @@ class QuestionAnswers extends React.Component {
         <Container>
           {" "}
           <SearchBar /> <QuestionsContainer />
-          <button variant="primary">More Answered Questions</button>
+          <Button onClick={() => this.clickHandler()}>
+            More Answered Questions
+          </Button>
           <QuestionModalButton />
         </Container>
       </div>
