@@ -30,8 +30,6 @@ class QuestionModal extends React.Component {
   handleSubmit() {
     let questionObj = { ...this.state };
     delete questionObj.renderModal;
-    console.log("question obj", questionObj);
-    console.log("props", this.props);
     this.postQuestion(questionObj)
       .then(res => console.log("response from post question", res))
       .catch(err => console.log("error from post question", err));
