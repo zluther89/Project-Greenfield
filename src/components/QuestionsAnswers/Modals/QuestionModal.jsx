@@ -18,6 +18,7 @@ class QuestionModal extends React.Component {
     let stateObj = {};
     stateObj[stateprop] = event.target.value;
     this.setState(stateObj);
+    console.log(this.state);
   }
 
   postQuestion() {}
@@ -39,18 +40,27 @@ class QuestionModal extends React.Component {
           <Form>
             <Form.Group>
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Please Enter Email" />
+              <Form.Control
+                type="email"
+                placeholder="Please Enter Email"
+                onChange={event => this.handleChange(event, "email")}
+              />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Nickname</Form.Label>
               <Form.Control
                 type="nickname"
                 placeholder="Please Enter Nickname"
+                onChange={event => this.handleChange(event, "nickname")}
               />
             </Form.Group>
             <Form.Group>
               <Form.Label>Question</Form.Label>
-              <Form.Control type="email" placeholder="Please Enter Question" />
+              <Form.Control
+                type="question"
+                placeholder="Please Enter Question"
+                onChange={event => this.handleChange(event, "question")}
+              />
             </Form.Group>
           </Form>
         </Modal.Body>
