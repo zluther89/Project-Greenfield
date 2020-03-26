@@ -51,8 +51,8 @@ class ShowStars extends React.Component{
   }
   render() {
     return (
-      <div class="progress border-0" style={{"height":"30"},{"width":"50%"}}>
-        <div class="progress-bar progress-bar-striped progress-bar-animated  " style={{ "width": `${this.state.ratingPercen}%` }} role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ><img style={{ "border": "hidden" }}className="grade-star-img "></img></div>
+      <div className="progress border-0" style={{"height":"30"},{"width":"50%"}}>
+        <div className="progress-bar progress-bar-striped progress-bar-animated  " style={{ "width": `${this.state.ratingPercen}%` }} role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ><img style={{ "border": "hidden" }}className="grade-star-img "></img></div>
 </div>
     )
 
