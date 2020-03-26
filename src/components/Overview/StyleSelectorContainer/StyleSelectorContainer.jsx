@@ -1,7 +1,6 @@
 import React from "react";
 import ProductReviews from "./ProductReviews";
 import ProductName from "./ProductName";
-import StyleSelect from "./StyleSelect";
 import SizeQuantitySelect from "./SizeQuantitySelect";
 import AddToBag from "./AddToBag";
 import StyleTest from "./StyleTest";
@@ -25,6 +24,8 @@ export default class StyleSelectorContainer extends React.Component {
             name={this.props.data.name}
             category={this.props.data.category}
             price={this.props.data.default_price}
+            currentStyle={this.props.currentStyle}
+            styleClicked={this.props.styleClicked}
           />
         </div>
         <div className="styleSelect">
@@ -32,6 +33,8 @@ export default class StyleSelectorContainer extends React.Component {
           <StyleTest
             styleData={this.props.styleData}
             switchStyle={this.props.switchStyle}
+            price={this.props.price}
+            salePrice={this.props.salePrice}
           />
         </div>
         <div className="sizeQuantitySelect">

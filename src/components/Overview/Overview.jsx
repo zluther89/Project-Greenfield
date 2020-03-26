@@ -11,15 +11,26 @@ export default class Overview extends React.Component {
     this.state = {
       data: {},
       styleData: {},
-      currentProduct: 3,
-      currentStyle: 0
+      currentProduct: 6,
+      currentStyle: 0,
+      styleClicked: false,
+      currentPrice: null,
+      salePrice: null
     };
     this.switchStyle = this.switchStyle.bind(this);
   }
 
   switchStyle(val) {
     console.log(val);
-    this.setState({ currentStyle: val });
+    let price = this.state.styleData.results[val].original_price;
+    let salePrice = this.state.styleData.results[val].sale_price;
+    console.log("price", price);
+    this.setState({
+      currentStyle: val,
+      styleClicked: true,
+      currentPrice: price,
+      salePrice: salePrice
+    });
   }
 
   componentDidMount() {
@@ -27,7 +38,10 @@ export default class Overview extends React.Component {
       .get(`http://3.134.102.30/products/${this.state.currentProduct}`)
       .then(response => {
         console.log("productData", response.data);
-        this.setState({ data: response.data });
+        this.setState({
+          data: response.data,
+          currentPrice: response.data.default_price
+        });
         return axios.get(
           `http://3.134.102.30/products/${this.state.currentProduct}/styles`
         ); // using response.data
@@ -60,6 +74,10 @@ export default class Overview extends React.Component {
                   data={this.state.data}
                   styleData={this.state.styleData}
                   switchStyle={this.switchStyle}
+                  currentStyle={this.state.currentStyle}
+                  styleClicked={this.state.styleClicked}
+                  price={this.state.currentPrice}
+                  salePrice={this.state.salePrice}
                 />
               </div>
             </div>
