@@ -11,6 +11,7 @@ export default class RelatedProducts extends React.Component {
     this.state = {
       relatedProducts: [],
       outfit:[],
+      productInfo: {},
       showModal: false
     }; 
     this.handleClick = this.handleClick.bind(this)
@@ -20,10 +21,18 @@ export default class RelatedProducts extends React.Component {
     this.setState({showModal: true})
     console.log(e.target)
   }
+
   componentDidMount() {
     axios.get("http://3.134.102.30/products/list").then(({ data }) => {
-      this.setState({ relatedProducts: data });
-      // assign the photo to the data
+      this.setState({ relatedProducts: data }, () => {
+        let productInfo = {}
+        for (let item of data) {
+          axios.get(`http://3.134.102.30/products/${item.id}/styles`).then(({data}) => {
+            productInfo[item.id] = data.results[0].photos[0].thumbnail_url
+          })
+        }
+        this.setState({productInfo: productInfo})
+      });
     });
   }
 
@@ -45,7 +54,13 @@ export default class RelatedProducts extends React.Component {
             {this.state.relatedProducts.map( (product,i) => {
               return (
                 // <Carousel.Item key={i}>
-                    <ProductCard handleClick={this.handleClick} product={product}/>   
+                    <ProductCard 
+                      key={i}
+                      index={i}
+                      handleClick={this.handleClick} 
+                      productInfo={this.state.productInfo} 
+                      product={product}
+                    />   
                 // </Carousel.Item>
               )
             })}
