@@ -6,6 +6,9 @@ export const setNewQuestion = questionArr => {
   return { type: "CHANGE_QUESTION_SET", payload: questionArr };
 };
 
+export const setNewNumOfQuestions = number => {
+  return { type: "CHANGE_NUMBER_OF_QUESTIONS", payload: number };
+};
 // export const setNewAnswer = answerList => {
 //   return { type: "CHANGE_ANSWER_SET", payload: answerList };
 // };
