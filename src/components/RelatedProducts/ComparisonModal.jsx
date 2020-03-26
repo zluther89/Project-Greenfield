@@ -1,6 +1,9 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 let ComparisonModal = (props) => {
     return (
@@ -12,16 +15,32 @@ let ComparisonModal = (props) => {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-              Modal heading
+              COMPARING
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Centered Modal</h4>
-            <p>
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-              consectetur ac, vestibulum at eros.
-            </p>
+          <Container>
+          <Row className="show-grid">
+            <Col xs={12} md={8}>
+              Product # 1
+            </Col>
+            <Col xs={6} md={4}>
+              Product # 2
+            </Col>
+          </Row>
+
+          <Row className="show-grid">
+            <Col xs={6} md={4}>
+                Value of Product # 1
+            </Col>
+            <Col xs={6} md={4}>
+                Feature
+            </Col>
+            <Col xs={6} md={4}>
+                Value of Product # 2
+            </Col>
+          </Row>
+        </Container>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={props.onHide}>Close</Button>

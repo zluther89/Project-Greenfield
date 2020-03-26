@@ -21,7 +21,8 @@
   margin-bottom: 0px !important;
 }
 
-
+#specialOffer {
+}
 
 .imageGallery {
   height: 100%;
@@ -59,4 +60,134 @@
   background: url(./image/five_stars_empty_mid.png) no-repeat;
   -webkit-background-size: 100% 100% !important;
   background-size: 100% 100% !important;
+}
+/* end */
+.productReviews {
+  height: 5%;
+}
+
+.productName {
+  height: 20%;
+}
+
+.styleSelect {
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sizeQuantitySelect {
+  height: 10%;
+}
+
+.addToBag {
+  height: 10%;
+}
+
+.styleSelectBox {
+  height: 100%;
+}
+
+#overviewCarousel img {
+  display: block;
+  margin: 0 auto;
+  background-size: cover;
+  background-position: 50% 50%;
+  min-width: 100%;
+  height: 35em;
+  max-width: none;
+}
+
+#relatedCarousel {
+  width: 80%;
+  margin: auto;
+}
+
+.circles {
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+
+.rounded-circle {
+  height: 25%;
+}
+
+
+
+
+
+
+
+.styleSelectorDiv {
+  height: 100%;
+}
+
+.styleSelectorContainer {
+  height: 100%;
+}
+
+.styleSelectRow {
+  height: 95%;
+  overflow: hidden;
+}
+
+.selectedStyleTitle {
+  height: 5%;
+}
+
+#styleFirstRow {
+  margin-top: 3%;
+  margin-bottom: 10%;
+}
+
+#styleSecondRow {
+  margin-bottom: 10%;
+}
+
+#dropdown-basic-button-size {
+  color: black;
+  background-color: white;
+
+  border-color: black;
+  width: 100%;
+  height: 50px;
+}
+
+#dropdown-basic-button-quantity {
+  color: black;
+  background-color: white;
+  height: 50px;
+  border-color: black;
+}
+
+#button-add-to-bag {
+  color: black;
+  background-color: white;
+  height: 50px;
+  border-color: black;
+}
+
+.productInfoBox {
+  margin: 20px;
+}
+
+.square img {
+  height: 100%;
+  width: 100%;
+}
+
+.square {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.styleSquareBox {
+  height: 100%;
+  margin-top: 5%;
+}
+
+.containerOverview {
+  columns: 3 auto;
 }

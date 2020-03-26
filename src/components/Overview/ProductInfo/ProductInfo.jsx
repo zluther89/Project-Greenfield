@@ -14,10 +14,10 @@ export default class ProductInfo extends React.Component {
         <div className="row">
           {" "}
           <div class="col-xs-7 col-sm-7 col-md-7 productDescriptionBox">
-            <ProductDescription />
+            <ProductDescription data={this.props.data} />
           </div>
           <div class="col-xs-5 col-sm-5 col-md-5">
-            <ProductTraits />
+            <ProductTraits data={this.props.data} />
           </div>
         </div>
       </div>

@@ -59,5 +59,4 @@ class ShowStars extends React.Component{
   }
 }
 
-
 export default ShowStars
