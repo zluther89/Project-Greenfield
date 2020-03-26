@@ -7,7 +7,9 @@ class RatingBreakdown extends React.Component{
     super(props)
     this.state = {
       rating: 0,
-      recommend:0
+      recommend: 0,
+      pairArr :[],
+      sum:0
     }
   }
   componentDidMount() {
@@ -16,6 +18,7 @@ class RatingBreakdown extends React.Component{
   GetReviewMet(product_id =2) {
     let count = 0;
     let sum = 0;
+    let pairArr =[]
     Axios.get(`http://3.134.102.30/reviews/${product_id}/meta`)
       .then(response => {
         //get recommend percentage
@@ -26,13 +29,16 @@ class RatingBreakdown extends React.Component{
         //get allratings
         const AllRatings = response.data.ratings
         for (let val in AllRatings) {
+          let EachArr = [];
+          EachArr.push(val,AllRatings[val])
           sum += val * AllRatings[val];
           count += AllRatings[val]
+          pairArr.push(EachArr)
         }
         const rating = sum /count
         //get the one round number
         const roundedRating = Math.round(rating * 10) / 10
-        this.setState({rating:roundedRating,recommend:recommendPercen})
+        this.setState({rating:roundedRating,recommend:recommendPercen,sum:sum,pairArr:pairArr})
       }
       )
     .catch(err =>console.log(err)
@@ -45,7 +51,7 @@ class RatingBreakdown extends React.Component{
           <div className="col-4  "><h1>{this.state.rating}</h1></div> <div className="col-8"><ShowStars /></div>
           </div>
         <div className="row " style={{ "height": "5%" }}><p> {this.state.recommend}% of reviews recommend this product</p></div>
-      <div className="row p-3 mb-2 bg-info" style={{"height":"50%"}}><BarBreakdown /></div>
+        <div className="row " style={{ "height": "50%" }}><BarBreakdown sum={this.state.sum} pairArr={this.state.pairArr}/></div>
       <div className="row p-3 mb-2 bg-primary" style={{"height":"5%"}}>11</div>
         <div className="row p-3 mb-2 bg-info" style={{ "height": "5%" }}>11</div>
         </div>
