@@ -29,7 +29,16 @@ class ShowStars extends React.Component{
     )
   }
   render() {
-    return (<div>{this.state.rating}</div>)
+    return (
+    <div className="grade-progress-box">
+    <div className="grade-star-bg">
+      <div className="grade-star-gradual">
+        <span className="progress" style={{"width": "100%"}}></span>
+        <div className="grade-star-img bgsize"></div>
+      </div>
+   </div>
+    <div className="grade-number grade-number1"></div>
+</div>)
 
   }
 }
