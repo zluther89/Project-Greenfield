@@ -1,5 +1,3 @@
-
-
 .overviewFull {
   height: 800px;
 }
@@ -41,20 +39,18 @@
 /* css code for RatingReviews component */
 /* rating&reviews box */
 
-.RatingReviewsTitle{
+.RatingReviewsTitle {
   height: 5%;
 }
-.RatingReviewsBody{
+.RatingReviewsBody {
   height: 85%;
 }
-.RatingReviewsFoot{
+.RatingReviewsFoot {
   height: 10%;
 }
 
 /* css code for Stars */
 grade-progress-box:after {
-
-
   content: "";
 
   display: block;
@@ -64,48 +60,42 @@ grade-progress-box:after {
   visibility: hidden;
 
   overflow: hidden;
-
 }
 
 .grade-progress-bg {
-
   display: table-cell;
 
   vertical-align: middle;
 
   width: 4.3rem;
 
-  height: .14rem;
+  height: 0.14rem;
 
   overflow: hidden;
-
 }
 
 .grade-star-gradual {
-
   height: 0.16rem;
 
-  -webkit-border-radius: .15rem;
+  -webkit-border-radius: 0.15rem;
 
-  border-radius: .15rem;
+  border-radius: 0.15rem;
 
   overflow: hidden;
 
   background: #e5e5e5;
-
 }
 
 .grade-star-gradual span.progress {
-
   width: 0;
 
   height: 100%;
 
   display: block;
 
-  -webkit-border-radius: .15rem;
+  -webkit-border-radius: 0.15rem;
 
-  border-radius: .15rem;
+  border-radius: 0.15rem;
 
   -webkit-transition: width 1s ease-out;
 
@@ -113,7 +103,13 @@ grade-progress-box:after {
 
   transition: width 1s ease-out;
 
-  background: -webkit-gradient(linear, left top, right top, from(#f23f5c), to(#fea94e));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#f23f5c),
+    to(#fea94e)
+  );
 
   background: -o-linear-gradient(left, #f23f5c, #fea94e 100%);
 
@@ -131,15 +127,20 @@ grade-progress-box:after {
 }
 
 .styleSelect {
-  height: 45%;
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid pink;
 }
 
 .sizeQuantitySelect {
-  height: 15%;
+  height: 10%;
+  background-color: #f23f5c;
 }
 
 .addToBag {
-  height: 15%;
+  height: 10%;
+  background-color: #fea94e;
 }
 
 .styleSelectBox {
@@ -174,37 +175,35 @@ grade-progress-box:after {
   position: relative;
   display: table-cell;
   width: 4.46rem;
-  height: .5rem;
+
+
+  height: 0.5rem;
+
+
   overflow: hidden;
 
-  margin-right: .22rem;
+  margin-right: 0.22rem;
 
   vertical-align: middle;
-
 }
 
 .grade-star-gradual {
-
   height: 0.16rem;
 
-  -webkit-border-radius: .15rem;
+  -webkit-border-radius: 0.15rem;
 
-  border-radius: .15rem;
+  border-radius: 0.15rem;
 
   overflow: hidden;
 
   background: #e5e5e5;
-
 }
 
 .grade-star-bg .grade-star-gradual {
-
   height: 100%;
-
 }
 
 .grade-star-img {
-
   position: absolute;
 
   top: 0;
@@ -215,7 +214,7 @@ grade-progress-box:after {
 
   height: 100%;
 
-  background: url(data:image/png;base64,) no-repeat;
+  background: url(data:image/png;base64) no-repeat;
 
   -webkit-background-size: 100% 100% !important;
 
@@ -226,6 +225,10 @@ grade-progress-box:after {
   height: 100%;
 }
 
+.styleSelectorContainer {
+  height: 100%;
+}
+
 .styleSelectRow {
   height: 95%;
   overflow: hidden;
@@ -233,6 +236,15 @@ grade-progress-box:after {
 
 .selectedStyleTitle {
   height: 5%;
+}
+
+#styleFirstRow {
+  margin-top: 3%;
+  margin-bottom: 10%;
+}
+
+#styleSecondRow {
+  margin-bottom: 10%;
 }
 
 #dropdown-basic-button-size {
@@ -264,4 +276,28 @@ grade-progress-box:after {
 
 .productDescriptionBox {
   border-right: 2px solid #ccc;
+}
+
+#photos {
+  height: 100%;
+  background-color: #eee;
+  white-space: nowrap;
+  width: 100%;
+  display: table;
+}
+
+.logo-image {
+  vertical-align: middle;
+  padding: 13px;
+  display: table-cell;
+}
+
+.logo-image img {
+  width: 100%;
+}
+
+#circlePhotoBox {
+  max-height: inherit;
+  flex: 1 1 auto;
+  overflow-y: auto;
 }

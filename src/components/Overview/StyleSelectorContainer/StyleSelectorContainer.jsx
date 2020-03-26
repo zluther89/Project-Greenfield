@@ -4,6 +4,7 @@ import ProductName from "./ProductName";
 import StyleSelect from "./StyleSelect";
 import SizeQuantitySelect from "./SizeQuantitySelect";
 import AddToBag from "./AddToBag";
+import StyleTest from "./StyleTest";
 
 export default class StyleSelectorContainer extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ export default class StyleSelectorContainer extends React.Component {
         </div>
         <div className="styleSelect">
           {" "}
-          <StyleSelect />
+          <StyleTest />
         </div>
         <div className="sizeQuantitySelect">
           {" "}

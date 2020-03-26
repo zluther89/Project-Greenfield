@@ -30,18 +30,17 @@ export default class StyleSelect extends React.Component {
           <p className="row selectedStyleTitle">STYLE > SELECTED STYLE</p>
           <div className="row styleSelectRow">
             <Container>
-              <Row>
+              <Row className="container-fluid">
                 {this.state.testPics.slice(0, 4).map(pic => {
                   return (
-                    <Col xs={6} md={3} lg={3}>
+                    <Col xs={6} md={6} lg={3} id="styleFirstRow">
                       <Image
-                        width="85%"
+                        width="90%"
                         class="styleCircles"
                         src={pic}
                         roundedCircle
                         fluid
                         responsive
-                        style={{ margin: 5 }}
                       />
                     </Col>
                   );
@@ -50,15 +49,14 @@ export default class StyleSelect extends React.Component {
               <Row>
                 {this.state.testPics.slice(4).map(pic => {
                   return (
-                    <Col xs={6} md={3} lg={3}>
+                    <Col xs={6} md={6} lg={3} id="styleSecondRow">
                       <Image
-                        width="85%"
+                        width="90%"
                         class="styleCircles"
                         src={pic}
                         roundedCircle
                         fluid
                         responsive
-                        style={{ margin: 5 }}
                       />
                     </Col>
                   );
