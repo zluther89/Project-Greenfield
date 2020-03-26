@@ -29,7 +29,10 @@ export default class StyleSelectorContainer extends React.Component {
         </div>
         <div className="styleSelect">
           {" "}
-          <StyleTest styleData={this.props.styleData} />
+          <StyleTest
+            styleData={this.props.styleData}
+            switchStyle={this.props.switchStyle}
+          />
         </div>
         <div className="sizeQuantitySelect">
           {" "}

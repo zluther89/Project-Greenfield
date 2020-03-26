@@ -8,18 +8,32 @@ import axios from "axios";
 export default class Overview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data: {}, styleData: {} };
+    this.state = {
+      data: {},
+      styleData: {},
+      currentProduct: 3,
+      currentStyle: 0
+    };
+    this.switchStyle = this.switchStyle.bind(this);
+  }
+
+  switchStyle(val) {
+    console.log(val);
+    this.setState({ currentStyle: val });
   }
 
   componentDidMount() {
     axios
-      .get("http://3.134.102.30/products/3")
+      .get(`http://3.134.102.30/products/${this.state.currentProduct}`)
       .then(response => {
+        console.log("productData", response.data);
         this.setState({ data: response.data });
-        return axios.get("http://3.134.102.30/products/3/styles"); // using response.data
+        return axios.get(
+          `http://3.134.102.30/products/${this.state.currentProduct}/styles`
+        ); // using response.data
       })
       .then(response => {
-        console.log(response.data);
+        console.log("styleData", response.data);
         this.setState({ styleData: response.data });
       });
   }
@@ -35,12 +49,17 @@ export default class Overview extends React.Component {
           <div className="overviewMain container-fluid">
             <div className="row overviewRow">
               <div className="imageGallery col-xs-7 col-sm-7 col-md-7">
-                <ImageGallery />
+                <ImageGallery
+                  data={this.state.data}
+                  styleData={this.state.styleData}
+                  currentStyle={this.state.currentStyle}
+                />
               </div>
               <div className="productInfo col-xs-5 col-sm-5 col-md-5">
                 <StyleSelectorContainer
                   data={this.state.data}
                   styleData={this.state.styleData}
+                  switchStyle={this.switchStyle}
                 />
               </div>
             </div>

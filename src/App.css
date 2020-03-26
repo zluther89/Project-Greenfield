@@ -69,11 +69,11 @@
 }
 
 .productName {
-  height: 20%;
+  height: 28%;
 }
 
 .styleSelect {
-  height: 55%;
+  height: 47%;
   display: flex;
   flex-direction: column;
 }

@@ -10,14 +10,17 @@ export default class StyleTest extends React.Component {
     return (
       <div class="styleSquareBox containerOverview">
         {this.props.styleData.results &&
-          this.props.styleData.results.map(picture => {
+          this.props.styleData.results.map((style, index) => {
             return (
               <div class="square">
                 <img
                   className="rounded-circle"
-                  id="stylePics"
-                  src={picture.photos[0].url}
+                  id="Matt"
+                  src={style.photos[0].url}
                   alt="mehh"
+                  onClick={() => {
+                    this.props.switchStyle(index);
+                  }}
                 />
               </div>
             );

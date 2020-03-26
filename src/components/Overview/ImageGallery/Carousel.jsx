@@ -5,6 +5,23 @@ export default class ImageCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.renderCarousel = this.renderCarousel.bind(this);
+  }
+
+  renderCarousel() {
+    let style = this.props.currentStyle;
+    console.log("stttttyyyylllle", style);
+    return this.props.styleData.results[style].photos.map(picture => {
+      return (
+        <Carousel.Item>
+          <img
+            className="overview d-block w-100 img-fluid align-content-center mx-auto"
+            src={picture.url}
+            alt="First slide"
+          />
+        </Carousel.Item>
+      );
+    });
   }
 
   render() {
@@ -17,27 +34,7 @@ export default class ImageCarousel extends React.Component {
         indicators={true}
         hover={false}
       >
-        <Carousel.Item>
-          <img
-            className="overview d-block w-100 img-fluid align-content-center mx-auto"
-            src="https://avatars1.githubusercontent.com/u/12416599?s=460&u=dd647676df3df2357c7aa8045c1a5e14fbcec5ac&v=4"
-            alt="First slide"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 img-fluid align-content-center mx-auto"
-            src="https://avatars1.githubusercontent.com/u/12416599?s=460&u=dd647676df3df2357c7aa8045c1a5e14fbcec5ac&v=4"
-            alt="Third slide"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 img-fluid align-content-center mx-auto"
-            src="https://avatars1.githubusercontent.com/u/12416599?s=460&u=dd647676df3df2357c7aa8045c1a5e14fbcec5ac&v=4"
-            alt="Third slide"
-          />
-        </Carousel.Item>
+        {this.props.styleData.results && this.renderCarousel()}
       </Carousel>
     );
   }
