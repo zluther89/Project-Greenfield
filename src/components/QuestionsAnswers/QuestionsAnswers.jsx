@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar.jsx";
 import Container from "react-bootstrap/Container";
 import { setNewQuestion } from "../Redux/ActionCreators.js";
 import Axios from "axios";
+import QuestionModalButton from "./Modals/QuestionModalButton.jsx";
 import { connect } from "react-redux";
 // import { setNewAnswer } from "../Redux/ActionCreators.js";
 
@@ -25,7 +26,7 @@ class QuestionAnswers extends React.Component {
   }
 
   componentDidMount() {
-    this.setNewQuestion("1");
+    this.setNewQuestion("4");
   }
 
   getQuestions(id) {
@@ -46,7 +47,7 @@ class QuestionAnswers extends React.Component {
           {" "}
           <SearchBar /> <QuestionsContainer />
           <button variant="primary">More Answered Questions</button>
-          <button variant="primary">Add A question +</button>
+          <QuestionModalButton />
         </Container>
       </div>
     );
