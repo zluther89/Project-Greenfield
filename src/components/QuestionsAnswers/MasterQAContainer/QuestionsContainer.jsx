@@ -4,20 +4,14 @@ import { connect } from "react-redux";
 import Question from "./Question.jsx";
 
 const mapStateToProps = state => ({
-  questionSet: state.questionSet
+  questionSet: state.questionSet,
+  numOfQuestions: state.numOfQuestions
 });
 
 class QuestionsContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      numberOfLoaded: 2
-    };
-  }
-
-  setLoadedQuestions(numberToLoad = this.state.numberOfLoaded) {
-    let sortedQArray = this.sortQuestionsReturn().slice(0, numberToLoad);
-    this.setState({ loadedQuestions: sortedQArray });
+    this.state = {};
   }
 
   sortQuestionsReturn() {
@@ -28,13 +22,6 @@ class QuestionsContainer extends React.Component {
 
     return questions;
   }
-  //load questions into state
-  //load two most heplful by default into currentQuestions container
-  //already have all questions in redux state
-
-  //render each IndividualQuestion container with loaded questions
-
-  //note. each question has answer children
 
   render() {
     let styles = {
@@ -44,16 +31,16 @@ class QuestionsContainer extends React.Component {
       overflowY: "scroll"
     };
 
-    let loadedQuestions = this.sortQuestionsReturn().slice(
+    let loadedSortedQs = this.sortQuestionsReturn().slice(
       0,
-      this.state.numberOfLoaded
+      this.props.numOfQuestions
     );
 
     return (
       <div>
         <div style={styles}>
           <Table borderless>
-            {loadedQuestions.map(question => {
+            {loadedSortedQs.map(question => {
               return <Question key={question.question_id} q={question} />;
             })}
           </Table>

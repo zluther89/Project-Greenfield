@@ -11,8 +11,6 @@ import QuestionModalButton from "./Modals/QuestionModalButton.jsx";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 
-// import { setNewAnswer } from "../Redux/ActionCreators.js";
-
 const mapDispatchToProps = dispatch => {
   return {
     setNewQuestion: questionObj => dispatch(setNewQuestion(questionObj)),
@@ -46,25 +44,31 @@ class QuestionAnswers extends React.Component {
     );
   }
 
-  clickHandler(numberOfQuestions) {
-    let totalQuestions =
-      this.props.questionSet.length > 2 ? this.props.questionSet.length : 2;
-    let newNumOfQuestions =
-      this.props.numOfQuestions === 2 ? totalQuestions : 2;
+  clickHandler() {
+    let newNumOfQuestions = this.props.numOfQuestions + 2;
+    newNumOfQuestions =
+      newNumOfQuestions > this.props.questionSet.length
+        ? this.props.questionSet.length
+        : newNumOfQuestions;
+
     this.props.setNewNumOfQuestions(newNumOfQuestions);
     console.log(this.props);
   }
 
   render() {
+    let button =
+      this.props.numOfQuestions === this.props.questionSet.length ? null : (
+        <Button onClick={() => this.clickHandler()}>
+          More Answered Questions
+        </Button>
+      );
     return (
       <div>
         <div></div>
         <Container>
           {" "}
           <SearchBar /> <QuestionsContainer />
-          <Button onClick={() => this.clickHandler()}>
-            More Answered Questions
-          </Button>
+          {button}
           <QuestionModalButton />
         </Container>
       </div>
