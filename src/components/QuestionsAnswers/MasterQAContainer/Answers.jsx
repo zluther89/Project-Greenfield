@@ -29,9 +29,7 @@ class Answers extends React.Component {
   setAnswers(id) {
     this.getAnswers(id).then(res => {
       let sortedAnswers = this.sortAnswers(res.data.results);
-      this.setState({ answers: sortedAnswers }, () => {
-        console.log("answers state", this.state);
-      });
+      this.setState({ answers: sortedAnswers });
     });
   }
 
@@ -41,6 +39,8 @@ class Answers extends React.Component {
 
   render() {
     //Note: for formatting reasons, answer 1 is hardcoded, the rest are conditionally rendered based on a number in state
+    console.log("all answers:", this.state.answers);
+    console.log("all props", this.props);
     let answer1 = this.state.answers[0] ? this.state.answers[0].body : null;
     let additionalAnswers = this.state.answers
       .slice(1, this.state.numberToRender)
