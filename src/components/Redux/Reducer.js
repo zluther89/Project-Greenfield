@@ -1,6 +1,6 @@
 let initialState = {
   selectedProduct: {},
-  questionSet: {},
+  questionSet: [],
   answerSet: {}
 };
 

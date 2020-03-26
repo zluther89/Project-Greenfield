@@ -8,7 +8,8 @@ export default class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      relatedProducts: []
+      relatedProducts: [],
+      outfit:[]
     };
   }
 
@@ -21,18 +22,22 @@ export default class RelatedProducts extends React.Component {
 
   render() {
     return (
-      // <Carousel>
-      //   <Carousel.Item>
-      //     <ProductCard/>
-      //   </Carousel.Item>
-      // </Carousel>
       <div>
-        <h2 align="left">Related Products</h2>
-        <CardDeck>
-          {this.state.relatedProducts.map(product => {
-            return <ProductCard product={product} />;
-          })}
-        </CardDeck>
+        <h2 align='left'>Related Products</h2>
+        <Carousel
+          autoPlay="false"
+          data-interval="false"
+          id="relatedCarousel"
+          wrap="false"
+        >  
+            {this.state.relatedProducts.map( (product,i) => {
+              return (
+                <Carousel.Item key={i}>
+                  <ProductCard product={product}/>
+                </Carousel.Item>
+              )
+            })}
+        </Carousel>
       </div>
     );
   }
