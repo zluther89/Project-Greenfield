@@ -45,7 +45,7 @@ class RatingBreakdown extends React.Component{
           <div className="col-4  "><h1>{this.state.rating}</h1></div> <div className="col-8"><ShowStars /></div>
           </div>
         <div className="row " style={{ "height": "5%" }}><p> {this.state.recommend}% of reviews recommend this product</p></div>
-      <div className="row p-3 mb-2 bg-info" style={{"height":"40%"}}><BarBreakdown /></div>
+      <div className="row p-3 mb-2 bg-info" style={{"height":"50%"}}><BarBreakdown /></div>
       <div className="row p-3 mb-2 bg-primary" style={{"height":"5%"}}>11</div>
         <div className="row p-3 mb-2 bg-info" style={{ "height": "5%" }}>11</div>
         </div>
