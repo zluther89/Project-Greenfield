@@ -173,12 +173,12 @@ grade-progress-box:after {
 }
 .grade-star-bg {
   position: relative;
-
   display: table-cell;
-
   width: 4.46rem;
 
+
   height: 0.5rem;
+
 
   overflow: hidden;
 
