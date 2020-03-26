@@ -11,6 +11,7 @@ export default class ProductName extends React.Component {
         <p>{this.props.category}</p>
         <h3>{this.props.name}</h3>
         <p>${this.props.price}</p>
+        <h3>STYLE > SELECTED STYLE</h3>
       </div>
     );
   }

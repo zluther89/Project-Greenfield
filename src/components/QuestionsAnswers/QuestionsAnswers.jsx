@@ -2,21 +2,27 @@ import React from "react";
 import QuestionsContainer from "./MasterQAContainer/QuestionsContainer.jsx";
 import SearchBar from "./SearchBar.jsx";
 import Container from "react-bootstrap/Container";
-import { setNewQuestion } from "../Redux/ActionCreators.js";
+import { getQuestionsThunk } from "../Redux/ThunkMiddleware.js";
+import {
+  setNewQuestion,
+  setNewNumOfQuestions
+} from "../Redux/ActionCreators.js";
 import Axios from "axios";
 import QuestionModalButton from "./Modals/QuestionModalButton.jsx";
 import { connect } from "react-redux";
-// import { setNewAnswer } from "../Redux/ActionCreators.js";
+import Button from "react-bootstrap/Button";
 
 const mapDispatchToProps = dispatch => {
   return {
-    setNewQuestion: questionObj => dispatch(setNewQuestion(questionObj))
-    // setNewAnswer: answerList => dispatch(setNewAnswer(answerList))
+    setNewQuestion: questionObj => dispatch(setNewQuestion(questionObj)),
+    setNewNumOfQuestions: number => dispatch(setNewNumOfQuestions(number)),
+    getQuestionsThunk: id => dispatch(getQuestionsThunk(id))
   };
 };
 
 const mapStateToProps = state => ({
-  questionSet: state.questionSet
+  questionSet: state.questionSet,
+  numOfQuestions: state.numOfQuestions
 });
 
 class QuestionAnswers extends React.Component {
@@ -26,27 +32,43 @@ class QuestionAnswers extends React.Component {
   }
 
   componentDidMount() {
-    this.setNewQuestion("4");
+    this.props.getQuestionsThunk("4");
   }
 
-  getQuestions(id) {
-    return Axios.get(`http://3.134.102.30/qa/${id}?count=10000000`);
-  }
+  // getQuestions(id) {
+  //   return Axios.get(`http://3.134.102.30/qa/${id}?count=10000000`);
+  // }
 
-  setNewQuestion(id) {
-    this.getQuestions(id).then(res =>
-      this.props.setNewQuestion(res.data.results)
-    );
+  // setNewQuestion(id) {
+  //   this.getQuestions(id).then(res =>
+  //     this.props.setNewQuestion(res.data.results)
+  //   );
+  // }
+
+  clickHandler() {
+    let newNumOfQuestions = this.props.numOfQuestions + 2;
+    newNumOfQuestions =
+      newNumOfQuestions > this.props.questionSet.length
+        ? this.props.questionSet.length
+        : newNumOfQuestions;
+
+    this.props.setNewNumOfQuestions(newNumOfQuestions);
   }
 
   render() {
+    let button =
+      this.props.numOfQuestions === this.props.questionSet.length ? null : (
+        <Button onClick={() => this.clickHandler()}>
+          More Answered Questions
+        </Button>
+      );
     return (
       <div>
         <div></div>
         <Container>
           {" "}
           <SearchBar /> <QuestionsContainer />
-          <button variant="primary">More Answered Questions</button>
+          {button}
           <QuestionModalButton />
         </Container>
       </div>
