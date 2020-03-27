@@ -1,5 +1,6 @@
 import React from "react";
 import Answers from "./Answers";
+import Helpful from "./Helpful";
 
 class Question extends React.Component {
   constructor(props) {
@@ -18,7 +19,10 @@ class Question extends React.Component {
       <tbody>
         <tr>
           <td>Q:</td>
-          <td>{this.props.q.question_body}</td>
+          <td>
+            {this.props.q.question_body}
+            <Helpful />
+          </td>
         </tr>
         <Answers questionID={questionID} />
       </tbody>
