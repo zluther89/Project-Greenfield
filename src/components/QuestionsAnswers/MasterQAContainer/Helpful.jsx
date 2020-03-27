@@ -16,7 +16,7 @@ class Helpful extends React.Component {
     let answerOrReport =
       this.props.type === "answer" ? (
         <div>
-          <QandAModalButton />{" "}
+          <QandAModalButton type="answer" />{" "}
         </div>
       ) : (
         "Report"

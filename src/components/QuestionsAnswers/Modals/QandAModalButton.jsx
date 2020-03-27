@@ -27,11 +27,13 @@ class QandAModalButton extends React.Component {
           Answer
         </div>
       );
+    let action = this.props.type === "question" ? "question" : "answer";
     return (
       <>
         {button}
 
         <QuestionModal
+          type={action}
           show={this.state.modalShow}
           onHide={() => this.setModalShow(false)}
         />
