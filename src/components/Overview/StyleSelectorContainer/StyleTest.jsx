@@ -1,4 +1,5 @@
 import React from "react";
+import { ThumbsDown } from "react-feather";
 
 export default class StyleTest extends React.Component {
   constructor(props) {
@@ -9,8 +10,14 @@ export default class StyleTest extends React.Component {
   render() {
     return (
       <div>
-        <p>${this.props.price}</p>
-        {this.props.salePrice && <p>SALE ${this.props.salePrice}</p>}
+        {this.props.salePrice ? (
+          <p>
+            NOW ${this.props.salePrice} .... DOWN $
+            {this.props.price - this.props.salePrice}
+          </p>
+        ) : (
+          <p>${this.props.price}</p>
+        )}
         <h3>STYLE > SELECTED STYLE</h3>
         <div class="styleSquareBox containerOverview">
           {this.props.styleData.results &&

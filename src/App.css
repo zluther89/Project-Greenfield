@@ -187,3 +187,7 @@
 .containerOverview {
   columns: 4 auto;
 }
+
+.overviewWidget {
+  height: 89vh;
+}

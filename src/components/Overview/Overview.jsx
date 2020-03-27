@@ -11,7 +11,7 @@ export default class Overview extends React.Component {
     this.state = {
       data: {},
       styleData: {},
-      currentProduct: 6,
+      currentProduct: 3,
       currentStyle: 0,
       styleClicked: false,
       currentPrice: null,
@@ -54,7 +54,7 @@ export default class Overview extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="overviewWidget">
         <div className="overviewFull">
           <div className="overviewBanner">
             {" "}
