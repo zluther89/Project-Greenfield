@@ -45,10 +45,10 @@ export default class StyleSelectorContainer extends React.Component {
             styleClicked={this.props.styleClicked}
           />
         </div>
-        <div className="addToBag">
+        {/* <div className="addToBag">
           {" "}
           <AddToBag styleData={this.props.styleData} />
-        </div>
+        </div> */}
       </div>
     );
   }

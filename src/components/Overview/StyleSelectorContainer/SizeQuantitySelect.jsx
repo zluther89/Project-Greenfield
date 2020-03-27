@@ -1,7 +1,8 @@
 import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import { ThumbsDown } from "react-feather";
+
+import Button from "react-bootstrap/Button";
 
 export default class SizeQuantitySelect extends React.Component {
   constructor(props) {
@@ -14,6 +15,8 @@ export default class SizeQuantitySelect extends React.Component {
     };
     this.populateSizes = this.populateSizes.bind(this);
     this.setQuantity = this.setQuantity.bind(this);
+    this.addToBagFunc = this.addToBagFunc.bind(this);
+    this.showAlert = this.showAlert.bind(this);
     // this.populateQuantity = this.populateQuantity.bind(this);
   }
 
@@ -40,6 +43,20 @@ export default class SizeQuantitySelect extends React.Component {
         );
       })
     );
+  }
+
+  addToBagFunc() {
+    this.showAlert();
+    this.resetValues();
+  }
+
+  showAlert() {
+    let alert = `You have added ${this.state.quantitySelected} ${this.state.sizeSelected} of this style to your bag`;
+    window.alert(alert);
+  }
+
+  resetValues() {
+    this.setState({ sizeSelected: null, quantitySelected: null });
   }
 
   setQuantity(num) {
@@ -104,6 +121,18 @@ export default class SizeQuantitySelect extends React.Component {
               )}
             </DropdownButton>
           </div>
+        </div>
+        <div>
+          {this.state.sizeSelected && this.state.quantitySelected && (
+            <Button
+              id="button-add-to-bag"
+              onClick={() => {
+                this.addToBagFunc();
+              }}
+            >
+              ADD TO BAG
+            </Button>
+          )}
         </div>
       </div>
     );
