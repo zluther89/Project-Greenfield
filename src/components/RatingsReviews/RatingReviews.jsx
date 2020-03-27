@@ -31,7 +31,7 @@ export default class RatingReviews extends React.Component {
               <strong className="RightMargin">ADD A REVIEW</strong>{" "}
               <Plus
                 size={20}
-                style={{ "margin-bottom": "0.3em" }}
+                style={{ "marginBottom": "0.3em" }}
               />
             </button>
           </div>
