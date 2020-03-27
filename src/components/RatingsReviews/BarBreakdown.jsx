@@ -30,8 +30,8 @@ class BarBreakdown extends React.Component {
     return (
       <div style={{ width: "100%" }}>
         <div className="row my-3">
-          <div className="col-3  ml-3">
-            <u type="button">5 stars</u>
+          <div className="col-3  ml-3 "  >
+            <u  type="button" className="hoverStar" onClick={() => this.props.HandleRateFilter("5 stars")}>5 stars</u>
           </div>
           <div className="col-7 my-1  ">
             <div className="progress" >
@@ -49,8 +49,8 @@ class BarBreakdown extends React.Component {
           </div>
         </div>
         <div className="row my-3">
-          <div className="col-3 ml-3">
-            <u type="button">4 stars</u>
+          <div className="col-3 ml-3" >
+            <u type="button" className="hoverStar"  onClick={() => this.props.HandleRateFilter("4 stars")}>4 stars</u>
           </div>
           <div className="col-7 my-1  ">
             <div className="progress" >
@@ -69,7 +69,7 @@ class BarBreakdown extends React.Component {
         </div>
         <div className="row my-3">
           <div className="col-3 ml-3">
-            <u type="button">3 stars</u>
+            <u type="button" className="hoverStar" onClick={() => this.props.HandleRateFilter("3 stars")}>3 stars</u>
           </div>
           <div className="col-7 my-1  ">
             <div className="progress" >
@@ -88,7 +88,7 @@ class BarBreakdown extends React.Component {
         </div>
         <div className="row my-3">
           <div className="col-3 ml-3">
-            <u type="button">2 stars</u>
+            <u type="button" className="hoverStar" onClick={() => this.props.HandleRateFilter("2 stars")}>2 stars</u>
           </div>
           <div className="col-7 my-1  ">
             <div className="progress" >
@@ -107,7 +107,7 @@ class BarBreakdown extends React.Component {
         </div>
         <div className="row my-3">
           <div className="col-3 ml-3">
-            <u type="button">1 stars</u>
+            <u type="button" className="hoverStar" onClick={() => this.props.HandleRateFilter("1 stars")}>1 stars</u>
           </div>
           <div className="col-7 my-1  ">
             <div className="progress" >
@@ -120,7 +120,7 @@ class BarBreakdown extends React.Component {
               ></div>
             </div>
           </div>
-          <div className="col">
+          <div className="col ">
             {onestar}
           </div>
         </div>
