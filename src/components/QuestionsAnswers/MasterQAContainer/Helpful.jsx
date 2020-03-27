@@ -1,4 +1,5 @@
 import React from "react";
+import QandAModalButton from "../Modals/AnswerModalButton";
 
 class Helpful extends React.Component {
   constructor(props) {
@@ -12,7 +13,14 @@ class Helpful extends React.Component {
 
   render() {
     //note: placeholder, need to make functional
-    let answerOrReport = this.props.type === "answer" ? "Add Answer" : "Report";
+    let answerOrReport =
+      this.props.type === "answer" ? (
+        <div>
+          <QandAModalButton />{" "}
+        </div>
+      ) : (
+        "Report"
+      );
     return (
       <>
         <div>Helpful?</div>
