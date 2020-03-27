@@ -16,7 +16,8 @@ export default class StyleSelectorContainer extends React.Component {
       <div className="styleSelectorContainer">
         <div className="productReviews">
           {" "}
-          <ProductReviews />
+          <p>Product Review</p>
+          {/* <ProductReviews /> */}
         </div>
         <div className="productName">
           {" "}
@@ -25,7 +26,6 @@ export default class StyleSelectorContainer extends React.Component {
             category={this.props.data.category}
             price={this.props.data.default_price}
             currentStyle={this.props.currentStyle}
-            styleClicked={this.props.styleClicked}
           />
         </div>
         <div className="styleSelect">
@@ -39,7 +39,11 @@ export default class StyleSelectorContainer extends React.Component {
         </div>
         <div className="sizeQuantitySelect">
           {" "}
-          <SizeQuantitySelect styleData={this.props.styleData} />
+          <SizeQuantitySelect
+            styleData={this.props.styleData}
+            currentStyle={this.props.currentStyle}
+            styleClicked={this.props.styleClicked}
+          />
         </div>
         <div className="addToBag">
           {" "}
