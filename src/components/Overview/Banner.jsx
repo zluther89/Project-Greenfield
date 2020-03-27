@@ -5,7 +5,7 @@ export default function Banner() {
     <div>
       <div className="jumbotron jumbotron-fluid">
         <div className="container">
-          <h1 className="display-5">Best Website Ever</h1>
+          <h1 className="display-5">stockOverflow</h1>
         </div>
       </div>
 
