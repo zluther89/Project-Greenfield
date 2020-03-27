@@ -21,10 +21,12 @@ class Question extends React.Component {
           <td>Q:</td>
           <td>
             {this.props.q.question_body}
-            <Helpful />
+            <div className="helpfulContainer">
+              <Helpful type="answer" />
+            </div>
           </td>
         </tr>
-        <Answers questionID={questionID} />
+        <Answers questionID={questionID} key={questionID} />
       </tbody>
     );
   }

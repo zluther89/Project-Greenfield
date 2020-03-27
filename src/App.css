@@ -63,14 +63,14 @@
 }
 /* end */
 /* css for rating part */
-.hoverStar:hover{
-  background: gold
+.hoverStar:hover {
+  background: gold;
 }
 /* end */
 /* css for individualreview */
 .Hrsolid {
   border-top: 2px solid #999;
-  width: "100%"
+  width: "100%";
 }
 
 /* end */
@@ -90,12 +90,12 @@
 }
 
 .sizeQuantitySelect {
-  height: 10%;
+  height: 20%;
 }
 
-.addToBag {
+/* .addToBag {
   height: 10%;
-}
+} */
 
 .styleSelectBox {
   height: 100%;
@@ -200,7 +200,7 @@
 }
 
 .overviewWidget {
-  height: 89vh;
+  height: 90vh;
 }
 
 /* CSS FOR Q & A */
@@ -213,6 +213,28 @@
   flex-wrap: nowrap;
   width: 30%;
 }
+.masterAnswerContainer {
+  display: flex;
+}
+
+.answererContainer {
+  display: flex;
+  font-size: 8px;
+  float: left;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 50%;
+}
+
+.answererContainer div {
+  margin: 2%;
+}
+
+.helpfulContainer {
+  display: flex;
+}
+
 .helpfulContainer div {
   margin: 2%;
 }

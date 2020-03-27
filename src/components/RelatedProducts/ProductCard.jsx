@@ -7,7 +7,7 @@ let ProductCard = (props) => {
     return (
         <Card 
           index={props.index} 
-          onClick={props.handleClick} 
+          onClick={props.handleClick}
           style={{ width: '18rem' }}
         >
             
@@ -19,11 +19,11 @@ let ProductCard = (props) => {
                 <Card.Text align='left'>${props.product.default_price}</Card.Text>
                 <Card.Text align='left'>Stars</Card.Text>
                 <Button  
-                  value={props.index}
+                  value={props.product.id}
                   variant="outline-primary"
-                  onClick={props.handleAddToOutfit}
+                  onClick={props.handleCompare}
                 >
-                  Add to Outfit
+                  Compare
                 </Button>{' '}
               </Card.Body>
         </Card>
