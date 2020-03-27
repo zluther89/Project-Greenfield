@@ -69,11 +69,11 @@
 }
 
 .productName {
-  height: 28%;
+  height: 15%;
 }
 
 .styleSelect {
-  height: 47%;
+  height: 60%;
   display: flex;
   flex-direction: column;
 }
@@ -185,7 +185,11 @@
 }
 
 .containerOverview {
-  columns: 3 auto;
+  columns: 4 auto;
+}
+
+.overviewWidget {
+  height: 89vh;
 }
 
 /* CSS FOR Q & A */
