@@ -72,13 +72,23 @@ class QuestionModal extends React.Component {
     //     A button will appear allowing users to upload their photos to the form.  Up to five photos should be allowed for each answer.
     // Clicking the button should open a separate window where the photo to be can be selected.
     // After the first image is uploaded, a thumbnail showing the image should appear.  A user should be able to add up to five images before the button to add disappears, preventing further additions.
+    let pictures = this.state.pictureUrls.map((pictureUrl, index) => {
+      return (
+        <div key={index}>
+          <img src={pictureUrl} alt="invalid url" />
+        </div>
+      );
+    });
+
     let addPictureButton =
       this.state.pictureUrls.length < 5 ? (
         <Button onClick={() => this.addUrlSubmit()}>Add Picture</Button>
       ) : null;
+
     let picturesForm =
       this.props.type === "answer" ? (
         <Form.Group>
+          <div className="picturesContainer">{pictures}</div>
           <Form.Label>Pictures</Form.Label>
           <Form.Control
             type="pictureUrl"
@@ -88,6 +98,7 @@ class QuestionModal extends React.Component {
           {addPictureButton}
         </Form.Group>
       ) : null;
+
     return (
       <Modal
         {...this.props}
