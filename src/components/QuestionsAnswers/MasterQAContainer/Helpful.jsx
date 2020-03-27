@@ -11,13 +11,15 @@ class Helpful extends React.Component {
   postVote() {}
 
   render() {
+    //note: placeholder, need to make functional
+    let answerOrReport = this.props.type === "answer" ? "Add Answer" : "Report";
     return (
-      <div className="helpfulContainer">
+      <>
         <div>Helpful?</div>
         <div className="link">Yes</div>
         <div>({this.state.votes})</div> <div>|</div>
-        <div>Add Answer</div>
-      </div>
+        <div>{answerOrReport}</div>
+      </>
     );
   }
 }

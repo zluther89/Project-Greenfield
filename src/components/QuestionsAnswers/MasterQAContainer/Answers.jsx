@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import Axios from "axios";
+import moment from "moment";
+import Helpful from "./Helpful";
 
 const mapStateToProps = state => ({
   questionSet: state.questionSet
@@ -44,11 +46,21 @@ class Answers extends React.Component {
     let additionalAnswers = this.state.answers
       .slice(1, this.state.numberToRender)
       .map(answer => {
+        let date = moment(answer.date).format("MMMM Do YYYY");
+        console.log("answer date", date);
         return (
-          <tr key={answer.answer_id}>
-            <td></td>
-            <td>{answer.body}</td>
-          </tr>
+          <>
+            <tr key={answer.answer_id}>
+              <td></td>
+              <td>{answer.body}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td className="answererContainer">
+                by {answer.answerer_name},{date} <Helpful />
+              </td>
+            </tr>
+          </>
         );
       });
     return (
