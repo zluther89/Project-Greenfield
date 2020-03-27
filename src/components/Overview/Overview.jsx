@@ -21,7 +21,6 @@ export default class Overview extends React.Component {
   }
 
   switchStyle(val) {
-    console.log(val);
     let price = this.state.styleData.results[val].original_price;
     let salePrice = this.state.styleData.results[val].sale_price;
     console.log("price", price);
