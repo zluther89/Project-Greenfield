@@ -26,7 +26,7 @@ class Question extends React.Component {
             </div>
           </td>
         </tr>
-        <Answers questionID={questionID} />
+        <Answers questionID={questionID} key={questionID} />
       </tbody>
     );
   }

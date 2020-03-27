@@ -47,7 +47,6 @@ class Answers extends React.Component {
       .slice(1, this.state.numberToRender)
       .map(answer => {
         let date = moment(answer.date).format("MMMM Do YYYY");
-        console.log("answer date", date);
         return (
           <>
             <tr key={answer.answer_id}>
