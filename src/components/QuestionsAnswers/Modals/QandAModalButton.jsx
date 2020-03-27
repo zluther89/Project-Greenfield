@@ -2,7 +2,7 @@ import React from "react";
 import QuestionModal from "./QuestionModal.jsx";
 import Button from "react-bootstrap/Button";
 
-class QuestionModalButton extends React.Component {
+class QandAModalButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,4 +40,4 @@ class QuestionModalButton extends React.Component {
   }
 }
 
-export default QuestionModalButton;
+export default QandAModalButton;

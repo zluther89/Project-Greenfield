@@ -1,7 +1,6 @@
 import React from "react";
 import Answers from "./Answers";
 import Helpful from "./Helpful";
-import AnswerModalButton from "../Modals/AnswerModalButton";
 
 class Question extends React.Component {
   constructor(props) {

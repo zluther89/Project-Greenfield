@@ -8,7 +8,7 @@ import {
   setNewNumOfQuestions
 } from "../Redux/ActionCreators.js";
 import Axios from "axios";
-import QandAModalButton from "./Modals/QuestionModalButton.jsx";
+import QandAModalButton from "./Modals/QandAModalButton.jsx";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 

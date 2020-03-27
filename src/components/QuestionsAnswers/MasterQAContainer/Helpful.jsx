@@ -1,5 +1,5 @@
 import React from "react";
-import QandAModalButton from "../Modals/AnswerModalButton";
+import QandAModalButton from "../Modals/QandAModalButton";
 
 class Helpful extends React.Component {
   constructor(props) {
