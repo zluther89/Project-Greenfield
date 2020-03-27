@@ -1,4 +1,5 @@
 import React from "react";
+
 import Axios from "axios";
 
 class ShowStars extends React.Component {
@@ -49,26 +50,7 @@ class ShowStars extends React.Component {
       .catch(err => console.log(err));
   }
   render() {
-    return (
-      <div
-        className="progress border-0"
-        style={({ height: "100%" }, { width: "25%" })}
-      >
-        <div
-          className="progress-bar progress-bar-striped progress-bar-animated  "
-          style={{ width: `${this.state.ratingPercen}%` }}
-          role="progressbar"
-          aria-valuenow="75"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        >
-          <img
-            style={({ border: "hidden" }, { width: "100%" })}
-            className="grade-star-img "
-          ></img>
-        </div>
-      </div>
-    );
+    return <div></div>;
   }
 }
 
