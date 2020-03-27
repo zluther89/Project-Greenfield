@@ -80,6 +80,8 @@ class QuestionModal extends React.Component {
       );
     });
 
+    let type = this.props.type === "answer" ? "answer" : "question";
+
     let addPictureButton =
       this.state.pictureUrls.length < 5 ? (
         <Button onClick={() => this.addUrlSubmit()}>Add Picture</Button>
@@ -108,7 +110,7 @@ class QuestionModal extends React.Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Please enter info to submit new question
+            Please enter info to submit new {type}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
