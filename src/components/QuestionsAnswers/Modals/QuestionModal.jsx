@@ -26,7 +26,9 @@ class QuestionModal extends React.Component {
       renderModal: false,
       body: "",
       name: "",
-      email: ""
+      email: "",
+      pictureUrls: [],
+      url: ""
     };
   }
 
@@ -36,9 +38,18 @@ class QuestionModal extends React.Component {
     this.setState(stateObj);
   }
 
+  postAnswer() {
+    //post answer to question id endpoint
+  }
+
+  addUrlSubmit() {
+    let pictures = [...this.state.pictureUrls, this.state.url];
+    this.setState({ pictureUrls: pictures });
+  }
+
   //Need to grab product id from redux store or url
   postQuestion(params) {
-    let id = 4; ///PLACEHOLDER
+    let id = 4; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
     return Axios.post(`http://3.134.102.30/qa/${id}?`, params);
   }
 
@@ -46,6 +57,8 @@ class QuestionModal extends React.Component {
     let id = "4"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
     let questionObj = { ...this.state };
     delete questionObj.renderModal;
+    delete questionObj.pictureUrls;
+    delete questionObj.url;
     this.postQuestion(questionObj)
       .then(() => this.props.getQuestionsThunk(id))
       .then(res => console.log("response from post question", res))
@@ -56,6 +69,25 @@ class QuestionModal extends React.Component {
   }
 
   render() {
+    //     A button will appear allowing users to upload their photos to the form.  Up to five photos should be allowed for each answer.
+    // Clicking the button should open a separate window where the photo to be can be selected.
+    // After the first image is uploaded, a thumbnail showing the image should appear.  A user should be able to add up to five images before the button to add disappears, preventing further additions.
+    let addPictureButton =
+      this.state.pictureUrls.length < 5 ? (
+        <Button onClick={() => this.addUrlSubmit()}>Add Picture</Button>
+      ) : null;
+    let picturesForm =
+      this.props.type === "answer" ? (
+        <Form.Group>
+          <Form.Label>Pictures</Form.Label>
+          <Form.Control
+            type="pictureUrl"
+            placeholder="Please submit URL of picture to add"
+            onChange={event => this.handleChange(event, "url")}
+          />
+          {addPictureButton}
+        </Form.Group>
+      ) : null;
     return (
       <Modal
         {...this.props}
@@ -94,6 +126,7 @@ class QuestionModal extends React.Component {
                 onChange={event => this.handleChange(event, "body")}
               />
             </Form.Group>
+            {picturesForm}
           </Form>
         </Modal.Body>
         <Modal.Footer>

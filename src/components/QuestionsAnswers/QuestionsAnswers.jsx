@@ -8,7 +8,7 @@ import {
   setNewNumOfQuestions
 } from "../Redux/ActionCreators.js";
 import Axios from "axios";
-import QuestionModalButton from "./Modals/QuestionModalButton.jsx";
+import QandAModalButton from "./Modals/QandAModalButton.jsx";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 
@@ -69,7 +69,7 @@ class QuestionAnswers extends React.Component {
           {" "}
           <SearchBar /> <QuestionsContainer />
           {button}
-          <QuestionModalButton />
+          <QandAModalButton type="question" />
         </Container>
       </div>
     );
