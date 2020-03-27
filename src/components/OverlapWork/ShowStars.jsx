@@ -11,7 +11,7 @@ class ShowStars extends React.Component{
   componentDidMount() {
     this.GetReviewMet()
   }
-  GetReviewMet(product_id = 2) {
+  GetReviewMet(product_id = 3) {
     let count = 0;
     let sum =0
     Axios.get(`http://3.134.102.30/reviews/${product_id}/meta`)

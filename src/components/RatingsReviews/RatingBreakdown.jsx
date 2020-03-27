@@ -58,6 +58,7 @@ class RatingBreakdown extends React.Component{
         const rating = sum /count
         //get the one round number
         const roundedRating = Math.round(rating * 10) / 10
+        this.props.GetTotalCount(count)
 
         this.setState({rating:roundedRating,recommend:recommendPercen,sum:sum,pairArr:pairArr,count:count})
       }
@@ -69,9 +70,9 @@ class RatingBreakdown extends React.Component{
     return (
       <div style={{"height":"100%"}}>
         <div className="row " style={{ "height": "10%" }}>
-          <div className="col-4  "><h1>{this.state.rating}</h1></div> <div className="col-8"><ShowStars /></div>
+          <div className="col-4  "><h1>{this.state.rating}</h1></div> <div className="col-8 "><ShowStars /></div>
         </div>
-        <div className="row " style={{ "height": "5%" }}><p> the count of total reviews</p> <div className="col-6"><strong ml-10 ="true">{this.state.count}</strong></div></div>
+        <div className="row " style={{ "height": "5%" }}><p>total reviews</p> <div className="col-6"><strong ml-10 ="true">{this.state.count}</strong></div></div>
         <div className="row " style={{ "height": "5%" }}><p> {this.state.recommend || 0}% of reviews recommend this product</p></div>
         <div className="row " style={{ "height": "50%" }}><BarBreakdown HandleRateFilter={this.HandleRateFilter} count={this.state.count} pairArr={this.state.pairArr}/></div>
         <div className="row my-1" style={{ "height": "5%" }}><RatesFilter rates={this.state.rates} /></div>
