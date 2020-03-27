@@ -25,9 +25,6 @@ export default class RelatedProducts extends React.Component {
   }
 
   handleCompare(e) {
-    this.setState({compareProduct: e.target.value})
-
-    let compareData;
     axios.get(`http://3.134.102.30/products/${e.target.value}`)
     .then( ({data}) => {
       this.setState({compareProduct:data})
