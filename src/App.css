@@ -191,3 +191,21 @@
 .overviewWidget {
   height: 89vh;
 }
+
+/* CSS FOR Q & A */
+
+.helpfulContainer {
+  font-size: 8px;
+  float: right;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 30%;
+}
+.helpfulContainer div {
+  margin: 2%;
+}
+/* 
+.helpful div {
+  flex-wrap: wrap;
+} */
