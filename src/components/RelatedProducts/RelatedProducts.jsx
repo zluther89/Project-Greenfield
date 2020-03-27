@@ -16,25 +16,38 @@ export default class RelatedProducts extends React.Component {
       showModal: false
     }; 
     this.handleClick = this.handleClick.bind(this)
+    this.handleAddToOutfit = this.handleAddToOutfit.bind(this)
   }
 
   handleClick(e) {
     this.setState({showModal: true})
-    console.log(e.target)
+  }
+
+  handleAddToOutfit(e) {
+    console.log(e.target.value)
   }
 
   componentDidMount() {
-    axios.get("http://3.134.102.30/products/list").then(({ data }) => {
-      this.setState({ relatedProducts: data }, () => {
-        let productInfo = {}
-        for (let item of data) {
-          axios.get(`http://3.134.102.30/products/${item.id}/styles`).then(({data}) => {
-            productInfo[item.id] = data.results[0].photos[0].thumbnail_url
-          }).then( () => {
-            this.setState({productInfo: productInfo})
-          })
-        }
+    let productId = 3;
+  
+    axios.get(`http://3.134.102.30/products/${productId}/related`).then(({ data }) => {
+      let productInfo={};
+      let relatedProducts = [];
+
+      async function getData() {
+        for (let id of data) {
+        await axios.get(`http://3.134.102.30/products/${id}`).then( ({data}) => {
+          relatedProducts.push(data)
+        } )
+        await axios.get(`http://3.134.102.30/products/${id}/styles`).then( ({data}) => {
+          productInfo[data.product_id] = data.results
+        })
+      }}
+      getData().then( () => {
+        this.setState({productInfo: productInfo},)
+        this.setState({relatedProducts: relatedProducts})
       });
+
     });
     
   }
@@ -53,18 +66,19 @@ export default class RelatedProducts extends React.Component {
           show={this.state.showModal}
           onHide={() => {this.setState({showModal: false})}}
         /> : <div></div>}
-          <CardDeck>
-            {this.state.relatedProducts.map( (product,i) => {
+          <CardDeck>  
+
+            {this.state.relatedProducts.map( (product,i) => {      
               return (
-                // <Carousel.Item key={i}>
                     <ProductCard 
                       key={i}
                       index={i}
                       handleClick={this.handleClick} 
+                      handleAddToOutfit={this.handleAddToOutfit}
                       productInfo={this.state.productInfo} 
                       product={product}
-                    />   
-                // </Carousel.Item>
+                    /> 
+              
               )
             })}
           </CardDeck>
