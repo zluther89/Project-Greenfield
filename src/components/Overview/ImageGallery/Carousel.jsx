@@ -10,7 +10,7 @@ export default class ImageCarousel extends React.Component {
 
   renderCarousel() {
     let style = this.props.currentStyle;
-    console.log("stttttyyyylllle", style);
+
     return this.props.styleData.results[style].photos.map(picture => {
       return (
         <Carousel.Item>

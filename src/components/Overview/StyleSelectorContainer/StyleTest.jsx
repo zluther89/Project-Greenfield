@@ -11,10 +11,7 @@ export default class StyleTest extends React.Component {
     return (
       <div>
         {this.props.salePrice ? (
-          <p>
-            NOW ${this.props.salePrice} .... DOWN $
-            {this.props.price - this.props.salePrice}
-          </p>
+          <p>NOW ${this.props.price - this.props.salePrice}</p>
         ) : (
           <p>${this.props.price}</p>
         )}
