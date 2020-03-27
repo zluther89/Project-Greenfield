@@ -1,4 +1,5 @@
 import React from "react";
+import ShowStars from "../../OverlapWork/ShowStars";
 
 export default class ProductReviews extends React.Component {
   constructor(props) {
@@ -8,8 +9,8 @@ export default class ProductReviews extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>Stars ..... Read All Reviews Link</p>
+      <div className="productReviewsOverview" style={{ height: "100%" }}>
+        <ShowStars style={{ height: "100%" }} />
       </div>
     );
   }
