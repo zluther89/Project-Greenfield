@@ -9,27 +9,37 @@ export default class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentProduct: {},
+      compareProduct: {},
       relatedProducts: [],
-      outfit:[],
       productInfo: {},
-      features: {},
+      outfit:[],
       showModal: false
     }; 
     this.handleClick = this.handleClick.bind(this)
-    this.handleAddToOutfit = this.handleAddToOutfit.bind(this)
+    this.handleCompare = this.handleCompare.bind(this)
   }
 
   handleClick(e) {
     this.setState({showModal: true})
   }
 
-  handleAddToOutfit(e) {
-    console.log(e.target.value)
+  handleCompare(e) {
+    this.setState({compareProduct: e.target.value})
+
+    let compareData;
+    axios.get(`http://3.134.102.30/products/${e.target.value}`)
+    .then( ({data}) => {
+      this.setState({compareProduct:data})
+    })
+
   }
 
   componentDidMount() {
     let productId = 3;
-  
+    axios.get(`http://3.134.102.30/products/${productId}`).then( ({data}) => {
+      this.setState({currentProduct: data})
+    })
     axios.get(`http://3.134.102.30/products/${productId}/related`).then(({ data }) => {
       let productInfo={};
       let relatedProducts = [];
@@ -44,11 +54,12 @@ export default class RelatedProducts extends React.Component {
         })
       }}
       getData().then( () => {
-        this.setState({productInfo: productInfo},)
+        this.setState({productInfo: productInfo})
         this.setState({relatedProducts: relatedProducts})
       });
 
     });
+
     
   }
 
@@ -63,6 +74,8 @@ export default class RelatedProducts extends React.Component {
         >   */}
         {this.state.showModal ? 
         <ComparisonModal 
+          product={this.state.currentProduct}
+          compare={this.state.compareProduct}
           show={this.state.showModal}
           onHide={() => {this.setState({showModal: false})}}
         /> : <div></div>}
@@ -74,7 +87,7 @@ export default class RelatedProducts extends React.Component {
                       key={i}
                       index={i}
                       handleClick={this.handleClick} 
-                      handleAddToOutfit={this.handleAddToOutfit}
+                      handleCompare={this.handleCompare}
                       productInfo={this.state.productInfo} 
                       product={product}
                     /> 
@@ -84,6 +97,9 @@ export default class RelatedProducts extends React.Component {
           </CardDeck>
    
         {/* </Carousel> */}
+        <h2> Your Outfit </h2>
+        <br></br>
+
       </div>
     );
   }
