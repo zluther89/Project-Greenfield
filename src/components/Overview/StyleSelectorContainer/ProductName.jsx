@@ -9,7 +9,7 @@ export default class ProductName extends React.Component {
   render() {
     return (
       <div>
-        <p>{this.props.category}</p>
+        <p>Category: {this.props.category}</p>
         <h3>{this.props.name}</h3>
       </div>
     );
