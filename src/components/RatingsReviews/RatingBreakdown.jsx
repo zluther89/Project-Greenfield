@@ -74,10 +74,10 @@ class RatingBreakdown extends React.Component{
         </div>
         <div className="row " style={{ "height": "5%" }}><p>total reviews</p> <div className="col-6"><strong ml-10 ="true">{this.state.count}</strong></div></div>
         <div className="row " style={{ "height": "5%" }}><p> {this.state.recommend || 0}% of reviews recommend this product</p></div>
-        <div className="row " style={{ "height": "50%" }}><BarBreakdown HandleRateFilter={this.HandleRateFilter} count={this.state.count} pairArr={this.state.pairArr}/></div>
+        <div className="row " style={{ "height": "30%" }}><BarBreakdown HandleRateFilter={this.HandleRateFilter} count={this.state.count} pairArr={this.state.pairArr}/></div>
         <div className="row my-1" style={{ "height": "5%" }}><RatesFilter rates={this.state.rates} /></div>
-        <div className="row justify-content-end my-4" style={{ "height": "5%" }}>{this.state.showCleanAll ? <button type="button" className="btn btn-outline-dark btn-sm" onClick={()=>this.setState({rates:[],showCleanAll:false})}>Delete All Filter</button> : null}</div>
-        <div className="row" style={{ "height": "5%" }}>11</div>
+        <div className="row justify-content-end " style={{ "height": "5%" }}>{this.state.showCleanAll ? <button type="button" className="btn btn-outline-dark btn-sm" onClick={()=>this.setState({rates:[],showCleanAll:false})}>Delete All Filter</button> : null}</div>
+        <div className="row" >product breakdown</div>
         </div>
     )
   }
