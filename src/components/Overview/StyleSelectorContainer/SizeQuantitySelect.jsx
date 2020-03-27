@@ -24,7 +24,7 @@ export default class SizeQuantitySelect extends React.Component {
     let index = this.props.currentStyle;
     let sizes = Object.keys(this.props.styleData.results[index].skus);
     let amount = Object.values(this.props.styleData.results[index].skus);
-    console.log(sizes, amount, this.props.styleData.results[index]);
+
     return (
       this.props.styleData.results &&
       sizes.map((size, index) => {

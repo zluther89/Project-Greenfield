@@ -37,7 +37,6 @@ export default class Overview extends React.Component {
     axios
       .get(`http://3.134.102.30/products/${this.state.currentProduct}`)
       .then(response => {
-        console.log("productData", response.data);
         this.setState({
           data: response.data,
           currentPrice: response.data.default_price
@@ -47,7 +46,6 @@ export default class Overview extends React.Component {
         ); // using response.data
       })
       .then(response => {
-        console.log("styleData", response.data);
         this.setState({ styleData: response.data });
       });
   }
