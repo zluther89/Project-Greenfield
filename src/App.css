@@ -239,6 +239,13 @@
 .helpfulContainer div {
   margin: 2%;
 }
+
+.picturesContainer {
+  height: 500px;
+}
+.pictures {
+  height: 20%;
+}
 /* 
 .helpful div {
   flex-wrap: wrap;

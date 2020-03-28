@@ -37,6 +37,7 @@ class Answers extends React.Component {
 
   componentDidMount() {
     this.setAnswers(this.props.questionID);
+    console.log(this.props);
   }
 
   render() {
