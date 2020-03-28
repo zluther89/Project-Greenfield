@@ -58,7 +58,7 @@ let ComparisonModal = (props) => {
             </Col>
           </Row>
 
-          {totalFeatures.map( ({feature}) => {
+          {totalFeatures.map( ({feature}, i) => {
             let currentRow = null;
             let compareRow = null;
             if (current && current.hasOwnProperty(feature)) {
@@ -68,7 +68,7 @@ let ComparisonModal = (props) => {
               compareRow = compare[feature]
             }
             return (
-            <Row className="show-grid">
+            <Row key={i} className="show-grid">
             <Col xs={6} md={4}>
                 {currentRow}
             </Col>

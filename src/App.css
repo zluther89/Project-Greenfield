@@ -54,6 +54,14 @@
   height: 10%;
 }
 
+#compareButton{
+  position:absolute;
+  right:0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
 /* css code for Stars */
 .grade-star-img {
   position: absolute;
