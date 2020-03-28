@@ -28,8 +28,25 @@ class QuestionModal extends React.Component {
       name: "",
       email: "",
       pictureUrls: [],
-      url: ""
+      url: "",
+      files: [],
+      filePreview: []
     };
+  }
+
+  //button handlers
+
+  handleSelectFile(event) {
+    let newfiles = [...this.state.files, event.target.files[0]];
+    let newfilePreviewState = [
+      ...this.state.filePreview,
+      URL.createObjectURL(event.target.files[0])
+    ];
+    console.log(event.target.files);
+    this.setState({ files: newfiles }, () =>
+      console.log("files from Modal state", this.state.files)
+    );
+    this.setState({ filePreview: newfilePreviewState });
   }
 
   handleChange(event, stateprop) {
@@ -38,19 +55,9 @@ class QuestionModal extends React.Component {
     this.setState(stateObj);
   }
 
-  postAnswer() {
-    //post answer to question id endpoint
-  }
-
   addUrlSubmit() {
     let pictures = [...this.state.pictureUrls, this.state.url];
     this.setState({ pictureUrls: pictures });
-  }
-
-  //Need to grab product id from redux store or url
-  postQuestion(params) {
-    let id = 4; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
-    return Axios.post(`http://3.134.102.30/qa/${id}?`, params);
   }
 
   handleSubmit() {
@@ -66,6 +73,15 @@ class QuestionModal extends React.Component {
 
     this.props.onHide();
     setTimeout(() => console.log(this.props), 2000);
+  }
+  //Axios put requests
+  postAnswer() {
+    //post answer to question id endpoint
+  }
+  //Need to grab product id from redux store or url
+  postQuestion(params) {
+    let id = 4; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    return Axios.post(`http://3.134.102.30/qa/${id}?`, params);
   }
 
   render() {
@@ -90,16 +106,34 @@ class QuestionModal extends React.Component {
     let picturesForm =
       this.props.type === "answer" ? (
         <Form.Group>
-          <div className="picturesContainer">{pictures}</div>
+          <div className="picturesContainer">
+            {this.state.filePreview.map(preview => {
+              return <img className="pictures" src={preview} />;
+            })}
+          </div>
           <Form.Label>Pictures</Form.Label>
-          <Form.Control
-            type="pictureUrl"
+          <Form.File
+            type="picture"
             placeholder="Please submit URL of picture to add"
-            onChange={event => this.handleChange(event, "url")}
+            onChange={event => this.handleSelectFile(event)}
           />
           {addPictureButton}
         </Form.Group>
       ) : null;
+
+    // let picturesForm =
+    //   this.props.type === "answer" ? (
+    //     <Form.Group>
+    //       <div className="picturesContainer">{pictures}</div>
+    //       <Form.Label>Pictures</Form.Label>
+    //       <Form.Control
+    //         type="pictureUrl"
+    //         placeholder="Please submit URL of picture to add"
+    //         onChange={event => this.handleChange(event, "url")}
+    //       />
+    //       {addPictureButton}
+    //     </Form.Group>
+    //   ) : null;
 
     return (
       <Modal

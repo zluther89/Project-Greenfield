@@ -1,5 +1,5 @@
 import React from "react";
-import QuestionModal from "./QuestionModal.jsx";
+import QuestionModal from "./QandAModal";
 import Button from "react-bootstrap/Button";
 
 class QandAModalButton extends React.Component {
