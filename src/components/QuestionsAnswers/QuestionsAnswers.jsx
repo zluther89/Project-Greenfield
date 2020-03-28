@@ -29,9 +29,6 @@ class QuestionAnswers extends React.Component {
 
   componentDidMount() {
     this.props.getQuestionsThunk("4");
-    setTimeout(() => {
-      console.log(this.props);
-    }, 500);
   }
 
   clickHandler() {
@@ -47,19 +44,20 @@ class QuestionAnswers extends React.Component {
   render() {
     let button =
       this.props.numOfQuestions === this.props.questionSet.length ? null : (
-        <Button onClick={() => this.clickHandler()}>
+        <Button className="QnAButton" onClick={() => this.clickHandler()}>
           More Answered Questions
         </Button>
       );
     return (
       <div>
-        <div></div>
-        <Container>
-          {" "}
-          <SearchBar /> <QuestionsContainer />
-          {button}
-          <QandAModalButton type="question" />
-        </Container>
+        <div className="masterQContainer">
+          <Container>
+            {" "}
+            <SearchBar /> <QuestionsContainer />
+            {button}
+            <QandAModalButton type="question" />
+          </Container>
+        </div>
       </div>
     );
   }

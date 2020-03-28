@@ -46,7 +46,8 @@ class Answers extends React.Component {
             <tr>
               <td></td>
               <td className="answererContainer">
-                by {answer.answerer_name},{date} <Helpful />
+                by {answer.answerer_name},{date}{" "}
+                <Helpful helpful={answer.helpfulness} />
               </td>
             </tr>
           </>
@@ -64,6 +65,14 @@ class Answers extends React.Component {
         <tr>
           <td>A:</td>
           <td>{answer1}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td className="answererContainer">
+            by {answer1.answerer_name},
+            {moment(answer1.date).format("MMMM Do YYYY")}{" "}
+            <Helpful helpful={answer1.helpfulness} />
+          </td>
         </tr>
         {additionalAnswers}
         <tr>

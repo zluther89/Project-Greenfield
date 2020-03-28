@@ -25,7 +25,6 @@ class QuestionsContainer extends React.Component {
 
   render() {
     let styles = {
-      backgroundColor: "lightblue",
       height: "200px",
       width: "100%",
       overflowY: "scroll"
