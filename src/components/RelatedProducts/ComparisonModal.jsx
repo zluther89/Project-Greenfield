@@ -11,6 +11,8 @@ let ComparisonModal = (props) => {
   let currentFeatures = props.product.features
   let compareFeatures = props.compare.features
   let totalFeatures = [];
+  let current ={};
+  let compare ={};
   for (let feature of currentFeatures) {
     if (totalFeatures.indexOf(feature) === -1) {
       totalFeatures.push(feature)
@@ -23,8 +25,16 @@ let ComparisonModal = (props) => {
       }
      }
   }
-
-    return (
+  for(let feature of currentFeatures){
+    current[feature.feature] = feature.value
+  }
+  for (let feature in compareFeatures) {
+    let feat = compareFeatures[feature]
+    compare[feat.feature] = feat.value
+  
+  }
+    
+  return (
         
         <Modal
           {...props}
@@ -47,18 +57,30 @@ let ComparisonModal = (props) => {
               {compareName}
             </Col>
           </Row>
-        
-          <Row className="show-grid">
+
+          {totalFeatures.map( ({feature}) => {
+            let currentRow = null;
+            let compareRow = null;
+            if (current && current.hasOwnProperty(feature)) {
+              currentRow = current[feature]
+            }
+            if (compare && compare.hasOwnProperty(feature)) {
+              compareRow = compare[feature]
+            }
+            return (
+            <Row className="show-grid">
             <Col xs={6} md={4}>
-                Value of Product # 1
+                {currentRow}
             </Col>
             <Col xs={6} md={4}>
-                Feature
+                {feature}
             </Col>
             <Col xs={6} md={4}>
-                Value of Product # 2
+                {compareRow}
             </Col>
           </Row>
+            )
+          })}
         </Container>
           </Modal.Body>
           <Modal.Footer>
