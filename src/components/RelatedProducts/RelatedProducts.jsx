@@ -3,7 +3,6 @@ import axios from "axios";
 import ProductCard from "./ProductCard";
 import ComparisonModal from './ComparisonModal'
 // import Carousel from "react-bootstrap/Carousel";
-import $ from 'jquery'
 import CardDeck from "react-bootstrap/CardDeck";
 import {getNewProductThunk} from '../Redux/ThunkMiddleware.js'
 import { connect } from 'react-redux'
