@@ -1,6 +1,6 @@
 .App {
   margin: 0 auto; /* this will center the page */
-  width: 1100px; /*  use your width here */
+  width: 1200px; /*  use your width here */
 }
 
 .overviewFull {
@@ -258,3 +258,75 @@
 .helpful div {
   flex-wrap: wrap;
 } */
+
+.carouselContainer {
+  height: 100%;
+}
+
+.imageCarousel {
+  height: 100%;
+}
+
+.my-4 {
+  height: 80%;
+}
+
+#carousel-thumb {
+  height: 100%;
+}
+
+.carousel-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item {
+  height: 100%;
+}
+
+.carousel-indicators {
+  height: 15%;
+}
+
+#carousel-thumb {
+  height: 100%;
+  margin: 10px;
+}
+
+.hide-bullets {
+  list-style: none;
+  margin-left: -40px;
+  margin-top: 20px;
+}
+
+.thumbnail {
+  padding: 0;
+}
+
+.carouselRows {
+  height: 100%;
+}
+
+.d-block {
+  margin-top: 10px;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.thumbnailContainer {
+  height: 100%;
+  overflow: scroll;
+  margin-top: 30px;
+  display: block;
+}
+
+.col-sm-10 {
+  height: 100%;
+}
