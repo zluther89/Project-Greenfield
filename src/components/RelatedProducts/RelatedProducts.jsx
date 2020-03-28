@@ -3,6 +3,7 @@ import axios from "axios";
 import ProductCard from "./ProductCard";
 import ComparisonModal from './ComparisonModal'
 // import Carousel from "react-bootstrap/Carousel";
+import $ from 'jquery'
 import CardDeck from "react-bootstrap/CardDeck";
 import {getNewProductThunk} from '../Redux/ThunkMiddleware.js'
 import { connect } from 'react-redux'
@@ -27,24 +28,23 @@ class RelatedProducts extends React.Component {
       productInfo: {},
       outfitId: [],
       outfitInfo:{},
+      clickedProduct: null,
       showModal: false
     }; 
-    this.handleClick = this.handleClick.bind(this)
     this.handleCompare = this.handleCompare.bind(this)
   }
 
   handleClick(e) {
-    // move this line to handleCompare
-    this.setState({showModal: true})
+    console.log(e.target)
     // should update store with the clicked e target value id
   }
 
   handleCompare(e) {
+    this.setState({showModal: true})
     axios.get(`http://3.134.102.30/products/${e.target.value}`)
     .then( ({data}) => {
       this.setState({compare:data})
     })
-
   }
 
   componentDidMount() {
@@ -110,7 +110,7 @@ class RelatedProducts extends React.Component {
                     <ProductCard 
                       key={i}
                       index={i}
-                      handleClick={this.handleClick} 
+                      handleClick={this.handleClick.bind(this)} 
                       handleCompare={this.handleCompare}
                       productInfo={this.state.productInfo} 
                       product={product}
