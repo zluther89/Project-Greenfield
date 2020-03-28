@@ -87,9 +87,7 @@ let ComparisonModal = (props) => {
           <br/>
         </Container>
           </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={props.onHide}>Close</Button>
-          </Modal.Footer>
+        
         </Modal>
       );
 }
