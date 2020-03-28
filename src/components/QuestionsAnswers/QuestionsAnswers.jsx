@@ -29,6 +29,9 @@ class QuestionAnswers extends React.Component {
 
   componentDidMount() {
     this.props.getQuestionsThunk("4");
+    setTimeout(() => {
+      console.log(this.props);
+    }, 500);
   }
 
   clickHandler() {

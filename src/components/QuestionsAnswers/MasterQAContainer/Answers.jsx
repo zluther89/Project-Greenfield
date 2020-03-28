@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import Axios from "axios";
+// import Axios from "axios";
 import moment from "moment";
 import Helpful from "./Helpful";
 
-const mapStateToProps = state => ({
-  questionSet: state.questionSet
+const mapStateToProps = (state, ownProps) => ({
+  questionSet: state.questionSet,
+  questionID: ownProps.questionID
 });
 
 class Answers extends React.Component {
@@ -17,36 +18,24 @@ class Answers extends React.Component {
     };
   }
 
-  getAnswers(id) {
-    return Axios.get(`http://3.134.102.30/qa/${id}/answers`);
-  }
-
   sortAnswers(array) {
     let answers = array.slice(0);
     answers.sort((a, b) => (a.helpfulness > b.helpfulness ? -1 : 1));
-
     return answers;
   }
 
-  setAnswers(id) {
-    this.getAnswers(id).then(res => {
-      let sortedAnswers = this.sortAnswers(res.data.results);
-      this.setState({ answers: sortedAnswers });
-    });
-  }
-
-  componentDidMount() {
-    this.setAnswers(this.props.questionID);
-    console.log(this.props);
+  moreAnswersClick() {
+    let totalAnswers = this.props.answers.length;
+    this.setState({ numberToRender: totalAnswers });
   }
 
   render() {
     //Note: for formatting reasons, answer 1 is hardcoded, the rest are conditionally rendered based on a number in state
-
-    let answer1 = this.state.answers[0] ? this.state.answers[0].body : null;
-    let additionalAnswers = this.state.answers
+    let answer1 = this.props.answers[0] ? this.props.answers[0].body : null;
+    let additionalAnswers = this.props.answers
       .slice(1, this.state.numberToRender)
       .map(answer => {
+        console.log("answer", answer);
         let date = moment(answer.date).format("MMMM Do YYYY");
         return (
           <>
@@ -63,6 +52,13 @@ class Answers extends React.Component {
           </>
         );
       });
+
+    let moreAnswersLink =
+      this.props.answers.length > 2 &&
+      this.props.answers.length !== this.state.numberToRender ? (
+        <div className="loadMoreAnswers">Load More Answers</div>
+      ) : null;
+
     return (
       <>
         <tr>
@@ -70,9 +66,30 @@ class Answers extends React.Component {
           <td>{answer1}</td>
         </tr>
         {additionalAnswers}
+        <tr>
+          <td></td>
+          <td onClick={() => this.moreAnswersClick()}>{moreAnswersLink}</td>
+        </tr>
       </>
     );
   }
 }
 
 export default connect(mapStateToProps)(Answers);
+
+// getAnswers(id) {
+//   return Axios.get(`http://3.134.102.30/qa/${id}/answers`);
+// }
+
+// setAnswers(id) {
+//   this.getAnswers(id).then(res => {
+//     console.log("api answers", res.data.results);
+//     // let sortedAnswers = this.sortAnswers(res.data.results);
+//     // this.setState({ answers: sortedAnswers });
+//   });
+// }
+
+// componentDidMount() {
+//   console.log("aanswers from question", this.props.answers);
+//   this.setAnswers(this.props.questionID);
+// }
