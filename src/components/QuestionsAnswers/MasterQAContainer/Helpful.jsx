@@ -5,11 +5,13 @@ class Helpful extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      votes: 0 //useless
+      hasVoted: false //useless
     };
   }
 
-  postVote() {}
+  postVote() {
+    //vote and on success change hasvoted state to true
+  }
 
   render() {
     //note: placeholder, need to make functional

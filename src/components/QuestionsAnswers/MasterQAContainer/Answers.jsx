@@ -37,6 +37,14 @@ class Answers extends React.Component {
 
   componentDidMount() {
     this.setAnswers(this.props.questionID);
+    setTimeout(() => {
+      console.log(this.state);
+    }, 500);
+  }
+
+  moreAnswersClick() {
+    let totalAnswers = this.state.answers.length;
+    this.setState({ numberToRender: totalAnswers });
   }
 
   render() {
@@ -63,7 +71,8 @@ class Answers extends React.Component {
       });
 
     let moreAnswersLink =
-      this.state.answers.length > 2 ? (
+      this.state.answers.length > 2 &&
+      this.state.answers.length !== this.state.numberToRender ? (
         <div className="loadMoreAnswers">Load More Answers</div>
       ) : null;
 
@@ -78,7 +87,7 @@ class Answers extends React.Component {
         {additionalAnswers}
         <tr>
           <td></td>
-          <td>{moreAnswersLink}</td>
+          <td onClick={() => this.moreAnswersClick()}>{moreAnswersLink}</td>
         </tr>
       </>
     );
