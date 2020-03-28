@@ -2,34 +2,28 @@ import React from "react";
 import Answers from "./Answers";
 import Helpful from "./Helpful";
 
-class Question extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      test: []
-    };
+const Question = props => {
+  let answers = [];
+  for (let key in props.q.answers) {
+    answers.push(props.q.answers[key]);
   }
-
-  //get question from props
-  //render question and answer as child component
-
-  render() {
-    let questionID = this.props.q.question_id;
-    return (
-      <tbody>
-        <tr>
-          <td>Q:</td>
-          <td>
-            {this.props.q.question_body}
-            <div className="helpfulContainer">
-              <Helpful type="answer" />
-            </div>
-          </td>
-        </tr>
-        <Answers questionID={questionID} key={questionID} />
-      </tbody>
-    );
-  }
-}
+  let questionID = props.q.question_id;
+  console.log("questionId", questionID);
+  console.log("props.q", props.q);
+  return (
+    <tbody>
+      <tr>
+        <td>Q:</td>
+        <td>
+          {props.q.question_body}
+          <div className="helpfulContainer">
+            <Helpful questionID={questionID} type="answer" />
+          </div>
+        </td>
+      </tr>
+      <Answers answers={answers} key={questionID} />
+    </tbody>
+  );
+};
 
 export default Question;
