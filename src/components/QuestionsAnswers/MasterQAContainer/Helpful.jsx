@@ -14,11 +14,12 @@ class Helpful extends React.Component {
   }
 
   render() {
+    console.log("herere", this.props.questionID);
     //note: placeholder, need to make functional
     let answerOrReport =
       this.props.type === "answer" ? (
         <div>
-          <QandAModalButton type="answer" />{" "}
+          <QandAModalButton questionID={this.props.questionID} type="answer" />{" "}
         </div>
       ) : (
         "Report"
