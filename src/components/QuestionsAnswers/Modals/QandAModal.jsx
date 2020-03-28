@@ -44,7 +44,7 @@ class QuestionModal extends React.Component {
     ];
     console.log(event.target.files);
     this.setState({ files: newfiles }, () =>
-      console.log("files from Modal state", this.state.files)
+      console.log("files from Modal state", this.state)
     );
     this.setState({ filePreview: newfilePreviewState });
   }

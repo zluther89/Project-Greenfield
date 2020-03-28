@@ -55,7 +55,7 @@ class QuestionAnswers extends React.Component {
           {" "}
           <SearchBar /> <QuestionsContainer />
           {button}
-          <QandAModalButton type="answer" />
+          <QandAModalButton type="question" />
         </Container>
       </div>
     );
