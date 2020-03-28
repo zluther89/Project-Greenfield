@@ -33,15 +33,10 @@ class EachReview extends React.Component{
           <div className="row mt-2 ml-2 " style={{ height: "35%","overflow":"scroll" }}>
             <p>{result.body.slice(0, 250)}{this.state.ShowAll ? result.body.slice(250) : null}</p></div>
           <div className="row ml-2 " style={{ height: "5%"}}>
-            {result.body.length > 250 ? <u type="button" onClick={this.HandleShowAll}>{this.state.ShowAll?"Fold up":"Show All"}</u> : null}
+            {result.body.length > 250 ? <u type="button" onClick={this.HandleShowAll}>{this.state.ShowAll ? "Fold up" : "Show All"}</u> : null}
+
           </div>
-          {result.photos.length !== 0 ? (
-            <div className="row ">
-              {result.photos.map(photo => {
-                return <a href = "#" ><img key={photo.id} className = "img-thumbnail" src={photo.url} alt={"whoops, the photo escape" }></img></a>
-              })}
-            </div>
-          ) : null}
+
           {result.recommend === 1 ? (
             <div className="row  ml-2 my-4" style={{ height: "10%" }}>
               <Check size={24} />
