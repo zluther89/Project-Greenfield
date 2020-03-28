@@ -37,12 +37,10 @@ class Answers extends React.Component {
 
   componentDidMount() {
     this.setAnswers(this.props.questionID);
-    console.log(this.props);
   }
 
   render() {
     //Note: for formatting reasons, answer 1 is hardcoded, the rest are conditionally rendered based on a number in state
-
     let answer1 = this.state.answers[0] ? this.state.answers[0].body : null;
     let additionalAnswers = this.state.answers
       .slice(1, this.state.numberToRender)
@@ -63,6 +61,14 @@ class Answers extends React.Component {
           </>
         );
       });
+
+    let moreAnswersLink =
+      this.state.answers.length > 2 ? (
+        <div className="loadMoreAnswers">Load More Answers</div>
+      ) : null;
+
+    console.log("add answers length", this.state.answers.length);
+
     return (
       <>
         <tr>
@@ -70,6 +76,10 @@ class Answers extends React.Component {
           <td>{answer1}</td>
         </tr>
         {additionalAnswers}
+        <tr>
+          <td></td>
+          <td>{moreAnswersLink}</td>
+        </tr>
       </>
     );
   }
