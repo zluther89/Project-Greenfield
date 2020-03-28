@@ -5,7 +5,7 @@ class Helpful extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      votes: 0
+      votes: 0 //useless
     };
   }
 

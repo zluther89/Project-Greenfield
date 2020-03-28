@@ -30,37 +30,40 @@ class ShowStars extends React.Component{
   componentDidMount() {
     this.GetReviewMet()
   }
-  GetReviewMet(product_id = 3) {
+  GetReviewMet(product_id = 4) {
     let count = 0;
     let sum = 0
     if (this.props.star) {
+      let ratingPercen = TranverStar(this.props.star)
+      this.setState({ratingPercen:ratingPercen})
 
-    }
-    Axios.get(`http://3.134.102.30/reviews/${product_id}/meta`)
-      .then(response => {
-        const AllRatings = response.data.ratings
-        for (let val in AllRatings) {
-          sum += val * AllRatings[val];
-          count += AllRatings[val]
+    } else {
+      Axios.get(`http://3.134.102.30/reviews/${product_id}/meta`)
+        .then(response => {
+          const AllRatings = response.data.ratings
+          for (let val in AllRatings) {
+            sum += val * AllRatings[val];
+            count += AllRatings[val]
+          }
+          const rating = sum /count
+          //get the one round number
+          const roundedRating = Math.round(rating * 10) / 10
+          //get percentage
+          //first get the number whose denominator is five
+          const ratingPercen = TranverStar(rating)
+          //get int part
+
+          this.setState({rating:roundedRating,ratingPercen:ratingPercen})
         }
-        const rating = sum /count
-        //get the one round number
-        const roundedRating = Math.round(rating * 10) / 10
-        //get percentage
-        //first get the number whose denominator is five
-        const ratingPercen = TranverStar(rating)
-        //get int part
-
-        this.setState({rating:roundedRating,ratingPercen:ratingPercen})
-      }
+        )
+      .catch(err =>console.log(err)
       )
-    .catch(err =>console.log(err)
-    )
+    }
   }
   render() {
     return (
       <div className="progress border-0" style={{"height":"30"},{"width":"50%"}}>
-        <div className="progress-bar progress-bar-striped progress-bar-animated  " style={{ "width": `${this.state.ratingPercen}%` }} role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ><img style={{ "border": "hidden" }}className="grade-star-img "></img></div>
+        <div className="progress-bar " style={{ "width": `${this.state.ratingPercen}%` }} role="progressbar" aria-valuemin="0" aria-valuemax="100" ><img style={{ "border": "hidden" }}className="grade-star-img "></img></div>
 </div>
 
     )

@@ -1,3 +1,8 @@
+.App {
+  margin: 0 auto; /* this will center the page */
+  width: 1100px; /*  use your width here */
+}
+
 .overviewFull {
   height: 800px;
 }
@@ -209,10 +214,6 @@
   columns: 4 auto;
 }
 
-.overviewWidget {
-  height: 90vh;
-}
-
 /* CSS FOR Q & A */
 
 .helpfulContainer {
@@ -247,6 +248,14 @@
 
 .helpfulContainer div {
   margin: 2%;
+}
+/*
+
+.picturesContainer {
+  height: 500px;
+}
+.pictures {
+  height: 20%;
 }
 /*
 .helpful div {
