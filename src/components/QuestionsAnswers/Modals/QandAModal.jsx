@@ -62,10 +62,11 @@ class QuestionModal extends React.Component {
 
   handleSubmit() {
     let id = "4"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
-    let questionObj = { ...this.state };
-    delete questionObj.renderModal;
-    delete questionObj.pictureUrls;
-    delete questionObj.url;
+    let questionObj = {
+      body: this.state.body,
+      email: this.state.email,
+      name: this.state.name
+    };
     this.postQuestion(questionObj)
       .then(() => this.props.getQuestionsThunk(id))
       .then(res => console.log("response from post question", res))
