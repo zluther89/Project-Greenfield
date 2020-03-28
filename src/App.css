@@ -1,3 +1,8 @@
+.App {
+  margin: 0 auto; /* this will center the page */
+  width: 1100px; /*  use your width here */
+}
+
 .overviewFull {
   height: 800px;
 }
@@ -197,10 +202,6 @@
 
 .containerOverview {
   columns: 4 auto;
-}
-
-.overviewWidget {
-  height: 90vh;
 }
 
 /* CSS FOR Q & A */
