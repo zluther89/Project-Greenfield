@@ -4,8 +4,21 @@ import ProductInfo from "./ProductInfo/ProductInfo";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import StyleSelectorContainer from "./StyleSelectorContainer/StyleSelectorContainer";
 import axios from "axios";
+import { getNewProductThunk } from "../../components/Redux/ThunkMiddleware";
 
-export default class Overview extends React.Component {
+import { connect } from "react-redux";
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getNewProductThunk: id => dispatch(getNewProductThunk(id))
+  };
+};
+
+const mapStateToProps = state => ({
+  currentProduct: state.selectedProduct
+});
+
+class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,20 +46,22 @@ export default class Overview extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get(`http://3.134.102.30/products/${this.state.currentProduct}`)
-      .then(response => {
-        this.setState({
-          data: response.data,
-          currentPrice: response.data.default_price
+    return this.props.getNewProductThunk("3").then(response => {
+      let productId = this.props.currentProduct.id;
+      axios
+        .get(`http://3.134.102.30/products/${productId}`)
+        .then(response => {
+          console.log(productId);
+          this.setState({
+            data: response.data,
+            currentPrice: response.data.default_price
+          });
+          return axios.get(`http://3.134.102.30/products/${productId}/styles`); // using response.data
+        })
+        .then(response => {
+          this.setState({ styleData: response.data });
         });
-        return axios.get(
-          `http://3.134.102.30/products/${this.state.currentProduct}/styles`
-        ); // using response.data
-      })
-      .then(response => {
-        this.setState({ styleData: response.data });
-      });
+    });
   }
 
   render() {
@@ -87,3 +102,5 @@ export default class Overview extends React.Component {
     );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Overview);
