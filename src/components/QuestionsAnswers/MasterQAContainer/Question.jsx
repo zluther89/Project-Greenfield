@@ -7,10 +7,7 @@ class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      style: {
-        maxHeight: `200px`,
-        overflowY: "scroll"
-      }
+      style: null
     };
   }
 
