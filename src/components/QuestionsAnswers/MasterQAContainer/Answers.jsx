@@ -35,11 +35,6 @@ class Answers extends React.Component {
     console.log("window height", window.innerHeight);
   }
 
-  componentDidMount() {
-    console.log("doc height", document.getElementById("test").clientHeight);
-    console.log("window height", window.innerHeight);
-  }
-
   render() {
     //Note: for formatting reasons, answer 1 is hardcoded, the rest are conditionally rendered based on a number in state
     let answer1 = this.props.answers[0] ? this.props.answers[0].body : null;

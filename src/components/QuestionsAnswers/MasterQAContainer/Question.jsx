@@ -11,11 +11,6 @@ class Question extends React.Component {
     };
   }
 
-  componentDidMount() {
-    console.log("doc height", document.getElementById("test").clientHeight);
-    console.log(document.getElementById("test").clientHeight);
-  }
-
   expandComponent() {
     let newHeight = window.innerHeight * 0.5;
     let newStyles = {
@@ -23,11 +18,6 @@ class Question extends React.Component {
       overflowY: "scroll"
     };
     this.setState({ style: newStyles });
-  }
-
-  componentDidUpdate() {
-    console.log("doc height", document.getElementById("test").clientHeight);
-    console.log("window height", window.innerHeight);
   }
 
   render() {
