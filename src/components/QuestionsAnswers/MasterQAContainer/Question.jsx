@@ -31,10 +31,11 @@ class Question extends React.Component {
         <tbody>
           <tr>
             <td>Q:</td>
+            <td>{this.props.q.question_body}</td>
             <td>
-              {this.props.q.question_body}
               <div className="helpfulContainer">
                 <Helpful
+                  className="helpfulContainer"
                   questionID={questionID}
                   helpful={this.props.q.question_helpfulness}
                   type="answer"
