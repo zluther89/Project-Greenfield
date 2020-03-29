@@ -2,40 +2,56 @@ import React from "react";
 import axios from "axios";
 import ProductCard from "./ProductCard";
 import ComparisonModal from './ComparisonModal'
-import Carousel from "react-bootstrap/Carousel";
+// import Carousel from "react-bootstrap/Carousel";
 import CardDeck from "react-bootstrap/CardDeck";
+import {getNewProductThunk} from '../Redux/ThunkMiddleware.js'
+import { connect } from 'react-redux'
 
-export default class RelatedProducts extends React.Component {
+const mapDispatchToProps = dispatch => {
+  return {
+    getNewProductThunk: id => dispatch(getNewProductThunk(id))
+  };
+};
+
+const mapStateToProps = state => ({
+  selectedProduct: state.selectedProduct
+});
+
+class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProduct: {},
-      compareProduct: {},
+      current: {},
+      compare: {},
       relatedProducts: [],
       productInfo: {},
-      outfit:[],
+      outfitId: [],
+      outfitInfo:{},
+      clickedProduct: null,
       showModal: false
     }; 
-    this.handleClick = this.handleClick.bind(this)
     this.handleCompare = this.handleCompare.bind(this)
   }
 
   handleClick(e) {
-    this.setState({showModal: true})
+    console.log(e.target)
+    // should update store with the clicked e target value id
   }
 
   handleCompare(e) {
+    this.setState({showModal: true})
     axios.get(`http://3.134.102.30/products/${e.target.value}`)
     .then( ({data}) => {
-      this.setState({compareProduct:data})
+      this.setState({compare:data})
     })
-
   }
 
   componentDidMount() {
-    let productId = 3;
+    let productId = 3
+    this.props.getNewProductThunk(productId)
+    
     axios.get(`http://3.134.102.30/products/${productId}`).then( ({data}) => {
-      this.setState({currentProduct: data})
+      this.setState({current: data})
     })
     axios.get(`http://3.134.102.30/products/${productId}/related`).then(({ data }) => {
       let productInfo={};
@@ -60,6 +76,16 @@ export default class RelatedProducts extends React.Component {
     
   }
 
+  setOutfit(e){
+    // sets the target value to an array of favorites
+  }
+
+  getOutfits(){
+    // retrieves the favorites from the local storage
+    // pulls card info necessary for the individual favorites
+    // sets state of the favorites array
+  }
+
   render() {
     return (
       <div>
@@ -71,8 +97,8 @@ export default class RelatedProducts extends React.Component {
         >   */}
         {this.state.showModal ? 
         <ComparisonModal 
-          product={this.state.currentProduct}
-          compare={this.state.compareProduct}
+          product={this.state.current}
+          compare={this.state.compare}
           show={this.state.showModal}
           onHide={() => {this.setState({showModal: false})}}
         /> : <div></div>}
@@ -83,7 +109,7 @@ export default class RelatedProducts extends React.Component {
                     <ProductCard 
                       key={i}
                       index={i}
-                      handleClick={this.handleClick} 
+                      handleClick={this.handleClick.bind(this)} 
                       handleCompare={this.handleCompare}
                       productInfo={this.state.productInfo} 
                       product={product}
@@ -95,9 +121,15 @@ export default class RelatedProducts extends React.Component {
    
         {/* </Carousel> */}
         <h2> Your Outfit </h2>
+          <CardDeck>
+            {/* add an outfit card here */}
+            {/* map out the rest of the favorites after pulling favorites */}
+          </CardDeck>
         <br></br>
 
       </div>
     );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(RelatedProducts);

@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "./Carousel";
+import Carousel from "./CarouselTest";
 
 export default class ImageGallery extends React.Component {
   constructor(props) {
