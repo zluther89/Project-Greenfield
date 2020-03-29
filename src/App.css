@@ -251,6 +251,12 @@ button.QnAButton {
 .pictures {
   height: 20%;
 }
+
+table {
+  overflow-y: scroll;
+  display: block;
+}
+
 /* 
 .helpful div {
   flex-wrap: wrap;
