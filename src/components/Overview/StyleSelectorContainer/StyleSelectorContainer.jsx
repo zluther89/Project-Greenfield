@@ -4,6 +4,7 @@ import ProductName from "./ProductName";
 import SizeQuantitySelect from "./SizeQuantitySelect";
 import AddToBag from "./AddToBag";
 import StyleTest from "./StyleTest";
+import SocialLinks from "./SoicalLinks";
 
 export default class StyleSelectorContainer extends React.Component {
   constructor(props) {
@@ -45,10 +46,9 @@ export default class StyleSelectorContainer extends React.Component {
             styleClicked={this.props.styleClicked}
           />
         </div>
-        {/* <div className="addToBag">
-          {" "}
-          <AddToBag styleData={this.props.styleData} />
-        </div> */}
+        <div class="socialLinks">
+          <SocialLinks />
+        </div>
       </div>
     );
   }
