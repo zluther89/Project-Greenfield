@@ -1,5 +1,22 @@
 import React from "react";
 import QandAModalButton from "../Modals/QandAModalButton";
+import Axios from "axios";
+import { connect } from "react-redux";
+import { getQuestionsThunk } from "../../Redux/ThunkMiddleware";
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getQuestionsThunk: id => dispatch(getQuestionsThunk(id))
+  };
+};
+
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     questionID: ownProps.questionID,
+//     type: ownProps.type,
+//     helpful: ownProps.helpful
+//   };
+// };
 
 class Helpful extends React.Component {
   constructor(props) {
@@ -9,29 +26,71 @@ class Helpful extends React.Component {
     };
   }
 
-  postVote() {
+  postHelpful(endpoint) {
+    console.log("here");
+    // /qa/question/:question_id/helpful
+    // /qa/answer/:answer_id/helpful
+    // Axios.put()
     //vote and on success change hasvoted state to true
+    return Axios.put(`http://3.134.102.30/qa/${endpoint}/helpful`);
+  }
+
+  putHandler(type) {
+    let productID = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT'
+    let handler = type === "report" ? this.postReport : this.postHelpful;
+    let id =
+      this.props.type === "question"
+        ? this.props.questionID
+        : this.props.answerId;
+    let endpoint =
+      this.props.type === "question" ? "question/" + id : "answer/" + id;
+
+    let updateHandler =
+      this.props.type === "question"
+        ? () => this.props.getQuestionsThunk(productID)
+        : () => this.props.setAnswers();
+    //build endpoint line by line// TO DO
+
+    handler(endpoint)
+      .then(res => {
+        console.log(res);
+      })
+      .then(updateHandler)
+      .then(console.log("reported"))
+      .catch(err => console.log(err));
+  }
+
+  postReport(endpoint) {
+    return Axios.put(`http://3.134.102.30/qa/${endpoint}/report`);
   }
 
   render() {
-    //note: placeholder, need to make functional
     let answerOrReport =
-      this.props.type === "answer" ? (
-        <div>
-          <QandAModalButton questionID={this.props.questionID} type="answer" />{" "}
-        </div>
-      ) : (
-        "Report"
-      );
+      this.props.type === "question" ? (
+        <>
+          <QandAModalButton questionID={this.props.questionID} type="answer" />
+          <div>|</div>
+        </>
+      ) : null;
     return (
       <>
         <div>Helpful?</div>
-        <div className="link">Yes</div>
+        <div className="link" onClick={() => this.putHandler("answer")}>
+          Yes
+        </div>
         <div>({this.props.helpful})</div> <div>|</div>
-        <div>{answerOrReport}</div>
+        {answerOrReport}
+        <div
+          className="link"
+          onClick={() => {
+            this.putHandler("report");
+          }}
+        >
+          Report
+        </div>
       </>
     );
   }
 }
 
-export default Helpful;
+export default connect(null, mapDispatchToProps)(Helpful);

@@ -5,25 +5,36 @@
 
 .overviewFull {
   height: 800px;
+  font-family: "Kalam";
 }
 
 .overviewBanner {
-  height: 10%;
+  height: 7%;
+  background-color: black !important;
 }
 
 .overviewMain {
   margin: 0px;
-  height: 70%;
+  height: 76%;
 }
 
 .overviewBottom {
-  height: 20%;
+  height: 17%;
 }
 
 .jumbotron-fluid {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
   margin-bottom: 0px !important;
+  color: white;
+}
+
+.jumbotron {
+  background-color: black;
+}
+
+.jumbotronContainer {
+  background-color: black;
 }
 
 #specialOffer {
@@ -34,6 +45,7 @@
 }
 
 .productInfo {
+  top: 2em;
   height: 100%;
 }
 
@@ -54,17 +66,31 @@
   height: 10%;
 }
 
+#compareButton {
+  position: absolute;
+  right: 0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
 /* css code for Stars */
 .grade-star-img {
   position: absolute;
   border: hidden;
   top: 0;
-  left: 3.3%;
-  width: 49.5%;
-  height: 30%;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: url(./image/five_stars_empty_mid.png) no-repeat;
   -webkit-background-size: 100% 100% !important;
   background-size: 100% 100% !important;
+}
+.grade-star-bar {
+  position: relative;
+  display: table-cell;
+  overflow: hidden;
+  vertical-align: middle;
+  height: 100%;
 }
 /* end */
 /* css for rating part */
@@ -77,6 +103,23 @@
   border-top: 2px solid #999;
   width: "100%";
 }
+.RightText {
+  text-align: right;
+}
+.RightMargin {
+  margin-right: 0.5rem;
+}
+/* end */
+
+/* css for eachphoto */
+.EachPhoto {
+  position: relative;
+  border: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 /* end */
 /*matt*/
@@ -85,22 +128,22 @@
 }
 
 .productName {
-  height: 25%;
+  height: 30%;
 }
 
 .styleSelect {
-  height: 50%;
+  height: 34%;
   display: flex;
   flex-direction: column;
 }
 
 .sizeQuantitySelect {
-  height: 20%;
+  height: 10%;
 }
 
-/* .addToBag {
-  height: 10%;
-} */
+.socialLinks {
+  height: 5%;
+}
 
 .styleSelectBox {
   height: 100%;
@@ -124,7 +167,6 @@
 /*
 * Modal Styling
 */
-
 
 .modal-row {
   justify-content: center;
@@ -210,21 +252,21 @@
   background-color: white;
 
   border-color: black;
-  width: 100%;
-  height: 50px;
+  margin-right: 15px;
 }
 
 #dropdown-basic-button-quantity {
   color: black;
   background-color: white;
-  height: 50px;
+
   border-color: black;
+  margin-right: 15px;
 }
 
 #button-add-to-bag {
   color: black;
   background-color: white;
-  height: 50px;
+  height: 100%;
   border-color: black;
 }
 
@@ -238,9 +280,9 @@
 }
 
 .square {
-  height: 100px;
-  width: 100px;
-  margin-bottom: 10px;
+  width: 5em;
+  height: 5em;
+  margin-bottom: 1em;
 }
 
 .rounded-circle {
@@ -262,9 +304,13 @@
   font-size: 8px;
   float: right;
   display: inline-flex;
-  flex-direction: row;
   flex-wrap: nowrap;
-  width: 30%;
+  width: 100%;
+  margin: 2px;
+}
+.helpfulContainer div {
+  padding: 1px;
+  flex-direction: row;
 }
 .masterAnswerContainer {
   display: flex;
@@ -291,6 +337,7 @@
 .helpfulContainer div {
   margin: 2%;
 }
+/*
 
 button.QnAButton {
   color: black;
@@ -309,7 +356,7 @@ table {
   display: block;
 }
 
-/* 
+/*
 .helpful div {
   flex-wrap: wrap;
 } */
@@ -323,13 +370,12 @@ table {
 }
 
 .my-4 {
-  height: 80%;
+  height: 90%;
 }
 
 #carousel-thumb {
   height: 100%;
 }
-
 
 .carousel-inner img {
   width: 100%;
@@ -360,7 +406,6 @@ table {
   padding: 0;
 }
 
-
 .carouselRows {
   height: 100%;
 }
@@ -371,19 +416,19 @@ table {
   max-height: 100%;
   display: block;
   margin-bottom: 10px;
+  z-index: 0;
 }
 
 .thumbnailContainer {
   height: 100%;
   overflow: scroll;
-  margin-top: 30px;
+  margin-top: 12px;
   display: block;
 }
 
 .col-sm-10 {
   height: 100%;
 }
-
 
 .overlay {
   height: 20%;
@@ -396,6 +441,7 @@ table {
 .modal-90w {
   height: 800px;
   width: 80% !important;
+
   /* max-height: 70px !important;
   padding: 0px;
   display: table;  */
@@ -439,3 +485,29 @@ table {
   height: 100% !important;
 }
 
+.link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#compareButtonOverview {
+  position: absolute;
+  right: 3em;
+  top: 3em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  z-index: 4;
+}
+
+.control-next {
+  z-index: 2;
+}
+.fa {
+  margin: 5px;
+}
+
+.checkoutButtons {
+  float: left;
+}

@@ -28,6 +28,7 @@ class Overview extends React.Component {
       styleData: {},
       currentProduct: 3,
       currentStyle: 0,
+      currentStyleName: "",
       styleClicked: false,
       currentPrice: null,
       salePrice: null,
@@ -42,6 +43,7 @@ class Overview extends React.Component {
     console.log("price", price);
     this.setState({
       currentStyle: val,
+      currentStyleName: this.state.styleData.results[val].name,
       styleClicked: true,
       currentPrice: price,
       salePrice: salePrice
@@ -78,13 +80,6 @@ class Overview extends React.Component {
 
           <div className="overviewMain container-fluid">
             <>
-              <Button
-                variant="primary"
-                onClick={() => this.setState({ modalShow: true })}
-              >
-                Launch big image modal
-              </Button>
-
               <ImageModal
                 show={this.state.modalShow}
                 onHide={() => this.setState({ modalShow: false })}
@@ -99,6 +94,9 @@ class Overview extends React.Component {
                   data={this.state.data}
                   styleData={this.state.styleData}
                   currentStyle={this.state.currentStyle}
+                  setModal={() => {
+                    this.setState({ modalShow: true });
+                  }}
                 />
               </div>
               <div className="productInfo col-xs-5 col-sm-5 col-md-5">
@@ -107,6 +105,7 @@ class Overview extends React.Component {
                   styleData={this.state.styleData}
                   switchStyle={this.switchStyle}
                   currentStyle={this.state.currentStyle}
+                  currentStyleName={this.state.currentStyleName}
                   styleClicked={this.state.styleClicked}
                   price={this.state.currentPrice}
                   salePrice={this.state.salePrice}
