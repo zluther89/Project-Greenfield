@@ -366,7 +366,7 @@
   display: table;  */
 }
 
-.modal-content {
+.modalBackground {
   background-color: rgba(0, 0, 0, 0.0001) !important;
   height: 100% !important;
 }
