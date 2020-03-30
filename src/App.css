@@ -469,6 +469,7 @@ table {
   color: blue;
   text-decoration: underline;
   cursor: pointer;
+}
 
 #compareButtonOverview {
   position: absolute;
