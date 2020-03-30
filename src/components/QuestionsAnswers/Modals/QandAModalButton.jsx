@@ -16,10 +16,6 @@ class QandAModalButton extends React.Component {
     });
   }
 
-  componentDidMount() {
-    console.log("props from qAndAmodalbutton ", this.props);
-  }
-
   render() {
     let button =
       this.props.type === "question" ? (
@@ -31,11 +27,12 @@ class QandAModalButton extends React.Component {
           Add a question +
         </Button>
       ) : (
-        <div variant="primary" onClick={() => this.setModalShow(true)}>
+        <div className="link" onClick={() => this.setModalShow(true)}>
           Answer
         </div>
       );
     let action = this.props.type === "question" ? "question" : "answer";
+
     return (
       <>
         {button}
@@ -44,6 +41,7 @@ class QandAModalButton extends React.Component {
           type={action}
           setAnswers={this.props.setAnswers}
           show={this.state.modalShow}
+          question={this.props.question}
           onHide={() => this.setModalShow(false)}
         />
       </>

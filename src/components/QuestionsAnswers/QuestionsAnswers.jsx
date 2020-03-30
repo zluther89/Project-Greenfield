@@ -3,7 +3,6 @@ import QuestionsContainer from "./MasterQAContainer/QuestionsContainer.jsx";
 import SearchBar from "./SearchBar.jsx";
 import Container from "react-bootstrap/Container";
 import { setNewNumOfQuestions } from "../Redux/ActionCreators.js";
-import Axios from "axios";
 import QandAModalButton from "./Modals/QandAModalButton.jsx";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
@@ -45,7 +44,7 @@ class QuestionAnswers extends React.Component {
         : newNumOfQuestions;
 
     this.props.setNewNumOfQuestions(newNumOfQuestions);
-    //set new style on expan
+    //set new style on expand
     let styles = {
       maxHeight: `${window.innerHeight * 0.8}px`,
       overflowY: "scroll"

@@ -10,14 +10,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-// const mapStateToProps = (state, ownProps) => {
-//   return {
-//     questionID: ownProps.questionID,
-//     type: ownProps.type,
-//     helpful: ownProps.helpful
-//   };
-// };
-
 class Helpful extends React.Component {
   constructor(props) {
     super(props);
@@ -27,10 +19,6 @@ class Helpful extends React.Component {
   }
 
   postHelpful(endpoint) {
-    // /qa/question/:question_id/helpful
-    // /qa/answer/:answer_id/helpful
-    // Axios.put()
-    //vote and on success change hasvoted state to true
     return Axios.put(`http://3.134.102.30/qa/${endpoint}/helpful`);
   }
 
@@ -71,6 +59,7 @@ class Helpful extends React.Component {
             questionID={this.props.questionID}
             type="answer"
             setAnswers={this.props.setAnswers}
+            question={this.props.question}
           />
           <div>|</div>
         </>
@@ -97,3 +86,11 @@ class Helpful extends React.Component {
 }
 
 export default connect(null, mapDispatchToProps)(Helpful);
+
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     questionID: ownProps.questionID,
+//     type: ownProps.type,
+//     helpful: ownProps.helpful
+//   };
+// };
