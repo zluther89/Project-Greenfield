@@ -18,7 +18,7 @@ let ImageModal = props => {
        <Button onClick={props.onHide}>Close</Button>
      </Modal.Title>
    </Modal.Header> */}
-      <Container>
+      <Container className="modalBackground">
         <Row className="overviewModalRow">
           <Col xs={11}>
             {" "}

@@ -14,7 +14,6 @@ class Helpful extends React.Component {
   }
 
   render() {
-    console.log("herere", this.props.questionID);
     //note: placeholder, need to make functional
     let answerOrReport =
       this.props.type === "answer" ? (
@@ -28,7 +27,7 @@ class Helpful extends React.Component {
       <>
         <div>Helpful?</div>
         <div className="link">Yes</div>
-        <div>({this.state.votes})</div> <div>|</div>
+        <div>({this.props.helpful})</div> <div>|</div>
         <div>{answerOrReport}</div>
       </>
     );

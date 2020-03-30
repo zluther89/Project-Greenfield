@@ -24,14 +24,16 @@ const mapStateToProps = state => ({
 class QuestionAnswers extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      style: {
+        height: `250px`,
+        overflowY: "scroll"
+      }
+    };
   }
 
   componentDidMount() {
     this.props.getQuestionsThunk("4");
-    setTimeout(() => {
-      console.log(this.props);
-    }, 500);
   }
 
   clickHandler() {
@@ -42,21 +44,40 @@ class QuestionAnswers extends React.Component {
         : newNumOfQuestions;
 
     this.props.setNewNumOfQuestions(newNumOfQuestions);
+    //set new style on expan
+    let styles = {
+      maxHeight: `${window.innerHeight * 0.8}px`,
+      overflowY: "scroll"
+    };
+    this.setState({ style: styles });
   }
 
   render() {
+    let styles = {
+      maxHeight: `${window.innerHeight * 0.8}px`,
+      overflowY: "scroll"
+    };
+
     let button =
       this.props.numOfQuestions === this.props.questionSet.length ? null : (
-        <Button onClick={() => this.clickHandler()}>
+        <Button className="QnAButton" onClick={() => this.clickHandler()}>
           More Answered Questions
         </Button>
       );
     return (
       <div>
-        <div></div>
         <Container>
-          {" "}
-          <SearchBar /> <QuestionsContainer />
+          <SearchBar />
+          <div
+            style={this.state.style}
+            id="masterQContainer"
+            className="masterQContainer"
+          >
+            <Container>
+              {" "}
+              <QuestionsContainer />
+            </Container>
+          </div>
           {button}
           <QandAModalButton type="question" />
         </Container>

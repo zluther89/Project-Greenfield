@@ -27,15 +27,23 @@ class Answers extends React.Component {
   moreAnswersClick() {
     let totalAnswers = this.props.answers.length;
     this.setState({ numberToRender: totalAnswers });
+    this.props.expandHandler();
+  }
+
+  componentDidUpdate() {
+    console.log("doc height", document.getElementById("test").clientHeight);
+    console.log("window height", window.innerHeight);
   }
 
   render() {
     //Note: for formatting reasons, answer 1 is hardcoded, the rest are conditionally rendered based on a number in state
     let answer1 = this.props.answers[0] ? this.props.answers[0].body : null;
+    if (answer1 === null) {
+      return null;
+    }
     let additionalAnswers = this.props.answers
       .slice(1, this.state.numberToRender)
       .map(answer => {
-        console.log("answer", answer);
         let date = moment(answer.date).format("MMMM Do YYYY");
         return (
           <>
@@ -46,7 +54,8 @@ class Answers extends React.Component {
             <tr>
               <td></td>
               <td className="answererContainer">
-                by {answer.answerer_name},{date} <Helpful />
+                by {answer.answerer_name},{date}{" "}
+                <Helpful helpful={answer.helpfulness} />
               </td>
             </tr>
           </>
@@ -61,9 +70,17 @@ class Answers extends React.Component {
 
     return (
       <>
-        <tr>
+        <tr key={answer1.answer_id}>
           <td>A:</td>
           <td>{answer1}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td className="answererContainer">
+            by {answer1.answerer_name},
+            {moment(answer1.date).format("MMMM Do YYYY")}{" "}
+            <Helpful helpful={this.props.answers[0].helpfulness} />
+          </td>
         </tr>
         {additionalAnswers}
         <tr>

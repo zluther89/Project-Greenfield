@@ -54,6 +54,7 @@
   height: 10%;
 }
 
+
 #compareButton {
   position: absolute;
   right: 0em;
@@ -132,6 +133,7 @@
 /*
 * Modal Styling
 */
+
 
 .modal-row {
   justify-content: center;
@@ -275,12 +277,23 @@
   margin: 2%;
 }
 
+button.QnAButton {
+  color: black;
+  background-color: white;
+  border-color: black;
+}
 .picturesContainer {
   height: 500px;
 }
 .pictures {
   height: 20%;
 }
+
+table {
+  overflow-y: scroll;
+  display: block;
+}
+
 /* 
 .helpful div {
   flex-wrap: wrap;
@@ -301,6 +314,7 @@
 #carousel-thumb {
   height: 100%;
 }
+
 
 .carousel-inner img {
   width: 100%;
@@ -327,6 +341,11 @@
   margin-top: 20px;
 }
 
+.thumbnail {
+  padding: 0;
+}
+
+
 .carouselRows {
   height: 100%;
 }
@@ -342,13 +361,14 @@
 .thumbnailContainer {
   height: 100%;
   overflow: scroll;
-  margin-top: 15px;
+  margin-top: 30px;
   display: block;
 }
 
 .col-sm-10 {
   height: 100%;
 }
+
 
 .overlay {
   height: 20%;
@@ -366,7 +386,7 @@
   display: table;  */
 }
 
-.modal-content {
+.modalBackground {
   background-color: rgba(0, 0, 0, 0.0001) !important;
   height: 100% !important;
 }
@@ -403,3 +423,4 @@
 .carousel-inner {
   height: 100% !important;
 }
+
