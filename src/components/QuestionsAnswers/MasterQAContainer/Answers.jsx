@@ -24,7 +24,6 @@ class Answers extends React.Component {
   }
 
   setAnswers() {
-    console.log(this.props.questionID);
     this.getAnswers(this.props.questionID).then(res => {
       console.log("api answers", res.data.results);
       let sortedAnswers = this.sortAnswers(res.data.results);
@@ -33,7 +32,7 @@ class Answers extends React.Component {
   }
 
   componentDidMount() {
-    console.log("aanswers from question", this.state.answers);
+    console.log("answers from question", this.state.answers);
     this.setAnswers(this.props.questionID);
   }
 
@@ -50,9 +49,6 @@ class Answers extends React.Component {
   }
 
   render() {
-    //Note: for formatting reasons, answer 1 is hardcoded, the rest are conditionally rendered based on a number in state
-
-    //CLEAN UP
     let answers = this.state.answers
       .slice(0, this.state.numberToRender)
       .map((answer, index) => {

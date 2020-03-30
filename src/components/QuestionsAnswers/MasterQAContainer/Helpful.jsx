@@ -33,14 +33,14 @@ class Helpful extends React.Component {
   handleReport() {
     let id = 5; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
     if (this.props.type === "question") {
-      this.postQuestionReport()
+      this.postReport(`question/${this.props.questionID}`)
         .then(res => {
           console.log(res);
         })
         .then(() => this.props.getQuestionsThunk(id))
         .then(console.log("reported"));
     } else if (this.props.type === "answer") {
-      this.postAnswerReport()
+      this.postReport(`answer/${this.props.answerId}`)
         .then(res => {
           console.log(res);
         })
@@ -49,17 +49,9 @@ class Helpful extends React.Component {
     }
   }
 
-  postAnswerReport() {
+  postReport(endpoint) {
     // /qa/answer/:answer_id/report
-    return Axios.put(
-      `http://3.134.102.30/qa/answer/${this.props.answerId}/report`
-    );
-  }
-
-  postQuestionReport() {
-    return Axios.put(
-      `http://3.134.102.30/qa/question/${this.props.questionID}/report`
-    );
+    return Axios.put(`http://3.134.102.30/qa/${endpoint}/report`);
   }
 
   render() {
