@@ -31,6 +31,7 @@ class QuestionModal extends React.Component {
       files: [],
       filePreview: []
     };
+    this.postAnswer = this.postAnswer.bind(this);
   }
 
   //button handlers
@@ -57,12 +58,16 @@ class QuestionModal extends React.Component {
 
   handleSubmit() {
     let prouctID = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
-    let questionObj = {
+    let data = {
       body: this.state.body,
       email: this.state.email,
       name: this.state.name
     };
-    this.postQuestion(questionObj)
+    let postHandler =
+      this.props.type === "question" ? this.postQuestion : this.postAnswer;
+
+    console.log(this.props);
+    postHandler(data)
       .then(() => this.props.getQuestionsThunk(prouctID))
       .then(res => console.log("response from post question", res))
       .catch(err => console.log("error from post question", err));
@@ -70,11 +75,13 @@ class QuestionModal extends React.Component {
     this.props.onHide();
     setTimeout(() => console.log(this.props), 2000);
   }
-  //Axios put requests
-  postAnswer() {
-    let id = this.props.questionID;
+  postAnswer(data) {
+    let questionID = this.props.questionID;
+    return Axios.post(`http://3.134.102.30/qa/${questionID}/answers`, data);
+    // /qa/:question_id/answers
     //post answer to question id endpoint
   }
+
   //Need to grab product id from redux store or url
   postQuestion(params) {
     let productId = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
@@ -82,10 +89,6 @@ class QuestionModal extends React.Component {
   }
 
   render() {
-    //     A button will appear allowing users to upload their photos to the form.  Up to five photos should be allowed for each answer.
-    // Clicking the button should open a separate window where the photo to be can be selected.
-    // After the first image is uploaded, a thumbnail showing the image should appear.  A user should be able to add up to five images before the button to add disappears, preventing further additions.
-
     let type = this.props.type === "answer" ? "answer" : "question";
 
     let picturesForm =

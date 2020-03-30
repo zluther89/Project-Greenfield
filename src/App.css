@@ -487,3 +487,9 @@ table {
 .fa {
   margin: 5px;
 }
+
+button.QnAButton {
+  color: black;
+  background-color: white;
+  border-color: black;
+}
