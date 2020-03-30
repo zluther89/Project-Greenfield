@@ -11,7 +11,17 @@ export default class ImageGallery extends React.Component {
     return (
       <div className="carouselContainer">
         <div className="imageCarousel">
-          {" "}
+          <button
+            id="compareButtonOverview"
+            value="1"
+            type="button"
+            class="btn btn-outline-primary"
+            onClick={() => {
+              this.props.setModal();
+            }}
+          >
+            Expand
+          </button>{" "}
           <Carousel
             data={this.props.data}
             styleData={this.props.styleData}
