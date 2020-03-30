@@ -133,7 +133,7 @@
 * Modal Styling
 */
 
-.modal-row{
+.modal-row {
   justify-content: center;
   text-align: center;
   border-bottom: 1px solid #dcdcdc;
@@ -144,7 +144,7 @@
   font-weight: bold;
 }
 
-.rowtitle{
+.rowtitle {
   font-weight: bold;
   justify-content: center;
   text-align: center;
@@ -327,10 +327,6 @@
   margin-top: 20px;
 }
 
-.thumbnail {
-  padding: 0;
-}
-
 .carouselRows {
   height: 100%;
 }
@@ -396,7 +392,7 @@
   height: 100% !important;
 }
 
-.row {
+.overviewModalRow {
   height: 100% !important;
 }
 
