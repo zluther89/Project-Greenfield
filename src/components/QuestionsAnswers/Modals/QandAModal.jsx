@@ -56,7 +56,7 @@ class QuestionModal extends React.Component {
   }
 
   handleSubmit() {
-    let id = "4"; //change to product i
+    let id = "5"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
     let questionObj = {
       body: this.state.body,
       email: this.state.email,

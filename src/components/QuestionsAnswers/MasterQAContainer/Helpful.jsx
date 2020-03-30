@@ -10,13 +10,13 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    questionID: ownProps.questionID,
-    type: ownProps.type,
-    helpful: ownProps.helpful
-  };
-};
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     questionID: ownProps.questionID,
+//     type: ownProps.type,
+//     helpful: ownProps.helpful
+//   };
+// };
 
 class Helpful extends React.Component {
   constructor(props) {
@@ -26,36 +26,38 @@ class Helpful extends React.Component {
     };
   }
 
-  postVote() {
+  postHelpful(endpoint) {
+    // /qa/question/:question_id/helpful
+    // /qa/answer/:answer_id/helpful
+    // Axios.put()
     //vote and on success change hasvoted state to true
   }
 
   handleReport() {
     let id = 5; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
-    if (this.props.type === "question") {
-      this.postReport(`question/${this.props.questionID}`)
-        .then(res => {
-          console.log(res);
-        })
-        .then(() => this.props.getQuestionsThunk(id))
-        .then(console.log("reported"));
-    } else if (this.props.type === "answer") {
-      this.postReport(`answer/${this.props.answerId}`)
-        .then(res => {
-          console.log(res);
-        })
-        .then(() => this.props.setAnswers())
-        .then(console.log("reported"));
-    }
+    let endpoint =
+      this.props.type === "question"
+        ? `question/${this.props.questionID}`
+        : `answer/${this.props.answerId}`;
+    let handler =
+      this.props.type === "question"
+        ? () => this.props.getQuestionsThunk(id)
+        : () => this.props.setAnswers();
+
+    this.postReport(endpoint)
+      .then(res => {
+        console.log(res);
+      })
+      .then(handler)
+      .then(console.log("reported"))
+      .catch(err => console.log(err));
   }
 
   postReport(endpoint) {
-    // /qa/answer/:answer_id/report
     return Axios.put(`http://3.134.102.30/qa/${endpoint}/report`);
   }
 
   render() {
-    //note: placeholder, need to make functional
     let answerOrReport =
       this.props.type === "question" ? (
         <>
@@ -82,4 +84,4 @@ class Helpful extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Helpful);
+export default connect(null, mapDispatchToProps)(Helpful);
