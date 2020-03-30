@@ -14,7 +14,7 @@ export default function ImageGallery(props) {
             props.setModal();
           }}
         >
-          Expand
+          <i class="fa fa-expand"></i>
         </button>{" "}
         <Carousel
           data={props.data}

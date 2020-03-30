@@ -5,20 +5,21 @@
 
 .overviewFull {
   height: 800px;
+  font-family: "Kalam";
 }
 
 .overviewBanner {
-  height: 10%;
+  height: 7%;
   background-color: black !important;
 }
 
 .overviewMain {
   margin: 0px;
-  height: 70%;
+  height: 76%;
 }
 
 .overviewBottom {
-  height: 20%;
+  height: 17%;
 }
 
 .jumbotron-fluid {
@@ -128,21 +129,21 @@
 }
 
 .productName {
-  height: 20%;
+  height: 30%;
 }
 
 .styleSelect {
-  height: 40%;
+  height: 34%;
   display: flex;
   flex-direction: column;
 }
 
 .sizeQuantitySelect {
-  height: 12%;
+  height: 10%;
 }
 
 .socialLinks {
-  height: 10%;
+  height: 5%;
 }
 
 .styleSelectBox {
@@ -242,7 +243,7 @@
 #button-add-to-bag {
   color: black;
   background-color: white;
-
+  height: 100%;
   border-color: black;
 }
 

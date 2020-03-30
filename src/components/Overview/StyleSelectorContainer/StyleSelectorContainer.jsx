@@ -19,7 +19,8 @@ export default function StyleSelectorContainer(props) {
           name={props.data.name}
           category={props.data.category}
           price={props.data.default_price}
-          currentStyle={props.currentStyle}
+          currentStyle={props.currentStyleName}
+          salePrice={props.salePrice}
         />
       </div>
       <div className="styleSelect">

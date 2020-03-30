@@ -85,7 +85,7 @@ export default class SizeQuantitySelect extends React.Component {
         {" "}
         <DropdownButton
           id="dropdown-basic-button-size"
-          title={this.state.sizeSelected || "SELECT SIZE"}
+          title={this.state.sizeSelected || "SIZE"}
           style={{ float: "left" }}
         >
           {this.props.styleData &&
@@ -94,7 +94,7 @@ export default class SizeQuantitySelect extends React.Component {
         </DropdownButton>{" "}
         <DropdownButton
           id="dropdown-basic-button-quantity"
-          title={this.state.quantitySelected || "SELECT QUANTITY"}
+          title={this.state.quantitySelected || "QUANTITY"}
           style={{ float: "left" }}
         >
           {this.state.sizeSelected && this.state.sizeAvailable && (
@@ -135,7 +135,7 @@ export default class SizeQuantitySelect extends React.Component {
         </DropdownButton>
         <Button
           id="button-add-to-bag"
-          style={({ float: "left" }, { marginRight: "10px" })}
+          style={({ float: "left" }, { fontSize: "10px" }, { height: "30" })}
           onClick={() => {
             this.addToBagFunc();
           }}
