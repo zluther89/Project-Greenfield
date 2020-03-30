@@ -17,7 +17,11 @@ const Question = props => {
         <td>
           {props.q.question_body}
           <div className="helpfulContainer">
-            <Helpful questionID={questionID} type="answer" />
+            <Helpful
+              questionID={questionID}
+              helpful={props.q.question_helpfulness}
+              type="answer"
+            />
           </div>
         </td>
       </tr>

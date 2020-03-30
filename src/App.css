@@ -275,6 +275,11 @@
   margin: 2%;
 }
 
+button.QnAButton {
+  color: black;
+  background-color: white;
+  border-color: black;
+}
 .picturesContainer {
   height: 500px;
 }
