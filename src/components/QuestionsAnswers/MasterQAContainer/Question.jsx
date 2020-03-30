@@ -47,7 +47,8 @@ class Question extends React.Component {
             expandHandler={() => {
               this.expandComponent();
             }}
-            answers={answers}
+            questionID={questionID}
+            // answers={answers}
             key={questionID}
           />
         </tbody>

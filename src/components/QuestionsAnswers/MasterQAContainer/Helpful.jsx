@@ -32,16 +32,31 @@ class Helpful extends React.Component {
 
   handleReport() {
     let id = 4; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
-
-    this.postReport()
-      .then(res => {
-        console.log(res);
-      })
-      .then(() => this.props.getQuestionsThunk(id))
-      .then(console.log("reported"));
+    if (this.props.type === "question") {
+      this.postQuestionReport()
+        .then(res => {
+          console.log(res);
+        })
+        .then(() => this.props.getQuestionsThunk(id))
+        .then(console.log("reported"));
+    } else if (this.props.type === "answer") {
+      this.postAnswerReport()
+        .then(res => {
+          console.log(res);
+        })
+        .then(() => this.props.setAnswers())
+        .then(console.log("reported"));
+    }
   }
 
-  postReport() {
+  postAnswerReport() {
+    // /qa/answer/:answer_id/report
+    return Axios.put(
+      `http://3.134.102.30/qa/answer/${this.props.answerId}/report`
+    );
+  }
+
+  postQuestionReport() {
     return Axios.put(
       `http://3.134.102.30/qa/question/${this.props.questionID}/report`
     );

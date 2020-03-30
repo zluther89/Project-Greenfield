@@ -24,13 +24,6 @@ class QuestionsContainer extends React.Component {
   }
 
   render() {
-    // let styles = {
-    //   maxHeight: `${window.innerHeight * 0.8}px`,
-    //   overflowY: "scroll"
-    // };
-
-    console.log("window height from render", window.innerHeight);
-
     let loadedSortedQs = this.sortQuestionsReturn().slice(
       0,
       this.props.numOfQuestions
