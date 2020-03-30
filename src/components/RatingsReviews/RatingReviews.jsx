@@ -16,16 +16,16 @@ export default class RatingReviews extends React.Component {
 }
   render() {
     return (
-      <div className="container my-3">
+      <div className="container my-3 ">
         <div className="row RatingReviewsTitle">
           <div className="col-3 ">RATINGS & REVIEWS</div>
         </div>
-        <div className="row RatingReviewsBody ">
+        <div className="row RatingReviewsBody  ">
           <div className="col-4"><RatingBreakdown GetTotalCount={this.GetTotalCount}/></div>
           <div className="col-8 ">< ReviewsList totalCount={this.state.totalCount}/></div>
         </div>
         <div className="row justify-content-end RatingReviewsFoot ">
-          <div className="col-3 ">
+          <div className="">
             <button className="btn btn-outline-secondary btn-lg RatingButton">
               <strong>MORE REVIEWS</strong>
             </button>
