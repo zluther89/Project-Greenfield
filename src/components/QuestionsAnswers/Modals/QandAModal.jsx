@@ -15,7 +15,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = (state, ownProps) => {
   return {
     questionSet: state.questionSet,
-    onHide: ownProps.onHide
+    onHide: ownProps.onHide,
+    questionID: ownProps.questionID
   };
 };
 
@@ -27,25 +28,19 @@ class QuestionModal extends React.Component {
       body: "",
       name: "",
       email: "",
-      pictureUrls: [],
-      url: "",
       files: [],
       filePreview: []
     };
   }
 
   //button handlers
-
   handleSelectFile(event) {
     let newfiles = [...this.state.files, event.target.files[0]];
     let newfilePreviewState = [
       ...this.state.filePreview,
       URL.createObjectURL(event.target.files[0])
     ];
-    console.log(event.target.files);
-    this.setState({ files: newfiles }, () =>
-      console.log("files from Modal state", this.state)
-    );
+    this.setState({ files: newfiles });
     this.setState({ filePreview: newfilePreviewState });
   }
 
@@ -61,7 +56,7 @@ class QuestionModal extends React.Component {
   }
 
   handleSubmit() {
-    let id = "4"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    let id = "4"; //change to product i
     let questionObj = {
       body: this.state.body,
       email: this.state.email,
@@ -77,6 +72,7 @@ class QuestionModal extends React.Component {
   }
   //Axios put requests
   postAnswer() {
+    let id = this.props.questionID;
     //post answer to question id endpoint
   }
   //Need to grab product id from redux store or url
@@ -89,20 +85,8 @@ class QuestionModal extends React.Component {
     //     A button will appear allowing users to upload their photos to the form.  Up to five photos should be allowed for each answer.
     // Clicking the button should open a separate window where the photo to be can be selected.
     // After the first image is uploaded, a thumbnail showing the image should appear.  A user should be able to add up to five images before the button to add disappears, preventing further additions.
-    let pictures = this.state.pictureUrls.map((pictureUrl, index) => {
-      return (
-        <div key={index}>
-          <img src={pictureUrl} alt="invalid url" />
-        </div>
-      );
-    });
 
     let type = this.props.type === "answer" ? "answer" : "question";
-
-    let addPictureButton =
-      this.state.pictureUrls.length < 5 ? (
-        <Button onClick={() => this.addUrlSubmit()}>Add Picture</Button>
-      ) : null;
 
     let picturesForm =
       this.props.type === "answer" ? (
@@ -118,23 +102,8 @@ class QuestionModal extends React.Component {
             placeholder="Please submit URL of picture to add"
             onChange={event => this.handleSelectFile(event)}
           />
-          {addPictureButton}
         </Form.Group>
       ) : null;
-
-    // let picturesForm =
-    //   this.props.type === "answer" ? (
-    //     <Form.Group>
-    //       <div className="picturesContainer">{pictures}</div>
-    //       <Form.Label>Pictures</Form.Label>
-    //       <Form.Control
-    //         type="pictureUrl"
-    //         placeholder="Please submit URL of picture to add"
-    //         onChange={event => this.handleChange(event, "url")}
-    //       />
-    //       {addPictureButton}
-    //     </Form.Group>
-    //   ) : null;
 
     return (
       <Modal
@@ -186,3 +155,30 @@ class QuestionModal extends React.Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionModal);
+
+// let picturesForm =
+//   this.props.type === "answer" ? (
+//     <Form.Group>
+//       <div className="picturesContainer">{pictures}</div>
+//       <Form.Label>Pictures</Form.Label>
+//       <Form.Control
+//         type="pictureUrl"
+//         placeholder="Please submit URL of picture to add"
+//         onChange={event => this.handleChange(event, "url")}
+//       />
+//       {addPictureButton}
+//     </Form.Group>
+//   ) : null;
+
+// let pictures = this.state.pictureUrls.map((pictureUrl, index) => {
+//   return (
+//     <div key={index}>
+//       <img src={pictureUrl} alt="invalid url" />
+//     </div>
+//   );
+// });
+
+// let addPictureButton =
+//   this.state.files.length < 5 ? (
+//     <Button onClick={() => this.addUrlSubmit()}>Add Picture</Button>
+//   ) : null;

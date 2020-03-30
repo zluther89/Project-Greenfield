@@ -129,6 +129,27 @@
   margin: auto;
 }
 
+/*
+* Modal Styling
+*/
+
+.modal-row{
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.feature {
+  text-align: center;
+  font-weight: bold;
+}
+
+.rowtitle{
+  font-weight: bold;
+  justify-content: center;
+  text-align: center;
+}
+
 .circles {
   margin-left: 15px;
   margin-right: 15px;

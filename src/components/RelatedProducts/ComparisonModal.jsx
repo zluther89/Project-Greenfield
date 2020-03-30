@@ -50,10 +50,13 @@ let ComparisonModal = (props) => {
           <Modal.Body>
           <Container>
           <Row className="show-grid">
-            <Col xs={12} md={8}>
+            <Col className='rowtitle' xs={6} md={4}>
               {currentName}
             </Col>
-            <Col xs={6} md={4}>
+            <Col className='rowtitle' xs={6} md={4}>
+           
+            </Col>
+            <Col className='rowtitle'xs={6} md={4}>
               {compareName}
             </Col>
           </Row>
@@ -68,19 +71,20 @@ let ComparisonModal = (props) => {
               compareRow = compare[feature]
             }
             return (
-            <Row key={i} className="show-grid">
-            <Col xs={6} md={4}>
+            <Row key={i} className="show-grid modal-row">
+            <Col  xs={6} md={4}>
                 {currentRow}
             </Col>
-            <Col xs={6} md={4}>
+            <Col className="feature" xs={6} md={4}>
                 {feature}
             </Col>
-            <Col xs={6} md={4}>
+            <Col lassName="modal-row" xs={6} md={4}>
                 {compareRow}
             </Col>
           </Row>
             )
           })}
+          <br/>
         </Container>
           </Modal.Body>
           <Modal.Footer>
