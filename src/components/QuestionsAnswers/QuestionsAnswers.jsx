@@ -33,7 +33,7 @@ class QuestionAnswers extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getQuestionsThunk("4");
+    this.props.getQuestionsThunk("5");
   }
 
   clickHandler() {

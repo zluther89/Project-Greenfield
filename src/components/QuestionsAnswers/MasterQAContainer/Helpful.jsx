@@ -31,7 +31,7 @@ class Helpful extends React.Component {
   }
 
   handleReport() {
-    let id = 4; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    let id = 5; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
     if (this.props.type === "question") {
       this.postQuestionReport()
         .then(res => {

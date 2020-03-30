@@ -86,7 +86,7 @@ class Answers extends React.Component {
 
     let moreAnswersLink =
       this.state.answers.length > 2 &&
-      this.state.answers.length !== this.state.numberToRender ? (
+      this.state.answers.length > this.state.numberToRender ? (
         <div className="loadMoreAnswers">Load More Answers</div>
       ) : null;
 

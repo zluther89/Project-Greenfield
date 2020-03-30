@@ -77,7 +77,7 @@ class QuestionModal extends React.Component {
   }
   //Need to grab product id from redux store or url
   postQuestion(params) {
-    let id = 4; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    let id = 5; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
     return Axios.post(`http://3.134.102.30/qa/${id}?`, params);
   }
 
