@@ -54,15 +54,6 @@
   height: 10%;
 }
 
-
-#compareButton {
-  position: absolute;
-  right: 0em;
-  color: black;
-  background-color: white;
-  border: 1px solid black;
-}
-
 /* css code for Stars */
 .grade-star-img {
   position: absolute;
@@ -150,6 +141,30 @@
   font-weight: bold;
   justify-content: center;
   text-align: center;
+}
+
+.cardTitle {
+  font-weight: bold;
+}
+
+/* Button styling */
+
+#compareButton {
+  position: absolute;
+  right: 0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+#addButton {
+  color: black;
+  background-color: white;
+  text-align: center;
+  height: 100%;
+  font-size: 200%;
+  border-color: white;
+
 }
 
 .circles {

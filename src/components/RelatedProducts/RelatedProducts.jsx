@@ -1,9 +1,17 @@
 import React from "react";
 import axios from "axios";
+
+// React Component imports
 import ProductCard from "./ProductCard";
 import ComparisonModal from './ComparisonModal'
-// import Carousel from "react-bootstrap/Carousel";
+
+// Bootstrap imports
 import CardDeck from "react-bootstrap/CardDeck";
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+// import Carousel from "react-bootstrap/Carousel";
+
+// Redux imports
 import {getNewProductThunk} from '../Redux/ThunkMiddleware.js'
 import { connect } from 'react-redux'
 
@@ -31,11 +39,15 @@ class RelatedProducts extends React.Component {
       showModal: false
     }; 
     this.handleCompare = this.handleCompare.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleAddToOutfit = this.handleAddToOutfit.bind(this)
   }
 
   handleClick(e) {
-    console.log(e.target)
+    let id = e.currentTarget.className.split(' ')[1]
+    console.log('i got the id!', id)
     // should update store with the clicked e target value id
+    this.props.getNewProductThunk(id)
   }
 
   handleCompare(e) {
@@ -76,8 +88,12 @@ class RelatedProducts extends React.Component {
     
   }
 
-  setOutfit(e){
-    // sets the target value to an array of favorites
+  handleAddToOutfit(){
+    let currentOutfit = this.state.outfitId.slice()
+    if (currentOutfit.indexOf(this.state.current.id) === -1){
+      currentOutfit.push(this.state.current.id)
+    }
+    this.setState({outfitId: currentOutfit})
   }
 
   getOutfits(){
@@ -109,7 +125,37 @@ class RelatedProducts extends React.Component {
                     <ProductCard 
                       key={i}
                       index={i}
-                      handleClick={this.handleClick.bind(this)} 
+                      handleClick={this.handleClick}
+                      handleCompare={this.handleCompare}
+                      productInfo={this.state.productInfo} 
+                      product={product}
+                    /> 
+              )
+            })}
+          </CardDeck>
+   
+        {/* </Carousel> */}
+        <h2> Your Outfit </h2>
+          <CardDeck>  
+            {/* add an outfit card here */}
+            <Card
+              style={{ width: '18rem' }}
+            >
+              <Button  
+                    id = "addButton"
+                    variant="outline-primary"
+                    onClick={this.handleAddToOutfit}
+                    >
+                    +
+              </Button>{' '}
+            </Card>
+            {/* map out the rest of the favorites after pulling favorites */}
+            {this.state.relatedProducts.map( (product,i) => {      
+              return (
+                    <ProductCard 
+                      key={i}
+                      index={i}
+                      handleClick={this.handleClick}
                       handleCompare={this.handleCompare}
                       productInfo={this.state.productInfo} 
                       product={product}
@@ -117,13 +163,6 @@ class RelatedProducts extends React.Component {
               
               )
             })}
-          </CardDeck>
-   
-        {/* </Carousel> */}
-        <h2> Your Outfit </h2>
-          <CardDeck>
-            {/* add an outfit card here */}
-            {/* map out the rest of the favorites after pulling favorites */}
           </CardDeck>
         <br></br>
 
