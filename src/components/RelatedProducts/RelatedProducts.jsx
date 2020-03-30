@@ -60,8 +60,9 @@ class RelatedProducts extends React.Component {
 
   componentDidMount() {
     let productId = 3
+
     this.props.getNewProductThunk(productId)
-    
+    this.getOutfits();
     axios.get(`http://3.134.102.30/products/${productId}`).then( ({data}) => {
       this.setState({current: data})
     })
@@ -89,15 +90,26 @@ class RelatedProducts extends React.Component {
   }
 
   handleAddToOutfit(){
-    let currentOutfit = this.state.outfitId.slice()
+    let currentOutfit = this.state.outfitId.slice();
     if (currentOutfit.indexOf(this.state.current.id) === -1){
       currentOutfit.push(this.state.current.id)
     }
-    this.setState({outfitId: currentOutfit})
+    this.setState({outfitId: currentOutfit}, () => {
+      localStorage.setItem('outfit', JSON.stringify(currentOutfit))
+
+    })
   }
 
   getOutfits(){
     // retrieves the favorites from the local storage
+    let outfitId = JSON.parse(localStorage.getItem('outfit'))
+    if (!!outfitId){
+      this.setState({outfitId: outfitId}) 
+    } else {
+      this.setState({outfitId: []})
+    }
+
+    // localStorage.clear();
     // pulls card info necessary for the individual favorites
     // sets state of the favorites array
   }

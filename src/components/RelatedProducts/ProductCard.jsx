@@ -17,7 +17,7 @@ let ProductCard = (props) => {
                   value={props.product.id}
                   onClick={props.handleCompare}
                 >
-                  ☆
+                  ★
             </Button>{' '}
             <Card.Img variant="top" src={photo}/>
               <Card.Body>       
