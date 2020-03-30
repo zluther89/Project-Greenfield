@@ -56,14 +56,14 @@ class QuestionModal extends React.Component {
   }
 
   handleSubmit() {
-    let id = "4"; //change to product i
+    let prouctID = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
     let questionObj = {
       body: this.state.body,
       email: this.state.email,
       name: this.state.name
     };
     this.postQuestion(questionObj)
-      .then(() => this.props.getQuestionsThunk(id))
+      .then(() => this.props.getQuestionsThunk(prouctID))
       .then(res => console.log("response from post question", res))
       .catch(err => console.log("error from post question", err));
 
@@ -77,8 +77,8 @@ class QuestionModal extends React.Component {
   }
   //Need to grab product id from redux store or url
   postQuestion(params) {
-    let id = 4; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
-    return Axios.post(`http://3.134.102.30/qa/${id}?`, params);
+    let productId = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    return Axios.post(`http://3.134.102.30/qa/${productId}?`, params);
   }
 
   render() {

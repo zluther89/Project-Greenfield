@@ -280,9 +280,13 @@
   font-size: 8px;
   float: right;
   display: inline-flex;
-  flex-direction: row;
   flex-wrap: nowrap;
-  width: 30%;
+  width: 100%;
+  margin: 2px;
+}
+.helpfulContainer div {
+  padding: 1px;
+  flex-direction: row;
 }
 .masterAnswerContainer {
   display: flex;
@@ -455,6 +459,12 @@ table {
 
 .carousel-inner {
   height: 100% !important;
+}
+
+.link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 #compareButtonOverview {

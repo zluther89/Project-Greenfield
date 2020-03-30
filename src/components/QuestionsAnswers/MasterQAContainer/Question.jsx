@@ -38,7 +38,7 @@ class Question extends React.Component {
                   className="helpfulContainer"
                   questionID={questionID}
                   helpful={this.props.q.question_helpfulness}
-                  type="answer"
+                  type="question"
                 />
               </div>
             </td>
@@ -47,7 +47,8 @@ class Question extends React.Component {
             expandHandler={() => {
               this.expandComponent();
             }}
-            answers={answers}
+            questionID={questionID}
+            // answers={answers}
             key={questionID}
           />
         </tbody>
