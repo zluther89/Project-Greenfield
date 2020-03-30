@@ -145,10 +145,6 @@
   height: 10%;
 }
 
-/* .addToBag {
-  height: 10%;
-} */
-
 .styleSelectBox {
   height: 100%;
 }
@@ -232,21 +228,21 @@
   background-color: white;
 
   border-color: black;
-  width: 100%;
-  height: 50px;
+  margin-right: 15px;
 }
 
 #dropdown-basic-button-quantity {
   color: black;
   background-color: white;
-  height: 50px;
+
   border-color: black;
+  margin-right: 15px;
 }
 
 #button-add-to-bag {
   color: black;
   background-color: white;
-  height: 50px;
+
   border-color: black;
 }
 
@@ -476,4 +472,8 @@ table {
 }
 .fa {
   margin: 5px;
+}
+
+.checkoutButtons {
+  float: left;
 }

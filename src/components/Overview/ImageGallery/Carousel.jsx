@@ -1,17 +1,13 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 
-export default class ImageCarousel extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.renderCarousel = this.renderCarousel.bind(this);
-  }
+export default function ImageCarousel(){
 
-  renderCarousel() {
-    let style = this.props.currentStyle;
 
-    return this.props.styleData.results[style].photos.map(picture => {
+  const renderCarousel = () => {
+    let style = props.currentStyle;
+
+    return props.styleData.results[style].photos.map(picture => {
       return (
         <Carousel.Item>
           <img
@@ -34,7 +30,7 @@ export default class ImageCarousel extends React.Component {
         indicators={true}
         hover={false}
       >
-        {this.props.styleData.results && this.renderCarousel()}
+        {props.styleData.results && renderCarousel()}
       </Carousel>
     );
   }

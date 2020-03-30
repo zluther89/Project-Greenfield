@@ -28,19 +28,35 @@ export default class SizeQuantitySelect extends React.Component {
     return (
       this.props.styleData.results &&
       sizes.map((size, index) => {
-        return (
-          <Dropdown.Item
-            href="#/action-1"
-            onClick={() => {
-              this.setState({
-                sizeSelected: size,
-                sizeAvailable: amount[index]
-              });
-            }}
-          >
-            {size} -- {amount[index]}
-          </Dropdown.Item>
-        );
+        if (amount[index] > 0) {
+          return (
+            <Dropdown.Item
+              href="#/action-1"
+              onClick={() => {
+                this.setState({
+                  sizeSelected: size,
+                  sizeAvailable: amount[index]
+                });
+              }}
+            >
+              {size}
+            </Dropdown.Item>
+          );
+        } else {
+          return (
+            <Dropdown.Item
+              href="#/action-1"
+              onClick={() => {
+                this.setState({
+                  sizeSelected: size,
+                  sizeAvailable: amount[index]
+                });
+              }}
+            >
+              {size} is Out of Stock
+            </Dropdown.Item>
+          );
+        }
       })
     );
   }
@@ -65,76 +81,68 @@ export default class SizeQuantitySelect extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <div className="row">
-          {" "}
-          <div class="col-xs-7 col-sm-7 col-md-7">
-            <DropdownButton
-              id="dropdown-basic-button-size"
-              title={this.state.sizeSelected || "SELECT SIZE"}
-            >
-              {this.props.styleData &&
-                this.props.styleClicked &&
-                this.populateSizes()}
-            </DropdownButton>
-          </div>
-          <div class="col-xs-5 col-sm-5 col-md-5">
-            {" "}
-            <DropdownButton
-              id="dropdown-basic-button-quantity"
-              title={this.state.quantitySelected || "SELECT QUANTITY"}
-            >
-              {this.state.sizeSelected && this.state.sizeAvailable && (
-                <div>
-                  {" "}
-                  <Dropdown.Item
-                    href="#/action-1"
-                    onClick={() => this.setQuantity(1)}
-                  >
-                    1
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    href="#/action-2"
-                    onClick={() => this.setQuantity(2)}
-                  >
-                    2
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    href="#/action-3"
-                    onClick={() => this.setQuantity(3)}
-                  >
-                    3
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    href="#/action-3"
-                    onClick={() => this.setQuantity(4)}
-                  >
-                    4
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    href="#/action-3"
-                    onClick={() => this.setQuantity(5)}
-                  >
-                    5
-                  </Dropdown.Item>
-                </div>
-              )}
-            </DropdownButton>
-          </div>
-        </div>
-        <div>
-          {this.state.sizeSelected && this.state.quantitySelected && (
-            <Button
-              id="button-add-to-bag"
-              onClick={() => {
-                this.addToBagFunc();
-              }}
-            >
-              ADD TO BAG
-            </Button>
+      <span class="checkoutButtons">
+        {" "}
+        <DropdownButton
+          id="dropdown-basic-button-size"
+          title={this.state.sizeSelected || "SELECT SIZE"}
+          style={{ float: "left" }}
+        >
+          {this.props.styleData &&
+            this.props.styleClicked &&
+            this.populateSizes()}
+        </DropdownButton>{" "}
+        <DropdownButton
+          id="dropdown-basic-button-quantity"
+          title={this.state.quantitySelected || "SELECT QUANTITY"}
+          style={{ float: "left" }}
+        >
+          {this.state.sizeSelected && this.state.sizeAvailable && (
+            <div>
+              {" "}
+              <Dropdown.Item
+                href="#/action-1"
+                onClick={() => this.setQuantity(1)}
+              >
+                1
+              </Dropdown.Item>
+              <Dropdown.Item
+                href="#/action-2"
+                onClick={() => this.setQuantity(2)}
+              >
+                2
+              </Dropdown.Item>
+              <Dropdown.Item
+                href="#/action-3"
+                onClick={() => this.setQuantity(3)}
+              >
+                3
+              </Dropdown.Item>
+              <Dropdown.Item
+                href="#/action-3"
+                onClick={() => this.setQuantity(4)}
+              >
+                4
+              </Dropdown.Item>
+              <Dropdown.Item
+                href="#/action-3"
+                onClick={() => this.setQuantity(5)}
+              >
+                5
+              </Dropdown.Item>
+            </div>
           )}
-        </div>
-      </div>
+        </DropdownButton>
+        <Button
+          id="button-add-to-bag"
+          style={({ float: "left" }, { marginRight: "10px" })}
+          onClick={() => {
+            this.addToBagFunc();
+          }}
+        >
+          ADD TO BAG
+        </Button>
+      </span>
     );
   }
 }
