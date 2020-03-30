@@ -28,6 +28,7 @@ class Overview extends React.Component {
       styleData: {},
       currentProduct: 3,
       currentStyle: 0,
+      currentStyleName: "",
       styleClicked: false,
       currentPrice: null,
       salePrice: null,
@@ -42,6 +43,7 @@ class Overview extends React.Component {
     console.log("price", price);
     this.setState({
       currentStyle: val,
+      currentStyleName: this.state.styleData.results[val].name,
       styleClicked: true,
       currentPrice: price,
       salePrice: salePrice
@@ -49,7 +51,7 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    return this.props.getNewProductThunk("4").then(response => {
+    return this.props.getNewProductThunk("3").then(response => {
       let productId = this.props.currentProduct.id;
       axios
         .get(`http://3.134.102.30/products/${productId}`)
@@ -103,6 +105,7 @@ class Overview extends React.Component {
                   styleData={this.state.styleData}
                   switchStyle={this.switchStyle}
                   currentStyle={this.state.currentStyle}
+                  currentStyleName={this.state.currentStyleName}
                   styleClicked={this.state.styleClicked}
                   price={this.state.currentPrice}
                   salePrice={this.state.salePrice}

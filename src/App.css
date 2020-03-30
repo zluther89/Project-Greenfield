@@ -5,20 +5,21 @@
 
 .overviewFull {
   height: 800px;
+  font-family: "Kalam";
 }
 
 .overviewBanner {
-  height: 10%;
+  height: 7%;
   background-color: black !important;
 }
 
 .overviewMain {
   margin: 0px;
-  height: 70%;
+  height: 76%;
 }
 
 .overviewBottom {
-  height: 20%;
+  height: 17%;
 }
 
 .jumbotron-fluid {
@@ -72,7 +73,6 @@
   background-color: white;
   border: 1px solid black;
 }
-
 /* css code for Stars */
 .grade-star-img {
   position: absolute;
@@ -128,26 +128,22 @@
 }
 
 .productName {
-  height: 20%;
+  height: 30%;
 }
 
 .styleSelect {
-  height: 40%;
+  height: 34%;
   display: flex;
   flex-direction: column;
 }
 
 .sizeQuantitySelect {
-  height: 12%;
+  height: 10%;
 }
 
 .socialLinks {
-  height: 10%;
+  height: 5%;
 }
-
-/* .addToBag {
-  height: 10%;
-} */
 
 .styleSelectBox {
   height: 100%;
@@ -187,6 +183,29 @@
   font-weight: bold;
   justify-content: center;
   text-align: center;
+}
+
+.cardTitle {
+  font-weight: bold;
+}
+
+/* Button styling */
+
+#compareButton {
+  position: absolute;
+  right: 0em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+#addButton {
+  color: black;
+  background-color: white;
+  text-align: center;
+  height: 100%;
+  font-size: 200%;
+  border-color: white;
 }
 
 .circles {
@@ -232,21 +251,21 @@
   background-color: white;
 
   border-color: black;
-  width: 100%;
-  height: 50px;
+  margin-right: 15px;
 }
 
 #dropdown-basic-button-quantity {
   color: black;
   background-color: white;
-  height: 50px;
+
   border-color: black;
+  margin-right: 15px;
 }
 
 #button-add-to-bag {
   color: black;
   background-color: white;
-  height: 50px;
+  height: 100%;
   border-color: black;
 }
 
@@ -492,4 +511,8 @@ button.QnAButton {
   color: black;
   background-color: white;
   border-color: black;
+}
+
+.checkoutButtons {
+  float: left;
 }

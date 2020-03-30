@@ -7,7 +7,7 @@ export default function Banner() {
       style={{ "background-color": "black" }}
     >
       <div className="container jumbotronContainer">
-        <h1 className="display-5">stockOverflow</h1>
+        <h1 className="display-5">Forever404</h1>
       </div>
       {/* <div id="specialOffer">
         <p>SITE WIDE ANNOUNCEMENT --- THIS IS THE GREATEST WEBSITE EVER</p>
