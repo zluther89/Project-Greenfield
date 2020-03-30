@@ -119,17 +119,21 @@
 }
 
 .productName {
-  height: 25%;
+  height: 20%;
 }
 
 .styleSelect {
-  height: 50%;
+  height: 40%;
   display: flex;
   flex-direction: column;
 }
 
 .sizeQuantitySelect {
-  height: 20%;
+  height: 12%;
+}
+
+.socialLinks {
+  height: 10%;
 }
 
 /* .addToBag {
@@ -382,6 +386,7 @@ table {
   max-height: 100%;
   display: block;
   margin-bottom: 10px;
+  z-index: 0;
 }
 
 .thumbnailContainer {
@@ -407,6 +412,7 @@ table {
 .modal-90w {
   height: 800px;
   width: 80% !important;
+
   /* max-height: 70px !important;
   padding: 0px;
   display: table;  */
@@ -448,5 +454,23 @@ table {
 
 .carousel-inner {
   height: 100% !important;
+}
+
+
+#compareButtonOverview {
+  position: absolute;
+  right: 3em;
+  top: 3em;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  z-index: 4;
+}
+
+.control-next {
+  z-index: 2;
+}
+.fa {
+  margin: 5px;
 }
 
