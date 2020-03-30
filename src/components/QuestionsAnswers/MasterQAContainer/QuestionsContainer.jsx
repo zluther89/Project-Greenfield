@@ -24,11 +24,12 @@ class QuestionsContainer extends React.Component {
   }
 
   render() {
-    let styles = {
-      height: "200px",
-      width: "100%",
-      overflowY: "scroll"
-    };
+    // let styles = {
+    //   maxHeight: `${window.innerHeight * 0.8}px`,
+    //   overflowY: "scroll"
+    // };
+
+    console.log("window height from render", window.innerHeight);
 
     let loadedSortedQs = this.sortQuestionsReturn().slice(
       0,
@@ -37,8 +38,13 @@ class QuestionsContainer extends React.Component {
 
     return (
       <div>
-        <div style={styles}>
-          <Table borderless>
+        <div>
+          <Table
+            ref={divElement => {
+              this.divElement = divElement;
+            }}
+            borderless
+          >
             {loadedSortedQs.map(question => {
               return <Question key={question.question_id} q={question} />;
             })}

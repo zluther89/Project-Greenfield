@@ -54,6 +54,7 @@
   height: 10%;
 }
 
+
 #compareButton {
   position: absolute;
   right: 0em;
@@ -67,12 +68,20 @@
   position: absolute;
   border: hidden;
   top: 0;
-  left: 3.3%;
-  width: 49.5%;
-  height: 30%;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: url(./image/five_stars_empty_mid.png) no-repeat;
   -webkit-background-size: 100% 100% !important;
   background-size: 100% 100% !important;
+}
+.grade-star-bar{
+  position: relative;
+  display: table-cell;
+  overflow: hidden;
+  vertical-align: middle;
+  height: 100%;
+
 }
 /* end */
 /* css for rating part */
@@ -84,6 +93,23 @@
 .Hrsolid {
   border-top: 2px solid #999;
   width: "100%";
+}
+.RightText{
+  text-align: right;
+}
+.RightMargin{
+  margin-right: 0.5rem;
+}
+/* end */
+
+/* css for eachphoto */
+.EachPhoto{
+  position: relative;
+  border: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* end */
@@ -136,6 +162,7 @@
 /*
 * Modal Styling
 */
+
 
 .modal-row {
   justify-content: center;
@@ -278,6 +305,7 @@
 .helpfulContainer div {
   margin: 2%;
 }
+/*
 
 button.QnAButton {
   color: black;
@@ -290,7 +318,13 @@ button.QnAButton {
 .pictures {
   height: 20%;
 }
-/* 
+
+table {
+  overflow-y: scroll;
+  display: block;
+}
+
+/*
 .helpful div {
   flex-wrap: wrap;
 } */
@@ -310,6 +344,7 @@ button.QnAButton {
 #carousel-thumb {
   height: 100%;
 }
+
 
 .carousel-inner img {
   width: 100%;
@@ -336,6 +371,11 @@ button.QnAButton {
   margin-top: 20px;
 }
 
+.thumbnail {
+  padding: 0;
+}
+
+
 .carouselRows {
   height: 100%;
 }
@@ -352,13 +392,14 @@ button.QnAButton {
 .thumbnailContainer {
   height: 100%;
   overflow: scroll;
-  margin-top: 15px;
+  margin-top: 30px;
   display: block;
 }
 
 .col-sm-10 {
   height: 100%;
 }
+
 
 .overlay {
   height: 20%;
@@ -415,6 +456,7 @@ button.QnAButton {
   height: 100% !important;
 }
 
+
 #compareButtonOverview {
   position: absolute;
   right: 3em;
@@ -431,3 +473,4 @@ button.QnAButton {
 .fa {
   margin: 5px;
 }
+

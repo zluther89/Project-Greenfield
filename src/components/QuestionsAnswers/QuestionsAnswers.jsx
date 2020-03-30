@@ -24,7 +24,12 @@ const mapStateToProps = state => ({
 class QuestionAnswers extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      style: {
+        height: `250px`,
+        overflowY: "scroll"
+      }
+    };
   }
 
   componentDidMount() {
@@ -39,9 +44,20 @@ class QuestionAnswers extends React.Component {
         : newNumOfQuestions;
 
     this.props.setNewNumOfQuestions(newNumOfQuestions);
+    //set new style on expan
+    let styles = {
+      maxHeight: `${window.innerHeight * 0.8}px`,
+      overflowY: "scroll"
+    };
+    this.setState({ style: styles });
   }
 
   render() {
+    let styles = {
+      maxHeight: `${window.innerHeight * 0.8}px`,
+      overflowY: "scroll"
+    };
+
     let button =
       this.props.numOfQuestions === this.props.questionSet.length ? null : (
         <Button className="QnAButton" onClick={() => this.clickHandler()}>
@@ -50,14 +66,21 @@ class QuestionAnswers extends React.Component {
       );
     return (
       <div>
-        <div className="masterQContainer">
-          <Container>
-            {" "}
-            <SearchBar /> <QuestionsContainer />
-            {button}
-            <QandAModalButton type="question" />
-          </Container>
-        </div>
+        <Container>
+          <SearchBar />
+          <div
+            style={this.state.style}
+            id="masterQContainer"
+            className="masterQContainer"
+          >
+            <Container>
+              {" "}
+              <QuestionsContainer />
+            </Container>
+          </div>
+          {button}
+          <QandAModalButton type="question" />
+        </Container>
       </div>
     );
   }
