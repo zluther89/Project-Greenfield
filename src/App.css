@@ -68,12 +68,20 @@
   position: absolute;
   border: hidden;
   top: 0;
-  left: 3.3%;
-  width: 49.5%;
-  height: 30%;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: url(./image/five_stars_empty_mid.png) no-repeat;
   -webkit-background-size: 100% 100% !important;
   background-size: 100% 100% !important;
+}
+.grade-star-bar{
+  position: relative;
+  display: table-cell;
+  overflow: hidden;
+  vertical-align: middle;
+  height: 100%;
+
 }
 /* end */
 /* css for rating part */
@@ -85,6 +93,23 @@
 .Hrsolid {
   border-top: 2px solid #999;
   width: "100%";
+}
+.RightText{
+  text-align: right;
+}
+.RightMargin{
+  margin-right: 0.5rem;
+}
+/* end */
+
+/* css for eachphoto */
+.EachPhoto{
+  position: relative;
+  border: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* end */
@@ -276,6 +301,7 @@
 .helpfulContainer div {
   margin: 2%;
 }
+/*
 
 button.QnAButton {
   color: black;
@@ -294,7 +320,7 @@ table {
   display: block;
 }
 
-/* 
+/*
 .helpful div {
   flex-wrap: wrap;
 } */
