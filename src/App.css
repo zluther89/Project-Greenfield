@@ -54,9 +54,9 @@
   height: 10%;
 }
 
-#compareButton{
-  position:absolute;
-  right:0em;
+#compareButton {
+  position: absolute;
+  right: 0em;
   color: black;
   background-color: white;
   border: 1px solid black;
@@ -93,11 +93,11 @@
 }
 
 .productName {
-  height: 15%;
+  height: 25%;
 }
 
 .styleSelect {
-  height: 60%;
+  height: 50%;
   display: flex;
   flex-direction: column;
 }
@@ -135,8 +135,10 @@
   margin-bottom: 10px;
 }
 
-.rounded-circle {
-  height: 25%;
+.imageHolder {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .styleSelectorDiv {
@@ -203,12 +205,16 @@
   margin-bottom: 10px;
 }
 
+.rounded-circle {
+  z-index: 0;
+}
+
 .styleSquareBox {
   height: 100%;
-  margin-top: 5%;
 }
 
 .containerOverview {
+  height: 100%;
   columns: 4 auto;
 }
 
@@ -275,18 +281,14 @@
   height: 100%;
 }
 
-.carousel-inner {
-  width: 100%;
-  height: 100%;
-}
-
 .carousel-inner img {
   width: 100%;
   height: 100%;
 }
 
 .carousel-item {
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .carousel-indicators {
@@ -323,10 +325,64 @@
 .thumbnailContainer {
   height: 100%;
   overflow: scroll;
-  margin-top: 30px;
+  margin-top: 15px;
   display: block;
 }
 
 .col-sm-10 {
   height: 100%;
+}
+
+.overlay {
+  height: 20%;
+  top: 0;
+  right: 0;
+
+  position: absolute;
+}
+
+.modal-90w {
+  height: 800px;
+  width: 80% !important;
+  /* max-height: 70px !important;
+  padding: 0px;
+  display: table;  */
+}
+
+.modal-content {
+  background-color: rgba(0, 0, 0, 0.0001) !important;
+  height: 100% !important;
+}
+
+.carousel-slide {
+  width: 100% !important;
+}
+
+.carousel {
+  display: block;
+  margin: 0 auto;
+}
+.modalItem {
+  display: block;
+  margin: 0 auto;
+}
+
+.modalImage {
+  max-height: 700px !important;
+}
+
+.modal-content > .container {
+  height: 100% !important;
+}
+
+.row {
+  height: 100% !important;
+}
+
+.slide {
+  height: 100% !important;
+}
+
+.carousel-inner {
+  height: 100% !important;
 }
