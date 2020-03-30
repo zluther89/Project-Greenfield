@@ -15,3 +15,13 @@ export default function Banner() {
     </div>
   );
 }
+
+{
+  /* <div>
+{this.props.salePrice ? (
+  <p>NOW ${this.props.price - this.props.salePrice}</p>
+) : (
+  <p>${this.props.price}</p>
+)}
+<h3>STYLE > SELECTED STYLE</h3> */
+}
