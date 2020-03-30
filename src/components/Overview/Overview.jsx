@@ -49,7 +49,7 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    return this.props.getNewProductThunk("3").then(response => {
+    return this.props.getNewProductThunk("4").then(response => {
       let productId = this.props.currentProduct.id;
       axios
         .get(`http://3.134.102.30/products/${productId}`)
@@ -78,13 +78,6 @@ class Overview extends React.Component {
 
           <div className="overviewMain container-fluid">
             <>
-              <Button
-                variant="primary"
-                onClick={() => this.setState({ modalShow: true })}
-              >
-                Launch big image modal
-              </Button>
-
               <ImageModal
                 show={this.state.modalShow}
                 onHide={() => this.setState({ modalShow: false })}
@@ -99,6 +92,9 @@ class Overview extends React.Component {
                   data={this.state.data}
                   styleData={this.state.styleData}
                   currentStyle={this.state.currentStyle}
+                  setModal={() => {
+                    this.setState({ modalShow: true });
+                  }}
                 />
               </div>
               <div className="productInfo col-xs-5 col-sm-5 col-md-5">
