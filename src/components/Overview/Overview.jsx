@@ -49,7 +49,7 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    return this.props.getNewProductThunk("3").then(response => {
+    return this.props.getNewProductThunk("4").then(response => {
       let productId = this.props.currentProduct.id;
       axios
         .get(`http://3.134.102.30/products/${productId}`)

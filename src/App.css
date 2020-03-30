@@ -9,6 +9,7 @@
 
 .overviewBanner {
   height: 10%;
+  background-color: black !important;
 }
 
 .overviewMain {
@@ -24,6 +25,15 @@
   padding-top: 0px !important;
   padding-bottom: 0px !important;
   margin-bottom: 0px !important;
+  color: white;
+}
+
+.jumbotron {
+  background-color: black;
+}
+
+.jumbotronContainer {
+  background-color: black;
 }
 
 #specialOffer {
@@ -34,6 +44,7 @@
 }
 
 .productInfo {
+  top: 2em;
   height: 100%;
 }
 
@@ -53,7 +64,6 @@
 .RatingReviewsFoot {
   height: 10%;
 }
-
 
 #compareButton {
   position: absolute;
@@ -75,13 +85,12 @@
   -webkit-background-size: 100% 100% !important;
   background-size: 100% 100% !important;
 }
-.grade-star-bar{
+.grade-star-bar {
   position: relative;
   display: table-cell;
   overflow: hidden;
   vertical-align: middle;
   height: 100%;
-
 }
 /* end */
 /* css for rating part */
@@ -94,16 +103,16 @@
   border-top: 2px solid #999;
   width: "100%";
 }
-.RightText{
+.RightText {
   text-align: right;
 }
-.RightMargin{
+.RightMargin {
   margin-right: 0.5rem;
 }
 /* end */
 
 /* css for eachphoto */
-.EachPhoto{
+.EachPhoto {
   position: relative;
   border: hidden;
   top: 0;
@@ -162,7 +171,6 @@
 /*
 * Modal Styling
 */
-
 
 .modal-row {
   justify-content: center;
@@ -252,9 +260,9 @@
 }
 
 .square {
-  height: 100px;
-  width: 100px;
-  margin-bottom: 10px;
+  width: 5em;
+  height: 5em;
+  margin-bottom: 1em;
 }
 
 .rounded-circle {
@@ -338,13 +346,12 @@ table {
 }
 
 .my-4 {
-  height: 80%;
+  height: 90%;
 }
 
 #carousel-thumb {
   height: 100%;
 }
-
 
 .carousel-inner img {
   width: 100%;
@@ -375,7 +382,6 @@ table {
   padding: 0;
 }
 
-
 .carouselRows {
   height: 100%;
 }
@@ -392,14 +398,13 @@ table {
 .thumbnailContainer {
   height: 100%;
   overflow: scroll;
-  margin-top: 30px;
+  margin-top: 12px;
   display: block;
 }
 
 .col-sm-10 {
   height: 100%;
 }
-
 
 .overlay {
   height: 20%;
@@ -456,7 +461,6 @@ table {
   height: 100% !important;
 }
 
-
 #compareButtonOverview {
   position: absolute;
   right: 3em;
@@ -473,4 +477,3 @@ table {
 .fa {
   margin: 5px;
 }
-
