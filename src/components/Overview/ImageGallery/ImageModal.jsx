@@ -19,7 +19,7 @@ let ImageModal = props => {
      </Modal.Title>
    </Modal.Header> */}
       <Container>
-        <Row>
+        <Row className="overviewModalRow">
           <Col xs={11}>
             {" "}
             <ModalCarousel
