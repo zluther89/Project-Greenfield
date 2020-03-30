@@ -19,8 +19,12 @@ class QandAModalButton extends React.Component {
   render() {
     let button =
       this.props.type === "question" ? (
-        <Button variant="primary" onClick={() => this.setModalShow(true)}>
-          Add A question +
+        <Button
+          className="QnAButton"
+          variant="primary"
+          onClick={() => this.setModalShow(true)}
+        >
+          Add a question +
         </Button>
       ) : (
         <div variant="primary" onClick={() => this.setModalShow(true)}>

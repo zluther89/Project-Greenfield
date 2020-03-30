@@ -3,10 +3,12 @@ import Banner from "./Banner";
 import ProductInfo from "./ProductInfo/ProductInfo";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import StyleSelectorContainer from "./StyleSelectorContainer/StyleSelectorContainer";
+import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { getNewProductThunk } from "../../components/Redux/ThunkMiddleware";
 
 import { connect } from "react-redux";
+import ImageModal from "../Overview/ImageGallery/ImageModal";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -28,7 +30,8 @@ class Overview extends React.Component {
       currentStyle: 0,
       styleClicked: false,
       currentPrice: null,
-      salePrice: null
+      salePrice: null,
+      modalShow: false
     };
     this.switchStyle = this.switchStyle.bind(this);
   }
@@ -72,7 +75,24 @@ class Overview extends React.Component {
             {" "}
             <Banner />
           </div>
+
           <div className="overviewMain container-fluid">
+            <>
+              <Button
+                variant="primary"
+                onClick={() => this.setState({ modalShow: true })}
+              >
+                Launch big image modal
+              </Button>
+
+              <ImageModal
+                show={this.state.modalShow}
+                onHide={() => this.setState({ modalShow: false })}
+                currentStyle={this.state.currentStyle}
+                data={this.state.data}
+                styleData={this.state.styleData}
+              />
+            </>
             <div className="row overviewRow">
               <div className="imageGallery col-xs-7 col-sm-7 col-md-7">
                 <ImageGallery
