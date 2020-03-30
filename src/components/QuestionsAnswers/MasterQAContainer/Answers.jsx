@@ -25,14 +25,12 @@ class Answers extends React.Component {
 
   setAnswers() {
     this.getAnswers(this.props.questionID).then(res => {
-      console.log("api answers", res.data.results);
       let sortedAnswers = this.sortAnswers(res.data.results);
       this.setState({ answers: sortedAnswers });
     });
   }
 
   componentDidMount() {
-    console.log("answers from question", this.state.answers);
     this.setAnswers(this.props.questionID);
   }
 

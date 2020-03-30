@@ -21,10 +21,10 @@ class Question extends React.Component {
   }
 
   render() {
-    let answers = [];
-    for (let key in this.props.q.answers) {
-      answers.push(this.props.q.answers[key]);
-    }
+    // let answers = [];
+    // for (let key in this.props.q.answers) {
+    //   answers.push(this.props.q.answers[key]);
+    // }
     let questionID = this.props.q.question_id;
     return (
       <div style={this.state.style} id="test">

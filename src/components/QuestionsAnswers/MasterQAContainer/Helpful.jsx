@@ -26,8 +26,11 @@ class Helpful extends React.Component {
     };
   }
 
+  componentDidMount() {
+    console.log("prps from helpful", this.props);
+  }
+
   postHelpful(endpoint) {
-    console.log("here");
     // /qa/question/:question_id/helpful
     // /qa/answer/:answer_id/helpful
     // Axios.put()
@@ -44,13 +47,10 @@ class Helpful extends React.Component {
         : this.props.answerId;
     let endpoint =
       this.props.type === "question" ? "question/" + id : "answer/" + id;
-
     let updateHandler =
       this.props.type === "question"
         ? () => this.props.getQuestionsThunk(productID)
         : () => this.props.setAnswers();
-    //build endpoint line by line// TO DO
-
     handler(endpoint)
       .then(res => {
         console.log(res);
@@ -65,10 +65,14 @@ class Helpful extends React.Component {
   }
 
   render() {
-    let answerOrReport =
+    let answer =
       this.props.type === "question" ? (
         <>
-          <QandAModalButton questionID={this.props.questionID} type="answer" />
+          <QandAModalButton
+            questionID={this.props.questionID}
+            type="answer"
+            setAnswers={this.props.setAnswers}
+          />
           <div>|</div>
         </>
       ) : null;
@@ -79,7 +83,7 @@ class Helpful extends React.Component {
           Yes
         </div>
         <div>({this.props.helpful})</div> <div>|</div>
-        {answerOrReport}
+        {answer}
         <div
           className="link"
           onClick={() => {

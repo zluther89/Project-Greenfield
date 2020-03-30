@@ -15,6 +15,9 @@ class QandAModalButton extends React.Component {
       modalShow: boolean
     });
   }
+  componentDidMount() {
+    console.log("props from qAndAmodalbutton ", this.props);
+  }
 
   render() {
     let button =
@@ -38,6 +41,7 @@ class QandAModalButton extends React.Component {
         <QuestionModal
           questionID={this.props.questionID}
           type={action}
+          setAnswers={this.props.setAnswers}
           show={this.state.modalShow}
           onHide={() => this.setModalShow(false)}
         />
