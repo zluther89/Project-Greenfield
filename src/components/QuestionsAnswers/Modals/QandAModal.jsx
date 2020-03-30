@@ -14,10 +14,9 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    questionSet: state.questionSet,
-    onHide: ownProps.onHide,
-    questionID: ownProps.questionID,
-    setAnswers: ownProps.setAnswers
+    questionSet: state.questionSet
+    // onHide: ownProps.onHide,
+    // questionID: ownProps.questionID
   };
 };
 
@@ -33,7 +32,6 @@ class QuestionModal extends React.Component {
       filePreview: []
     };
     this.postAnswer = this.postAnswer.bind(this);
-    this.postQuestion = this.postQuestion.bind(this);
   }
 
   //button handlers
@@ -59,24 +57,25 @@ class QuestionModal extends React.Component {
   }
 
   handleSubmit() {
-    let productId = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    let productID = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
     let data = {
       body: this.state.body,
       email: this.state.email,
       name: this.state.name
     };
-    let updateHandler =
-      this.props.type === "question"
-        ? () => this.props.getQuestionsThunk(productId)
-        : () => this.props.setAnswers();
     let postHandler =
       this.props.type === "question" ? this.postQuestion : this.postAnswer;
 
+    let updateHandler =
+      this.props.type === "question"
+        ? () => this.props.getQuestionsThunk(productID)
+        : this.props.setAnswers;
+
     console.log(this.props);
-    // postHandler(data)
-    //   .then(res => console.log("response from post question", res))
-    //   .then(updateHandler())
-    //   .catch(err => console.log("error from post question", err));
+    postHandler(data)
+      .then(res => console.log("response from post question", res))
+      .then(updateHandler)
+      .catch(err => console.log("error from post question", err));
 
     this.props.onHide();
     setTimeout(() => console.log(this.props), 2000);

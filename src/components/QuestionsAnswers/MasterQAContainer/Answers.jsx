@@ -16,38 +16,16 @@ class Answers extends React.Component {
       answers: [],
       numberToRender: 2
     };
-    this.setAnswers = this.setAnswers.bind(this);
-  }
-
-  getAnswers(id) {
-    return Axios.get(`http://3.134.102.30/qa/${id}/answers`);
-  }
-
-  setAnswers() {
-    this.getAnswers(this.props.questionID).then(res => {
-      let sortedAnswers = this.sortAnswers(res.data.results);
-      this.setState({ answers: sortedAnswers });
-    });
-  }
-
-  componentDidMount() {
-    this.setAnswers(this.props.questionID);
-  }
-
-  sortAnswers(array) {
-    let answers = array.slice(0);
-    answers.sort((a, b) => (a.helpfulness > b.helpfulness ? -1 : 1));
-    return answers;
   }
 
   moreAnswersClick() {
-    let totalAnswers = this.state.answers.length;
+    let totalAnswers = this.props.answers.length;
     this.setState({ numberToRender: totalAnswers });
     this.props.expandHandler();
   }
 
   render() {
-    let answers = this.state.answers
+    let answers = this.props.answers
       .slice(0, this.state.numberToRender)
       .map((answer, index) => {
         let date = moment(answer.date).format("MMMM Do YYYY");
@@ -69,7 +47,7 @@ class Answers extends React.Component {
                     answerId={answer.answer_id}
                     helpful={answer.helpfulness}
                     type="answer"
-                    setAnswers={this.setAnswers}
+                    setAnswers={this.props.setAnswers}
                   />
                 </div>
               </td>
@@ -79,8 +57,8 @@ class Answers extends React.Component {
       });
 
     let moreAnswersLink =
-      this.state.answers.length > 2 &&
-      this.state.answers.length > this.state.numberToRender ? (
+      this.props.answers.length > 2 &&
+      this.props.answers.length > this.state.numberToRender ? (
         <div className="loadMoreAnswers">Load More Answers</div>
       ) : null;
 

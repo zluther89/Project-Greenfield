@@ -15,6 +15,7 @@ class QandAModalButton extends React.Component {
       modalShow: boolean
     });
   }
+
   componentDidMount() {
     console.log("props from qAndAmodalbutton ", this.props);
   }

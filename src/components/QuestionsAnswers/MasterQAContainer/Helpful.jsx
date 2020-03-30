@@ -26,10 +26,6 @@ class Helpful extends React.Component {
     };
   }
 
-  componentDidMount() {
-    console.log("prps from helpful", this.props);
-  }
-
   postHelpful(endpoint) {
     // /qa/question/:question_id/helpful
     // /qa/answer/:answer_id/helpful
@@ -41,12 +37,15 @@ class Helpful extends React.Component {
   putHandler(type) {
     let productID = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT'
     let handler = type === "report" ? this.postReport : this.postHelpful;
+
     let id =
       this.props.type === "question"
         ? this.props.questionID
         : this.props.answerId;
+
     let endpoint =
       this.props.type === "question" ? "question/" + id : "answer/" + id;
+
     let updateHandler =
       this.props.type === "question"
         ? () => this.props.getQuestionsThunk(productID)
