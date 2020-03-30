@@ -54,6 +54,7 @@
   height: 10%;
 }
 
+
 #compareButton {
   position: absolute;
   right: 0em;
@@ -132,6 +133,7 @@
 /*
 * Modal Styling
 */
+
 
 .modal-row {
   justify-content: center;
@@ -286,6 +288,12 @@ button.QnAButton {
 .pictures {
   height: 20%;
 }
+
+table {
+  overflow-y: scroll;
+  display: block;
+}
+
 /* 
 .helpful div {
   flex-wrap: wrap;
@@ -306,6 +314,7 @@ button.QnAButton {
 #carousel-thumb {
   height: 100%;
 }
+
 
 .carousel-inner img {
   width: 100%;
@@ -332,6 +341,11 @@ button.QnAButton {
   margin-top: 20px;
 }
 
+.thumbnail {
+  padding: 0;
+}
+
+
 .carouselRows {
   height: 100%;
 }
@@ -347,13 +361,14 @@ button.QnAButton {
 .thumbnailContainer {
   height: 100%;
   overflow: scroll;
-  margin-top: 15px;
+  margin-top: 30px;
   display: block;
 }
 
 .col-sm-10 {
   height: 100%;
 }
+
 
 .overlay {
   height: 20%;
@@ -408,3 +423,4 @@ button.QnAButton {
 .carousel-inner {
   height: 100% !important;
 }
+
