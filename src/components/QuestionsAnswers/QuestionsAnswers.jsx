@@ -33,7 +33,8 @@ class QuestionAnswers extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getQuestionsThunk("5");
+    let productId = "2"; //PLACEHOLDER
+    this.props.getQuestionsThunk(productId);
   }
 
   clickHandler() {
@@ -59,7 +60,8 @@ class QuestionAnswers extends React.Component {
     };
 
     let button =
-      this.props.numOfQuestions === this.props.questionSet.length ? null : (
+      this.props.numOfQuestions === this.props.questionSet.length ||
+      this.props.questionSet.length === 0 ? null : (
         <Button className="QnAButton" onClick={() => this.clickHandler()}>
           More Answered Questions
         </Button>

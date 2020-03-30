@@ -35,7 +35,6 @@ class QandAModalButton extends React.Component {
     return (
       <>
         {button}
-
         <QuestionModal
           questionID={this.props.questionID}
           type={action}

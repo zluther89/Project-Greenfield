@@ -27,28 +27,35 @@ class Helpful extends React.Component {
   }
 
   postHelpful(endpoint) {
+    console.log("here");
     // /qa/question/:question_id/helpful
     // /qa/answer/:answer_id/helpful
     // Axios.put()
     //vote and on success change hasvoted state to true
+    return Axios.put(`http://3.134.102.30/qa/${endpoint}/helpful`);
   }
 
-  handleReport() {
-    let id = 5; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+  putHandler(type) {
+    let productID = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT'
+    let handler = type === "report" ? this.postReport : this.postHelpful;
+    let id =
+      this.props.type === "question"
+        ? this.props.questionID
+        : this.props.answerId;
     let endpoint =
-      this.props.type === "question"
-        ? `question/${this.props.questionID}`
-        : `answer/${this.props.answerId}`;
-    let handler =
-      this.props.type === "question"
-        ? () => this.props.getQuestionsThunk(id)
-        : () => this.props.setAnswers();
+      this.props.type === "question" ? "question/" + id : "answer/" + id;
 
-    this.postReport(endpoint)
+    let updateHandler =
+      this.props.type === "question"
+        ? () => this.props.getQuestionsThunk(productID)
+        : () => this.props.setAnswers();
+    //build endpoint line by line// TO DO
+
+    handler(endpoint)
       .then(res => {
         console.log(res);
       })
-      .then(handler)
+      .then(updateHandler)
       .then(console.log("reported"))
       .catch(err => console.log(err));
   }
@@ -68,13 +75,15 @@ class Helpful extends React.Component {
     return (
       <>
         <div>Helpful?</div>
-        <div className="link">Yes</div>
+        <div className="link" onClick={() => this.putHandler("answer")}>
+          Yes
+        </div>
         <div>({this.props.helpful})</div> <div>|</div>
         {answerOrReport}
         <div
           className="link"
           onClick={() => {
-            this.handleReport();
+            this.putHandler("report");
           }}
         >
           Report
