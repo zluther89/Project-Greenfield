@@ -8,11 +8,11 @@ const TranverStar = star => {
   if (modul >= 0 & modul < 0.125) {
     ratingPercen = Int
   } else if (modul >= 0.125 & modul < 0.375) {
-    ratingPercen = Int + 0.48
+    ratingPercen = Int + 0.35
   }else if (modul >= 0.375  & modul< 0.625) {
-    ratingPercen = Int + 0.6
+    ratingPercen = Int + 0.45
   }else if (  modul >= 0.625 & modul< 0.875) {
-    ratingPercen = Int + 0.7
+    ratingPercen = Int + 0.55
   }else {
     ratingPercen = Int + 1
   }
@@ -30,7 +30,7 @@ class ShowStars extends React.Component{
   componentDidMount() {
     this.GetReviewMet()
   }
-  GetReviewMet(product_id = 4) {
+  GetReviewMet(product_id = 13) {
     let count = 0;
     let sum = 0
     if (this.props.star) {
@@ -52,7 +52,6 @@ class ShowStars extends React.Component{
           //first get the number whose denominator is five
           const ratingPercen = TranverStar(rating)
           //get int part
-
           this.setState({rating:roundedRating,ratingPercen:ratingPercen})
         }
         )
@@ -62,8 +61,9 @@ class ShowStars extends React.Component{
   }
   render() {
     return (
-      <div className="progress border-0" style={{"height":"30"},{"width":"50%"}}>
-        <div className="progress-bar " style={{ "width": `${this.state.ratingPercen}%` }} role="progressbar" aria-valuemin="0" aria-valuemax="100" ><img style={{ "border": "hidden" }}className="grade-star-img "></img></div>
+      <div className="progress border-0  grade-star-bar " style={{"height":"30"},{"width":"50%"}}>
+        <div className="progress-bar " style={{ "width": `${this.state.ratingPercen}%` }} role="progressbar" aria-valuemin="0" aria-valuemax="100" ><div className="grade-star-img" ></div></div>
+
 </div>
 
     )
