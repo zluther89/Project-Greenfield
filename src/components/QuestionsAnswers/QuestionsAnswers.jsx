@@ -2,12 +2,12 @@ import React from "react";
 import QuestionsContainer from "./MasterQAContainer/QuestionsContainer.jsx";
 import SearchBar from "./SearchBar.jsx";
 import Container from "react-bootstrap/Container";
-import { getQuestionsThunk } from "../Redux/ThunkMiddleware.js";
 import { setNewNumOfQuestions } from "../Redux/ActionCreators.js";
 import Axios from "axios";
 import QandAModalButton from "./Modals/QandAModalButton.jsx";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
+import { getQuestionsThunk } from "../Redux/ThunkMiddleware.js";
 
 const mapDispatchToProps = dispatch => {
   return {

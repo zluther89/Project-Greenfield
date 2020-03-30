@@ -53,9 +53,13 @@ class Answers extends React.Component {
             </tr>
             <tr>
               <td></td>
-              <td className="answererContainer">
-                by {answer.answerer_name},{date}{" "}
-                <Helpful helpful={answer.helpfulness} />
+              <td>
+                <div className="answererContainer">
+                  <div>
+                    by {answer.answerer_name}, <div>{date} </div>
+                  </div>
+                  <Helpful helpful={answer.helpfulness} />
+                </div>
               </td>
             </tr>
           </>
@@ -76,10 +80,14 @@ class Answers extends React.Component {
         </tr>
         <tr>
           <td></td>
-          <td className="answererContainer">
-            by {answer1.answerer_name},
-            {moment(answer1.date).format("MMMM Do YYYY")}{" "}
-            <Helpful helpful={this.props.answers[0].helpfulness} />
+          <td>
+            <div className="answererContainer">
+              <div>
+                by {answer1.answerer_name},
+                {moment(answer1.date).format("MMMM Do YYYY")}{" "}
+              </div>
+              <Helpful helpful={this.props.answers[0].helpfulness} />
+            </div>
           </td>
         </tr>
         {additionalAnswers}

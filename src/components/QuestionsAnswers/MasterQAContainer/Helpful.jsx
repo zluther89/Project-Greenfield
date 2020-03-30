@@ -1,5 +1,22 @@
 import React from "react";
 import QandAModalButton from "../Modals/QandAModalButton";
+import Axios from "axios";
+import { connect } from "react-redux";
+import { getQuestionsThunk } from "../../Redux/ThunkMiddleware";
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getQuestionsThunk: id => dispatch(getQuestionsThunk(id))
+  };
+};
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    questionID: ownProps.questionID,
+    type: ownProps.type,
+    helpful: ownProps.helpful
+  };
+};
 
 class Helpful extends React.Component {
   constructor(props) {
@@ -13,25 +30,49 @@ class Helpful extends React.Component {
     //vote and on success change hasvoted state to true
   }
 
+  handleReport() {
+    let id = 4; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+
+    this.postReport()
+      .then(res => {
+        console.log(res);
+      })
+      .then(() => this.props.getQuestionsThunk(id))
+      .then(console.log("reported"));
+  }
+
+  postReport() {
+    return Axios.put(
+      `http://3.134.102.30/qa/question/${this.props.questionID}/report`
+    );
+  }
+
   render() {
     //note: placeholder, need to make functional
     let answerOrReport =
-      this.props.type === "answer" ? (
-        <div>
-          <QandAModalButton questionID={this.props.questionID} type="answer" />{" "}
-        </div>
-      ) : (
-        "Report"
-      );
+      this.props.type === "question" ? (
+        <>
+          <QandAModalButton questionID={this.props.questionID} type="answer" />
+          <div>|</div>
+        </>
+      ) : null;
     return (
       <>
         <div>Helpful?</div>
         <div className="link">Yes</div>
         <div>({this.props.helpful})</div> <div>|</div>
-        <div>{answerOrReport}</div>
+        {answerOrReport}
+        <div
+          className="link"
+          onClick={() => {
+            this.handleReport();
+          }}
+        >
+          Report
+        </div>
       </>
     );
   }
 }
 
-export default Helpful;
+export default connect(mapStateToProps, mapDispatchToProps)(Helpful);
