@@ -13,7 +13,6 @@ class Answers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answers: [],
       numberToRender: 2
     };
   }
@@ -30,6 +29,12 @@ class Answers extends React.Component {
       .map((answer, index) => {
         let date = moment(answer.date).format("MMMM Do YYYY");
         let title = index === 0 ? "A:" : null;
+        let answererName =
+          answer.answerer_name === "Seller" ? (
+            <strong>Seller</strong>
+          ) : (
+            answer.answerer_name
+          );
         return (
           <>
             <tr key={answer.answer_id}>
@@ -42,7 +47,7 @@ class Answers extends React.Component {
                 <div className="answererContainer">
                   <div>
                     {" "}
-                    by {answer.answerer_name}, {date}
+                    by {answererName}, {date}
                   </div>
                   <Helpful
                     question={this.props.question}

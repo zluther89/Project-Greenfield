@@ -38,10 +38,8 @@ class QuestionAnswers extends React.Component {
 
   searchHandler(event) {
     let params = event.target.value.toLowerCase();
-    console.log("search params", params);
     if (params.length >= 3) {
       let filteredArr = this.props.questionSet.reduce((acc, question) => {
-        console.log(question);
         let questionBody = question.question_body.toLowerCase();
         if (questionBody.indexOf(params) !== -1) {
           acc.push(question);
@@ -60,8 +58,6 @@ class QuestionAnswers extends React.Component {
   componentDidMount() {
     let productId = "2"; //PLACEHOLDER
     this.props.getQuestionsThunk(productId);
-    setTimeout(() => console.log("question set", this.props.questionSet), 500);
-    setTimeout(() => console.log("master state", this.state), 500);
   }
 
   clickHandler() {
