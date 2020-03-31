@@ -7,13 +7,12 @@ import ComparisonModal from './ComparisonModal'
 import OutfitCard from './OutfitCard'
 
 // Bootstrap imports
-import CardDeck from "react-bootstrap/CardDeck";
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 // import Carousel from "react-bootstrap/Carousel";
 
 // Redux imports
-import {getNewProductThunk} from '../Redux/ThunkMiddleware.js'
+import { getNewProductThunk } from '../Redux/ThunkMiddleware.js'
 import { connect } from 'react-redux'
 
 const mapDispatchToProps = dispatch => {
@@ -68,9 +67,7 @@ class RelatedProducts extends React.Component {
 
 
   componentDidMount() {
-    let productId = 3
-
-    // console.log('selected product', this.props.selectedProduct)
+    let productId = this.props.id || 3
     this.props.getNewProductThunk(productId)
     this.getOutfits();
     axios.get(`http://3.134.102.30/products/${productId}`).then( ({data}) => {
@@ -181,6 +178,7 @@ class RelatedProducts extends React.Component {
           <br></br>
         <h2> Your Outfit </h2>
           <br></br>
+          {/** style from state, fixed = window.innerHeight * 0.5 */}
           <div className='productCarouselContainer'>
             <div className='productCarousel'>
               <Card
@@ -204,7 +202,6 @@ class RelatedProducts extends React.Component {
                       +
                 </Button>{' '}
               </Card>
-              {/* map out the rest of the favorites after pulling favorites */}
               {this.state.outfitId.map( (outfitId,i) => { 
                 if(this.state.outfitLoaded)
                 {
