@@ -61,9 +61,10 @@ class RelatedProducts extends React.Component {
     })
   }
 
-  componentDidMount() {
-    let productId = 3
 
+  componentDidMount() {
+    let productId = 90
+    console.log('selected product', this.props.selectedProduct)
     this.props.getNewProductThunk(productId)
     this.getOutfits();
     axios.get(`http://3.134.102.30/products/${productId}`).then( ({data}) => {
@@ -93,14 +94,16 @@ class RelatedProducts extends React.Component {
   }
 
   handleAddToOutfit(){
+    
     let currentOutfit = this.state.outfitId.slice();
     if (currentOutfit.indexOf(this.state.current.id) === -1){
+      this.setState({outfitLoaded: false})
       currentOutfit.push(this.state.current.id)
     }
     this.setState({outfitId: currentOutfit}, () => {
       localStorage.setItem('outfit', JSON.stringify(currentOutfit))
+      this.getOutfits()
     })
-    this.getOutfits()
   }
 
   getOutfits(){
