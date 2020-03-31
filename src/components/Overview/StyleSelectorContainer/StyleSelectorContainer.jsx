@@ -35,6 +35,7 @@ export default function StyleSelectorContainer(props) {
       <div className="sizeQuantitySelect">
         {" "}
         <SizeQuantitySelect
+          currentStyleName={props.currentStyleName}
           styleData={props.styleData}
           currentStyle={props.currentStyle}
           styleClicked={props.styleClicked}
