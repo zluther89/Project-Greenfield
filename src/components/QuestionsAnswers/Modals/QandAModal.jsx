@@ -50,7 +50,7 @@ class QuestionModal extends React.Component {
 
   handleSubmit() {
     let type = this.props.type === "question" ? "Question" : "Answer";
-    let productID = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    let productID = "4"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
     let data = {
       body: this.state.body,
       email: this.state.email,
@@ -101,7 +101,7 @@ class QuestionModal extends React.Component {
 
   //Need to grab product id from redux store or url
   postQuestion(params) {
-    let productId = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    let productId = "4"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
     return Axios.post(`http://3.134.102.30/qa/${productId}?`, params);
   }
 
