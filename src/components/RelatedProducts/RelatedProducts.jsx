@@ -67,32 +67,36 @@ class RelatedProducts extends React.Component {
     let productId = this.props.productId || 3
     this.props.getNewProductThunk(productId)
     this.getOutfits();
-    axios.get(`http://3.134.102.30/products/${productId}`).then( ({data}) => {
-      this.setState({current: data})
-    })
-    axios.get(`http://3.134.102.30/products/${productId}/related`).then(({ data }) => {
-      let productInfo={};
-      let relatedProducts = [];
+    axios
+      .get(`http://3.134.102.30/products/${productId}`)
+      .then( ({data}) => {
+        this.setState({current: data})
+      })
+      axios.get(`http://3.134.102.30/products/${productId}/related`).then(({ data }) => {
+        let productInfo={};
+        let relatedProducts = [];
 
-      async function getData() {
-        for (let id of data) {
-        await axios.get(`http://3.134.102.30/products/${id}`).then( ({data}) => {
-          relatedProducts.push(data)
-        } )
-        await axios.get(`http://3.134.102.30/products/${id}/styles`).then( ({data}) => {
-          productInfo[data.product_id] = data.results
-        })
-      }}
-      getData().then( () => {
-        this.setState({productInfo: productInfo})
-        this.setState({relatedProducts: relatedProducts})
-      });
+        async function getData() {
+          for (let id of data) {
+          await axios.get(`http://3.134.102.30/products/${id}`).then( ({data}) => {
+            relatedProducts.push(data)
+          } )
+          await axios.get(`http://3.134.102.30/products/${id}/styles`).then( ({data}) => {
+            productInfo[data.product_id] = data.results
+          })
+        }}
+        getData().then( () => {
+          this.setState({productInfo: productInfo})
+          this.setState({relatedProducts: relatedProducts})
+        });
 
     this.props.getNewProductThunk(productId);
     this.getOutfits();
-    axios.get(`http://3.134.102.30/products/${productId}`).then(({ data }) => {
-      this.setState({ current: data });
-    });
+    axios
+      .get(`http://3.134.102.30/products/${productId}`)
+      .then(({ data }) => {
+        this.setState({ current: data });
+      });
     axios
       .get(`http://3.134.102.30/products/${productId}/related`)
       .then(({ data }) => {
@@ -117,8 +121,9 @@ class RelatedProducts extends React.Component {
           this.setState({ productInfo: productInfo });
           this.setState({ relatedProducts: relatedProducts });
         });
-      });
-  }
+    });
+  })
+}
 
   handleAddToOutfit() {
     let currentOutfit = this.state.outfitId.slice();
@@ -131,6 +136,7 @@ class RelatedProducts extends React.Component {
       this.getOutfits();
     });
   }
+  
 
   getOutfits() {
     // retrieves the favorites from the local storage
