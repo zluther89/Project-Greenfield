@@ -37,7 +37,7 @@ let ProductCard = (props) => {
             <Card.Img variant="top" src={photo} className='cardImg'/>
               <Card.Body>       
                 <Card.Text align='left'>{props.product.category}</Card.Text>
-                <a onClick={props.handleClick} className={`cardTitle ${id}`} href="a">{props.product.name}</a>
+                <a onClick={props.handleClick} className={`cardTitle ${id}`} href={`/products/${id}`}>{props.product.name}</a>
                 <Card.Text align='left'>${props.product.default_price}</Card.Text>
                 <Card.Text align='left'>Stars</Card.Text>
                 

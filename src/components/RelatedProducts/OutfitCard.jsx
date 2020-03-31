@@ -33,7 +33,7 @@ let OutfitCard= (props) => {
           <Card.Img variant="top" src={photo} className='cardImg'/>
             <Card.Body>       
               <Card.Text align='left'>{props.outfitNames[props.index].category}</Card.Text>
-              <a onClick={props.handleClick} className={`cardTitle ${id}`} href='a'>{props.outfitNames[props.index].name}</a>
+              <a onClick={props.handleClick} className={`cardTitle ${id}`} href={`/products/${id}`}>{props.outfitNames[props.index].name}</a>
               <Card.Text align='left'>${props.outfitNames[props.index].default_price}</Card.Text>
               <Card.Text align='left'>Stars</Card.Text>
               
