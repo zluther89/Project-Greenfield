@@ -2,19 +2,21 @@ import React from "react";
 import { Check } from "react-feather";
 import ShowStars from "../OverlapWork/ShowStars";
 import $ from "jquery";
+import Axios from "axios";
 class EachReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       ShowAll: false,
-      helpNum:0
+      helpNum: 0
     };
     this.HandleShowAll = this.HandleShowAll.bind(this);
-    this.HandleHelp = this.HandleHelp.bind(this)
+    this.HandleHelp = this.HandleHelp.bind(this);
+    this.HandleReport = this.HandleReport.bind(this)
   }
   componentDidMount() {
     //imgmodal
-    this.setState({ helpNum: this.props.result.helpfulness })
+    this.setState({ helpNum: this.props.result.helpfulness });
     $("#imgModal").on("show.bs.modal", function(e) {
       //get id and link attribute of the clicked element
       // var id = $(e.relatedTarget).data("key");
@@ -33,18 +35,43 @@ class EachReview extends React.Component {
     this.setState({ ShowAll: !this.state.ShowAll });
   }
   HandleHelp() {
-    var data = localStorage.getItem(`${this.props.result.review_id}`);
-    console.log(data);
-
+    var data = localStorage.getItem(
+      `${this.props.result.review_id}`
+    );
     if (data === null) {
       let tempt = this.state.helpNum;
       tempt += 1;
-      this.setState({ helpNum: tempt })
-      localStorage.setItem(`${this.props.result.review_id}`, `${this.props.result.review_id}`);
+      this.setState({ helpNum: tempt });
+      localStorage.setItem(
+        `${this.props.result.review_id}`,
+        `${this.props.result.review_id}`
+      );
+      Axios.put(
+        ` http://3.134.102.30/reviews/helpful/${this.props.result.review_id}`
+      )
+        .then(console.log("send successful"))
+        .catch(err => console.log("fail putting request"));
     } else {
       alert("sorry, one user can only report once!");
     }
-
+  }
+  HandleReport() {
+    var data = localStorage.getItem(
+      `${this.props.result.review_id}`
+    );
+    if (data === null) {
+      localStorage.setItem(
+        `${this.props.result.review_id}`,
+        `${this.props.result.review_id}`
+      );
+      Axios.put(
+        ` http://3.134.102.30/reviews/report/${this.props.result.review_id}`
+      )
+        .then(console.log("send successful"))
+        .catch(err => console.log("fail putting request"));
+    } else {
+      alert("sorry, one user can only report once!");
+    }
   }
   render() {
     let result = this.props.result;
@@ -145,14 +172,16 @@ class EachReview extends React.Component {
         ) : null}
         <div className="row  ml-2 my-4" style={{ height: "5%" }}>
           <p className="RightMargin">Helpful?</p>
-          <u type="button" onClick={this.HandleHelp}>Yes</u>
+          <u type="button" onClick={this.HandleHelp}>
+            Yes
+          </u>
           <p
             style={{ borderRight: "ridge", width: "7%" }}
             className="RightMargin"
           >
             ({this.state.helpNum})
           </p>
-          <u className="RightMargin" type="button">
+          <u className="RightMargin" type="button" onClick={this.HandleReport}>
             Report
           </u>
         </div>

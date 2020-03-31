@@ -42,12 +42,11 @@ class RatingBreakdown extends React.Component{
       }else{this.setState({showCleanAll:true})}
     })
   }
-  GetReviewMet(product_id ) {
-    let product_id = this.props.productId || 3
+  GetReviewMet() {
     let count = 0;
     let sum = 0;
     let pairArr =[]
-    Axios.get(`http://3.134.102.30/reviews/${product_id}/meta`)
+    Axios.get(`http://3.134.102.30/reviews/${window.location.href.split("").slice(31).join()}/meta`)
       .then(response => {
         //get recommend percentage
         //change object to array

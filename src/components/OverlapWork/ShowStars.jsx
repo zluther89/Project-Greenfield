@@ -1,6 +1,7 @@
 import Axios from "axios";
 import React from "react"
 //help function
+
 const TranverStar = star => {
   const Int = parseInt(star)
   const modul = star - Int
@@ -24,13 +25,14 @@ class ShowStars extends React.Component{
     super(props)
     this.state = {
       rating: 0,
-      ratingPercen:0
+      ratingPercen: 0,
+      product_id:this.props.productId
     }
   }
   componentDidMount() {
     this.GetReviewMet()
   }
-  GetReviewMet(product_id = 13) {
+  GetReviewMet() {
     let count = 0;
     let sum = 0
     if (this.props.star) {
@@ -38,7 +40,7 @@ class ShowStars extends React.Component{
       this.setState({ratingPercen:ratingPercen})
 
     } else {
-      Axios.get(`http://3.134.102.30/reviews/${product_id}/meta`)
+      Axios.get(`http://3.134.102.30/reviews/${window.location.href.split("").slice(31).join()}/meta`)
         .then(response => {
           const AllRatings = response.data.ratings
           for (let val in AllRatings) {

@@ -4,6 +4,11 @@ import WriteNewReview from "./WriteNewReview"
 import "bootstrap/dist/js/bootstrap.bundle";
 import IndividualReview from "./individualReview"
 import Axios from "axios"
+import { connect } from "react-redux";
+
+const mapStateToProps = state => ({
+  selectedProduct: state.selectedProduct
+});
 class ReviewsList extends React.Component {
   constructor(props) {
     super(props);
@@ -17,16 +22,16 @@ class ReviewsList extends React.Component {
   componentDidMount() {
     this.GetReviewList()
   }
+
   GetReviewList(sort = "relevance") {
-    let  productId=this.props.productId || 3
     if (this.state.ShowAllReviews) {
-      Axios.get(`http://3.134.102.30/reviews/${productId}/list?sort=${sort}&count=100`)
+      Axios.get(`http://3.134.102.30/reviews/${window.location.href.split("").slice(31).join()}/list?sort=${sort}&count=100`)
         .then(response => {
         this.setState({results:response.data.results})
         })
       .catch(err => console.log("fail getting review list"))
     } else {
-      Axios.get(`http://3.134.102.30/reviews/5/list?sort=${productId}&count=2&page=1`)
+      Axios.get(`http://3.134.102.30/reviews/${window.location.href.split("").slice(31).join()}/list?sort=${sort}&count=2&page=1`)
       .then(response => {
       this.setState({results:response.data.results})
       })
@@ -66,4 +71,4 @@ render() {
     );
   }
 }
-export default ReviewsList;
+export default connect(mapStateToProps)(ReviewsList);
