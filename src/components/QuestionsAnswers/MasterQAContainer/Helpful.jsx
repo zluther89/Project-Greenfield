@@ -27,8 +27,16 @@ class Helpful extends React.Component {
     this.setState({ reported: true });
   }
 
+  setLocalStorageVote(key) {
+    localStorage.setItem(key, true);
+  }
+
+  getLocalStorageItem(key) {
+    return localStorage.getItem(key);
+  }
+
   putHandler(type) {
-    let productID = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT'
+    let productID = "4"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT'
     let handler = type === "report" ? this.postReport : this.postHelpful;
     // (" After clicking on this link, the “Report” link should change to static text that reads “Reported”.");
     let id =
@@ -39,15 +47,33 @@ class Helpful extends React.Component {
     let endpoint =
       this.props.type === "question" ? "question/" + id : "answer/" + id;
 
+    if (handler === this.postHelpful) {
+      if (localStorage.getItem(endpoint) === "true") {
+        return;
+      }
+    }
+
     let updateHandler =
+      this.props.type === "question"
+        ? () => this.props.getQuestionsThunk(productID)
+        : () => this.props.setAnswers();
+
+    let localStorageVoteUpdate =
       type === "report"
-        ? () => this.handleReported()
-        : () => this.props.getQuestionsThunk(productID);
+        ? () => {}
+        : () => {
+            this.setLocalStorageVote(endpoint);
+          };
+
+    console.log(updateHandler);
     handler(endpoint)
       .then(res => {
         console.log(res);
       })
-      .then(updateHandler)
+      .then(() => {
+        updateHandler();
+        localStorageVoteUpdate();
+      })
       .then(console.log("reported"))
       .catch(err => console.log(err));
   }
