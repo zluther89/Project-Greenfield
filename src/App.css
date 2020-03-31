@@ -73,6 +73,7 @@
   background-color: white;
   border: 1px solid black;
 }
+/* kane */
 /* css code for Stars */
 .grade-star-img {
   position: absolute;
@@ -106,6 +107,9 @@
 .RightText {
   text-align: right;
 }
+.CenterText{
+  text-align: center;
+}
 .RightMargin {
   margin-right: 0.5rem;
 }
@@ -120,7 +124,35 @@
   width: 100%;
   height: 100%;
 }
+/* css for product breakdown */
+.Productprogress-bar {
+  border-right: solid 5px #FFF;
+  background-color: grey;
+}
+.Productprogress-bar:last-child {
+  border: none;
+}
+.grade-product-img {
+  position: absolute;
+  border: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(./image/ProductProgressBar.png) no-repeat;
+  -webkit-background-size: 100% 100% !important;
+  background-size: 100% 100% !important;
+}
+.grade-product-bar{
+  position: relative;
+  display: table-cell;
+  overflow: hidden;
+  vertical-align: middle;
+  height: 100%;
 
+}
+
+/* end */
 /* end */
 /*matt*/
 .productReviews {
@@ -311,8 +343,9 @@
   padding: 1px;
   flex-direction: row;
 }
-.masterAnswerContainer {
+.masterQnAContaier {
   display: flex;
+  width: 80%;
 }
 
 .answererContainer {
@@ -327,6 +360,10 @@
 
 .answererContainer div {
   margin: 2%;
+}
+tr {
+  padding: 20px;
+  margin: 20px;
 }
 
 .helpfulContainer {
@@ -510,6 +547,10 @@ button.QnAButton {
   float: left;
 }
 
+#QuestionAnswerSet {
+  border-right: 20px solid red;
+  border: 10px;
+}
 .thumbnailBox {
   height: 90%;
   width: 12%;
