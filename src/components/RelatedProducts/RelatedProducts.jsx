@@ -64,7 +64,29 @@ class RelatedProducts extends React.Component {
   getCurrentFromStore() {}
 
   componentDidMount() {
-    let productId = this.props.id || 3;
+    let productId = this.props.productId || 3
+    this.props.getNewProductThunk(productId)
+    this.getOutfits();
+    axios.get(`http://3.134.102.30/products/${productId}`).then( ({data}) => {
+      this.setState({current: data})
+    })
+    axios.get(`http://3.134.102.30/products/${productId}/related`).then(({ data }) => {
+      let productInfo={};
+      let relatedProducts = [];
+
+      async function getData() {
+        for (let id of data) {
+        await axios.get(`http://3.134.102.30/products/${id}`).then( ({data}) => {
+          relatedProducts.push(data)
+        } )
+        await axios.get(`http://3.134.102.30/products/${id}/styles`).then( ({data}) => {
+          productInfo[data.product_id] = data.results
+        })
+      }}
+      getData().then( () => {
+        this.setState({productInfo: productInfo})
+        this.setState({relatedProducts: relatedProducts})
+      });
 
     this.props.getNewProductThunk(productId);
     this.getOutfits();
