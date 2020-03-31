@@ -101,7 +101,6 @@ class QuestionModal extends React.Component {
 
   componentDidMount() {
     if (this.props.question) {
-      console.log(this.props.question.question_body);
     }
   }
   postAnswer(data) {
@@ -183,7 +182,7 @@ class QuestionModal extends React.Component {
               <Form.Label>{type}</Form.Label>
               <Form.Control
                 type={type}
-                placeholder="Please Enter {type}"
+                placeholder={"Please Enter " + `${type}`}
                 onChange={event => this.handleChange(event, "body")}
               />
             </Form.Group>

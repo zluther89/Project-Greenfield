@@ -17,9 +17,6 @@ class Answers extends React.Component {
       numberToRender: 2
     };
   }
-  componentDidMount() {
-    console.log("question", this.props.question);
-  }
 
   moreAnswersClick() {
     let totalAnswers = this.props.answers.length;
@@ -44,7 +41,8 @@ class Answers extends React.Component {
               <td>
                 <div className="answererContainer">
                   <div>
-                    by {answer.answerer_name}, <div>{date} </div>
+                    {" "}
+                    by {answer.answerer_name}, {date}
                   </div>
                   <Helpful
                     question={this.props.question}

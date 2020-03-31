@@ -139,7 +139,10 @@ export default class SizeQuantitySelect extends React.Component {
           id="button-add-to-bag"
           style={({ float: "left" }, { fontSize: "10px" }, { height: "30" })}
           onClick={() => {
-            this.addToBagFunc();
+            if (this.state.sizeSelected && this.state.sizeAvailable) {
+              this.addToBagFunc();
+            } else {
+            }
           }}
         >
           ADD TO BAG

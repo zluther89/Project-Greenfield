@@ -61,6 +61,7 @@ class RelatedProducts extends React.Component {
     })
   }
 
+
   getCurrentFromStore(){
 
   }
@@ -68,6 +69,7 @@ class RelatedProducts extends React.Component {
 
   componentDidMount() {
     let productId = 4
+
     console.log('selected product', this.props.selectedProduct)
     this.props.getNewProductThunk(productId)
     this.getOutfits();

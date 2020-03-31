@@ -39,7 +39,7 @@ class EachReview extends React.Component {
       <div
         className="p-3 "
         key={result.id}
-        style={{ height: "50%", width: "100%" }}
+        style={{ height: "40%", width: "100%" }}
       >
         {/* img modal */}
         <div
@@ -70,21 +70,21 @@ class EachReview extends React.Component {
             {result.reviewer_name}, {NewDate}
           </div>
         </div>
-        <div className="row my-2 ml-2" style={{ height: "10%" }}>
+        <div className="row my-2 ml-2" style={{ height: "8%" }}>
           <b>{result.summary.slice(0, 60)}</b>
         </div>
         <div
           className="row mt-2 ml-2 "
-          style={{ height: "35%", overflow: "scroll" }}
+          style={{ height: "30%",overflow: "scroll"}}
         >
           <p>
-            {result.body.slice(0, 250)}
-            {this.state.ShowAll ? result.body.slice(250) : null}
+            {result.body.slice(0, 251)}
+            {this.state.ShowAll ? result.body.slice(251) : null}
           </p>
         </div>
 
         <div className="row ml-2 " style={{ height: "5%" }}>
-          {result.body.length > 250 ? (
+          {result.body.length > 251 ? (
             <u type="button" onClick={this.HandleShowAll}>
               {this.state.ShowAll ? "Fold up" : "Show All"}
             </u>
@@ -96,8 +96,8 @@ class EachReview extends React.Component {
             : result.photos.map(photo => {
                 return (
                   <img
-                    height="50"
-                    width="50"
+                    height="50px"
+                    width="50px"
                     type="button"
                     data-toggle="modal"
                     data-target="#imgModal"
@@ -126,7 +126,7 @@ class EachReview extends React.Component {
             <p>{result.response}</p>
           </div>
         ) : null}
-        <div className="row  my-1 ml-2 my-4" style={{ height: "5%" }}>
+        <div className="row  ml-2 my-4" style={{ height: "5%" }}>
           <p className="RightMargin">Helpful?</p>
           <u type="button">Yes</u>
           <p
@@ -139,7 +139,7 @@ class EachReview extends React.Component {
             Report
           </u>
         </div>
-        <hr className="Hrsolid"></hr>
+        <hr className="Hrsolid "></hr>
       </div>
     );
   }

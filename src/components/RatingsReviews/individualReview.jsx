@@ -10,9 +10,18 @@ class individualReview extends React.Component {
     }
   }
   render() {
-    return this.props.results.map( (result,i) => {
+
+    let stars = this.props.stars.map(ele => Number(ele))
+
+    return this.props.results.map(result => {
       //change date to Month DD, YYYY
-      return <EachReview key={i} result={result} />
+      if (stars.length === 0) {
+        return <EachReview result={result} />
+      } else {
+        if (stars.indexOf(result.rating) > -1) {
+          return <EachReview result={result} />
+      }
+      }
     })
 
   }

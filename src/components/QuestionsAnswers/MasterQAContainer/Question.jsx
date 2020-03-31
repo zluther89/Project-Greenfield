@@ -31,7 +31,7 @@ class Question extends React.Component {
   setAnswers() {
     this.getAnswers(this.props.q.question_id).then(res => {
       let sortedAnswers = this.sortAnswers(res.data.results);
-      this.setState({ answers: sortedAnswers }, () => console.log(this.state));
+      this.setState({ answers: sortedAnswers });
     });
   }
 
@@ -48,7 +48,8 @@ class Question extends React.Component {
   render() {
     let questionID = this.props.q.question_id;
     return (
-      <div style={this.state.style} id="test">
+
+      <div style={this.state.style} id="QuestionAnswerSet">
         <table>
         <tbody>
           <tr>
@@ -67,6 +68,7 @@ class Question extends React.Component {
 
             </td>
           </tr>
+
           <Answers
             expandHandler={() => {
               this.expandComponent();
