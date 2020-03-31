@@ -2,7 +2,7 @@ let initialState = {
   selectedProduct: {},
   questionSet: [],
   answerSet: {},
-  numOfQuestions: 4
+  numOfQuestions: 2
 };
 
 const CHANGE_QUESTION_SET = "CHANGE_QUESTION_SET";

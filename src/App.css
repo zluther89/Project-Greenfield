@@ -107,7 +107,7 @@
 .RightText {
   text-align: right;
 }
-.CenterText{
+.CenterText {
   text-align: center;
 }
 .RightMargin {
@@ -126,7 +126,7 @@
 }
 /* css for product breakdown */
 .Productprogress-bar {
-  border-right: solid 5px #FFF;
+  border-right: solid 5px #fff;
   background-color: grey;
 }
 .Productprogress-bar:last-child {
@@ -143,13 +143,12 @@
   -webkit-background-size: 100% 100% !important;
   background-size: 100% 100% !important;
 }
-.grade-product-bar{
+.grade-product-bar {
   position: relative;
   display: table-cell;
   overflow: hidden;
   vertical-align: middle;
   height: 100%;
-
 }
 
 /* end */
@@ -577,4 +576,8 @@ button.QnAButton {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.ToggleAnswers {
+  cursor: pointer;
 }
