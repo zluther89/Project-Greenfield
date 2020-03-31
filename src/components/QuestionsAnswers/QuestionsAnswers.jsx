@@ -56,7 +56,7 @@ class QuestionAnswers extends React.Component {
   }
 
   componentDidMount() {
-    let productId = "4"; //PLACEHOLDER
+    let productId = this.props.productId;
     this.props.getQuestionsThunk(productId);
     setTimeout(() => {
       console.log(this.props);
@@ -82,7 +82,7 @@ class QuestionAnswers extends React.Component {
   render() {
     let button =
       this.props.numOfQuestions === this.props.questionSet.length ||
-      this.props.questionSet.length === 0 ? null : (
+      this.props.questionSet.length < 2 ? null : (
         <Button className="QnAButton" onClick={() => this.clickHandler()}>
           More Answered Questions
         </Button>
