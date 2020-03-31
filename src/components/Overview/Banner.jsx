@@ -21,7 +21,6 @@ export default function Banner() {
   );
 }
 
-
   /* <div>
 {this.props.salePrice ? (
   <p>NOW ${this.props.price - this.props.salePrice}</p>

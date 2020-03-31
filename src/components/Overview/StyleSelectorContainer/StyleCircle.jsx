@@ -4,8 +4,8 @@ export default function StyleCircle(props) {
   const [hovered, setHover] = useState(false);
 
   return (
-    <div class="square">
-      <div class="imageHolder">
+    <div className="square">
+      <div className="imageHolder">
         <img
           className="rounded-circle"
           id="Matt"
@@ -21,7 +21,7 @@ export default function StyleCircle(props) {
             setHover(false);
           }}
         />
-        {hovered && <div class="overlay">✓</div>}
+        {hovered && <div className="overlay">✓</div>}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ export default function StyleTest(props) {
         props.styleData.results.map((style, index) => {
           return (
             <StyleCircle
+              key={index}
               url={style.photos[0].url}
               index={index}
               switchStyle={props.switchStyle}

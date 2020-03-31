@@ -62,8 +62,14 @@ class RelatedProducts extends React.Component {
   }
 
 
+  getCurrentFromStore(){
+
+  }
+
+
   componentDidMount() {
-    let productId = 90
+    let productId = 4
+
     console.log('selected product', this.props.selectedProduct)
     this.props.getNewProductThunk(productId)
     this.getOutfits();
@@ -190,7 +196,8 @@ class RelatedProducts extends React.Component {
             </Card>
             {/* map out the rest of the favorites after pulling favorites */}
             {this.state.outfitId.map( (outfitId,i) => { 
-              if(this.state.outfitLoaded){
+              if(this.state.outfitLoaded)
+              {
                 return (
                       <OutfitCard 
                         key={i}
@@ -200,9 +207,8 @@ class RelatedProducts extends React.Component {
                         outfitInfo={this.state.outfitInfo}
                         handleDelete={this.handleDelete}
                       /> 
-                
                 )
-              }     
+              }
             })}
           </CardDeck>
         <br></br>

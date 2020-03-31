@@ -54,10 +54,10 @@ class QuestionAnswers extends React.Component {
   }
 
   render() {
-    let styles = {
-      maxHeight: `${window.innerHeight * 0.8}px`,
-      overflowY: "scroll"
-    };
+    // let styles = {
+    //   maxHeight: `${window.innerHeight * 0.8}px`,
+    //   overflowY: "scroll"
+    // };
 
     let button =
       this.props.numOfQuestions === this.props.questionSet.length ||

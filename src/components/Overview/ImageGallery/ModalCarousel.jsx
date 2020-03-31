@@ -12,7 +12,7 @@ const ControlledCarousel = props => {
     <Carousel activeIndex={index} onSelect={handleSelect}>
       {props.styleData.results[props.style].photos.map((picture, index) => {
         return (
-          <Carousel.Item className="modalItem">
+          <Carousel.Item key={index} className="modalItem">
             <img className="modalImage" src={picture.url} alt="modalImg" />
           </Carousel.Item>
         );

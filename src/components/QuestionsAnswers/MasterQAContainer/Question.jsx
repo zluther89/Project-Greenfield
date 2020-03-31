@@ -2,7 +2,7 @@ import React from "react";
 import Answers from "./Answers";
 import Helpful from "./Helpful";
 import Axios from "axios";
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 
 class Question extends React.Component {
   constructor(props) {
@@ -48,14 +48,15 @@ class Question extends React.Component {
   render() {
     let questionID = this.props.q.question_id;
     return (
+
       <div style={this.state.style} id="QuestionAnswerSet">
         <table>
         <tbody>
           <tr>
             <td>Q:</td>
             <td>{this.props.q.question_body}</td>
-            <td>
-              <div className="helpfulContainer">
+            <td className="helpfulContainer">
+            
                 <Helpful
                   className="helpfulContainer"
                   questionID={questionID}
@@ -64,7 +65,7 @@ class Question extends React.Component {
                   setAnswers={this.setAnswers}
                   question={this.props.q}
                 />
-              </div>
+
             </td>
           </tr>
 
