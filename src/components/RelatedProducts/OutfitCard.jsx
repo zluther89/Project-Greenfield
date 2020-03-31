@@ -1,7 +1,7 @@
 import React from "react";
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import stars from '../OverlapWork/ShowStars'
+// import stars from '../OverlapWork/ShowStars'
 
 let OutfitCard= (props) => {
   let id = props.outfitId
@@ -22,7 +22,7 @@ let OutfitCard= (props) => {
           <Card.Img variant="top" src={photo}/>
             <Card.Body>       
               <Card.Text align='left'>{props.outfitNames[props.index].category}</Card.Text>
-              <a onClick={props.handleClick} className={`cardTitle ${id}`}>{props.outfitNames[props.index].name}</a>
+              <a onClick={props.handleClick} className={`cardTitle ${id}`} href='a'>{props.outfitNames[props.index].name}</a>
               <Card.Text align='left'>${props.outfitNames[props.index].default_price}</Card.Text>
               <Card.Text align='left'>Stars</Card.Text>
               

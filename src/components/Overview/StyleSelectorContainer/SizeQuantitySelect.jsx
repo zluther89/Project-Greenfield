@@ -31,6 +31,7 @@ export default class SizeQuantitySelect extends React.Component {
         if (amount[index] > 0) {
           return (
             <Dropdown.Item
+              key={index}
               href="#/action-1"
               onClick={() => {
                 this.setState({
@@ -45,6 +46,7 @@ export default class SizeQuantitySelect extends React.Component {
         } else {
           return (
             <Dropdown.Item
+              key={index}
               href="#/action-1"
               onClick={() => {
                 this.setState({
@@ -81,7 +83,7 @@ export default class SizeQuantitySelect extends React.Component {
 
   render() {
     return (
-      <span class="checkoutButtons">
+      <span className="checkoutButtons">
         {" "}
         <DropdownButton
           id="dropdown-basic-button-size"

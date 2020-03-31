@@ -194,7 +194,8 @@ class RelatedProducts extends React.Component {
             </Card>
             {/* map out the rest of the favorites after pulling favorites */}
             {this.state.outfitId.map( (outfitId,i) => { 
-              if(this.state.outfitLoaded){
+              if(this.state.outfitLoaded)
+              {
                 return (
                       <OutfitCard 
                         key={i}
@@ -204,9 +205,8 @@ class RelatedProducts extends React.Component {
                         outfitInfo={this.state.outfitInfo}
                         handleDelete={this.handleDelete}
                       /> 
-                
                 )
-              }     
+              }
             })}
           </CardDeck>
         <br></br>

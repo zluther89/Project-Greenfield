@@ -43,15 +43,15 @@ class EachReview extends React.Component {
       >
         {/* img modal */}
         <div
-          class="modal fade"
+          className="modal fade"
           id="imgModal"
-          tabindex="-1"
+          tabIndex="-1"
           role="dialog"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
-              <input type="image" src="src" className="EachPhoto"/>
+              <input type="image" src="src" className="EachPhoto" alt=""/>
                 <button
                   type="button"
                   className="btn btn-secondary"
@@ -104,9 +104,10 @@ class EachReview extends React.Component {
                     data-src={photo.url}
                     key={photo.id}
                     src={photo.url}
-                    alt="Whoops, photo disappears"
+                    alt="Whoops, disappears"
                     className="img-thumbnail"
-                  ></img>
+                  >
+                  </img>
                 );
               })}
         </div>

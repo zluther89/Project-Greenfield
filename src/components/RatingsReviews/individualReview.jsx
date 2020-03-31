@@ -10,9 +10,9 @@ class individualReview extends React.Component {
     }
   }
   render() {
-    return this.props.results.map(result => {
+    return this.props.results.map( (result,i) => {
       //change date to Month DD, YYYY
-      return <EachReview result={result} />
+      return <EachReview key={i} result={result} />
     })
 
   }

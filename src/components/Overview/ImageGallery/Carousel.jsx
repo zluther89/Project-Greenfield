@@ -36,7 +36,6 @@ export default function ImageCarousel(){
   }
 }
 
-{
   /* <div class="row hidden-xs" id="slider-thumbs">
 <!-- Bottom switcher of slider -->
 <ul class="hide-bullets">
@@ -65,4 +64,4 @@ export default function ImageCarousel(){
     </li>
 </ul>                 
 </div> */
-}
+

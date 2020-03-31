@@ -40,7 +40,7 @@ export default function StyleSelectorContainer(props) {
           styleClicked={props.styleClicked}
         />
       </div>
-      <div class="socialLinks">
+      <div className="socialLinks">
         <SocialLinks />
       </div>
     </div>
