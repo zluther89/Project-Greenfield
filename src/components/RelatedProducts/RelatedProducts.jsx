@@ -68,7 +68,7 @@ class RelatedProducts extends React.Component {
 
 
   componentDidMount() {
-    let productId = 4
+    let productId = 3
 
     // console.log('selected product', this.props.selectedProduct)
     this.props.getNewProductThunk(productId)
@@ -150,12 +150,10 @@ class RelatedProducts extends React.Component {
   render() {
     return (
       <div>
+        <br></br>
         <h2 align='left'>Related Products</h2>
-        {/* <Carousel
-          autoPlay={false}
-          data-interval={false}
-          id="relatedCarousel"
-        >   */}
+        <br></br>
+      
         {this.state.showModal ? 
         <ComparisonModal 
           product={this.state.current}
@@ -163,7 +161,8 @@ class RelatedProducts extends React.Component {
           show={this.state.showModal}
           onHide={() => {this.setState({showModal: false})}}
         /> : <div></div>}
-          <CardDeck>  
+        <div className='productCarouselContainer'>
+          <div className='productCarousel'>
 
             {this.state.relatedProducts.map( (product,i) => {      
               return (
@@ -177,40 +176,52 @@ class RelatedProducts extends React.Component {
                     /> 
               )
             })}
-          </CardDeck>
-   
-        {/* </Carousel> */}
+          </div>
+        </div>
+          <br></br>
         <h2> Your Outfit </h2>
-          <CardDeck>  
-            {/* add an outfit card here */}
-            <Card
-              style={{ width: '18rem' }}
-            >
-              <Button  
-                    id = "addButton"
-                    variant="outline-primary"
-                    onClick={this.handleAddToOutfit}
-                    >
-                    +
-              </Button>{' '}
-            </Card>
-            {/* map out the rest of the favorites after pulling favorites */}
-            {this.state.outfitId.map( (outfitId,i) => { 
-              if(this.state.outfitLoaded)
-              {
-                return (
-                      <OutfitCard 
-                        key={i}
-                        index={i}
-                        outfitId={outfitId}
-                        outfitNames={this.state.outfitNames}
-                        outfitInfo={this.state.outfitInfo}
-                        handleDelete={this.handleDelete}
-                      /> 
-                )
-              }
-            })}
-          </CardDeck>
+          <br></br>
+          <div className='productCarouselContainer'>
+            <div className='productCarousel'>
+              <Card
+                style={
+                  { 
+                    boxShadow : `0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)`,
+                    img: {
+                      display: 'block'
+                    },
+                    width: '15rem',
+                    height: '30rem',
+                    marginRight: '2%'
+                  }
+                }
+              >
+                <Button  
+                      id = "addButton"
+                      variant="outline-primary"
+                      onClick={this.handleAddToOutfit}
+                      >
+                      +
+                </Button>{' '}
+              </Card>
+              {/* map out the rest of the favorites after pulling favorites */}
+              {this.state.outfitId.map( (outfitId,i) => { 
+                if(this.state.outfitLoaded)
+                {
+                  return (
+                        <OutfitCard 
+                          key={i}
+                          index={i}
+                          outfitId={outfitId}
+                          outfitNames={this.state.outfitNames}
+                          outfitInfo={this.state.outfitInfo}
+                          handleDelete={this.handleDelete}
+                        /> 
+                  )
+                }
+              })}
+            </div>
+          </div>
         <br></br>
 
       </div>
