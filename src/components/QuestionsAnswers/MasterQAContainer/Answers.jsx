@@ -24,13 +24,10 @@ class Answers extends React.Component {
         ? 2
         : this.props.answers.length;
     let toggleExpand = this.state.expandedAnswers === true ? false : true;
-    this.setState(
-      {
-        numberToRender: totalAnswers,
-        expandedAnswers: toggleExpand
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      numberToRender: totalAnswers,
+      expandedAnswers: toggleExpand
+    });
     this.props.expandHandler();
   }
 

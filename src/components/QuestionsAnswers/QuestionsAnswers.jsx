@@ -56,7 +56,7 @@ class QuestionAnswers extends React.Component {
   }
 
   componentDidMount() {
-    let productId = "4"; //PLACEHOLDER
+    let productId = this.props.productId;
     this.props.getQuestionsThunk(productId);
     setTimeout(() => {
       console.log(this.props);
