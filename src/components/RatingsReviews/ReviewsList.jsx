@@ -1,5 +1,5 @@
 import React from "react";
-import { Plus } from "react-feather";
+import WriteNewReview from "./WriteNewReview"
 //import dropdown component
 import "bootstrap/dist/js/bootstrap.bundle";
 import IndividualReview from "./individualReview"
@@ -50,22 +50,15 @@ render() {
             </select>
           </div>
         </div>
-        <div className="row " style={{ "overflow": "scroll", "height": "700px" }}><IndividualReview stars={this.props.StarFilter} results={this.state.results} /></div>
+        <div className="row " style={{ "overflow": "scroll", "height": "800px" }}><IndividualReview stars={this.props.StarFilter} results={this.state.results} /></div>
         <div className="row justify-content-start RatingReviewsFoot ">
         <div className="col-4" >
             <button className="btn btn-outline-secondary btn-lg  " onClick={this.ReGetReview}>
               <strong>{this.state.ShowAllReviews ?"FOLD REVIEWS UP": "MORE REVIEWS"}</strong>
             </button>
         </div>
-        <div className="col-4" >
-            <button className="btn btn-outline-secondary btn-lg RatingButton">
-              {" "}
-              <strong className="RightMargin">ADD A REVIEW</strong>{" "}
-              <Plus
-                size={20}
-                style={{ "marginBottom": "0.3em" }}
-              />
-            </button>
+          <div className="col-4" >
+            <WriteNewReview />
           </div>
           </div>
       </div>
