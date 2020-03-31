@@ -136,7 +136,7 @@ class RelatedProducts extends React.Component {
       this.getOutfits();
     });
   }
-  
+
 
   getOutfits() {
     // retrieves the favorites from the local storage

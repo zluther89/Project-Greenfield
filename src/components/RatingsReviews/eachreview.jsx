@@ -1,18 +1,23 @@
 import React from "react";
 import { Check } from "react-feather";
 import ShowStars from "../OverlapWork/ShowStars";
-import $ from "jquery"
+import $ from "jquery";
+import Axios from "axios";
 class EachReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ShowAll: false
+      ShowAll: false,
+      helpNum: 0
     };
     this.HandleShowAll = this.HandleShowAll.bind(this);
+    this.HandleHelp = this.HandleHelp.bind(this);
+    this.HandleReport = this.HandleReport.bind(this)
   }
   componentDidMount() {
     //imgmodal
-    $('#imgModal').on('show.bs.modal', function(e) {
+    this.setState({ helpNum: this.props.result.helpfulness });
+    $("#imgModal").on("show.bs.modal", function(e) {
       //get id and link attribute of the clicked element
       // var id = $(e.relatedTarget).data("key");
       var src = $(e.relatedTarget).data("src");
@@ -20,16 +25,55 @@ class EachReview extends React.Component {
       console.log(src);
 
       // $(e.currentTarget).find('input[name="id"]').val(id);
-      $(e.currentTarget).find('input[src="src"]').attr("src",src)
-     });
+      $(e.currentTarget)
+        .find('input[src="src"]')
+        .attr("src", src);
+    });
     //triggered when modal is about to be shown
   }
   HandleShowAll() {
     this.setState({ ShowAll: !this.state.ShowAll });
   }
+  HandleHelp() {
+    var data = localStorage.getItem(
+      `${this.props.result.review_id}`
+    );
+    if (data === null) {
+      let tempt = this.state.helpNum;
+      tempt += 1;
+      this.setState({ helpNum: tempt });
+      localStorage.setItem(
+        `${this.props.result.review_id}`,
+        `${this.props.result.review_id}`
+      );
+      Axios.put(
+        ` http://3.134.102.30/reviews/helpful/${this.props.result.review_id}`
+      )
+        .then(console.log("send successful"))
+        .catch(err => console.log("fail putting request"));
+    } else {
+      alert("sorry, one user can only report once!");
+    }
+  }
+  HandleReport() {
+    var data = localStorage.getItem(
+      `${this.props.result.review_id}`
+    );
+    if (data === null) {
+      localStorage.setItem(
+        `${this.props.result.review_id}`,
+        `${this.props.result.review_id}`
+      );
+      Axios.put(
+        ` http://3.134.102.30/reviews/report/${this.props.result.review_id}`
+      )
+        .then(console.log("send successful"))
+        .catch(err => console.log("fail putting request"));
+    } else {
+      alert("sorry, one user can only report once!");
+    }
+  }
   render() {
-
-
     let result = this.props.result;
     var date = new Date(`${result.date}`);
     const options = { month: "long", day: "numeric", year: "numeric" };
@@ -51,13 +95,14 @@ class EachReview extends React.Component {
         >
           <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
-              <input type="image" src="src" className="EachPhoto" alt=""/>
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-dismiss="modal"
-                >Close
-                </button>
+              <input type="image" src="src" className="EachPhoto" alt="" />
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
@@ -75,7 +120,7 @@ class EachReview extends React.Component {
         </div>
         <div
           className="row mt-2 ml-2 "
-          style={{ height: "30%",overflow: "scroll"}}
+          style={{ height: "30%", overflow: "scroll" }}
         >
           <p>
             {result.body.slice(0, 251)}
@@ -106,8 +151,7 @@ class EachReview extends React.Component {
                     src={photo.url}
                     alt="Whoops, disappears"
                     className="img-thumbnail"
-                  >
-                  </img>
+                  ></img>
                 );
               })}
         </div>
@@ -128,14 +172,16 @@ class EachReview extends React.Component {
         ) : null}
         <div className="row  ml-2 my-4" style={{ height: "5%" }}>
           <p className="RightMargin">Helpful?</p>
-          <u type="button">Yes</u>
+          <u type="button" onClick={this.HandleHelp}>
+            Yes
+          </u>
           <p
             style={{ borderRight: "ridge", width: "7%" }}
             className="RightMargin"
           >
-            ({result.helpfulness})
+            ({this.state.helpNum})
           </p>
-          <u className="RightMargin" type="button">
+          <u className="RightMargin" type="button" onClick={this.HandleReport}>
             Report
           </u>
         </div>
