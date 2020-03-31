@@ -53,10 +53,11 @@ class Answers extends React.Component {
               <td></td>
               <td>
                 <div className="answererContainer">
-                  <div>
-                    {" "}
-                    by {answererName}, {date}
-                  </div>
+                  <div></div>
+                  <div>by</div>
+                  <div> {answererName},</div>
+                  <div> {date}</div>
+
                   <Helpful
                     question={this.props.question}
                     answerId={answer.answer_id}
