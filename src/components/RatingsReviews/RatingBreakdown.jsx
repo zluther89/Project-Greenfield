@@ -16,8 +16,7 @@ class RatingBreakdown extends React.Component{
       count: 0,
       rates: [],
       showCleanAll: false,
-      characteristics: [],
-      pairArr:[]
+      characteristics: []
 
     }
     this.HandleRateFilter = this.HandleRateFilter.bind(this)
