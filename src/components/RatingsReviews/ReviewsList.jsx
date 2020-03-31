@@ -18,14 +18,15 @@ class ReviewsList extends React.Component {
     this.GetReviewList()
   }
   GetReviewList(sort = "relevance") {
+    let  productId=this.props.productId || 3
     if (this.state.ShowAllReviews) {
-      Axios.get(`http://3.134.102.30/reviews/5/list?sort=${sort}&count=10000`)
+      Axios.get(`http://3.134.102.30/reviews/${productId}/list?sort=${sort}&count=100`)
         .then(response => {
         this.setState({results:response.data.results})
         })
       .catch(err => console.log("fail getting review list"))
     } else {
-      Axios.get(`http://3.134.102.30/reviews/5/list?sort=${sort}&count=2&page=1`)
+      Axios.get(`http://3.134.102.30/reviews/5/list?sort=${productId}&count=2&page=1`)
       .then(response => {
       this.setState({results:response.data.results})
       })

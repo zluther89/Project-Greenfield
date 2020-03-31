@@ -28,13 +28,39 @@ class QuestionAnswers extends React.Component {
       style: {
         height: `250px`,
         overflowY: "scroll"
-      }
+      },
+      searchParams: "",
+      filteredQuestions: [],
+      searched: false
     };
+    this.searchHandler = this.searchHandler.bind(this);
+  }
+
+  searchHandler(event) {
+    let params = event.target.value.toLowerCase();
+    if (params.length >= 3) {
+      let filteredArr = this.props.questionSet.reduce((acc, question) => {
+        let questionBody = question.question_body.toLowerCase();
+        if (questionBody.indexOf(params) !== -1) {
+          acc.push(question);
+        }
+        return acc;
+      }, []);
+      this.setState({ filteredQuestions: filteredArr, searched: true }, () => {
+        console.log("master state", this.state);
+      });
+    }
+    if (params.length < 3 && this.state.searched === true) {
+      this.setState({ filteredQuestions: [], searched: false });
+    }
   }
 
   componentDidMount() {
-    let productId = "2"; //PLACEHOLDER
+    let productId = "4"; //PLACEHOLDER
     this.props.getQuestionsThunk(productId);
+    setTimeout(() => {
+      console.log(this.props);
+    }, 1000);
   }
 
   clickHandler() {
@@ -54,11 +80,6 @@ class QuestionAnswers extends React.Component {
   }
 
   render() {
-    // let styles = {
-    //   maxHeight: `${window.innerHeight * 0.8}px`,
-    //   overflowY: "scroll"
-    // };
-
     let button =
       this.props.numOfQuestions === this.props.questionSet.length ||
       this.props.questionSet.length === 0 ? null : (
@@ -69,11 +90,13 @@ class QuestionAnswers extends React.Component {
     return (
       <div className="masterQnAContaier">
         <Container>
-          <SearchBar />
+          <SearchBar handler={this.searchHandler} />
           <div style={this.state.style}>
             <Container>
               {" "}
-              <QuestionsContainer />
+              <QuestionsContainer
+                filteredQuestions={this.state.filteredQuestions}
+              />
             </Container>
           </div>
           {button}

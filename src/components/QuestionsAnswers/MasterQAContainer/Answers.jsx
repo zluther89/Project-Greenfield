@@ -13,14 +13,24 @@ class Answers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answers: [],
-      numberToRender: 2
+      numberToRender: 2,
+      expandedAnswers: false
     };
   }
 
-  moreAnswersClick() {
-    let totalAnswers = this.props.answers.length;
-    this.setState({ numberToRender: totalAnswers });
+  toggleAnswers() {
+    let totalAnswers =
+      this.state.numberToRender === this.props.answers.length
+        ? 2
+        : this.props.answers.length;
+    let toggleExpand = this.state.expandedAnswers === true ? false : true;
+    this.setState(
+      {
+        numberToRender: totalAnswers,
+        expandedAnswers: toggleExpand
+      },
+      () => console.log(this.state)
+    );
     this.props.expandHandler();
   }
 
@@ -30,6 +40,12 @@ class Answers extends React.Component {
       .map((answer, index) => {
         let date = moment(answer.date).format("MMMM Do YYYY");
         let title = index === 0 ? "A:" : null;
+        let answererName =
+          answer.answerer_name === "Seller" ? (
+            <strong>Seller</strong>
+          ) : (
+            answer.answerer_name
+          );
         return (
           <>
             <tr key={answer.answer_id}>
@@ -42,7 +58,7 @@ class Answers extends React.Component {
                 <div className="answererContainer">
                   <div>
                     {" "}
-                    by {answer.answerer_name}, {date}
+                    by {answererName}, {date}
                   </div>
                   <Helpful
                     question={this.props.question}
@@ -61,15 +77,25 @@ class Answers extends React.Component {
     let moreAnswersLink =
       this.props.answers.length > 2 &&
       this.props.answers.length > this.state.numberToRender ? (
-        <div className="loadMoreAnswers">Load More Answers</div>
+        <div className="ToggleAnswers">Load More Answers</div>
       ) : null;
+
+    let collapseAnswersLink =
+      this.state.expandedAnswers === true ? (
+        <div className="ToggleAnswers">Collapse answers</div>
+      ) : null;
+
+    // When expanded, the button to “See more answers” should change to read “Collapse answers”.
 
     return (
       <>
         {answers}
         <tr>
           <td></td>
-          <td onClick={() => this.moreAnswersClick()}>{moreAnswersLink}</td>
+          <td onClick={() => this.toggleAnswers()}>
+            {moreAnswersLink}
+            {collapseAnswersLink}
+          </td>
         </tr>
       </>
     );

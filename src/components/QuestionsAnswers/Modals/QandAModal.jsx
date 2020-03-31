@@ -36,15 +36,6 @@ class QuestionModal extends React.Component {
   }
 
   //button handlers
-  handleSelectFile(event) {
-    let newfiles = [...this.state.files, event.target.files[0]];
-    let newfilePreviewState = [
-      ...this.state.filePreview,
-      URL.createObjectURL(event.target.files[0])
-    ];
-    this.setState({ files: newfiles });
-    this.setState({ filePreview: newfilePreviewState });
-  }
 
   handleChange(event, stateprop) {
     let stateObj = {};
@@ -59,7 +50,7 @@ class QuestionModal extends React.Component {
 
   handleSubmit() {
     let type = this.props.type === "question" ? "Question" : "Answer";
-    let productID = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    let productID = "4"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
     let data = {
       body: this.state.body,
       email: this.state.email,
@@ -110,7 +101,7 @@ class QuestionModal extends React.Component {
 
   //Need to grab product id from redux store or url
   postQuestion(params) {
-    let productId = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    let productId = "4"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
     return Axios.post(`http://3.134.102.30/qa/${productId}?`, params);
   }
 
@@ -164,6 +155,7 @@ class QuestionModal extends React.Component {
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="email"
+                maxLength="60"
                 placeholder="Please Enter Email"
                 onChange={event => this.handleChange(event, "email")}
               />
@@ -173,6 +165,7 @@ class QuestionModal extends React.Component {
               <Form.Label>Nickname</Form.Label>
               <Form.Control
                 type="nickname"
+                maxLength="60"
                 placeholder="Example: jackson11!"
                 onChange={event => this.handleChange(event, "name")}
               />
@@ -182,6 +175,8 @@ class QuestionModal extends React.Component {
               <Form.Label>{type}</Form.Label>
               <Form.Control
                 type={type}
+                as="textarea"
+                maxLength="1000"
                 placeholder={`Please Enter: ${type}`}
                 onChange={event => this.handleChange(event, "body")}
               />
@@ -243,3 +238,13 @@ export default connect(mapStateToProps, mapDispatchToProps)(QuestionModal);
 //     />
 //   </Form.Group>
 // ) : null;
+
+// handleSelectFile(event) {
+//   let newfiles = [...this.state.files, event.target.files[0]];
+//   let newfilePreviewState = [
+//     ...this.state.filePreview,
+//     URL.createObjectURL(event.target.files[0])
+//   ];
+//   this.setState({ files: newfiles });
+//   this.setState({ filePreview: newfilePreviewState });
+// }

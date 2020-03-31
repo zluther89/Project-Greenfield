@@ -17,6 +17,7 @@ class SearchBar extends React.Component {
               type="question"
               placeholder=" Have a Question? Search for answers..."
               size="sm"
+              onChange={e => this.props.handler(e)}
             />
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>

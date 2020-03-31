@@ -32,8 +32,8 @@ export default class RatingReviews extends React.Component {
           <div className="col-3 ">RATINGS & REVIEWS</div>
         </div>
         <div className="row RatingReviewsBody  " style={{"height":"100%"}}>
-          <div className="col-4"><RatingBreakdown GetTotalCount={this.GetTotalCount} GetStarFilter={this.GetStarFilter}/></div>
-          <div className="col-8 " >< ReviewsList totalCount={this.state.totalCount} StarFilter={this.state.StarFilter}/></div>
+          <div className="col-4"><RatingBreakdown GetTotalCount={this.GetTotalCount}  productId={this.props.productId} GetStarFilter={this.GetStarFilter}/></div>
+          <div className="col-8 " >< ReviewsList totalCount={this.state.totalCount} productId={this.props.productId}StarFilter={this.state.StarFilter}/></div>
         </div>
         <div className="row justify-content-end RatingReviewsFoot ">
         </div>

@@ -9,6 +9,7 @@ import { getNewProductThunk } from "../../components/Redux/ThunkMiddleware";
 
 import { connect } from "react-redux";
 import ImageModal from "../Overview/ImageGallery/ImageModal";
+import queryString from "query-string";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -17,7 +18,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => ({
-  currentProduct: state.selectedProduct
+  selectedProduct: state.selectedProduct
 });
 
 class Overview extends React.Component {
@@ -50,21 +51,22 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    return this.props.getNewProductThunk("3").then(response => {
-      let productId = this.props.currentProduct.id;
-      axios
-        .get(`http://3.134.102.30/products/${productId}`)
-        .then(response => {
-          this.setState({
-            data: response.data,
-            currentPrice: response.data.default_price
-          });
-          return axios.get(`http://3.134.102.30/products/${productId}/styles`); // using response.data
-        })
-        .then(response => {
-          this.setState({ styleData: response.data });
+    let productId = this.props.id || 3;
+
+    this.props.getNewProductThunk(productId);
+
+    axios
+      .get(`http://3.134.102.30/products/${productId}`)
+      .then(response => {
+        this.setState({
+          data: response.data,
+          currentPrice: response.data.default_price
         });
-    });
+        return axios.get(`http://3.134.102.30/products/${productId}/styles`); // using response.data
+      })
+      .then(response => {
+        this.setState({ styleData: response.data });
+      });
   }
 
   render() {

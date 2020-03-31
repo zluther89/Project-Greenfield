@@ -31,12 +31,23 @@ class Question extends React.Component {
   setAnswers() {
     this.getAnswers(this.props.q.question_id).then(res => {
       let sortedAnswers = this.sortAnswers(res.data.results);
-      this.setState({ answers: sortedAnswers });
+      let sellersFirstArray = [];
+      let othersArray = [];
+      sortedAnswers.forEach(answer => {
+        if (answer.answerer_name === "Seller") {
+          sellersFirstArray.push(answer);
+        } else {
+          othersArray.push(answer);
+        }
+      });
+      let answerSet = sellersFirstArray.concat(othersArray);
+      this.setState({ answers: answerSet });
     });
   }
 
   componentDidMount() {
     this.setAnswers();
+    setTimeout(() => console.log("answers state", this.state), 500);
   }
 
   sortAnswers(array) {
@@ -48,15 +59,13 @@ class Question extends React.Component {
   render() {
     let questionID = this.props.q.question_id;
     return (
-
       <div style={this.state.style} id="QuestionAnswerSet">
         <table>
-        <tbody>
-          <tr>
-            <td>Q:</td>
-            <td>{this.props.q.question_body}</td>
-            <td className="helpfulContainer">
-            
+          <tbody>
+            <tr>
+              <td>Q:</td>
+              <td>{this.props.q.question_body}</td>
+              <td className="helpfulContainer">
                 <Helpful
                   className="helpfulContainer"
                   questionID={questionID}
@@ -65,19 +74,18 @@ class Question extends React.Component {
                   setAnswers={this.setAnswers}
                   question={this.props.q}
                 />
+              </td>
+            </tr>
 
-            </td>
-          </tr>
-
-          <Answers
-            expandHandler={() => {
-              this.expandComponent();
-            }}
-            answers={this.state.answers}
-            key={questionID}
-            setAnswers={this.setAnswers}
-          />
-        </tbody>
+            <Answers
+              expandHandler={() => {
+                this.expandComponent();
+              }}
+              answers={this.state.answers}
+              key={questionID}
+              setAnswers={this.setAnswers}
+            />
+          </tbody>
         </table>
       </div>
     );
