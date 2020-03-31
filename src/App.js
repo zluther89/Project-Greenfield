@@ -12,10 +12,10 @@ function App(props) {
   } = props;
   return (
     <div className="App">
-      <Overview />
-      <RelatedProducts id={params.id} />
-      <QuestionAnswers />
-      <RatingReviews />
+      <Overview productId={params.id} />
+      <RelatedProducts productId={params.id} />
+      <QuestionAnswers productId={params.id} />
+      <RatingReviews productId={params.id} />
     </div>
   );
 }
