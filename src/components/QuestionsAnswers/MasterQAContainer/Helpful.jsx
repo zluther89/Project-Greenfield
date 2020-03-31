@@ -14,7 +14,8 @@ class Helpful extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hasVoted: false //useless
+      hasVoted: false, //useless
+      reported: false
     };
   }
 
@@ -22,10 +23,14 @@ class Helpful extends React.Component {
     return Axios.put(`http://3.134.102.30/qa/${endpoint}/helpful`);
   }
 
+  handleReported() {
+    this.setState({ reported: true });
+  }
+
   putHandler(type) {
     let productID = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT'
     let handler = type === "report" ? this.postReport : this.postHelpful;
-
+    // (" After clicking on this link, the “Report” link should change to static text that reads “Reported”.");
     let id =
       this.props.type === "question"
         ? this.props.questionID
@@ -35,9 +40,9 @@ class Helpful extends React.Component {
       this.props.type === "question" ? "question/" + id : "answer/" + id;
 
     let updateHandler =
-      this.props.type === "question"
-        ? () => this.props.getQuestionsThunk(productID)
-        : () => this.props.setAnswers();
+      type === "report"
+        ? () => this.handleReported()
+        : () => this.props.getQuestionsThunk(productID);
     handler(endpoint)
       .then(res => {
         console.log(res);
@@ -52,6 +57,21 @@ class Helpful extends React.Component {
   }
 
   render() {
+    let report =
+      this.state.reported === false ? (
+        <div
+          className="link"
+          onClick={() => {
+            this.putHandler("report");
+          }}
+        >
+          Report
+        </div>
+      ) : (
+        <div>
+          <strong>Reported</strong>
+        </div>
+      );
     let answer =
       this.props.type === "question" ? (
         <>
@@ -72,14 +92,7 @@ class Helpful extends React.Component {
         </div>
         <div>({this.props.helpful})</div> <div>|</div>
         {answer}
-        <div
-          className="link"
-          onClick={() => {
-            this.putHandler("report");
-          }}
-        >
-          Report
-        </div>
+        {report}
       </>
     );
   }
