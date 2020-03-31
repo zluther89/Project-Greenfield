@@ -17,7 +17,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => ({
   questionSet: state.questionSet,
-  numOfQuestions: state.numOfQuestions
+  numOfQuestions: state.numOfQuestions,
+  selectedProduct: state.selectedProduct
 });
 
 class QuestionAnswers extends React.Component {
@@ -66,14 +67,10 @@ class QuestionAnswers extends React.Component {
         </Button>
       );
     return (
-      <div>
+      <div className="masterQnAContaier">
         <Container>
           <SearchBar />
-          <div
-            style={this.state.style}
-            id="masterQContainer"
-            className="masterQContainer"
-          >
+          <div style={this.state.style}>
             <Container>
               {" "}
               <QuestionsContainer />

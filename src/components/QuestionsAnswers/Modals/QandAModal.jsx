@@ -101,7 +101,6 @@ class QuestionModal extends React.Component {
 
   componentDidMount() {
     if (this.props.question) {
-      console.log(this.props.question.question_body);
     }
   }
   postAnswer(data) {

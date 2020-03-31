@@ -311,8 +311,9 @@
   padding: 1px;
   flex-direction: row;
 }
-.masterAnswerContainer {
+.masterQnAContaier {
   display: flex;
+  width: 80%;
 }
 
 .answererContainer {
@@ -327,6 +328,10 @@
 
 .answererContainer div {
   margin: 2%;
+}
+tr {
+  padding: 20px;
+  margin: 20px;
 }
 
 .helpfulContainer {
@@ -515,4 +520,9 @@ button.QnAButton {
 
 .checkoutButtons {
   float: left;
+}
+
+#QuestionAnswerSet {
+  border-right: 20px solid red;
+  border: 10px;
 }
