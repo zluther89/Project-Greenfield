@@ -15,8 +15,9 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = (state, ownProps) => {
   return {
     questionSet: state.questionSet,
-    onHide: ownProps.onHide,
-    questionID: ownProps.questionID
+    selectedProduct: state.selectedProduct
+    // onHide: ownProps.onHide,
+    // questionID: ownProps.questionID
   };
 };
 
@@ -31,6 +32,7 @@ class QuestionModal extends React.Component {
       files: [],
       filePreview: []
     };
+    this.postAnswer = this.postAnswer.bind(this);
   }
 
   //button handlers
@@ -56,54 +58,96 @@ class QuestionModal extends React.Component {
   }
 
   handleSubmit() {
-    let id = "4"; //change to product i
-    let questionObj = {
+    let type = this.props.type === "question" ? "Question" : "Answer";
+    let productID = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    let data = {
       body: this.state.body,
       email: this.state.email,
       name: this.state.name
     };
-    this.postQuestion(questionObj)
-      .then(() => this.props.getQuestionsThunk(id))
-      .then(res => console.log("response from post question", res))
-      .catch(err => console.log("error from post question", err));
+    if (
+      data.body &&
+      data.email &&
+      data.name &&
+      data.email.indexOf("@") !== "1"
+    ) {
+      let postHandler =
+        this.props.type === "question" ? this.postQuestion : this.postAnswer;
 
-    this.props.onHide();
-    setTimeout(() => console.log(this.props), 2000);
+      let updateHandler =
+        this.props.type === "question"
+          ? () => this.props.getQuestionsThunk(productID)
+          : this.props.setAnswers;
+      postHandler(data)
+        .then(res => console.log("response from post question", res))
+        .then(updateHandler)
+        .catch(err => console.log("error from post question", err));
+
+      this.props.onHide();
+    } else {
+      let warningString = "You must enter the following:";
+      warningString += !data.body ? ` ${type},` : "";
+      warningString += !data.email ? " Email," : "";
+      warningString += !data.name ? " Nickname," : "";
+      warningString = warningString.slice(0, warningString.length - 1);
+      let warningStringTwo =
+        data.email.indexOf("@") === -1 ||
+        data.email.slice(data.email.indexOf("@")).indexOf(".") === -1
+          ? "Please enter email in valid format"
+          : "";
+      this.setState({ warning: warningString, warningTwo: warningStringTwo });
+    }
   }
-  //Axios put requests
-  postAnswer() {
-    let id = this.props.questionID;
-    //post answer to question id endpoint
+
+  componentDidMount() {
+    if (this.props.question) {
+      console.log(this.props.question.question_body);
+    }
   }
+  postAnswer(data) {
+    let questionID = this.props.questionID;
+    return Axios.post(`http://3.134.102.30/qa/${questionID}/answers`, data);
+  }
+
   //Need to grab product id from redux store or url
   postQuestion(params) {
-    let id = 4; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
-    return Axios.post(`http://3.134.102.30/qa/${id}?`, params);
+    let productId = "2"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    return Axios.post(`http://3.134.102.30/qa/${productId}?`, params);
   }
 
   render() {
-    //     A button will appear allowing users to upload their photos to the form.  Up to five photos should be allowed for each answer.
-    // Clicking the button should open a separate window where the photo to be can be selected.
-    // After the first image is uploaded, a thumbnail showing the image should appear.  A user should be able to add up to five images before the button to add disappears, preventing further additions.
+    let type = this.props.type === "answer" ? "Answer" : "Question";
+    let nickNameAlert = this.state.name ? (
+      <div>For privacy reasons, do not use your full name or email address</div>
+    ) : null;
 
-    let type = this.props.type === "answer" ? "answer" : "question";
+    let emailAlert = this.state.email ? (
+      <div>For authentication reasons, you will not be emailed</div>
+    ) : null;
 
-    let picturesForm =
-      this.props.type === "answer" ? (
-        <Form.Group>
-          <div className="picturesContainer">
-            {this.state.filePreview.map(preview => {
-              return <img className="pictures" src={preview} />;
-            })}
+    let header =
+      this.props.type === "question" ? (
+        <div>
+          <div>
+            <h2>Ask your question</h2>
           </div>
-          <Form.Label>Pictures</Form.Label>
-          <Form.File
-            type="picture"
-            placeholder="Please submit URL of picture to add"
-            onChange={event => this.handleSelectFile(event)}
-          />
-        </Form.Group>
-      ) : null;
+          <div>
+            <h4>About the {this.props.selectedProduct.name}</h4>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <div>
+            <h2>Submit your answer</h2>
+          </div>
+          <div>
+            <h4>
+              {this.props.selectedProduct.name}:{" "}
+              {this.props.question.question_body}
+            </h4>
+          </div>
+        </div>
+      );
 
     return (
       <Modal
@@ -113,9 +157,7 @@ class QuestionModal extends React.Component {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Please enter info to submit new {type}
-          </Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter">{header}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -126,24 +168,27 @@ class QuestionModal extends React.Component {
                 placeholder="Please Enter Email"
                 onChange={event => this.handleChange(event, "email")}
               />
+              {emailAlert}
             </Form.Group>
             <Form.Group>
               <Form.Label>Nickname</Form.Label>
               <Form.Control
                 type="nickname"
-                placeholder="Please Enter Nickname"
+                placeholder="Example: jackson11!"
                 onChange={event => this.handleChange(event, "name")}
               />
+              {nickNameAlert}
             </Form.Group>
             <Form.Group>
-              <Form.Label>Question</Form.Label>
+              <Form.Label>{type}</Form.Label>
               <Form.Control
-                type="question"
-                placeholder="Please Enter Question"
+                type={type}
+                placeholder="Please Enter {type}"
                 onChange={event => this.handleChange(event, "body")}
               />
             </Form.Group>
-            {picturesForm}
+            {this.state.warning} <br></br>
+            {this.state.warningTwo}
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -182,3 +227,20 @@ export default connect(mapStateToProps, mapDispatchToProps)(QuestionModal);
 //   this.state.files.length < 5 ? (
 //     <Button onClick={() => this.addUrlSubmit()}>Add Picture</Button>
 //   ) : null;
+
+// let picturesForm =
+// this.props.type === "answer" ? (
+//   <Form.Group>
+//     <div className="picturesContainer">
+//       {this.state.filePreview.map(preview => {
+//         return <img className="pictures" src={preview} />;
+//       })}
+//     </div>
+//     <Form.Label>Pictures</Form.Label>
+//     <Form.File
+//       type="picture"
+//       placeholder="Please submit URL of picture to add"
+//       onChange={event => this.handleSelectFile(event)}
+//     />
+//   </Form.Group>
+// ) : null;

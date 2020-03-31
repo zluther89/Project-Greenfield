@@ -1,6 +1,5 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -78,7 +77,7 @@ let ComparisonModal = (props) => {
             <Col className="feature" xs={6} md={4}>
                 {feature}
             </Col>
-            <Col lassName="modal-row" xs={6} md={4}>
+            <Col xs={6} md={4}>
                 {compareRow}
             </Col>
           </Row>
@@ -87,9 +86,7 @@ let ComparisonModal = (props) => {
           <br/>
         </Container>
           </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={props.onHide}>Close</Button>
-          </Modal.Footer>
+        
         </Modal>
       );
 }
