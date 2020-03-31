@@ -15,7 +15,12 @@ class QuestionsContainer extends React.Component {
   }
 
   sortQuestionsReturn() {
-    let questions = this.props.questionSet.slice(0);
+    //change to filtered questions if exists
+    let questionSet =
+      this.props.filteredQuestions.length > 0
+        ? this.props.filteredQuestions
+        : this.props.questionSet;
+    let questions = questionSet.slice(0);
     questions.sort((a, b) =>
       a.question_helpfulness > b.question_helpfulness ? -1 : 1
     );
