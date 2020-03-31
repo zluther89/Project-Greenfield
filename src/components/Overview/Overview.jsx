@@ -3,7 +3,7 @@ import Banner from "./Banner";
 import ProductInfo from "./ProductInfo/ProductInfo";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import StyleSelectorContainer from "./StyleSelectorContainer/StyleSelectorContainer";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { getNewProductThunk } from "../../components/Redux/ThunkMiddleware";
 
@@ -40,7 +40,6 @@ class Overview extends React.Component {
   switchStyle(val) {
     let price = this.state.styleData.results[val].original_price;
     let salePrice = this.state.styleData.results[val].sale_price;
-    console.log("price", price);
     this.setState({
       currentStyle: val,
       currentStyleName: this.state.styleData.results[val].name,
@@ -56,7 +55,6 @@ class Overview extends React.Component {
       axios
         .get(`http://3.134.102.30/products/${productId}`)
         .then(response => {
-          console.log(productId);
           this.setState({
             data: response.data,
             currentPrice: response.data.default_price

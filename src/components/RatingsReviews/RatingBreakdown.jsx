@@ -2,7 +2,8 @@ import React from "react"
 import ShowStars from "../OverlapWork/ShowStars"
 import Axios from"axios"
 import BarBreakdown from "./BarBreakdown"
-import ProductBreakdown from "./PruductBreakDown"
+// import PruductBreakdown from "./PruductBreakDown"
+
 import RatesFilter from "./RatesFilter"
 class RatingBreakdown extends React.Component{
   constructor(props) {

@@ -7,10 +7,10 @@ export default function ProductInfo(props) {
     <div className="container-fluid productInfoBox">
       <div className="row">
         {" "}
-        <div class="col-xs-7 col-sm-7 col-md-7 productDescriptionBox">
+        <div className="col-xs-7 col-sm-7 col-md-7 productDescriptionBox">
           <ProductDescription data={props.data} />
         </div>
-        <div class="col-xs-5 col-sm-5 col-md-5">
+        <div className="col-xs-5 col-sm-5 col-md-5">
           <ProductTraits data={props.data} />
         </div>
       </div>

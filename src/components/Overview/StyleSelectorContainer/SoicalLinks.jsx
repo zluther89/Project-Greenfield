@@ -4,9 +4,9 @@ function SocialLinks(props) {
   return (
     <span>
       {" "}
-      <i class="fa fa-facebook-square" style={{ "font-size": "60px" }}></i>
-      <i class="fa fa-twitter-square" style={{ "font-size": "60px" }}></i>
-      <i class="fa fa-instagram" style={{ "font-size": "60px" }}></i>
+      <i className="fa fa-facebook-square" style={{ "fontSize": "60px" }}></i>
+      <i className="fa fa-twitter-square" style={{ "fontSize": "60px" }}></i>
+      <i className="fa fa-instagram" style={{ "fontSize": "60px" }}></i>
     </span>
   );
 }

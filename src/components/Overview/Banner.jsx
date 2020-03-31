@@ -4,7 +4,7 @@ export default function Banner() {
   return (
     <div
       className="jumbotron jumbotron-fluid"
-      style={{ "background-color": "black" }}
+      style={{ "backgroundColor": "black" }}
     >
       <div className="container jumbotronContainer">
         <h1 className="display-5">
@@ -21,7 +21,6 @@ export default function Banner() {
   );
 }
 
-{
   /* <div>
 {this.props.salePrice ? (
   <p>NOW ${this.props.price - this.props.salePrice}</p>
@@ -29,4 +28,4 @@ export default function Banner() {
   <p>${this.props.price}</p>
 )}
 <h3>STYLE > SELECTED STYLE</h3> */
-}
+

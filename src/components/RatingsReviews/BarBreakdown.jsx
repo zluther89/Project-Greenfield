@@ -36,7 +36,7 @@ class BarBreakdown extends React.Component {
           <div className="col-7 my-1  ">
             <div className="progress" >
               <div
-                class=" bg-success progress-bar"
+                className=" bg-success progress-bar"
                 role="progressbar"
                 aria-valuemin="0"
                 aria-valuemax="100"
@@ -55,7 +55,7 @@ class BarBreakdown extends React.Component {
           <div className="col-7 my-1  ">
             <div className="progress" >
               <div
-                class=" bg-success progress-bar"
+                className=" bg-success progress-bar"
                 role="progressbar"
                 aria-valuemin="0"
                 aria-valuemax="100"
@@ -74,7 +74,7 @@ class BarBreakdown extends React.Component {
           <div className="col-7 my-1  ">
             <div className="progress" >
               <div
-                class=" bg-success progress-bar"
+                className=" bg-success progress-bar"
                 role="progressbar"
                 aria-valuemin="0"
                 aria-valuemax="100"
@@ -93,7 +93,7 @@ class BarBreakdown extends React.Component {
           <div className="col-7 my-1  ">
             <div className="progress" >
               <div
-                class=" bg-success progress-bar"
+                className=" bg-success progress-bar"
                 role="progressbar"
                 aria-valuemin="0"
                 aria-valuemax="100"
@@ -112,7 +112,7 @@ class BarBreakdown extends React.Component {
           <div className="col-7 my-1  ">
             <div className="progress" >
               <div
-                class=" bg-success progress-bar"
+                className=" bg-success progress-bar"
                 role="progressbar"
                 aria-valuemin="0"
                 aria-valuemax="100"

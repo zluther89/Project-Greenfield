@@ -10,6 +10,7 @@ class individualReview extends React.Component {
     }
   }
   render() {
+
     let stars = this.props.stars.map(ele => Number(ele))
 
     return this.props.results.map(result => {
