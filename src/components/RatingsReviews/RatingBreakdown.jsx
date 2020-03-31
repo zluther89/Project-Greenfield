@@ -87,7 +87,7 @@ class RatingBreakdown extends React.Component{
         <div className="row " style={{ "height": "5%" }}><p> {this.state.recommend || 0}% of reviews recommend this product</p></div>
         <div className="row " style={{ "height": "20%" }}><BarBreakdown HandleRateFilter={this.HandleRateFilter} count={this.state.count} pairArr={this.state.pairArr}/></div>
         <div className="row mt-5" style={{ "height": "5%" }}><RatesFilter rates={this.state.rates} /></div>
-        <div className="row justify-content-end " style={{ "height": "5%" }}>{this.state.showCleanAll ? <button type="button" className="btn btn-outline-dark btn-sm" onClick={this.DeleteAllfilter}>Delete All Filter</button> : null}</div>
+        <div className="row justify-content-end " style={{ "height": "5%" }}>{this.state.showCleanAll ? <button type="button" className="btn btn-outline-dark btn-sm" onClick={this.DeleteAllfilter}>Remove All Filters</button> : null}</div>
         <div className="row" ><ProductBreakdown characteristics={this.state.characteristics}/></div>
         </div>
     )
