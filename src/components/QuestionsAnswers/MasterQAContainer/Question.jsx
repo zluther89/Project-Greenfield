@@ -49,6 +49,7 @@ class Question extends React.Component {
     let questionID = this.props.q.question_id;
     return (
       <div style={this.state.style} id="QuestionAnswerSet">
+        <table>
         <tbody>
           <tr>
             <td>Q:</td>
@@ -76,6 +77,7 @@ class Question extends React.Component {
             setAnswers={this.setAnswers}
           />
         </tbody>
+        </table>
       </div>
     );
   }

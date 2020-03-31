@@ -14,14 +14,14 @@ const ProductBreakdown = ({ characteristics }) => {
 </div>
             </div>
           </div>
-          <div class="row align-items-end">
-            <div class="col">
+          <div className="row align-items-end">
+            <div className="col">
               <p>poor</p>
             </div>
-            <div class="col">
+            <div className="col">
               <p></p>
             </div>
-            <div class="col RightText">
+            <div className="col RightText">
               <p>great</p>
             </div>
           </div>
@@ -41,14 +41,14 @@ const ProductBreakdown = ({ characteristics }) => {
             </div>
           </div>
 
-          <div class="row align-items-end">
-            <div class="col">
+          <div className="row align-items-end">
+            <div className="col">
               <p>Too small</p>
             </div>
-            <div class="col CenterText">
+            <div className="col CenterText">
               <p>Perfect</p>
             </div>
-            <div class="col RightText">
+            <div className="col RightText">
               <p>Too large</p>
             </div>
           </div>

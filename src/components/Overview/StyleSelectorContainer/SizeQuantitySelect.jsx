@@ -81,7 +81,7 @@ export default class SizeQuantitySelect extends React.Component {
 
   render() {
     return (
-      <span class="checkoutButtons">
+      <span className="checkoutButtons">
         {" "}
         <DropdownButton
           id="dropdown-basic-button-size"

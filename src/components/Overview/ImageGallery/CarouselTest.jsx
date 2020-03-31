@@ -7,14 +7,14 @@ export default function ImageCarousel(props) {
     return props.styleData.results[style].photos.map((picture, index) => {
       if (index < 1) {
         return (
-          <div class="carousel-item active">
-            <img class="d-block w-100" src={picture.url} alt="First slide" />
+          <div className="carousel-item active">
+            <img className="d-block w-100" src={picture.url} alt="First slide" />
           </div>
         );
       } else {
         return (
-          <div class="carousel-item">
-            <img class="d-block w-100" src={picture.url} alt="First slide" />
+          <div className="carousel-item">
+            <img className="d-block w-100" src={picture.url} alt="First slide" />
           </div>
         );
       }
@@ -30,7 +30,7 @@ export default function ImageCarousel(props) {
           <img
             data-target="#carousel-thumb"
             data-slide-to={index}
-            class="d-block thumbPic"
+            className="d-block thumbPic"
             src={picture.url}
             alt="thumb"
           />
@@ -40,10 +40,10 @@ export default function ImageCarousel(props) {
           <img
             data-target="#carousel-thumb"
             data-slide-to={index}
-            class="d-block "
+            className="d-block "
             src={picture.url}
             alt="thumb"
-            //   class="img-fluid"
+            //   className="img-fluid"
           />
         );
       }
@@ -51,38 +51,38 @@ export default function ImageCarousel(props) {
   };
 
   return (
-    <div class="container xcontainer">
-      <div class="box thumbnailBox stack-top">
+    <div className="container xcontainer">
+      <div className="box thumbnailBox stack-top">
         {props.styleData.results && renderThumbnails()}{" "}
       </div>
-      <div class="box carouselBox">
+      <div className="box carouselBox">
         {" "}
         <div
           id="carousel-thumb"
-          class="carousel slide carousel-fade carousel-thumbnails"
+          className="carousel slide carousel-fade carousel-thumbnails"
           data-ride="carousel"
         >
-          <div class="carousel-inner" role="listbox">
+          <div className="carousel-inner" role="listbox">
             {props.styleData.results && renderCarousel()}
           </div>
 
           <a
-            class="carousel-control-prev"
+            className="carousel-control-prev"
             href="#carousel-thumb"
             role="button"
             data-slide="prev"
           >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="sr-only">Previous</span>
           </a>
           <a
-            class="carousel-control-next"
+            className="carousel-control-next"
             href="#carousel-thumb"
             role="button"
             data-slide="next"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="sr-only">Next</span>
           </a>
         </div>
       </div>

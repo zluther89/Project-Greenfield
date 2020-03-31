@@ -9,12 +9,12 @@ export default function ImageGallery(props) {
           id="compareButtonOverview"
           value="1"
           type="button"
-          class="btn btn-outline-primary"
+          className="btn btn-outline-primary"
           onClick={() => {
             props.setModal();
           }}
         >
-          <i class="fa fa-expand"></i>
+          <i className="fa fa-expand"></i>
         </button>{" "}
         <Carousel
           data={props.data}
