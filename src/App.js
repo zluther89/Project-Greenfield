@@ -6,11 +6,14 @@ import RelatedProducts from './components/RelatedProducts/RelatedProducts';
 
 import './App.css';
 
-function App() {
+function App(props) {
+  const {
+    match: { params }
+  } = props;
   return (
     <div className="App">
       <Overview />
-      <RelatedProducts />
+      <RelatedProducts id={params.id} />
       <QuestionAnswers />
       <RatingReviews />
     </div>
