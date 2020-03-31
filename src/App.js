@@ -1,10 +1,10 @@
-import React from 'react';
-import Overview from './components/Overview/Overview';
-import QuestionAnswers from './components/QuestionsAnswers/QuestionsAnswers';
-import RatingReviews from './components/RatingsReviews/RatingReviews';
-import RelatedProducts from './components/RelatedProducts/RelatedProducts';
+import React from "react";
+import Overview from "./components/Overview/Overview";
+import QuestionAnswers from "./components/QuestionsAnswers/QuestionsAnswers";
+import RatingReviews from "./components/RatingsReviews/RatingReviews";
+import RelatedProducts from "./components/RelatedProducts/RelatedProducts";
 
-import './App.css';
+import "./App.css";
 
 function App(props) {
   const {
@@ -12,7 +12,7 @@ function App(props) {
   } = props;
   return (
     <div className="App">
-      <Overview />
+      <Overview id={params.id} />
       <RelatedProducts id={params.id} />
       <QuestionAnswers />
       <RatingReviews />
