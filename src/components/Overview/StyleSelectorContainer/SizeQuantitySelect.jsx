@@ -94,6 +94,9 @@ export default class SizeQuantitySelect extends React.Component {
           title={this.state.sizeSelected || "SIZE"}
           style={{ float: "left" }}
         >
+          <Dropdown.Item href="#/action-1" onClick={() => this.setQuantity(1)}>
+            Select Style
+          </Dropdown.Item>
           {this.props.styleData &&
             this.props.styleClicked &&
             this.populateSizes()}
@@ -103,6 +106,9 @@ export default class SizeQuantitySelect extends React.Component {
           title={this.state.quantitySelected || "QUANTITY"}
           style={{ float: "left" }}
         >
+          <Dropdown.Item href="#/action-1" onClick={() => this.setQuantity(1)}>
+            Select Style
+          </Dropdown.Item>
           {this.state.sizeSelected && this.state.sizeAvailable && (
             <div>
               {" "}
