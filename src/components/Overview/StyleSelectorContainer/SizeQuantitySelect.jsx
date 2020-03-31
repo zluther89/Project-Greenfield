@@ -16,7 +16,7 @@ export default class SizeQuantitySelect extends React.Component {
     this.populateSizes = this.populateSizes.bind(this);
     this.setQuantity = this.setQuantity.bind(this);
     this.addToBagFunc = this.addToBagFunc.bind(this);
-    this.showAlert = this.showAlert.bind(this);
+
     // this.populateQuantity = this.populateQuantity.bind(this);
   }
 
@@ -63,14 +63,18 @@ export default class SizeQuantitySelect extends React.Component {
     );
   }
 
-  addToBagFunc() {
-    this.showAlert();
-    this.resetValues();
-  }
+  async addToBagFunc(size, quantity, style, styleName) {
+    if (!window.localStorage.getItem("cart")) {
+      window.localStorage.setItem("cart", JSON.stringify([]));
+    }
+    var cart = JSON.parse(localStorage.getItem("cart"));
+    cart.push([quantity, size, style, styleName]);
+    window.localStorage.setItem("cart", JSON.stringify(cart));
 
-  showAlert() {
-    let alert = `You have added ${this.state.quantitySelected} ${this.state.sizeSelected} of this style to your bag`;
-    window.alert(alert);
+    // let newStorage = currentStorage.push("you");
+    // console.log(newStorage);
+
+    this.resetValues();
   }
 
   resetValues() {
@@ -140,7 +144,12 @@ export default class SizeQuantitySelect extends React.Component {
           style={({ float: "left" }, { fontSize: "10px" }, { height: "30" })}
           onClick={() => {
             if (this.state.sizeSelected && this.state.sizeAvailable) {
-              this.addToBagFunc();
+              this.addToBagFunc(
+                this.state.sizeSelected,
+                this.state.quantitySelected,
+                this.props.currentStyle,
+                this.props.currentStyleName
+              );
             } else {
             }
           }}
