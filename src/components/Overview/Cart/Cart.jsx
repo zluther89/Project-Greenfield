@@ -6,7 +6,17 @@ export default function CartModal(props) {
   function bagContents() {
     return props.cart.map(content => {
       return (
-        <p>{`Style: ${content[3]}    Size: ${content[1]}    Quantity: ${content[0]}`}</p>
+        <p>
+          {`Style: ${content[3]}    Size: ${content[1]}    Quantity: ${content[0]}`}
+          {"     "}
+          <span
+            onClick={() => {
+              console.log("sup");
+            }}
+          >
+            <button>Remove</button>
+          </span>
+        </p>
       );
     });
   }
