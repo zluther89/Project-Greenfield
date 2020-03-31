@@ -2,7 +2,7 @@ import React from "react"
 import ShowStars from "../OverlapWork/ShowStars"
 import Axios from"axios"
 import BarBreakdown from "./BarBreakdown"
-// import PruductBreakdown from "./PruductBreakDown"
+import ProductBreakdown from "./PruductBreakDown"
 
 import RatesFilter from "./RatesFilter"
 class RatingBreakdown extends React.Component{
@@ -16,8 +16,7 @@ class RatingBreakdown extends React.Component{
       count: 0,
       rates: [],
       showCleanAll: false,
-      characteristics: [],
-      pairArr:[]
+      characteristics: []
 
     }
     this.HandleRateFilter = this.HandleRateFilter.bind(this)

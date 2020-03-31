@@ -182,7 +182,7 @@ class QuestionModal extends React.Component {
               <Form.Label>{type}</Form.Label>
               <Form.Control
                 type={type}
-                placeholder={"Please Enter " + `${type}`}
+                placeholder={`Please Enter: ${type}`}
                 onChange={event => this.handleChange(event, "body")}
               />
             </Form.Group>

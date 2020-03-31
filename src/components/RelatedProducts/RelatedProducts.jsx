@@ -70,7 +70,7 @@ class RelatedProducts extends React.Component {
   componentDidMount() {
     let productId = 4
 
-    console.log('selected product', this.props.selectedProduct)
+    // console.log('selected product', this.props.selectedProduct)
     this.props.getNewProductThunk(productId)
     this.getOutfits();
     axios.get(`http://3.134.102.30/products/${productId}`).then( ({data}) => {

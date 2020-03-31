@@ -5,12 +5,13 @@ export default function ImageCarousel(){
 
 
   const renderCarousel = () => {
-    let style = props.currentStyle;
+    let style = this.props.currentStyle;
 
-    return props.styleData.results[style].photos.map(picture => {
+    return this.props.styleData.results[style].photos.map( (picture,i) => {
       return (
         <Carousel.Item>
           <img
+            key={i}
             className="overview d-block w-100 img-fluid align-content-center mx-auto"
             src={picture.url}
             alt="First slide"
@@ -20,7 +21,6 @@ export default function ImageCarousel(){
     });
   }
 
-  render() {
     return (
       <Carousel
         id="overviewCarousel"
@@ -30,10 +30,10 @@ export default function ImageCarousel(){
         indicators={true}
         hover={false}
       >
-        {props.styleData.results && renderCarousel()}
+        {this.props.styleData.results && renderCarousel()}
       </Carousel>
     );
-  }
+  
 }
 
   /* <div class="row hidden-xs" id="slider-thumbs">
