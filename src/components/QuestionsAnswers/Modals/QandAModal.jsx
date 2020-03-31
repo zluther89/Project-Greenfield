@@ -16,8 +16,6 @@ const mapStateToProps = (state, ownProps) => {
   return {
     questionSet: state.questionSet,
     selectedProduct: state.selectedProduct
-    // onHide: ownProps.onHide,
-    // questionID: ownProps.questionID
   };
 };
 
@@ -33,6 +31,7 @@ class QuestionModal extends React.Component {
       filePreview: []
     };
     this.postAnswer = this.postAnswer.bind(this);
+    this.postQuestion = this.postQuestion.bind(this);
   }
 
   //button handlers
@@ -50,7 +49,7 @@ class QuestionModal extends React.Component {
 
   handleSubmit() {
     let type = this.props.type === "question" ? "Question" : "Answer";
-    let productID = "4"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    let productID = this.props.selectedProduct.id;
     let data = {
       body: this.state.body,
       email: this.state.email,
@@ -89,19 +88,13 @@ class QuestionModal extends React.Component {
       this.setState({ warning: warningString, warningTwo: warningStringTwo });
     }
   }
-
-  componentDidMount() {
-    if (this.props.question) {
-    }
-  }
   postAnswer(data) {
     let questionID = this.props.questionID;
     return Axios.post(`http://3.134.102.30/qa/${questionID}/answers`, data);
   }
 
-  //Need to grab product id from redux store or url
   postQuestion(params) {
-    let productId = "4"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT
+    let productId = this.props.selectedProduct.id;
     return Axios.post(`http://3.134.102.30/qa/${productId}?`, params);
   }
 
