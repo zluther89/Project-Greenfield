@@ -9,7 +9,18 @@ let OutfitCard= (props) => {
 
   return (
       <Card 
-        style={{ width: '18rem' }}
+        style={
+          { 
+            boxShadow : `0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)`,
+            img: {
+              display: 'block'
+            },
+            width: '15rem',
+            height: '30rem',
+            marginRight: '2%'
+          }
+        }
+        className='productCard'
       >
           <Button  
                 id = "compareButton"
@@ -19,7 +30,7 @@ let OutfitCard= (props) => {
               >
                 X
           </Button>{' '}
-          <Card.Img variant="top" src={photo}/>
+          <Card.Img variant="top" src={photo} className='cardImg'/>
             <Card.Body>       
               <Card.Text align='left'>{props.outfitNames[props.index].category}</Card.Text>
               <a onClick={props.handleClick} className={`cardTitle ${id}`} href='a'>{props.outfitNames[props.index].name}</a>
