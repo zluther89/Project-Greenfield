@@ -1,4 +1,5 @@
 import React from "react";
+import { Plus } from "react-feather";
 //import dropdown component
 import "bootstrap/dist/js/bootstrap.bundle";
 import IndividualReview from "./individualReview"
@@ -7,21 +8,36 @@ class ReviewsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      results:[]
+      results: [],
+      ShowAllReviews:false
     };
-  this.GetReviewList = this.GetReviewList.bind(this)
+    this.GetReviewList = this.GetReviewList.bind(this)
+    this.ReGetReview= this.ReGetReview.bind(this)
   }
   componentDidMount() {
     this.GetReviewList()
   }
-  GetReviewList(sort="relevance") {
-    Axios.get(`http://3.134.102.30/reviews/20/list?sort=${sort}&count=2`)
+  GetReviewList(sort = "relevance") {
+    if (this.state.ShowAllReviews) {
+      Axios.get(`http://3.134.102.30/reviews/5/list?sort=${sort}&count=10000`)
+        .then(response => {
+        this.setState({results:response.data.results})
+        })
+      .catch(err => console.log("fail getting review list"))
+    } else {
+      Axios.get(`http://3.134.102.30/reviews/5/list?sort=${sort}&count=2&page=1`)
       .then(response => {
       this.setState({results:response.data.results})
       })
     .catch(err => console.log("fail getting review list"))
+    }
   }
-  render() {
+  ReGetReview() {
+    this.setState({ ShowAllReviews: !this.state.ShowAllReviews }, () => {
+      this.GetReviewList()
+    })
+  }
+render() {
     return (
       <div style={{ height: "100%" }} >
         <div className="row" style={{ height: "5%" }}>
@@ -34,7 +50,24 @@ class ReviewsList extends React.Component {
             </select>
           </div>
         </div>
-        <div className="row "><IndividualReview  results={this.state.results}/></div>
+        <div className="row " style={{ "overflow": "scroll", "height": "700px" }}><IndividualReview stars={this.props.StarFilter} results={this.state.results} /></div>
+        <div className="row justify-content-start RatingReviewsFoot ">
+        <div className="col-4" >
+            <button className="btn btn-outline-secondary btn-lg  " onClick={this.ReGetReview}>
+              <strong>{this.state.ShowAllReviews ?"FOLD REVIEWS UP": "MORE REVIEWS"}</strong>
+            </button>
+        </div>
+        <div className="col-4" >
+            <button className="btn btn-outline-secondary btn-lg RatingButton">
+              {" "}
+              <strong className="RightMargin">ADD A REVIEW</strong>{" "}
+              <Plus
+                size={20}
+                style={{ "marginBottom": "0.3em" }}
+              />
+            </button>
+          </div>
+          </div>
       </div>
     );
   }
