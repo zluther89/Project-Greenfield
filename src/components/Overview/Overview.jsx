@@ -51,7 +51,7 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    let productId = this.props.id || 3;
+    let productId = this.props.productId || 3;
 
     this.props.getNewProductThunk(productId);
 
