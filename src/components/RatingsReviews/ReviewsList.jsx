@@ -1,9 +1,14 @@
 import React from "react";
-import { Plus } from "react-feather";
+import WriteNewReview from "./WriteNewReview"
 //import dropdown component
 import "bootstrap/dist/js/bootstrap.bundle";
 import IndividualReview from "./individualReview"
 import Axios from "axios"
+import { connect } from "react-redux";
+
+const mapStateToProps = state => ({
+  selectedProduct: state.selectedProduct
+});
 class ReviewsList extends React.Component {
   constructor(props) {
     super(props);
@@ -17,15 +22,16 @@ class ReviewsList extends React.Component {
   componentDidMount() {
     this.GetReviewList()
   }
+
   GetReviewList(sort = "relevance") {
     if (this.state.ShowAllReviews) {
-      Axios.get(`http://3.134.102.30/reviews/5/list?sort=${sort}&count=10000`)
+      Axios.get(`http://3.134.102.30/reviews/${window.location.href.split("").slice(31).join()}/list?sort=${sort}&count=100`)
         .then(response => {
         this.setState({results:response.data.results})
         })
       .catch(err => console.log("fail getting review list"))
     } else {
-      Axios.get(`http://3.134.102.30/reviews/5/list?sort=${sort}&count=2&page=1`)
+      Axios.get(`http://3.134.102.30/reviews/${window.location.href.split("").slice(31).join()}/list?sort=${sort}&count=2&page=1`)
       .then(response => {
       this.setState({results:response.data.results})
       })
@@ -50,26 +56,19 @@ render() {
             </select>
           </div>
         </div>
-        <div className="row " style={{ "overflow": "scroll", "height": "700px" }}><IndividualReview stars={this.props.StarFilter} results={this.state.results} /></div>
+        <div className="row " style={{ "overflow": "scroll", "height": "800px" }}><IndividualReview stars={this.props.StarFilter} results={this.state.results} /></div>
         <div className="row justify-content-start RatingReviewsFoot ">
         <div className="col-4" >
             <button className="btn btn-outline-secondary btn-lg  " onClick={this.ReGetReview}>
               <strong>{this.state.ShowAllReviews ?"FOLD REVIEWS UP": "MORE REVIEWS"}</strong>
             </button>
         </div>
-        <div className="col-4" >
-            <button className="btn btn-outline-secondary btn-lg RatingButton">
-              {" "}
-              <strong className="RightMargin">ADD A REVIEW</strong>{" "}
-              <Plus
-                size={20}
-                style={{ "marginBottom": "0.3em" }}
-              />
-            </button>
+          <div className="col-4" >
+            <WriteNewReview />
           </div>
           </div>
       </div>
     );
   }
 }
-export default ReviewsList;
+export default connect(mapStateToProps)(ReviewsList);

@@ -9,8 +9,11 @@ const ProductBreakdown = ({ characteristics }) => {
           {/* progress bar */}
           <div className="row align-items-center">
             <div className="col">
-            <div className="progress border-0  grade-product-bar " >
-        <div className="progress-bar " style={{ "width": `${characteristic[1].value*20}%`,"backgroundColor":"grey" }} role="progressbar" aria-valuemin="0" aria-valuemax="100" ><div className="grade-product-img" ></div></div>
+            <div className="ProductSlidercontainer">
+            <input type="range" min="1" max="100" defaultValue={`${characteristic[1].value*20}%`} className="ProductSlider"></input>
+</div>
+              <div className="progress border-0  grade-product-bar " >
+        <div className="progress-bar "role="progressbar" aria-valuemin="0" aria-valuemax="100" ><div className="grade-product-img" ></div></div>
 </div>
             </div>
           </div>
@@ -35,8 +38,11 @@ const ProductBreakdown = ({ characteristics }) => {
           {/* progress bar */}
           <div className="row align-items-center">
             <div className="col">
+            <div className="ProductSlidercontainer">
+            <input type="range" min="1" max="100" defaultValue={`${characteristic[1].value*20}%`} className="ProductSlider"></input>
+</div>
             <div className="progress border-0  grade-product-bar " >
-        <div className="progress-bar " style={{ "width": `${characteristic[1].value*20}%`,"backgroundColor":"grey" }} role="progressbar" aria-valuemin="0" aria-valuemax="100" ><div className="grade-product-img" ></div></div>
+        <div className="progress-bar "  role="progressbar" aria-valuemin="0" aria-valuemax="100" ><div className="grade-product-img" ></div></div>
 </div>
             </div>
           </div>
@@ -59,3 +65,5 @@ const ProductBreakdown = ({ characteristics }) => {
 };
 
 export default ProductBreakdown;
+
+// "width": `${characteristic[1].value*20}%`

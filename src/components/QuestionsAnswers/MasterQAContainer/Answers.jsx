@@ -24,13 +24,10 @@ class Answers extends React.Component {
         ? 2
         : this.props.answers.length;
     let toggleExpand = this.state.expandedAnswers === true ? false : true;
-    this.setState(
-      {
-        numberToRender: totalAnswers,
-        expandedAnswers: toggleExpand
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      numberToRender: totalAnswers,
+      expandedAnswers: toggleExpand
+    });
     this.props.expandHandler();
   }
 
@@ -48,18 +45,15 @@ class Answers extends React.Component {
           );
         return (
           <>
-            <tr key={answer.answer_id}>
+            <tr className="answerTitle" key={answer.answer_id}>
               <td>{title}</td>
-              <td>{answer.body}</td>
-            </tr>
-            <tr>
-              <td></td>
               <td>
-                <div className="answererContainer">
-                  <div>
-                    {" "}
-                    by {answererName}, {date}
-                  </div>
+                <div>{answer.body}</div>
+                <div className="answererContainer" id="answererContainer">
+                  <div></div>
+                  <div>by</div>
+                  <div> {answererName},</div>
+                  <div> {date}</div>
                   <Helpful
                     question={this.props.question}
                     answerId={answer.answer_id}

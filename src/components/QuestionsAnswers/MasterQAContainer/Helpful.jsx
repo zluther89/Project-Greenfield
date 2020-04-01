@@ -10,6 +10,12 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = state => ({
+  questionSet: state.questionSet,
+  numOfQuestions: state.numOfQuestions,
+  selectedProduct: state.selectedProduct
+});
+
 class Helpful extends React.Component {
   constructor(props) {
     super(props);
@@ -36,9 +42,8 @@ class Helpful extends React.Component {
   }
 
   putHandler(type) {
-    let productID = "4"; ///PLACEHOLDER CHANGE TO ID OF PRODUCT'
+    let productID = this.props.selectedProduct.id;
     let handler = type === "report" ? this.postReport : this.postHelpful;
-    // (" After clicking on this link, the “Report” link should change to static text that reads “Reported”.");
     let id =
       this.props.type === "question"
         ? this.props.questionID
@@ -58,14 +63,17 @@ class Helpful extends React.Component {
         ? () => this.props.getQuestionsThunk(productID)
         : () => this.props.setAnswers();
 
-    let localStorageVoteUpdate =
-      type === "report"
-        ? () => {}
-        : () => {
-            this.setLocalStorageVote(endpoint);
-          };
-
+    updateHandler =
+      type === "report" ? () => this.handleReported() : updateHandler;
     console.log(updateHandler);
+
+    let localStorageVoteUpdate =
+      type === "helpful"
+        ? () => {
+            this.setLocalStorageVote(endpoint);
+          }
+        : () => {};
+
     handler(endpoint)
       .then(res => {
         console.log(res);
@@ -74,7 +82,6 @@ class Helpful extends React.Component {
         updateHandler();
         localStorageVoteUpdate();
       })
-      .then(console.log("reported"))
       .catch(err => console.log(err));
   }
 
@@ -113,7 +120,7 @@ class Helpful extends React.Component {
     return (
       <>
         <div>Helpful?</div>
-        <div className="link" onClick={() => this.putHandler("answer")}>
+        <div className="link" onClick={() => this.putHandler("helpful")}>
           Yes
         </div>
         <div>({this.props.helpful})</div> <div>|</div>
@@ -124,12 +131,4 @@ class Helpful extends React.Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Helpful);
-
-// const mapStateToProps = (state, ownProps) => {
-//   return {
-//     questionID: ownProps.questionID,
-//     type: ownProps.type,
-//     helpful: ownProps.helpful
-//   };
-// };
+export default connect(mapStateToProps, mapDispatchToProps)(Helpful);

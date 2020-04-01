@@ -17,7 +17,7 @@ class QuestionsContainer extends React.Component {
   sortQuestionsReturn() {
     //change to filtered questions if exists
     let questionSet =
-      this.props.filteredQuestions.length > 0
+      this.props.searched === true
         ? this.props.filteredQuestions
         : this.props.questionSet;
     let questions = questionSet.slice(0);
@@ -36,17 +36,16 @@ class QuestionsContainer extends React.Component {
 
     return (
       <div>
-        <div>
-          <Table
-            ref={divElement => {
-              this.divElement = divElement;
-            }}
-            borderless
-          >
+        <div id="select">
+          <table>
             {loadedSortedQs.map(question => {
-              return <Question key={question.question_id} q={question} />;
+              return (
+                <tr>
+                  <Question key={question.question_id} q={question} />{" "}
+                </tr>
+              );
             })}
-          </Table>
+          </table>
         </div>
       </div>
     );

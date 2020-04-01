@@ -1,6 +1,7 @@
 import Axios from "axios";
 import React from "react"
 //help function
+
 const TranverStar = star => {
   const Int = parseInt(star)
   const modul = star - Int
@@ -24,21 +25,23 @@ class ShowStars extends React.Component{
     super(props)
     this.state = {
       rating: 0,
-      ratingPercen:0
+      ratingPercen: 0,
+      product_id:this.props.productId
     }
   }
   componentDidMount() {
     this.GetReviewMet()
   }
-  GetReviewMet(product_id = 13) {
+  GetReviewMet() {
+    let productId = this.props.productId || `${window.location.href.split("").slice(31).join()}`
     let count = 0;
     let sum = 0
     if (this.props.star) {
       let ratingPercen = TranverStar(this.props.star)
       this.setState({ratingPercen:ratingPercen})
-
     } else {
-      Axios.get(`http://3.134.102.30/reviews/${product_id}/meta`)
+
+      Axios.get(`http://3.134.102.30/reviews/${productId}/meta`)
         .then(response => {
           const AllRatings = response.data.ratings
           for (let val in AllRatings) {
@@ -61,7 +64,6 @@ class ShowStars extends React.Component{
   }
   render() {
     return (
-
       <div className="progress border-0  grade-star-bar " style={{"height":"30","width":"50%"}}>
         <div className="progress-bar " style={{ "width": `${this.state.ratingPercen}%`,"backgroundColor":"black" }} role="progressbar" aria-valuemin="0" aria-valuemax="100" ><div className="grade-star-img" ></div></div>
 
