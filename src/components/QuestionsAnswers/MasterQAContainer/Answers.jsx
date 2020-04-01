@@ -57,7 +57,6 @@ class Answers extends React.Component {
                   <div>by</div>
                   <div> {answererName},</div>
                   <div> {date}</div>
-
                   <Helpful
                     question={this.props.question}
                     answerId={answer.answer_id}

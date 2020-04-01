@@ -17,7 +17,7 @@ class QuestionsContainer extends React.Component {
   sortQuestionsReturn() {
     //change to filtered questions if exists
     let questionSet =
-      this.props.filteredQuestions.length > 0
+      this.props.searched === true
         ? this.props.filteredQuestions
         : this.props.questionSet;
     let questions = questionSet.slice(0);
