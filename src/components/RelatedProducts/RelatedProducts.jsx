@@ -14,6 +14,7 @@ import Button from "react-bootstrap/Button";
 // Redux imports
 import { getNewProductThunk } from "../Redux/ThunkMiddleware.js";
 import { connect } from "react-redux";
+import { FileText } from "react-feather";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -196,8 +197,12 @@ class RelatedProducts extends React.Component {
         ) : (
           <div></div>
         )}
-        <div className="productCarouselContainer">
-          <div className="productCarousel">
+        <div className="productCarouselContainer" 
+        >
+          <div className="productCarousel" style = {
+            {
+              display:'flex'
+            }}>
             {this.state.relatedProducts.map((product, i) => {
               return (
                 <ProductCard
@@ -217,7 +222,11 @@ class RelatedProducts extends React.Component {
         <br></br>
         {/** style from state, fixed = window.innerHeight * 0.5 */}
         <div className="productCarouselContainer">
-          <div className="productCarousel">
+          <div className="productCarousel" style = {
+            {
+              display:'flex'
+            }
+            }>
             <Card
               style={{
                 boxShadow: `0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)`,
