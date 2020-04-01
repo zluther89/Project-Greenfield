@@ -63,12 +63,12 @@ export default class SizeQuantitySelect extends React.Component {
     );
   }
 
-  async addToBagFunc(size, quantity, style, styleName) {
+  async addToBagFunc(size, quantity, style, styleName, productName) {
     if (!window.localStorage.getItem("cart")) {
       window.localStorage.setItem("cart", JSON.stringify([]));
     }
     var cart = JSON.parse(localStorage.getItem("cart"));
-    cart.push([quantity, size, style, styleName]);
+    cart.push([quantity, size, style, styleName, productName]);
     window.localStorage.setItem("cart", JSON.stringify(cart));
 
     // let newStorage = currentStorage.push("you");
@@ -94,9 +94,14 @@ export default class SizeQuantitySelect extends React.Component {
           title={this.state.sizeSelected || "SIZE"}
           style={{ float: "left" }}
         >
-          <Dropdown.Item href="#/action-1" onClick={() => this.setQuantity(1)}>
-            Select Style
-          </Dropdown.Item>
+          {!this.props.styleClicked && (
+            <Dropdown.Item
+              href="#/action-1"
+              onClick={() => this.setQuantity(1)}
+            >
+              Select Style
+            </Dropdown.Item>
+          )}
           {this.props.styleData &&
             this.props.styleClicked &&
             this.populateSizes()}
@@ -106,9 +111,14 @@ export default class SizeQuantitySelect extends React.Component {
           title={this.state.quantitySelected || "QUANTITY"}
           style={{ float: "left" }}
         >
-          <Dropdown.Item href="#/action-1" onClick={() => this.setQuantity(1)}>
-            Select Style
-          </Dropdown.Item>
+          {!this.state.sizeSelected && (
+            <Dropdown.Item
+              href="#/action-1"
+              onClick={() => this.setQuantity(1)}
+            >
+              Select Size and Size
+            </Dropdown.Item>
+          )}
           {this.state.sizeSelected && this.state.sizeAvailable && (
             <div>
               {" "}
@@ -154,7 +164,8 @@ export default class SizeQuantitySelect extends React.Component {
                 this.state.sizeSelected,
                 this.state.quantitySelected,
                 this.props.currentStyle,
-                this.props.currentStyleName
+                this.props.currentStyleName,
+                this.props.currentProductName
               );
             } else {
             }

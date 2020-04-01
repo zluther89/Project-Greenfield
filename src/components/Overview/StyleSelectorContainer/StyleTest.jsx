@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import StyleCircle from "./StyleCircle";
 
 export default function StyleTest(props) {
+  const [clicked, setClicked] = useState(false);
   return (
     <div className="styleSquareBox containerOverview">
       {props.styleData.results &&
@@ -12,6 +13,8 @@ export default function StyleTest(props) {
               url={style.photos[0].url}
               index={index}
               switchStyle={props.switchStyle}
+              onClick={(() => setClicked(true), console.log("clicked"))}
+              clicked={clicked}
             />
           );
         })}

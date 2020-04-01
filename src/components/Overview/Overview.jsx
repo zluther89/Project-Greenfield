@@ -33,7 +33,9 @@ class Overview extends React.Component {
       styleClicked: false,
       currentPrice: null,
       salePrice: null,
-      modalShow: false
+      modalShow: false,
+      currentProductName: null,
+      currentIndex: 0
     };
     this.switchStyle = this.switchStyle.bind(this);
   }
@@ -46,7 +48,8 @@ class Overview extends React.Component {
       currentStyleName: this.state.styleData.results[val].name,
       styleClicked: true,
       currentPrice: price,
-      salePrice: salePrice
+      salePrice: salePrice,
+      currentIndex: 0
     });
   }
 
@@ -60,7 +63,8 @@ class Overview extends React.Component {
       .then(response => {
         this.setState({
           data: response.data,
-          currentPrice: response.data.default_price
+          currentPrice: response.data.default_price,
+          currentProductName: response.data.name
         });
         return axios.get(`http://3.134.102.30/products/${productId}/styles`); // using response.data
       })
@@ -90,14 +94,16 @@ class Overview extends React.Component {
             </>
             <div className="row overviewRow">
               <div className="imageGallery col-xs-7 col-sm-7 col-md-7">
-                <ImageGallery
-                  data={this.state.data}
-                  styleData={this.state.styleData}
-                  currentStyle={this.state.currentStyle}
-                  setModal={() => {
-                    this.setState({ modalShow: true });
-                  }}
-                />
+                {this.state.styleData && (
+                  <ImageGallery
+                    data={this.state.data}
+                    styleData={this.state.styleData}
+                    currentStyle={this.state.currentStyle}
+                    setModal={() => {
+                      this.setState({ modalShow: true });
+                    }}
+                  />
+                )}
               </div>
               <div className="productInfo col-xs-5 col-sm-5 col-md-5">
                 <StyleSelectorContainer
@@ -109,6 +115,7 @@ class Overview extends React.Component {
                   styleClicked={this.state.styleClicked}
                   price={this.state.currentPrice}
                   salePrice={this.state.salePrice}
+                  currentProductName={this.state.currentProductName}
                 />
               </div>
             </div>

@@ -1,23 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import BagProduct from "./BagProduct";
 
 export default function CartModal(props) {
   function bagContents() {
-    return props.cart.map(content => {
-      return (
-        <p>
-          {`Style: ${content[3]}    Size: ${content[1]}    Quantity: ${content[0]}`}
-          {"     "}
-          <span
-            onClick={() => {
-              console.log("sup");
-            }}
-          >
-            <button>Remove</button>
-          </span>
-        </p>
-      );
+    let newCart = JSON.parse(localStorage.getItem("cart"));
+    return newCart.map(content => {
+      return <BagProduct content={content} />;
     });
   }
 
@@ -32,7 +22,7 @@ export default function CartModal(props) {
         <Modal.Title id="contained-modal-title-vcenter">Cart</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div>{props.cart && bagContents()}</div>
+        <div>{bagContents()}</div>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
