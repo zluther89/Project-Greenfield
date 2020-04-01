@@ -6,6 +6,9 @@ import BagProduct from "./BagProduct";
 export default function CartModal(props) {
   function bagContents() {
     let newCart = JSON.parse(localStorage.getItem("cart"));
+    if (!newCart) {
+      newCart = [];
+    }
     return newCart.map(content => {
       return <BagProduct content={content} />;
     });

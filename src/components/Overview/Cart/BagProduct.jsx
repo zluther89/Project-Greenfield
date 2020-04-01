@@ -5,6 +5,9 @@ export default function BagProduct(props) {
   function changeCart() {
     setStatus(true);
     let cart = JSON.parse(localStorage.getItem("cart"));
+    if (!cart) {
+      cart = [];
+    }
 
     let newCart = cart.filter(
       el => JSON.stringify(el) !== JSON.stringify(props.content)
