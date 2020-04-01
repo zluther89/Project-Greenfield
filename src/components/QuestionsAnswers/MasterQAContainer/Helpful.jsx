@@ -65,8 +65,6 @@ class Helpful extends React.Component {
 
     updateHandler =
       type === "report" ? () => this.handleReported() : updateHandler;
-    console.log(updateHandler);
-
     let localStorageVoteUpdate =
       type === "helpful"
         ? () => {

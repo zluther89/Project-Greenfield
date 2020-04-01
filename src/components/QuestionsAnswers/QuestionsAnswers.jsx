@@ -39,16 +39,13 @@ class QuestionAnswers extends React.Component {
   searchHandler(event) {
     let params = event.target.value.toLowerCase();
     if (params.length >= 3) {
-      console.log(this.props.questionSet);
       let filteredArr = this.props.questionSet.reduce((acc, question) => {
         let questionBody = question.question_body.toLowerCase();
-        console.log(questionBody);
         if (questionBody.indexOf(params) !== -1) {
           acc.push(question);
         }
         return acc;
       }, []);
-      console.log(filteredArr);
       this.setState(
         { filteredQuestions: filteredArr, searched: true },
         () => {}
@@ -57,11 +54,10 @@ class QuestionAnswers extends React.Component {
     if (params.length < 3 && this.state.searched === true) {
       this.setState({ filteredQuestions: [], searched: false });
     }
-    console.log(this.state);
   }
 
   componentDidMount() {
-    let productId = this.props.productId;
+    let productId = this.props.productId || 3;
     this.props.getQuestionsThunk(productId);
   }
 
