@@ -9,14 +9,14 @@ let OutfitCard= (props) => {
   let price;
   try {
     price = props.outfitNames[props.index].default_price;
-    photo = props.outfitInfo[id][0]['photos'][0].thumbnail_url
+    if (props.outfitInfo[id][0]['photos'][0].thumbnail_url === null) {
+      photo ='https://avatars1.githubusercontent.com/u/12416599?s=460&u=dd647676df3df2357c7aa8045c1a5e14fbcec5ac&v=4'
+    } else {
+      photo = props.outfitInfo[id][0]['photos'][0].thumbnail_url
+    }
   } catch {
     price = 0;
   }
-
-  console.log(props.outfitInfo[id][0])
-
-    // photo = props.productInfo[id][0]['photos'][0].thumbnail_url
 
   return (
       <Card 
