@@ -61,6 +61,10 @@ class RelatedProducts extends React.Component {
       });
   }
 
+  removeDuplicates(array) {
+    return array.filter((a, b) => array.indexOf(a) === b)
+  };
+
   getCurrentFromStore() {}
 
   componentDidMount() {
@@ -75,9 +79,9 @@ class RelatedProducts extends React.Component {
       axios.get(`http://3.134.102.30/products/${productId}/related`).then(({ data }) => {
         let productInfo={};
         let relatedProducts = [];
-
+        let uniqueId = this.removeDuplicates(data)
         async function getData() {
-          for (let id of data) {
+          for (let id of uniqueId) {
           await axios.get(`http://3.134.102.30/products/${id}`).then( ({data}) => {
             relatedProducts.push(data)
           } )
@@ -89,39 +93,6 @@ class RelatedProducts extends React.Component {
           this.setState({productInfo: productInfo})
           this.setState({relatedProducts: relatedProducts})
         });
-
-    this.props.getNewProductThunk(productId);
-    this.getOutfits();
-    axios
-      .get(`http://3.134.102.30/products/${productId}`)
-      .then(({ data }) => {
-        this.setState({ current: data });
-      });
-    axios
-      .get(`http://3.134.102.30/products/${productId}/related`)
-      .then(({ data }) => {
-        let productInfo = {};
-        let relatedProducts = [];
-
-        async function getData() {
-          for (let id of data) {
-            await axios
-              .get(`http://3.134.102.30/products/${id}`)
-              .then(({ data }) => {
-                relatedProducts.push(data);
-              });
-            await axios
-              .get(`http://3.134.102.30/products/${id}/styles`)
-              .then(({ data }) => {
-                productInfo[data.product_id] = data.results;
-              });
-          }
-        }
-        getData().then(() => {
-          this.setState({ productInfo: productInfo });
-          this.setState({ relatedProducts: relatedProducts });
-        });
-    });
   })
 }
 

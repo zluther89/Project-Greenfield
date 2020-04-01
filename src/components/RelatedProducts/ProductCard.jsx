@@ -5,16 +5,18 @@ import ShowStars from '../OverlapWork/ShowStars'
 
 let ProductCard = (props) => {
     var photo;
-
-    try{
-      photo = props.productInfo[props.product.id][0]['photos'][0].thumbnail_url     
+    let id = props.product.id
+    try {
+      if (props.productInfo[id][0]['photos'][0].thumbnail_url === null) {
+        photo = 'https://avatars1.githubusercontent.com/u/12416599?s=460&u=dd647676df3df2357c7aa8045c1a5e14fbcec5ac&v=4'
+      } else {
+        photo = props.productInfo[id][0]['photos'][0].thumbnail_url     
+      }
     }
-    catch{
+    catch {
       photo = 'https://avatars1.githubusercontent.com/u/12416599?s=460&u=dd647676df3df2357c7aa8045c1a5e14fbcec5ac&v=4'
     }
 
-    let id = props.product.id
-    console.log(props.productInfo)
     return (
         <Card 
         style={
@@ -43,7 +45,6 @@ let ProductCard = (props) => {
                 <Card.Text align='left'>{props.product.category}</Card.Text>
                 <a onClick={props.handleClick} className={`cardTitle ${id}`} href={`/products/${id}`}>{props.product.name}</a>
                 <Card.Text align='left'>${props.product.default_price}</Card.Text>
-                <Card.Text align='left'>Stars</Card.Text>
                 <ShowStars productId={id}/>
               </Card.Body>
         </Card>
