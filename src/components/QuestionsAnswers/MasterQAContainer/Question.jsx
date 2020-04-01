@@ -2,6 +2,8 @@ import React from "react";
 import Answers from "./Answers";
 import Helpful from "./Helpful";
 import Axios from "axios";
+import Table from "react-bootstrap/Table";
+
 // import { render } from "@testing-library/react";
 
 class Question extends React.Component {
@@ -60,7 +62,7 @@ class Question extends React.Component {
     let questionID = this.props.q.question_id;
     return (
       <div style={this.state.style} id="QuestionAnswerSet">
-        <table>
+        <Table borderless>
           <tbody>
             <tr>
               <td>Q:</td>
@@ -86,7 +88,7 @@ class Question extends React.Component {
               setAnswers={this.setAnswers}
             />
           </tbody>
-        </table>
+        </Table>
       </div>
     );
   }
