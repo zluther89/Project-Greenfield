@@ -49,7 +49,6 @@ class Question extends React.Component {
 
   componentDidMount() {
     this.setAnswers();
-    setTimeout(() => console.log("answers state", this.state), 500);
   }
 
   sortAnswers(array) {
