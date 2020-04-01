@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "./CarouselTest";
+import Carousel from "./ControlledCarousel";
 
 export default function ImageGallery(props) {
   return (

@@ -279,8 +279,10 @@
   object-fit: cover;
 }
 
+
 .card{
   width: 10rem;
+
 }
 
 .productCard {
@@ -639,6 +641,12 @@ button.QnAButton {
   cursor: pointer;
 }
 
+
+#oldPrice {
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
+
 #QuestionAnswerSet {
   width: 150%;
   border-bottom: 1px solid #dee2e6;
@@ -662,3 +670,4 @@ button.QnAButton {
 /* .answerTitle {
   border-bottom: 1pt solid black;
 } */
+
