@@ -246,13 +246,20 @@
 }
 
 .card{
-  width: 10px;
+  width: 10rem;
 }
 
 .productCard {
   height: 30rem;
 }
 
+.productCarouselContainer{
+
+}
+
+.productCarousel{
+  overflow-x: 'scroll';
+}
 
 .circles {
   margin-left: 15px;
