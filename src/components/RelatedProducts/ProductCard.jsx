@@ -40,7 +40,7 @@ let ProductCard = (props) => {
               <Card.Body>       
                 <Card.Text align='left'>{props.product.category}</Card.Text>
                 <a onClick={props.handleClick} className={`cardTitle ${id}`} href={`/products/${id}`}>{props.product.name}</a>
-                <Card.Text align='left'>${props.productInfo[id][0].original_price}</Card.Text>
+                <Card.Text align='left'>${props.product.default_price}</Card.Text>
                 <ShowStars productId={id}/>
               </Card.Body>
         </Card>

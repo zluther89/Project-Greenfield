@@ -80,13 +80,10 @@ class RelatedProducts extends React.Component {
         let productInfo={};
         let relatedProducts = [];
         let uniqueId = this.removeDuplicates(data)
-        console.log(uniqueId)
         async function getData() {
           for (let id of uniqueId) {
-            console.log('an id', id)
           await axios.get(`http://3.134.102.30/products/${id}`).then( ({data}) => {
             relatedProducts.push(data)
-            console.log('relatedProducts>>>>>', relatedProducts)
           } )
           await axios.get(`http://3.134.102.30/products/${id}/styles`).then( ({data}) => {
             productInfo[data.product_id] = data.results
@@ -94,9 +91,7 @@ class RelatedProducts extends React.Component {
         }}
         getData().then( () => {
           this.setState({productInfo: productInfo})
-          this.setState({relatedProducts: relatedProducts}, () => {
-            console.log('here!!!>>>',this.state.relatedProducts)
-          })
+          this.setState({relatedProducts: relatedProducts})
         });
   })
 }
