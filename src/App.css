@@ -149,7 +149,41 @@
   overflow: hidden;
   vertical-align: middle;
   height: 100%;
- }
+}
+.ProductSlidercontainer {
+  width: 100%;
+}
+.ProductSlider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: #fff;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.ProductSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background: url("./image/arrowdown.png") no-repeat;
+  -webkit-background-size: 100% 100% !important ;
+  background-size: 100% 100% !important;
+}
+.ProductSlider::-moz-range-thumb {
+  appearance: icon;
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background: url("./image/arrowdown.png") no-repeat;
+  -webkit-background-size: 100% 100% !important ;
+  background-size: 100% 100% !important;
+}
 
 /* end */
 /* end */
@@ -253,13 +287,20 @@
   height: 30rem;
 }
 
-.productCarouselContainer{
-
+.productCarousel {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  padding-top: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+  padding-left: 2%;
 }
 
-.productCarousel{
-  overflow-x: 'scroll';
-}
+.productCarouselContainer {
+  width: 100%;
+  height: 100%;
+
 
 .circles {
   margin-left: 15px;
@@ -372,11 +413,11 @@
 .answererContainer {
   display: flex;
   font-size: 8px;
-  float: left;
-  justify-content: center;
+  float: center;
   flex-direction: row;
   flex-wrap: nowrap;
   width: 50%;
+  margin: 2%;
 }
 
 .answererContainer div {
@@ -568,10 +609,6 @@ button.QnAButton {
   float: left;
 }
 
-#QuestionAnswerSet {
-  border-right: 20px solid red;
-  border: 10px;
-}
 .thumbnailBox {
   height: 90%;
   width: 12%;
@@ -579,9 +616,7 @@ button.QnAButton {
   top: 0;
   left: 0;
   opacity: 0.5;
-
   overflow: scroll;
-
   display: block;
   z-index: 9;
   margin-top: 2em;
@@ -603,3 +638,27 @@ button.QnAButton {
 .ToggleAnswers {
   cursor: pointer;
 }
+
+#QuestionAnswerSet {
+  width: 150%;
+  border-bottom: 1px solid #dee2e6;
+  margin: 3%;
+  padding: 2%;
+}
+
+.table tr {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+#select {
+  width: 100%;
+}
+
+#answererContainer tr {
+  border-top: none;
+}
+/* .answerTitle {
+  border-bottom: 1pt solid black;
+} */

@@ -39,28 +39,30 @@ class QuestionAnswers extends React.Component {
   searchHandler(event) {
     let params = event.target.value.toLowerCase();
     if (params.length >= 3) {
+      console.log(this.props.questionSet);
       let filteredArr = this.props.questionSet.reduce((acc, question) => {
         let questionBody = question.question_body.toLowerCase();
+        console.log(questionBody);
         if (questionBody.indexOf(params) !== -1) {
           acc.push(question);
         }
         return acc;
       }, []);
-      this.setState({ filteredQuestions: filteredArr, searched: true }, () => {
-        console.log("master state", this.state);
-      });
+      console.log(filteredArr);
+      this.setState(
+        { filteredQuestions: filteredArr, searched: true },
+        () => {}
+      );
     }
     if (params.length < 3 && this.state.searched === true) {
       this.setState({ filteredQuestions: [], searched: false });
     }
+    console.log(this.state);
   }
 
   componentDidMount() {
     let productId = this.props.productId;
     this.props.getQuestionsThunk(productId);
-    setTimeout(() => {
-      console.log(this.props);
-    }, 1000);
   }
 
   clickHandler() {
@@ -95,6 +97,7 @@ class QuestionAnswers extends React.Component {
             <Container>
               {" "}
               <QuestionsContainer
+                searched={this.state.searched}
                 filteredQuestions={this.state.filteredQuestions}
               />
             </Container>
