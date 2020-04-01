@@ -36,6 +36,7 @@ let OutfitCard= (props) => {
               <a onClick={props.handleClick} className={`cardTitle ${id}`} href={`/products/${id}`}>{props.outfitNames[props.index].name}</a>
               <Card.Text align='left'>${props.outfitNames[props.index].default_price}</Card.Text>
               <ShowStars productId={id}/>  
+              {/* number of reviews */}
             </Card.Body>
       </Card>
 
