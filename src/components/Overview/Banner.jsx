@@ -12,7 +12,7 @@ export default function Banner() {
       <div className="container jumbotronContainer">
         {" "}
         <h1 className="display-5">
-          Forever404
+          forever404
           <span>
             <i
               className="fa fa-shopping-cart"
