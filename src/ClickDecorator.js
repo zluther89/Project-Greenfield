@@ -1,29 +1,42 @@
 import React from "react";
 
-const withClickTracker = Component => {
-  return class extends React.Component {
-    state = {
-      clicks: {}
-    };
-
-    clickTracker = event => {
-      let clicks = { ...this.state.clicks };
-      let click = [event.target, new Date()];
-      if (!clicks[Component]) {
-        clicks[Component] = [click];
-      } else {
-        clicks[Component].push(click);
-      }
-
-      this.setState({ clicks: clicks });
-    };
-
-    render() {
-      return (
-        <div onClick={this.clickTracker}>
-          <Component />
-        </div>
-      );
-    }
+class ClickTracker extends React.Component {
+  state = {
+    clicks: {}
   };
-};
+
+  componentDidUpdate() {
+    console.log(this.state);
+  }
+
+  clickTracker = (event, child) => {
+    let component = child.type.WrappedComponent
+      ? child.type.WrappedComponent.name
+      : child.type.name;
+    let clicks = { ...this.state.clicks };
+    let click = [event.target, new Date()];
+    if (!clicks[component]) {
+      clicks[component] = [click];
+    } else {
+      clicks[component].push(click);
+    }
+
+    this.setState({ clicks: clicks });
+  };
+
+  render() {
+    return (
+      <>
+        {React.Children.map(this.props.children, child => {
+          return (
+            <div onClick={event => this.clickTracker(event, child)}>
+              {React.cloneElement(child)}
+            </div>
+          );
+        })}
+      </>
+    );
+  }
+}
+
+export default ClickTracker;
