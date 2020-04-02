@@ -66,7 +66,7 @@ class Helpful extends React.Component {
       this.props.type === "question"
         ? () => this.props.getQuestionsThunk(productID)
         : () => this.props.setAnswers();
-    updateHandler = type === "helpful" ? this.localVote : updateHandler;
+    updateHandler = type === "helpful" ? () => this.localVote() : updateHandler;
 
     updateHandler =
       type === "report" ? () => this.handleReported() : updateHandler;
