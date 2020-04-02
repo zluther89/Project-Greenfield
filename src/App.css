@@ -1,21 +1,21 @@
 .App {
   margin: 0 auto; /* this will center the page */
-  width: 1200px; /*  use your width here */
+  width: 1100px; /*  use your width here */
 }
 
 .overviewFull {
-  height: 800px;
+  height: 700px;
   font-family: "Kalam";
 }
 
 .overviewBanner {
-  height: 7%;
+  height: 11%;
   background-color: black !important;
 }
 
 .overviewMain {
   margin: 0px;
-  height: 76%;
+  height: 74%;
 }
 
 .overviewBottom {
@@ -31,10 +31,12 @@
 
 .jumbotron {
   background-color: black;
+  height: 100% !important;
 }
 
 .jumbotronContainer {
   background-color: black;
+  height: 100% !important;
 }
 
 #specialOffer {
@@ -196,10 +198,11 @@
 
 .productName {
   height: 30%;
+  margin-bottom: 7%;
 }
 
 .styleSelect {
-  height: 34%;
+  height: 32%;
   display: flex;
   flex-direction: column;
 }
@@ -305,8 +308,8 @@
 }
 
 .circles {
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 10px;
 }
 
@@ -375,8 +378,8 @@
 }
 
 .square {
-  width: 5em;
-  height: 5em;
+  width: 4em;
+  height: 4em;
   margin-bottom: 1em;
 }
 
@@ -488,7 +491,7 @@ table {
 }
 
 .carousel-indicators {
-  height: 15%;
+  height: 0%;
 }
 
 #carousel-thumb {
@@ -517,6 +520,13 @@ table {
   display: block;
   margin-bottom: 10px;
   z-index: 0;
+  transition: width 2s;
+}
+
+.d-block:active {
+  transform: scale(2);
+  overflow: scroll;
+  transform-origin: 0, 0;
 }
 
 .col-sm-10 {
@@ -564,10 +574,12 @@ table {
 
 .modal-content > .container {
   height: 100% !important;
+  background-color: rgba(47, 0, 255, 0);
 }
 
 .overviewModalRow {
   height: 100% !important;
+  background-color: rgba(47, 0, 255, 0);
 }
 
 .slide {
@@ -598,6 +610,7 @@ table {
   z-index: 2;
 }
 .fa {
+  color: black !important;
   margin: 5px;
 }
 
@@ -605,6 +618,10 @@ button.QnAButton {
   color: black;
   background-color: white;
   border-color: black;
+}
+
+#cartIcon {
+  color: white !important;
 }
 
 .checkoutButtons {
@@ -617,7 +634,7 @@ button.QnAButton {
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0.5;
+  opacity: 0.7;
   overflow: scroll;
   display: block;
   z-index: 9;
@@ -675,7 +692,6 @@ button.QnAButton {
   border-bottom: 1pt solid black;
 } */
 
-
 #starsBox {
   width: 60%;
   display: flex;
@@ -693,3 +709,10 @@ button.QnAButton {
   /* Just so it's visible */
 }
 
+#selectedStyleCircle {
+  opacity: 0.7;
+}
+
+#companySlogan {
+  font-size: 15px;
+}

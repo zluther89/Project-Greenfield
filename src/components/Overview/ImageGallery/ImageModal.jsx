@@ -20,14 +20,14 @@ let ImageModal = props => {
    </Modal.Header> */}
       <Container className="modalBackground">
         <Row className="overviewModalRow">
-          <Col xs={11}>
+          <Col xs={12}>
             {" "}
             <ModalCarousel
               style={props.currentStyle}
               styleData={props.styleData}
             />
           </Col>
-          <Col xs={1}></Col>
+          <Col xs={0}></Col>
         </Row>
       </Container>
     </Modal>
