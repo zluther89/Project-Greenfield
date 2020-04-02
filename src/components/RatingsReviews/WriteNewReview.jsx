@@ -29,6 +29,8 @@ class WriteNewReview extends React.Component {
     this.handleCharacteristic = this.handleCharacteristic.bind(this);
     this.handleRating = this.handleRating.bind(this);
     this.handleText = this.handleText.bind(this)
+    this.handleBoolean = this.handleBoolean.bind(this)
+    this.handlePost = this.handlePost.bind(this)
   }
   componentDidMount() {
     this.GetCharacterstics();
@@ -49,15 +51,18 @@ class WriteNewReview extends React.Component {
       .catch(err => console.log(err));
   }
   handleCharacteristic(e) {
-    let characteristic = e.target.id;
-    let select = e.target.value;
+    let characteristic = e.target.id;  //name of characteristic e.x:size
+    let select = e.target.value;  //number e.x:3
+    let id = e.target.name //id of characteristic e.x:6
+
+
     const AllCharacteristics = {
       Size: {
         1: "A size too small",
         2: "1/2a size too small",
         3: "Perfect",
         4: "1/2 a size too big",
-        5: "A size too wide"
+        5: "A size too wide",
       },
       Width: {
         1: "Too narrow",
@@ -71,34 +76,45 @@ class WriteNewReview extends React.Component {
         2: "Slightly uncomfortable",
         3: "Ok",
         4: "Comfortable",
-        5: "Perfect"
+        5: "Perfect",
       },
       Quality: {
         1: "poor",
         2: "Below average",
         3: "What I expected",
         4: "Pretty great",
-        5: "Perfect"
+        5: "Perfect",
       },
       Length: {
         1: "Runs short",
         2: "Runs slightly short",
         3: "Perfect",
         4: "Runs slightly long",
-        5: "Runs long"
+        5: "Runs long",
       },
       Fit: {
         1: "Runs tight",
         2: "Runs slightly tight",
         3: "Perfect",
         4: "Runs slightly long",
-        5: "Runs long"
+        5: "Runs long",
       }
     };
     this.setState({
       [characteristic]: AllCharacteristics[characteristic][select]
     });
+    this.setState(prevState => ({
+      AddReview: {
+        // object that we want to update
+        ...prevState.AddReview, // keep all other key-value pairs
+        characteristics: {// specific object of stateobject
+          ...prevState.AddReview.characteristics,   // copy all key-value pairs
+          [id]: select         // update value of specific key
+        }
+      }
+    }))
   }
+
   handleRating(rating) {
     this.setState(prevState => ({
       AddReview: {
@@ -109,9 +125,35 @@ class WriteNewReview extends React.Component {
     }));
   }
   handleText(e) {
-    console.log(e.target.id);
-
-  console.log(e.target.value);
+    let name = e.target.id
+    let value = e.target.value
+    this.setState(prevState => ({
+      AddReview: {
+        // object that we want to update
+        ...prevState.AddReview, // keep all other key-value pairs
+        [name]: value // update the value of specific key
+      }
+    }),()=>console.log(this.state.AddReview)
+    );
+  }
+  handleBoolean(e) {
+    let value = e.target.value ==="true"?true:false
+    this.setState(prevState => ({
+      AddReview: {
+        // object that we want to update
+        ...prevState.AddReview, // keep all other key-value pairs
+        recommend: value// update the value of specific key
+      }
+    }),()=>console.log(this.state.AddReview)
+    );
+  }
+  handlePost() {
+    let productId = this.props.productId || 3;
+    let characteristics = this.state.characteristics
+    Axios.post(`http://3.134.102.30/reviews/${productId}`, characteristics)
+      .then(response => { alert("success!") })
+    .catch(err =>console.log("can't send request to api")
+    )
 
   }
   render() {
@@ -167,16 +209,18 @@ class WriteNewReview extends React.Component {
                       <input
                         type="radio"
                         id="recommend"
+                        onClick={this.handleBoolean}
                         name="recommend"
-                        value="1"
+                        value="true"
                         required
                       />
                       <label className="RadioMargin">Yes</label>
                       <input
                         type="radio"
                         id="Norecommend"
+                        onClick={this.handleBoolean}
                         name="recommend"
-                        value="0"
+                        value="flase"
                       />
                       <label>No</label>
                     </div>
@@ -195,8 +239,9 @@ class WriteNewReview extends React.Component {
                           <div className=" CharacteristicMargin">
                             <input
                               type="radio"
+                              data_value="111"
                               id={characteristic[0]}
-                              name={characteristic[0]}
+                              name={characteristic[1].id}
                               onClick={this.handleCharacteristic}
                               value="1"
                               required
@@ -206,7 +251,7 @@ class WriteNewReview extends React.Component {
                             <input
                               type="radio"
                               id={characteristic[0]}
-                              name={characteristic[0]}
+                              name={characteristic[1].id}
                               onClick={this.handleCharacteristic}
                               value="2"
                             />{" "}
@@ -225,7 +270,7 @@ class WriteNewReview extends React.Component {
                               type="radio"
                               id={characteristic[0]}
                               onClick={this.handleCharacteristic}
-                              name={characteristic[0]}
+                              name={characteristic[1].id}
                               value="4"
                             />{" "}
                           </div>
@@ -234,7 +279,7 @@ class WriteNewReview extends React.Component {
                               type="radio"
                               id={characteristic[0]}
                               onClick={this.handleCharacteristic}
-                              name={characteristic[0]}
+                              name={characteristic[1].id}
                               value="5"
                             />
                           </div>
@@ -271,7 +316,8 @@ class WriteNewReview extends React.Component {
                       minLength="50"
                       className="form-control"
                       type="text"
-                      id="summary"
+                      id="body"
+                      onChange={this.handleText}
                       required
                       placeholder="Why did you like the product or not？"
                     ></input>
@@ -308,7 +354,8 @@ class WriteNewReview extends React.Component {
                       minLength="1"
                       className="form-control"
                       type="text"
-                      id="summary"
+                      id="name"
+                      onChange={this.handleText}
                       placeholder="Example: jackson11!"
                     ></input>
                   </div>
@@ -328,7 +375,8 @@ class WriteNewReview extends React.Component {
                       type="email"
                       maxLength="60"
                       minLength="1"
-                      id="summary"
+                      id="email"
+                      onChange={this.handleText}
                       placeholder="Example: jackson11@email.com"
                     ></input>
                   </div>
@@ -348,6 +396,7 @@ class WriteNewReview extends React.Component {
                   </button>
                   <button
                     type="submit"
+                    onClick={this.handlePost}
                     className="btn btn-primary "
                     id="makePostRequire"
                   >
