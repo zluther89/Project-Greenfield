@@ -38,6 +38,7 @@ changeMarkingScore(index) {
         1:"Poor",2:"Fair",3:"Average",4:"Good",5:"Great"
     };
   let rating = item[index]
+  this.props.handleRating(index)
   this.setState({rating:rating})
 
 }
