@@ -1,21 +1,21 @@
 .App {
   margin: 0 auto; /* this will center the page */
-  width: 1200px; /*  use your width here */
+  width: 1100px; /*  use your width here */
 }
 
 .overviewFull {
-  height: 800px;
+  height: 700px;
   font-family: "Kalam";
 }
 
 .overviewBanner {
-  height: 7%;
+  height: 11%;
   background-color: black !important;
 }
 
 .overviewMain {
   margin: 0px;
-  height: 76%;
+  height: 74%;
 }
 
 .overviewBottom {
@@ -31,10 +31,12 @@
 
 .jumbotron {
   background-color: black;
+  height: 100% !important;
 }
 
 .jumbotronContainer {
   background-color: black;
+  height: 100% !important;
 }
 
 #specialOffer {
@@ -158,6 +160,11 @@
   width: 100%;
   height: 10px;
   border-radius: 5px;
+  background:#FFF;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
   background: #fff;
   outline: none;
   opacity: 0.7;
@@ -171,6 +178,9 @@
   width: 23px;
   height: 24px;
   border: 0;
+  background: url("./image/arrowdown.png")  no-repeat;
+  -webkit-background-size: 100% 100% !important ;
+  background-size: 100% 100% !important;
   background: url("./image/arrowdown.png") no-repeat;
   -webkit-background-size: 100% 100% !important ;
   background-size: 100% 100% !important;
@@ -185,19 +195,45 @@
   background-size: 100% 100% !important;
 }
 
+.ProductSlider::-moz-range-thumb {
+  appearance: icon;
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background: url("./image/arrowdown.png")  no-repeat;
+  -webkit-background-size: 100% 100% !important ;
+  background-size: 100% 100% !important;
+}
 /* end */
+/* css for write new review */
+.RadioMargin{
+  margin-right: 1em;
+}
+.RadioNumber{
+  margin-left:5rem;
+}
+.InPutWidth{
+  width:100%;
+}
+.CharacteristicMargin{
+  margin-left:4.5rem;
+}
+
 /* end */
 /*matt*/
 .productReviews {
-  height: 5%;
+  height: 4%;
+  margin-bottom: 1%;
+  display: flex;
 }
 
 .productName {
   height: 30%;
+  margin-bottom: 7%;
 }
 
 .styleSelect {
-  height: 34%;
+  height: 32%;
   display: flex;
   flex-direction: column;
 }
@@ -287,24 +323,23 @@
   height: 30rem;
 }
 
-.productCarousel {
-  display: flex;
-  width: 100%;
-  overflow-x: auto;
-  padding-top: 2%;
-  padding-right: 2%;
-  padding-bottom: 2%;
-  padding-left: 2%;
+.productCarouselContainer {
+  margin: 20px auto 20px auto;
+  width: 1110px;
 }
 
-.productCarouselContainer {
-  width: 100%;
-  height: 100%;
+.productCarousel{
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.productCarousel::-webkit-scrollbar {
+  display: none;
 }
 
 .circles {
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 10px;
 }
 
@@ -373,8 +408,8 @@
 }
 
 .square {
-  width: 5em;
-  height: 5em;
+  width: 4em;
+  height: 4em;
   margin-bottom: 1em;
 }
 
@@ -486,7 +521,7 @@ table {
 }
 
 .carousel-indicators {
-  height: 15%;
+  height: 0%;
 }
 
 #carousel-thumb {
@@ -515,6 +550,13 @@ table {
   display: block;
   margin-bottom: 10px;
   z-index: 0;
+  transition: width 2s;
+}
+
+.d-block:active {
+  transform: scale(2);
+  overflow: scroll;
+  transform-origin: 0, 0;
 }
 
 .col-sm-10 {
@@ -562,10 +604,12 @@ table {
 
 .modal-content > .container {
   height: 100% !important;
+  background-color: rgba(47, 0, 255, 0);
 }
 
 .overviewModalRow {
   height: 100% !important;
+  background-color: rgba(47, 0, 255, 0);
 }
 
 .slide {
@@ -596,6 +640,7 @@ table {
   z-index: 2;
 }
 .fa {
+  color: black !important;
   margin: 5px;
 }
 
@@ -603,6 +648,10 @@ button.QnAButton {
   color: black;
   background-color: white;
   border-color: black;
+}
+
+#cartIcon {
+  color: white !important;
 }
 
 .checkoutButtons {
@@ -615,7 +664,7 @@ button.QnAButton {
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0.5;
+  opacity: 0.7;
   overflow: scroll;
   display: block;
   z-index: 9;
@@ -644,6 +693,11 @@ button.QnAButton {
   text-decoration-color: red;
 }
 
+#incorrectAddtoBag {
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
+
 #QuestionAnswerSet {
   width: 150%;
   /* border-bottom: 1px solid #dee2e6; */
@@ -667,3 +721,28 @@ button.QnAButton {
 /* .answerTitle {
   border-bottom: 1pt solid black;
 } */
+
+#starsBox {
+  width: 60%;
+  display: flex;
+}
+
+#linkToReviews {
+  /* Just so it's visible */
+  position: relative;
+  left: -50px;
+}
+#theStars {
+  /* Grow to rest of container */
+  flex: 1;
+
+  /* Just so it's visible */
+}
+
+#selectedStyleCircle {
+  opacity: 0.7;
+}
+
+#companySlogan {
+  font-size: 15px;
+}

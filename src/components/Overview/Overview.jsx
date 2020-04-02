@@ -90,6 +90,8 @@ class Overview extends React.Component {
                 currentStyle={this.state.currentStyle}
                 data={this.state.data}
                 styleData={this.state.styleData}
+                currentPrice={this.state.currentPrice}
+                salePrice={this.state.salePrice}
               />
             </>
             <div className="row overviewRow">

@@ -25,15 +25,14 @@ class ShowStars extends React.Component{
     super(props)
     this.state = {
       rating: 0,
-      ratingPercen: 0,
-      product_id:this.props.productId
+      ratingPercen: 0
     }
   }
   componentDidMount() {
     this.GetReviewMet()
   }
   GetReviewMet() {
-    let productId = this.props.productId || `${window.location.href.split("").slice(31).join()}`
+    let productId = this.props.productId || 3
     let count = 0;
     let sum = 0
     if (this.props.star) {

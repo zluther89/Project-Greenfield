@@ -38,12 +38,14 @@ export default class RatingReviews extends React.Component {
             <RatingBreakdown
               GetTotalCount={this.GetTotalCount}
               GetStarFilter={this.GetStarFilter}
+              productId ={this.props.productId}
             />
           </div>
           <div className="col-8 ">
             <ReviewsList
               totalCount={this.state.totalCount}
               StarFilter={this.state.StarFilter}
+              productId ={this.props.productId}
             />
           </div>
 
