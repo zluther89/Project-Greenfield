@@ -14,13 +14,16 @@ let ComparisonModal = (props) => {
   let compare ={};
   for (let feature of currentFeatures) {
     if (totalFeatures.indexOf(feature) === -1) {
+
       totalFeatures.push(feature)
     }
   }
   if (compareFeatures) {
     for (let feature of compareFeatures) {
+      console.log('index of feature', totalFeatures.indexOf(feature))
       if (totalFeatures.indexOf(feature) === -1) {
-      totalFeatures.push(feature)
+        totalFeatures.push(feature)
+        console.log('totalfeature', totalFeatures)
       }
      }
   }

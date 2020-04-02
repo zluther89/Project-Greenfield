@@ -17,7 +17,6 @@ function App(props) {
       <RelatedProducts productId={params.id} />
       <QuestionAnswers productId={params.id} />
       <RatingReviews productId={params.id} />
-
     </div>
   );
 }

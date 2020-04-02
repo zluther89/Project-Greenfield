@@ -25,22 +25,22 @@ class ShowStars extends React.Component{
     super(props)
     this.state = {
       rating: 0,
-      ratingPercen: 0,
-      product_id:this.props.productId
+      ratingPercen: 0
     }
   }
   componentDidMount() {
     this.GetReviewMet()
   }
   GetReviewMet() {
+    let productId = this.props.productId || 3
     let count = 0;
     let sum = 0
     if (this.props.star) {
       let ratingPercen = TranverStar(this.props.star)
       this.setState({ratingPercen:ratingPercen})
-
     } else {
-      Axios.get(`http://3.134.102.30/reviews/${window.location.href.split("").slice(31).join()}/meta`)
+
+      Axios.get(`http://3.134.102.30/reviews/${productId}/meta`)
         .then(response => {
           const AllRatings = response.data.ratings
           for (let val in AllRatings) {
@@ -63,7 +63,6 @@ class ShowStars extends React.Component{
   }
   render() {
     return (
-
       <div className="progress border-0  grade-star-bar " style={{"height":"30","width":"50%"}}>
         <div className="progress-bar " style={{ "width": `${this.state.ratingPercen}%`,"backgroundColor":"black" }} role="progressbar" aria-valuemin="0" aria-valuemax="100" ><div className="grade-star-img" ></div></div>
 

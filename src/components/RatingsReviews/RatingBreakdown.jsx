@@ -43,10 +43,11 @@ class RatingBreakdown extends React.Component{
     })
   }
   GetReviewMet() {
+    let productId = this.props.productId || 3
     let count = 0;
     let sum = 0;
     let pairArr =[]
-    Axios.get(`http://3.134.102.30/reviews/${window.location.href.split("").slice(31).join()}/meta`)
+    Axios.get(`http://3.134.102.30/reviews/${productId}/meta`)
       .then(response => {
         //get recommend percentage
         //change object to array
@@ -81,7 +82,7 @@ class RatingBreakdown extends React.Component{
     return (
       <div style={{"height":"100%"}}>
         <div className="row " style={{ "height": "10%" }}>
-          <div className="col-4  "><h1>{this.state.rating}</h1></div> <div className="col-8 "><ShowStars /></div>
+          <div className="col-4  "><h1>{this.state.rating}</h1></div> <div className="col-8 "><ShowStars productId = {this.props.productId}/></div>
         </div>
         <div className="row " style={{ "height": "5%" }}><p>total reviews</p> <div className="col-6"><strong ml-10 ="true">{this.state.count}</strong></div></div>
         <div className="row " style={{ "height": "5%" }}><p> {this.state.recommend || 0}% of reviews recommend this product</p></div>
