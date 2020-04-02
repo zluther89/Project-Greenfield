@@ -91,7 +91,7 @@ class RelatedProducts extends React.Component {
     let currentOutfit = this.state.outfitId.slice();
     if (currentOutfit.indexOf(this.state.current.id) === -1) {
       this.setState({ outfitLoaded: false });
-      currentOutfit.push(this.state.current.id);
+      currentOutfit.unshift(this.state.current.id);
     }
     this.setState({ outfitId: currentOutfit }, () => {
       localStorage.setItem("outfit", JSON.stringify(currentOutfit));
@@ -102,8 +102,8 @@ class RelatedProducts extends React.Component {
   async getOutfitData(outfitId, callback) {
     let outfitNames = [];
     let outfitInfo = {};
-    let outfits = outfitId.reverse()
-    for (let id of outfits) {
+
+    for (let id of outfitId) {
       await axios
         .get(`http://3.134.102.30/products/${id}`)
         .then(({ data }) => {outfitNames.push(data)});
