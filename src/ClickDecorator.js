@@ -1,4 +1,5 @@
 import React from "react";
+import Axios from "axios";
 
 class ClickTracker extends React.Component {
   state = {
@@ -9,19 +10,22 @@ class ClickTracker extends React.Component {
     console.log(this.state);
   }
 
+  postClick = clickData => {
+    return Axios.post("http://3.134.102.30/interactions/", clickData);
+  };
+
   clickTracker = (event, child) => {
-    let component = child.type.WrappedComponent
+    let widget = child.type.WrappedComponent
       ? child.type.WrappedComponent.name
       : child.type.name;
-    let clicks = { ...this.state.clicks };
-    let click = [event.target, new Date()];
-    if (!clicks[component]) {
-      clicks[component] = [click];
-    } else {
-      clicks[component].push(click);
-    }
-
-    this.setState({ clicks: clicks });
+    let clickObj = {
+      widget: widget,
+      time: new Date(),
+      element: event.target.outerHTML
+    };
+    this.postClick(clickObj)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   render() {
