@@ -53,7 +53,7 @@ let OutfitCarousel = (props) => {
                         variant="outline-primary"
                         onClick={props.handleAddToOutfit}
                     >
-                        +
+                     +
                     </Button>{" "}
                 </Card>
             {props.outfitId && renderOutfits()}
