@@ -20,7 +20,25 @@ export default class SizeQuantitySelect extends React.Component {
     // this.populateQuantity = this.populateQuantity.bind(this);
   }
 
+  populateQuantity() {
+    return Array.apply(null, Array(this.state.sizeAvailable)).map(
+      (val, index) => {
+        if (index <= 16) {
+          return (
+            <Dropdown.Item
+              href="#/action-1"
+              onClick={() => this.setQuantity(index + 1)}
+            >
+              {index + 1}
+            </Dropdown.Item>
+          );
+        }
+      }
+    );
+  }
+
   populateSizes() {
+    console.log("this isi ittttt", this.props.styleData);
     let index = this.props.currentStyle;
     let sizes = Object.keys(this.props.styleData.results[index].skus);
     let amount = Object.values(this.props.styleData.results[index].skus);
@@ -63,12 +81,16 @@ export default class SizeQuantitySelect extends React.Component {
     );
   }
 
-  async addToBagFunc(size, quantity, style, styleName) {
+  async addToBagFunc(size, quantity, style, styleName, productName) {
     if (!window.localStorage.getItem("cart")) {
       window.localStorage.setItem("cart", JSON.stringify([]));
     }
+    let price = this.props.price;
+    if (this.props.salePrice > 0) {
+      price = this.props.salePrice;
+    }
     var cart = JSON.parse(localStorage.getItem("cart"));
-    cart.push([quantity, size, style, styleName]);
+    cart.push([quantity, size, style, styleName, productName, price]);
     window.localStorage.setItem("cart", JSON.stringify(cart));
 
     // let newStorage = currentStorage.push("you");
@@ -94,9 +116,14 @@ export default class SizeQuantitySelect extends React.Component {
           title={this.state.sizeSelected || "SIZE"}
           style={{ float: "left" }}
         >
-          <Dropdown.Item href="#/action-1" onClick={() => this.setQuantity(1)}>
-            Select Style
-          </Dropdown.Item>
+          {!this.props.styleClicked && (
+            <Dropdown.Item
+              href="#/action-1"
+              onClick={() => this.setQuantity(1)}
+            >
+              Select Style
+            </Dropdown.Item>
+          )}
           {this.props.styleData &&
             this.props.styleClicked &&
             this.populateSizes()}
@@ -106,62 +133,44 @@ export default class SizeQuantitySelect extends React.Component {
           title={this.state.quantitySelected || "QUANTITY"}
           style={{ float: "left" }}
         >
-          <Dropdown.Item href="#/action-1" onClick={() => this.setQuantity(1)}>
-            Select Style
-          </Dropdown.Item>
-          {this.state.sizeSelected && this.state.sizeAvailable && (
-            <div>
-              {" "}
-              <Dropdown.Item
-                href="#/action-1"
-                onClick={() => this.setQuantity(1)}
-              >
-                1
-              </Dropdown.Item>
-              <Dropdown.Item
-                href="#/action-2"
-                onClick={() => this.setQuantity(2)}
-              >
-                2
-              </Dropdown.Item>
-              <Dropdown.Item
-                href="#/action-3"
-                onClick={() => this.setQuantity(3)}
-              >
-                3
-              </Dropdown.Item>
-              <Dropdown.Item
-                href="#/action-3"
-                onClick={() => this.setQuantity(4)}
-              >
-                4
-              </Dropdown.Item>
-              <Dropdown.Item
-                href="#/action-3"
-                onClick={() => this.setQuantity(5)}
-              >
-                5
-              </Dropdown.Item>
-            </div>
+          {!this.state.sizeSelected && (
+            <Dropdown.Item
+              href="#/action-1"
+              onClick={() => this.setQuantity(1)}
+            >
+              Select Size
+            </Dropdown.Item>
           )}
+          <div>
+            {this.state.sizeSelected &&
+              this.state.sizeAvailable &&
+              this.populateQuantity()}
+          </div>
         </DropdownButton>
-        <Button
-          id="button-add-to-bag"
-          style={({ float: "left" }, { fontSize: "10px" }, { height: "30" })}
-          onClick={() => {
-            if (this.state.sizeSelected && this.state.sizeAvailable) {
-              this.addToBagFunc(
-                this.state.sizeSelected,
-                this.state.quantitySelected,
-                this.props.currentStyle,
-                this.props.currentStyleName
-              );
-            } else {
-            }
-          }}
-        >
-          ADD TO BAG
-        </Button>
+        {this.state.sizeSelected && this.state.quantitySelected ? (
+          <Button
+            id="button-add-to-bag"
+            style={({ float: "left" }, { fontSize: "10px" }, { height: "30" })}
+            onClick={() => {
+              if (this.state.sizeSelected && this.state.sizeAvailable) {
+                this.addToBagFunc(
+                  this.state.sizeSelected,
+                  this.state.quantitySelected,
+                  this.props.currentStyle,
+                  this.props.currentStyleName,
+                  this.props.currentProductName
+                );
+              } else {
+              }
+            }}
+          >
+            ADD TO BAG
+          </Button>
+        ) : (
+          <Button id="dropdown-basic-button-quantity">
+            <div id="incorrectAddtoBag">ADD TO BAG </div>
+          </Button>
+        )}
       </span>
     );
   }

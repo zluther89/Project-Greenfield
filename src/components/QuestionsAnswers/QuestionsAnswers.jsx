@@ -46,9 +46,10 @@ class QuestionAnswers extends React.Component {
         }
         return acc;
       }, []);
-      this.setState({ filteredQuestions: filteredArr, searched: true }, () => {
-        console.log("master state", this.state);
-      });
+      this.setState(
+        { filteredQuestions: filteredArr, searched: true },
+        () => {}
+      );
     }
     if (params.length < 3 && this.state.searched === true) {
       this.setState({ filteredQuestions: [], searched: false });
@@ -56,11 +57,8 @@ class QuestionAnswers extends React.Component {
   }
 
   componentDidMount() {
-    let productId = this.props.productId;
+    let productId = this.props.productId || 3;
     this.props.getQuestionsThunk(productId);
-    setTimeout(() => {
-      console.log(this.props);
-    }, 1000);
   }
 
   clickHandler() {
@@ -95,6 +93,7 @@ class QuestionAnswers extends React.Component {
             <Container>
               {" "}
               <QuestionsContainer
+                searched={this.state.searched}
                 filteredQuestions={this.state.filteredQuestions}
               />
             </Container>

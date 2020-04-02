@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function StyleCircle(props) {
   const [hovered, setHover] = useState(false);
+  const [clicked, setClicked] = useState(props.clicked);
+  // This will launch only if propName value has chaged.
+  useEffect(() => {
+    setClicked(props.clicked);
+  }, [props.clicked]);
 
   return (
-    <div className="square">
+    <div className="square" key={clicked}>
       <div className="imageHolder">
         <img
           className="rounded-circle"
@@ -21,7 +26,7 @@ export default function StyleCircle(props) {
             setHover(false);
           }}
         />
-        {hovered && <div className="overlay">✓</div>}
+        {(hovered || clicked) && <div className="overlay">✓</div>}
       </div>
     </div>
   );

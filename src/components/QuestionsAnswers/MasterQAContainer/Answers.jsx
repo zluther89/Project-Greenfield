@@ -45,19 +45,15 @@ class Answers extends React.Component {
           );
         return (
           <>
-            <tr key={answer.answer_id}>
+            <tr className="answerTitle" key={answer.answer_id}>
               <td>{title}</td>
-              <td>{answer.body}</td>
-            </tr>
-            <tr>
-              <td></td>
               <td>
-                <div className="answererContainer">
+                <div>{answer.body}</div>
+                <div className="answererContainer" id="answererContainer">
                   <div></div>
                   <div>by</div>
                   <div> {answererName},</div>
                   <div> {date}</div>
-
                   <Helpful
                     question={this.props.question}
                     answerId={answer.answer_id}

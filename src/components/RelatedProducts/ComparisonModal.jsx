@@ -13,17 +13,15 @@ let ComparisonModal = (props) => {
   let current ={};
   let compare ={};
   for (let feature of currentFeatures) {
-    if (totalFeatures.indexOf(feature) === -1) {
-
-      totalFeatures.push(feature)
+    if (totalFeatures.indexOf(feature.feature) === -1) {
+      totalFeatures.push(feature.feature)   
     }
   }
   if (compareFeatures) {
     for (let feature of compareFeatures) {
-      console.log('index of feature', totalFeatures.indexOf(feature))
-      if (totalFeatures.indexOf(feature) === -1) {
-        totalFeatures.push(feature)
-        console.log('totalfeature', totalFeatures)
+
+      if (totalFeatures.indexOf(feature.feature) === -1) {
+        totalFeatures.push(feature.feature) 
       }
      }
   }
@@ -63,7 +61,7 @@ let ComparisonModal = (props) => {
             </Col>
           </Row>
 
-          {totalFeatures.map( ({feature}, i) => {
+          {totalFeatures.map( (feature, i) => {
             let currentRow = null;
             let compareRow = null;
             if (current && current.hasOwnProperty(feature)) {
