@@ -5,7 +5,7 @@ export default function ProductName(props) {
     <div>
       <p>Category: {props.category}</p>
       <h3>{props.name}</h3>
-      {props.salePrice ? (
+      {props.salePrice > 0 ? (
         props.price === props.salePrice ? (
           <p>Price: ${props.price}</p>
         ) : (

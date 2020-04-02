@@ -4,10 +4,14 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export default function OverviewStars(props) {
   return (
-    <span style={{ display: "flex" }}>
-      <ShowStars />
-      <div style={{ marginLeft: "10px" }}>
-        <li
+    <div id="starsBox">
+      {" "}
+      <div id="theStars">
+        <ShowStars />{" "}
+      </div>
+      <div id="linkToReviews">
+        {" "}
+        <a
           onClick={() => {
             let element = document
               .getElementById("reviewsBox")
@@ -16,8 +20,8 @@ export default function OverviewStars(props) {
           }}
         >
           Read All Reviews
-        </li>
+        </a>
       </div>
-    </span>
+    </div>
   );
 }

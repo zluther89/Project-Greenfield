@@ -189,7 +189,9 @@
 /* end */
 /*matt*/
 .productReviews {
-  height: 5%;
+  height: 4%;
+  margin-bottom: 1%;
+  display: flex;
 }
 
 .productName {
@@ -644,6 +646,11 @@ button.QnAButton {
   text-decoration-color: red;
 }
 
+#incorrectAddtoBag {
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
+
 #QuestionAnswerSet {
   width: 150%;
   /* border-bottom: 1px solid #dee2e6; */
@@ -667,3 +674,22 @@ button.QnAButton {
 /* .answerTitle {
   border-bottom: 1pt solid black;
 } */
+
+
+#starsBox {
+  width: 60%;
+  display: flex;
+}
+
+#linkToReviews {
+  /* Just so it's visible */
+  position: relative;
+  left: -50px;
+}
+#theStars {
+  /* Grow to rest of container */
+  flex: 1;
+
+  /* Just so it's visible */
+}
+

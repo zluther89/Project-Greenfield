@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export default function BagProduct(props) {
+  const [price, changePrice] = useState(0);
   const [isDeleted, setStatus] = useState(false);
   function changeCart() {
     setStatus(true);
@@ -20,7 +21,7 @@ export default function BagProduct(props) {
     <div></div>
   ) : (
     <p>
-      {`Product: ${props.content[4]} Style: ${props.content[3]}    Size: ${props.content[1]}    Quantity: ${props.content[0]}`}
+      {`Product: ${props.content[4]} Style: ${props.content[3]}    Size: ${props.content[1]}    Quantity: ${props.content[0]} Price: ${props.content[5]}`}
       {"     "}
       <span>
         {" "}
