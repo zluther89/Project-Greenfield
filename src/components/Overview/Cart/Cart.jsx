@@ -4,11 +4,13 @@ import Button from "react-bootstrap/Button";
 import BagProduct from "./BagProduct";
 
 export default function CartModal(props) {
+  const [price, changePrice] = useState(0);
   function bagContents() {
     let newCart = JSON.parse(localStorage.getItem("cart"));
     if (!newCart) {
       newCart = [];
     }
+
     return newCart.map(content => {
       return <BagProduct content={content} />;
     });

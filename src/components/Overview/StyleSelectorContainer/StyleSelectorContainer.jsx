@@ -40,6 +40,8 @@ export default function StyleSelectorContainer(props) {
           currentStyle={props.currentStyle}
           styleClicked={props.styleClicked}
           currentProductName={props.currentProductName}
+          price={props.price}
+          salePrice={props.salePrice}
         />
       </div>
       <div className="socialLinks">

@@ -190,10 +190,12 @@
 /*matt*/
 .productReviews {
   height: 5%;
+  margin-bottom: 2%;
+  display: flex;
 }
 
 .productName {
-  height: 30%;
+  height: 26%;
 }
 
 .styleSelect {
@@ -279,10 +281,8 @@
   object-fit: cover;
 }
 
-
-.card{
+.card {
   width: 10rem;
-
 }
 
 .productCard {
@@ -641,8 +641,12 @@ button.QnAButton {
   cursor: pointer;
 }
 
-
 #oldPrice {
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
+
+#incorrectAddtoBag {
   text-decoration: line-through;
   text-decoration-color: red;
 }
@@ -671,3 +675,19 @@ button.QnAButton {
   border-bottom: 1pt solid black;
 } */
 
+#starsBox {
+  width: 60%;
+  display: flex;
+}
+
+#linkToReviews {
+  /* Just so it's visible */
+  position: relative;
+  left: -50px;
+}
+#theStars {
+  /* Grow to rest of container */
+  flex: 1;
+
+  /* Just so it's visible */
+}
