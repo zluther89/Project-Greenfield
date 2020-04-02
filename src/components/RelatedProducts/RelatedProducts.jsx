@@ -3,13 +3,7 @@ import axios from "axios";
 
 // React Component imports
 import ComparisonModal from "./ComparisonModal";
-import OutfitCard from "./Cards/OutfitCard";
 import ProductCarousel from './Carousels/ProductCarousel'
-
-// Bootstrap imports
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-// import Carousel from "react-bootstrap/Carousel";
 
 // Redux imports
 import { getNewProductThunk } from "../Redux/ThunkMiddleware.js";
