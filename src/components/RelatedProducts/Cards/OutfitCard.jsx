@@ -27,7 +27,7 @@ let OutfitCard= (props) => {
           },
           width: '15rem',
           height: '27rem',
-          marginRight: '20px'
+          marginRight: '2rem'
       }}
       className='productCard'
     >
