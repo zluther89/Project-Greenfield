@@ -1,9 +1,9 @@
 import ShowStars from "../../OverlapWork/ShowStars";
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export default function OverviewStars(props) {
   let reviews = JSON.parse(localStorage.getItem("reviews"));
+  let element = document.getElementById("reviewsBox")
   return (
     <div id="starsBox">
       {" "}
@@ -14,11 +14,12 @@ export default function OverviewStars(props) {
         {" "}
         <a
           onClick={() => {
-            let element = document
-              .getElementById("reviewsBox")
-              .scrollIntoView();
-            console.log(element);
+            return element.scrollIntoView({
+                behavior: "smooth"
+              });
+       
           }}
+          href='javascript:void(0)'
         >
           Read {reviews} Reviews
         </a>
