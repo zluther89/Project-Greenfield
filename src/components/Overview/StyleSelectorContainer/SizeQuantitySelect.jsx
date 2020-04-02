@@ -23,12 +23,9 @@ export default class SizeQuantitySelect extends React.Component {
   populateQuantity() {
     return Array.apply(null, Array(this.state.sizeAvailable)).map(
       (val, index) => {
-        if (index <= 16) {
+        if (index <= 14) {
           return (
-            <Dropdown.Item
-              href="#/action-1"
-              onClick={() => this.setQuantity(index + 1)}
-            >
+            <Dropdown.Item onClick={() => this.setQuantity(index + 1)}>
               {index + 1}
             </Dropdown.Item>
           );
@@ -38,7 +35,6 @@ export default class SizeQuantitySelect extends React.Component {
   }
 
   populateSizes() {
-    console.log("this isi ittttt", this.props.styleData);
     let index = this.props.currentStyle;
     let sizes = Object.keys(this.props.styleData.results[index].skus);
     let amount = Object.values(this.props.styleData.results[index].skus);
@@ -50,7 +46,6 @@ export default class SizeQuantitySelect extends React.Component {
           return (
             <Dropdown.Item
               key={index}
-              href="#/action-1"
               onClick={() => {
                 this.setState({
                   sizeSelected: size,
@@ -65,7 +60,6 @@ export default class SizeQuantitySelect extends React.Component {
           return (
             <Dropdown.Item
               key={index}
-              href="#/action-1"
               onClick={() => {
                 this.setState({
                   sizeSelected: size,
@@ -117,10 +111,7 @@ export default class SizeQuantitySelect extends React.Component {
           style={{ float: "left" }}
         >
           {!this.props.styleClicked && (
-            <Dropdown.Item
-              href="#/action-1"
-              onClick={() => this.setQuantity(1)}
-            >
+            <Dropdown.Item onClick={() => this.setQuantity(1)}>
               Select Style
             </Dropdown.Item>
           )}
@@ -134,10 +125,7 @@ export default class SizeQuantitySelect extends React.Component {
           style={{ float: "left" }}
         >
           {!this.state.sizeSelected && (
-            <Dropdown.Item
-              href="#/action-1"
-              onClick={() => this.setQuantity(1)}
-            >
+            <Dropdown.Item onClick={() => this.setQuantity(1)}>
               Select Size
             </Dropdown.Item>
           )}
