@@ -102,8 +102,8 @@ class RelatedProducts extends React.Component {
   async getOutfitData(outfitId, callback) {
     let outfitNames = [];
     let outfitInfo = {};
-
-    for (let id of outfitId) {
+    let outfits = outfitId.reverse()
+    for (let id of outfits) {
       await axios
         .get(`http://3.134.102.30/products/${id}`)
         .then(({ data }) => {outfitNames.push(data)});
@@ -139,7 +139,7 @@ class RelatedProducts extends React.Component {
   render() {
     return (
       <div>
-        <br></br>
+        <br/>
         <h2 align="left">Related Products</h2>
 
         {this.state.showModal ? (
