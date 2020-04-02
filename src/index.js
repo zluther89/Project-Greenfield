@@ -1,17 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import AppRouter from './Router.js';
-import { Provider } from 'react-redux';
-import store from './components/Redux/Store.js';
-import 'bootstrap/dist/css/bootstrap.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import AppRouter from "./Router.js";
+import { Provider } from "react-redux";
+import store from "./components/Redux/Store.js";
+import withClickTracker from "./ClickDecorator";
 
-// Put any other imports below so that CSS from your
-// components takes precedence over default styles.
+import "bootstrap/dist/css/bootstrap.css";
 
 ReactDOM.render(
   <Provider store={store}>
     <AppRouter />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
