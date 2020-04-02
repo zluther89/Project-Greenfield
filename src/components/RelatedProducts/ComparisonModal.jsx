@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+
 let ComparisonModal = (props) => {
   let currentName = props.product.name
   let compareName = props.compare.name

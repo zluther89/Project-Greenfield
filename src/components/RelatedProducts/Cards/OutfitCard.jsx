@@ -1,7 +1,7 @@
 import React from "react";
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import ShowStars from '../OverlapWork/ShowStars'
+import ShowStars from '../../OverlapWork/ShowStars'
 
 let OutfitCard= (props) => {
   let id = props.outfitId
