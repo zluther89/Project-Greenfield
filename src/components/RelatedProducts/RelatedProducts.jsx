@@ -139,6 +139,23 @@ class RelatedProducts extends React.Component {
     }
   }
 
+  renderOutfits() {
+    return this.state.outfitId.map((outfitId, i) => {
+      if (this.state.outfitLoaded) {
+        return (
+          <OutfitCard
+            key={i}
+            index={i}
+            outfitId={outfitId}
+            outfitNames={this.state.outfitNames}
+            outfitInfo={this.state.outfitInfo}
+            handleDelete={this.handleDelete}
+          />
+        );
+      }
+    })
+  }
+
   handleDelete(e) {
     let id = Number(e.target.value);
     let storage = this.state.outfitId.slice();
@@ -168,15 +185,18 @@ class RelatedProducts extends React.Component {
           <div></div>
         )}
         <div className="productCarouselContainer">
-          <div className="productCarousel" style = {
-            {
-              width: `${this.state.relatedProducts.length * 20}rem`
-            }
-          }>
+          <div className="productCarousel">
             <div style = {
-            {
-              display: 'flex'
-            }}>
+              {
+                width: this.state.relatedProducts.length * 300,
+                display: 'flex',
+                paddingTop: '2%',
+                paddingLeft: '2%',
+                paddingRight: '2%',
+                paddingBottom: '2%',
+                justifyContent: 'left'
+              }
+            }>
             {this.state.relatedProducts.map((product, i) => {
               return (
                 <ProductCard
@@ -195,18 +215,19 @@ class RelatedProducts extends React.Component {
         <br></br>
         <h2> Your Outfit </h2>
         <br></br>
-        {/** style from state, fixed = window.innerHeight * 0.5 */}
-        <div className="productCarouselContainer" 
-        >
-          <div className="productCarousel" style = {
-            {
-              width: `${this.state.relatedProducts.length * 20}rem`
-            }
-          }>
+        <div className="productCarouselContainer">
+          <div className="productCarousel">
             <div style = {
-            {
-              display: 'flex'
-            }}>
+              {
+                width: (this.state.outfitId.length + 1) * 300,
+                display: 'flex',
+                paddingTop: '2%',
+                paddingLeft: '2%',
+                paddingRight: '2%',
+                paddingBottom: '2%',
+                justifyContent: 'left'
+              }
+            }>
             <Card
               style={{
                 boxShadow: `0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)`,
@@ -215,7 +236,7 @@ class RelatedProducts extends React.Component {
                 },
                 width: "15rem",
                 height: "30rem",
-                marginRight: "2%"
+                marginRight: '2%'
               }}
             >
               <Button
@@ -226,20 +247,7 @@ class RelatedProducts extends React.Component {
                 +
               </Button>{" "}
             </Card>
-            {this.state.outfitId.map((outfitId, i) => {
-              if (this.state.outfitLoaded) {
-                return (
-                  <OutfitCard
-                    key={i}
-                    index={i}
-                    outfitId={outfitId}
-                    outfitNames={this.state.outfitNames}
-                    outfitInfo={this.state.outfitInfo}
-                    handleDelete={this.handleDelete}
-                  />
-                );
-              }
-            })}
+            {this.state.outfitId && this.renderOutfits()}
             </div>
           </div>
         </div>
