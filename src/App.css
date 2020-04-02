@@ -294,12 +294,16 @@
 
 /* Button styling */
 
-#compareButton {
+#compareButton,#deleteButton {
   position: absolute;
   right: 0em;
   color: black;
   background-color: white;
   border: 1px solid black;
+}
+
+#compareButton:hover {
+  color: gold;
 }
 
 #addButton {
@@ -309,6 +313,14 @@
   height: 100%;
   font-size: 500%;
   border-color: white;
+}
+
+#addButton:hover {
+  color: #007BFF;
+}
+
+#deleteButton:hover {
+  color: red;
 }
 
 /* Styling for cards */
