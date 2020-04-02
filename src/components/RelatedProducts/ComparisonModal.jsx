@@ -32,30 +32,28 @@ let ComparisonModal = (props) => {
   for (let feature in compareFeatures) {
     let feat = compareFeatures[feature]
     compare[feat.feature] = feat.value
-  
   }
     
   return (
-        
-        <Modal
-          {...props}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-              COMPARING
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-          <Container>
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          COMPARING
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Container>
           <Row className="show-grid">
             <Col className='rowtitle' xs={6} md={4}>
               {currentName}
             </Col>
             <Col className='rowtitle' xs={6} md={4}>
-           
+            
             </Col>
             <Col className='rowtitle'xs={6} md={4}>
               {compareName}
@@ -72,25 +70,25 @@ let ComparisonModal = (props) => {
               compareRow = compare[feature]
             }
             return (
-            <Row key={i} className="show-grid modal-row">
-            <Col  xs={6} md={4}>
-                {currentRow}
-            </Col>
-            <Col className="feature" xs={6} md={4}>
-                {feature}
-            </Col>
-            <Col xs={6} md={4}>
-                {compareRow}
-            </Col>
-          </Row>
+              <Row key={i} className="show-grid modal-row">
+                <Col  xs={6} md={4}>
+                    {currentRow}
+                </Col>
+                <Col className="feature" xs={6} md={4}>
+                    {feature}
+                </Col>
+                <Col xs={6} md={4}>
+                    {compareRow}
+                </Col>
+              </Row>
             )
           })}
           <br/>
-        </Container>
-          </Modal.Body>
-        
-        </Modal>
-      );
+      </Container>
+    </Modal.Body>
+    
+    </Modal>
+  );
 }
 
 export default ComparisonModal

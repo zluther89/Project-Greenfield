@@ -38,10 +38,7 @@ class RelatedProducts extends React.Component {
       outfitNames: [],
       outfitInfo: {},
       outfitLoaded: false,
-      clickedProduct: null,
-      showModal: false,
-      scrollBar: null,
-      scrollPosition: 0
+      showModal: false
     };
     this.handleCompare = this.handleCompare.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -60,9 +57,7 @@ class RelatedProducts extends React.Component {
     this.setState({ showModal: true });
     axios
       .get(`http://3.134.102.30/products/${e.target.value}`)
-      .then(({ data }) => {
-        this.setState({ compare: data });
-      });
+      .then(({ data }) => {this.setState({ compare: data })});
   }
 
   removeDuplicates(array) {
@@ -75,26 +70,24 @@ class RelatedProducts extends React.Component {
     this.getOutfits();
     axios
       .get(`http://3.134.102.30/products/${productId}`)
-      .then( ({data}) => {
-        this.setState({current: data})
-      })
-      axios.get(`http://3.134.102.30/products/${productId}/related`).then(({ data }) => {
-        let productInfo={};
-        let relatedProducts = [];
-        let uniqueId = this.removeDuplicates(data)
-        async function getData() {
-          for (let id of uniqueId) {
-          await axios.get(`http://3.134.102.30/products/${id}`).then( ({data}) => {
-            relatedProducts.push(data)
-          } )
-          await axios.get(`http://3.134.102.30/products/${id}/styles`).then( ({data}) => {
-            productInfo[data.product_id] = data.results
-          })
-        }}
-        getData().then( () => {
-          this.setState({productInfo: productInfo})
-          this.setState({relatedProducts: relatedProducts})
-        });
+      .then( ({data}) => {this.setState({current: data})})
+    axios.get(`http://3.134.102.30/products/${productId}/related`).then(({ data }) => {
+      let productInfo={};
+      let relatedProducts = [];
+      let uniqueId = this.removeDuplicates(data)
+      async function getData() {
+        for (let id of uniqueId) {
+        await axios
+          .get(`http://3.134.102.30/products/${id}`)
+          .then(({data}) => {relatedProducts.push(data)})
+        await axios
+          .get(`http://3.134.102.30/products/${id}/styles`)
+          .then(({data}) => {productInfo[data.product_id] = data.results})
+      }}
+      getData().then( () => {
+        this.setState({productInfo: productInfo})
+        this.setState({relatedProducts: relatedProducts})
+      });
   })
 }
 
@@ -121,14 +114,10 @@ class RelatedProducts extends React.Component {
           for (let id of outfitId) {
             await axios
               .get(`http://3.134.102.30/products/${id}`)
-              .then(({ data }) => {
-                outfitNames.push(data);
-              });
+              .then(({ data }) => {outfitNames.push(data)});
             await axios
               .get(`http://3.134.102.30/products/${id}/styles`)
-              .then(({ data }) => {
-                outfitInfo[data.product_id] = data.results;
-              });
+              .then(({ data }) => {outfitInfo[data.product_id] = data.results});
           }
         }
         getData().then(() => {
@@ -155,19 +144,15 @@ class RelatedProducts extends React.Component {
         <br></br>
         <h2 align="left">Related Products</h2>
         <br></br>
-
         {this.state.showModal ? (
           <ComparisonModal
             product={this.state.current}
             compare={this.state.compare}
             show={this.state.showModal}
-            onHide={() => {
-              this.setState({ showModal: false });
-            }}
+            onHide={() => {this.setState({ showModal: false });}}
           />
-        ) : (
-          <div></div>
-        )}
+        ) : (<div></div>)
+        }
         <ProductCarousel
           handleClick={this.handleClick}
           handleCompare={this.handleCompare}

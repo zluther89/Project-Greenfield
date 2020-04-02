@@ -18,37 +18,43 @@ let ProductCard = (props) => {
   }
 
   return (
-      <Card 
-        style={
-          { 
-            boxShadow : `0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)`,
-            img: {
-              display: 'block'
-            },
-            width: '15rem',
-            height: '30rem',
-            marginRight: '2%'
-          }
-        }
-      className='productCard'
-      >
-          <Button  
-            id = "compareButton"
-            variant="outline-primary"
-            value={props.product.id}
-            onClick={props.handleCompare}
-          >
-                ★
-          </Button>{' '}
-          <Card.Img variant="top" src={photo} className='cardImg'/>
-            <Card.Body>       
-              <Card.Text align='left'>{props.product.category}</Card.Text>
-              <a onClick={props.handleClick} className={`cardTitle ${id}`} href={`/products/${id}`}>{props.product.name}</a>
-              <Card.Text align='left'>${props.product.default_price}</Card.Text>
-              <ShowStars productId={id}/>
-            </Card.Body>
-      </Card>
-
+    <Card 
+      style={{ 
+          boxShadow : `0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)`,
+          img: {
+            display: 'block'
+          },
+          width: '15rem',
+          height: '30rem',
+          marginRight: '2%'
+      }}
+    className='productCard'
+    >
+      <Button  
+        id = "compareButton"
+        variant="outline-primary"
+        value={props.product.id}
+        onClick={props.handleCompare}
+      > ★
+      </Button>{' '}
+        <Card.Img variant="top" src={photo} className='cardImg'/>
+          <Card.Body>       
+            <Card.Text align='left'>
+              {props.product.category}
+            </Card.Text>
+            <a 
+              onClick={props.handleClick} 
+              className={`cardTitle ${id}`} 
+              href={`/products/${id}`}
+            >
+              {props.product.name}
+            </a>
+            <Card.Text align='left'>
+              ${props.product.default_price}
+            </Card.Text>
+            <ShowStars productId={id}/>
+          </Card.Body>
+    </Card>
   )
 }
 
