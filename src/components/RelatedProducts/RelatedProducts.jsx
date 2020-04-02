@@ -3,13 +3,7 @@ import axios from "axios";
 
 // React Component imports
 import ComparisonModal from "./ComparisonModal";
-import OutfitCard from "./Cards/OutfitCard";
 import ProductCarousel from './Carousels/ProductCarousel'
-
-// Bootstrap imports
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-// import Carousel from "react-bootstrap/Carousel";
 
 // Redux imports
 import { getNewProductThunk } from "../Redux/ThunkMiddleware.js";
@@ -64,6 +58,21 @@ class RelatedProducts extends React.Component {
     return array.filter((a, b) => array.indexOf(a) === b)
   };
 
+  async getRelatedData(uniqueId, callback) {
+    let productInfo={};
+    let relatedProducts = [];
+
+    for (let id of uniqueId) {
+      await axios
+        .get(`http://3.134.102.30/products/${id}`)
+        .then(({data}) => {relatedProducts.push(data)})
+      await axios
+        .get(`http://3.134.102.30/products/${id}/styles`)
+        .then(({data}) => {productInfo[data.product_id] = data.results})
+    }
+    callback(productInfo, relatedProducts)
+  }
+
   componentDidMount() {
     let productId = this.props.productId || 3
     this.props.getNewProductThunk(productId)
@@ -71,24 +80,15 @@ class RelatedProducts extends React.Component {
     axios
       .get(`http://3.134.102.30/products/${productId}`)
       .then( ({data}) => {this.setState({current: data})})
-    axios.get(`http://3.134.102.30/products/${productId}/related`).then(({ data }) => {
-      let productInfo={};
-      let relatedProducts = [];
-      let uniqueId = this.removeDuplicates(data)
-      async function getData() {
-        for (let id of uniqueId) {
-        await axios
-          .get(`http://3.134.102.30/products/${id}`)
-          .then(({data}) => {relatedProducts.push(data)})
-        await axios
-          .get(`http://3.134.102.30/products/${id}/styles`)
-          .then(({data}) => {productInfo[data.product_id] = data.results})
-      }}
-      getData().then( () => {
-        this.setState({productInfo: productInfo})
-        this.setState({relatedProducts: relatedProducts})
-      });
-  })
+    axios
+      .get(`http://3.134.102.30/products/${productId}/related`)
+      .then(({ data }) => {
+        let uniqueId = this.removeDuplicates(data)
+        this.getRelatedData(uniqueId, (productInfo,relatedProducts) => {
+          this.setState({productInfo: productInfo})
+          this.setState({relatedProducts: relatedProducts})
+        })
+      })
 }
 
   handleAddToOutfit() {
@@ -103,28 +103,30 @@ class RelatedProducts extends React.Component {
     });
   }
 
+  async getOutfitData(outfitId, callback) {
+    let outfitNames = [];
+    let outfitInfo = {};
 
+    for (let id of outfitId) {
+      await axios
+        .get(`http://3.134.102.30/products/${id}`)
+        .then(({ data }) => {outfitNames.push(data)});
+      await axios
+        .get(`http://3.134.102.30/products/${id}/styles`)
+        .then(({ data }) => {outfitInfo[data.product_id] = data.results});
+    }
+
+    callback(outfitNames,outfitInfo)
+  }
   getOutfits() {
     let outfitId = JSON.parse(localStorage.getItem("outfit"));
     if (!!outfitId) {
       this.setState({ outfitId: outfitId }, () => {
-        let outfitNames = [];
-        let outfitInfo = {};
-        async function getData() {
-          for (let id of outfitId) {
-            await axios
-              .get(`http://3.134.102.30/products/${id}`)
-              .then(({ data }) => {outfitNames.push(data)});
-            await axios
-              .get(`http://3.134.102.30/products/${id}/styles`)
-              .then(({ data }) => {outfitInfo[data.product_id] = data.results});
-          }
-        }
-        getData().then(() => {
+        this.getOutfitData(outfitId, (outfitNames, outfitInfo) => {
           this.setState({ outfitNames: outfitNames });
           this.setState({ outfitInfo: outfitInfo });
           this.setState({ outfitLoaded: true });
-        });
+        })
       });
     }
   }
