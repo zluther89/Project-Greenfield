@@ -5,7 +5,6 @@
 
 .overviewFull {
   height: 700px;
-  font-family: "Kalam";
 }
 
 .overviewBanner {
@@ -53,6 +52,9 @@
 
 .overviewRow {
   height: 100%;
+}
+* {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 /* css code for RatingReviews component */
@@ -745,4 +747,5 @@ button.QnAButton {
 
 #companySlogan {
   font-size: 15px;
+  font-style:italic;
 }

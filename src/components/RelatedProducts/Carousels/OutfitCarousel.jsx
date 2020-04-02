@@ -44,7 +44,7 @@ let OutfitCarousel = (props) => {
                             display: "flex"
                         },
                         width: "15rem",
-                        height: "25rem",
+                        height: "27rem",
                         marginRight: '2%'
                     }}
                 >
