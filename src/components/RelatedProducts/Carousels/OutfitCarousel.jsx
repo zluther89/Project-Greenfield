@@ -44,7 +44,7 @@ let OutfitCarousel = (props) => {
                             display: "flex"
                         },
                         width: "15rem",
-                        height: "30rem",
+                        height: "27rem",
                         marginRight: '2%'
                     }}
                 >
@@ -53,7 +53,7 @@ let OutfitCarousel = (props) => {
                         variant="outline-primary"
                         onClick={props.handleAddToOutfit}
                     >
-                        +
+                     +
                     </Button>{" "}
                 </Card>
             {props.outfitId && renderOutfits()}

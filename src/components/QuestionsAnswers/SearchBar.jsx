@@ -6,7 +6,9 @@ const SearchBar = props => {
     <div>
       <Form style={{ width: "100%" }}>
         <Form.Group controlId="QuestionSearch">
-          <Form.Label>Questions and Answers</Form.Label>
+          <br/>
+          <Form.Label><h2>Questions & Answers</h2></Form.Label>
+          <br/>
           <Form.Control
             type="question"
             placeholder=" Have a Question? Search for answers..."

@@ -25,7 +25,7 @@ let ProductCard = (props) => {
             display: 'block'
           },
           width: '15rem',
-          height: '30rem',
+          height: '27rem',
           marginRight: '2%'
       }}
     className='productCard'
@@ -37,7 +37,11 @@ let ProductCard = (props) => {
         onClick={props.handleCompare}
       > ★
       </Button>{' '}
-        <Card.Img variant="top" src={photo} className='cardImg'/>
+        <Card.Img 
+          variant="top" 
+          src={photo} 
+          className='cardImg'
+        />
           <Card.Body>       
             <Card.Text align='left'>
               {props.product.category}
