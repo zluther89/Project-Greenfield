@@ -189,13 +189,13 @@
 /* end */
 /*matt*/
 .productReviews {
-  height: 5%;
-  margin-bottom: 2%;
+  height: 4%;
+  margin-bottom: 1%;
   display: flex;
 }
 
 .productName {
-  height: 26%;
+  height: 30%;
 }
 
 .styleSelect {
