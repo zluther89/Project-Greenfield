@@ -21,14 +21,18 @@ class Helpful extends React.Component {
     super(props);
     this.state = {
       hasVoted: false, //useless
-      reported: false
+      reported: false,
+      votes: null
     };
   }
 
   postHelpful(endpoint) {
     return Axios.put(`http://3.134.102.30/qa/${endpoint}/helpful`);
   }
-
+  localVote() {
+    let votes = this.props.helpful + 1;
+    this.setState({ votes: votes });
+  }
   handleReported() {
     this.setState({ reported: true });
   }
@@ -62,6 +66,7 @@ class Helpful extends React.Component {
       this.props.type === "question"
         ? () => this.props.getQuestionsThunk(productID)
         : () => this.props.setAnswers();
+    updateHandler = type === "helpful" ? () => this.localVote() : updateHandler;
 
     updateHandler =
       type === "report" ? () => this.handleReported() : updateHandler;
@@ -121,7 +126,7 @@ class Helpful extends React.Component {
         <div className="link" onClick={() => this.putHandler("helpful")}>
           Yes
         </div>
-        <div>({this.props.helpful})</div> <div>|</div>
+        <div>({this.state.votes || this.props.helpful})</div> <div>|</div>
         {answer}
         {report}
       </>
