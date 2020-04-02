@@ -10,13 +10,18 @@ export default function Banner() {
       style={{ backgroundColor: "black" }}
     >
       <div className="container jumbotronContainer">
+        {" "}
         <h1 className="display-5">
           forever404
           <span>
             <i
               className="fa fa-shopping-cart"
+              id="cartIcon"
               onClick={() => setModalShow(true)}
             ></i>
+            <p id="companySlogan">
+              can't find what you're looking for, let us help
+            </p>
           </span>
           <Cart show={modalShow} onHide={() => setModalShow(false)} />
         </h1>

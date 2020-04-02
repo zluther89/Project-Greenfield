@@ -14,16 +14,6 @@ export default function ControlledCarousel(props) {
     setIndex(selectedIndex);
   };
 
-  useEffect(() => {
-    if (props.styleData.results) {
-      console.log(
-        "styleData",
-        props.styleData.results[props.currentStyle].photos
-      );
-      console.log("index", index);
-    }
-  });
-
   const changeIndex = () => {
     setIndex(0);
     return 0;
@@ -47,6 +37,8 @@ export default function ControlledCarousel(props) {
   return props.styleData.results ? (
     <div className="container xcontainer">
       <Carousel
+        autoPlay={false}
+        interval={100000000000}
         activeIndex={
           index >= props.styleData.results[props.currentStyle].photos.length
             ? changeIndex()
@@ -59,7 +51,8 @@ export default function ControlledCarousel(props) {
           return (
             <Carousel.Item>
               <img
-                className="d-block w-100"
+                onClick={() => {}}
+                className="d-block w-100 "
                 src={picture.url}
                 alt="First slide"
               />

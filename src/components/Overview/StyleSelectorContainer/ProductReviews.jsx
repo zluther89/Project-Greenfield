@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export default function OverviewStars(props) {
+  let reviews = JSON.parse(localStorage.getItem("reviews"));
   return (
     <div id="starsBox">
       {" "}
@@ -19,7 +20,7 @@ export default function OverviewStars(props) {
             console.log(element);
           }}
         >
-          Read All Reviews
+          Read {reviews} Reviews
         </a>
       </div>
     </div>
