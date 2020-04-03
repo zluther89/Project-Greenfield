@@ -12,13 +12,14 @@ export default function Banner() {
       <div className="container jumbotronContainer">
         {" "}
         <h1 className="display-5">
-          forever404
+          forever404{"                     "}
           <span>
             <i
-              className="fa fa-shopping-cart"
+              className="fa fa-shopping-bag"
               id="cartIcon"
               onClick={() => setModalShow(true)}
             ></i>
+
             <p id="companySlogan">
               can't find what you're looking for, let us help
             </p>
