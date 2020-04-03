@@ -6,10 +6,6 @@ class ClickTracker extends React.Component {
     clicks: {}
   };
 
-  componentDidUpdate() {
-    console.log(this.state);
-  }
-
   postClick = clickData => {
     return Axios.post("http://3.134.102.30/interactions/", clickData);
   };

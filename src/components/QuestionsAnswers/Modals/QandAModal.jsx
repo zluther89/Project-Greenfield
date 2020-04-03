@@ -24,9 +24,9 @@ class QuestionModal extends React.Component {
     super(props);
     this.state = {
       renderModal: false,
-      body: "",
-      name: "",
-      email: "",
+      body: null,
+      name: null,
+      email: null,
       files: [],
       filePreview: []
     };
@@ -48,6 +48,7 @@ class QuestionModal extends React.Component {
   }
 
   handleSubmit() {
+    console.log("here");
     let type = this.props.type === "question" ? "Question" : "Answer";
     let productID = this.props.selectedProduct.id;
     let data = {
@@ -55,11 +56,13 @@ class QuestionModal extends React.Component {
       email: this.state.email,
       name: this.state.name
     };
+    console.log("data data data", data);
+
     if (
       data.body &&
       data.email &&
       data.name &&
-      data.email.indexOf("@") !== "1"
+      data.email.indexOf("@") !== -1
     ) {
       let postHandler =
         this.props.type === "question" ? this.postQuestion : this.postAnswer;
