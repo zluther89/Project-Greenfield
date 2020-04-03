@@ -684,6 +684,7 @@ button.QnAButton {
   color: black;
   background-color: white;
   border-color: black;
+  margin-left: 2%;
 }
 
 #cartIcon {
