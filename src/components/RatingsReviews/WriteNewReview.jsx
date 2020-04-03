@@ -3,6 +3,7 @@ import { Plus } from "react-feather";
 import StarMarking from "./StarMarking";
 import $ from "jquery";
 import Axios from "axios";
+import ReactFilestack from 'filestack-react';
 class WriteNewReview extends React.Component {
   //get characteristic
   constructor(props) {
@@ -28,9 +29,10 @@ class WriteNewReview extends React.Component {
     };
     this.handleCharacteristic = this.handleCharacteristic.bind(this);
     this.handleRating = this.handleRating.bind(this);
-    this.handleText = this.handleText.bind(this)
-    this.handleBoolean = this.handleBoolean.bind(this)
-    this.handlePost = this.handlePost.bind(this)
+    this.handleText = this.handleText.bind(this);
+    this.handleBoolean = this.handleBoolean.bind(this);
+    this.handlePost = this.handlePost.bind(this);
+    this.handlePhoto = this.handlePhoto.bind(this);
   }
   componentDidMount() {
     this.GetCharacterstics();
@@ -51,10 +53,9 @@ class WriteNewReview extends React.Component {
       .catch(err => console.log(err));
   }
   handleCharacteristic(e) {
-    let characteristic = e.target.id;  //name of characteristic e.x:size
-    let select = e.target.value;  //number e.x:3
-    let id = e.target.name //id of characteristic e.x:6
-
+    let characteristic = e.target.id; //name of characteristic e.x:size
+    let select = e.target.value; //number e.x:3
+    let id = e.target.name; //id of characteristic e.x:6
 
     const AllCharacteristics = {
       Size: {
@@ -62,7 +63,7 @@ class WriteNewReview extends React.Component {
         2: "1/2a size too small",
         3: "Perfect",
         4: "1/2 a size too big",
-        5: "A size too wide",
+        5: "A size too wide"
       },
       Width: {
         1: "Too narrow",
@@ -76,28 +77,28 @@ class WriteNewReview extends React.Component {
         2: "Slightly uncomfortable",
         3: "Ok",
         4: "Comfortable",
-        5: "Perfect",
+        5: "Perfect"
       },
       Quality: {
         1: "poor",
         2: "Below average",
         3: "What I expected",
         4: "Pretty great",
-        5: "Perfect",
+        5: "Perfect"
       },
       Length: {
         1: "Runs short",
         2: "Runs slightly short",
         3: "Perfect",
         4: "Runs slightly long",
-        5: "Runs long",
+        5: "Runs long"
       },
       Fit: {
         1: "Runs tight",
         2: "Runs slightly tight",
         3: "Perfect",
         4: "Runs slightly long",
-        5: "Runs long",
+        5: "Runs long"
       }
     };
     this.setState({
@@ -107,12 +108,13 @@ class WriteNewReview extends React.Component {
       AddReview: {
         // object that we want to update
         ...prevState.AddReview, // keep all other key-value pairs
-        characteristics: {// specific object of stateobject
-          ...prevState.AddReview.characteristics,   // copy all key-value pairs
-          [id]: select         // update value of specific key
+        characteristics: {
+          // specific object of stateobject
+          ...prevState.AddReview.characteristics, // copy all key-value pairs
+          [id]: select // update value of specific key
         }
       }
-    }))
+    }));
   }
 
   handleRating(rating) {
@@ -125,48 +127,70 @@ class WriteNewReview extends React.Component {
     }));
   }
   handleText(e) {
-    let name = e.target.id
-    let value = e.target.value
+    let name = e.target.id;
+    let value = e.target.value;
     this.setState(prevState => ({
       AddReview: {
         // object that we want to update
         ...prevState.AddReview, // keep all other key-value pairs
         [name]: value // update the value of specific key
       }
-    }),()=>console.log(this.state.AddReview)
-    );
+    }));
   }
   handleBoolean(e) {
-    let value = e.target.value ==="true"?true:false
+    let value = e.target.value === "true" ? true : false;
     this.setState(prevState => ({
       AddReview: {
         // object that we want to update
         ...prevState.AddReview, // keep all other key-value pairs
-        recommend: value// update the value of specific key
+        recommend: value // update the value of specific key
       }
     }),()=>console.log(this.state.AddReview)
     );
   }
   handlePost() {
     let productId = this.props.productId || 3;
-    let characteristics = this.state.characteristics
-    Axios.post(`http://3.134.102.30/reviews/${productId}`, characteristics)
-      .then(response => { alert("success!") })
-    .catch(err =>console.log("can't send request to api")
-    )
+    Axios.post(`http://3.134.102.30/reviews/${productId}`, this.state.AddReview)
+      .then(response => {
+
+        this.setState({ AddReview: {  rating: 0,
+          summary: "",
+          body: "",
+          recommend: false,
+          name: "",
+          email: "",
+          photos: [],
+          characteristics: {}
+        }
+        }, () => alert("send successfully!"));
+      })
+      .catch(err => console.log("can't send request to api",err));
+  }
+  handlePhoto(e) {
+    let url = e.filesUploaded[0].url;   //https://cdn.filestackcontent.com/T3Fsobv8TAuqfmBsagCB
+    let tempt = this.state.AddReview.photos
+    tempt.push(url)
+    this.setState(prevState => ({
+      AddReview: {
+        // object that we want to update
+        ...prevState.AddReview, // keep all other key-value pairs
+        photos: tempt // update the value of specific key
+      }
+    }))
 
   }
+
   render() {
     return (
       <div>
         <form action="/action_page.php">
           <button
-            className="btn btn-outline-secondary btn-lg RatingButton"
+            className="btn btn-outline-secondary btn-lg QnAButton RatingButton"
             data-toggle="modal"
             data-target="#createNewReview"
           >
             {" "}
-            <strong className="RightMargin">ADD A REVIEW</strong>{" "}
+            <strong className="RightMargin QnAButton ">ADD A REVIEW</strong>{" "}
             <Plus size={20} style={{ marginBottom: "0.3em" }} />
           </button>
           {/* model */}
@@ -195,16 +219,16 @@ class WriteNewReview extends React.Component {
                 </div>
                 <div className="modal-body">
                   <p className="row">
-                    all information with * should be mandatory
+                    all information with <font color="red">*</font> should be mandatory
                   </p>
                   <div className="row">
-                    <h6>*Overall rating</h6>
+                    <h6><font color="red">*</font>Overall rating</h6>
                   </div>
                   <div className="row">
                     <StarMarking handleRating={this.handleRating} />
                   </div>
                   <div className="row">
-                    <h6>* Do you recommend this product?</h6>
+                    <h6><font color="red">*</font> Do you recommend this product?</h6>
                     <div className="col RadioNumber">
                       <input
                         type="radio"
@@ -226,7 +250,7 @@ class WriteNewReview extends React.Component {
                     </div>
                   </div>
                   <div>
-                    <h6>* Characteristics:</h6>
+                    <h6><font color="red">*</font> Characteristics:</h6>
                     {this.state.characteristics.map(characteristic => (
                       <div key={characteristic[1].id} className="container">
                         <div className="row align-items-start">
@@ -261,7 +285,7 @@ class WriteNewReview extends React.Component {
                               type="radio"
                               id={characteristic[0]}
                               onClick={this.handleCharacteristic}
-                              name={characteristic[0]}
+                              name={characteristic[1].id}
                               value="3"
                             />
                           </div>{" "}
@@ -308,7 +332,7 @@ class WriteNewReview extends React.Component {
                     ></input>
                   </div>
                   <div className="row">
-                    <h6>*Review body</h6>
+                    <h6><font color="red">*</font>Review body</h6>
                   </div>
                   <div className="row">
                     <input
@@ -324,28 +348,19 @@ class WriteNewReview extends React.Component {
                   </div>
                   <div className="row">
                     <h6>Upload your photos</h6>
+
                   </div>
-                  <div className="input-group mb-3">
-                    <div className="input-group-prepend">
-                      <span
-                        className="input-group-text"
-                        id="inputGroupFileAddon01"
-                      >
-                        Upload
-                      </span>
-                    </div>
-                    <div className="custom-file">
-                      <input
-                        type="file"
-                        className="custom-file-input"
-                        id="inputGroupFile01"
-                        aria-describedby="inputGroupFileAddon01"
-                      ></input>
-                      <label className="custom-file-label">Choose file</label>
-                    </div>
-                  </div>
+                  <h6>you can only upload 5 images</h6>
+                  {this.state.AddReview.photos.length >=5?null: <ReactFilestack
+  apikey={"A2l9xFCrQ4eiO9xGkZWggz"}
+  onSuccess={(res) => this.handlePhoto(res)}
+/>}
+
+                    {this.state.AddReview.photos.map(photo =>
+                    <img src={photo} alt="Smiley face" height="42" width="42"></img>)
+                    }
                   <div className="row">
-                    <h6>*What is your nick name</h6>
+                    <h6><font color="red">*</font>What is your nick name</h6>
                   </div>
                   <div className="row">
                     <input
@@ -366,7 +381,7 @@ class WriteNewReview extends React.Component {
                     </p>
                   </div>
                   <div className="row">
-                    <h6>*Your email</h6>
+                    <h6><font color="red">*</font>Your email</h6>
                   </div>
                   <div className="row">
                     <input
@@ -386,18 +401,20 @@ class WriteNewReview extends React.Component {
                 </div>
 
                 {/* footer */}
+
                 <div className="modal-footer">
                   <button
                     type="button"
-                    className="btn btn-secondary"
+                    className="QnAButton btn btn-secondary"
                     data-dismiss="modal"
                   >
                     Close
                   </button>
+
                   <button
-                    type="submit"
+                    type="reset"
                     onClick={this.handlePost}
-                    className="btn btn-primary "
+                    className="QnAButton btn btn-primary "
                     id="makePostRequire"
                   >
                     Submit
@@ -406,7 +423,7 @@ class WriteNewReview extends React.Component {
               </div>
             </div>
           </div>
-        </form>
+          </form>
       </div>
     );
   }
