@@ -314,7 +314,6 @@
 
 #compareButton:hover {
   color: gold;
-
   border: 1px solid gold;
 }
 
@@ -680,6 +679,7 @@ table {
 button.QnAButton {
   color: black;
   background-color: white;
+  margin-right: 2%;
   border-color: black;
 }
 

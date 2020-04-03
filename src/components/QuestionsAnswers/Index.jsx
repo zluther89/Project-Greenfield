@@ -85,11 +85,11 @@ class QuestionAnswers extends React.Component {
           More Answered Questions
         </Button>
       );
-    return (
-      <div className="masterQnAContaier">
-        <Container >
+    let QnAContainer =
+      this.props.questionSet.length > 0 ? (
+        <Container>
           <SearchBar handler={this.searchHandler} />
-          <div className='scrollable' style={this.state.style}>
+          <div className="scrollable" style={this.state.style}>
             <Container>
               {" "}
               <QuestionsContainer
@@ -101,8 +101,16 @@ class QuestionAnswers extends React.Component {
           {button}
           <QandAModalButton type="question" />
         </Container>
-      </div>
-    );
+      ) : (
+        <div>
+          <h2>Questions & Answers</h2>{" "}
+          <Container>
+            {button}
+            <QandAModalButton type="question" />
+          </Container>
+        </div>
+      );
+    return <div className="masterQnAContaier">{QnAContainer}</div>;
   }
 }
 
