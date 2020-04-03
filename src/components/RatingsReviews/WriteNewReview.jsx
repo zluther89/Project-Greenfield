@@ -186,7 +186,7 @@ class WriteNewReview extends React.Component {
         <form action="/action_page.php">
         <div className="row">
           <button
-            className="btn btn-outline-secondary btn-lg QnAButton RatingButton"
+            className="btn btn-outline-secondary QnAButton RatingButton"
             data-toggle="modal"
             data-target="#createNewReview"
           >
