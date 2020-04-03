@@ -3,8 +3,13 @@
   width: 1100px; /*  use your width here */
 }
 
-.overviewFull {
+.overviewWidget {
   height: 700px;
+  margin-bottom: 40px;
+}
+
+.overviewFull {
+  height: 100%;
 }
 
 .overviewBanner {
