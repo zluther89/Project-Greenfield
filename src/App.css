@@ -344,7 +344,6 @@
 
 .card {
   width: 10rem;
-  border-radius: 100%;
 }
 
 .productCard {
@@ -684,7 +683,6 @@ button.QnAButton {
   color: black;
   background-color: white;
   border-color: black;
-  margin-left: 2%;
 }
 
 #cartIcon {
