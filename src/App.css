@@ -309,7 +309,7 @@
 
 #compareButton:hover {
   color: gold;
-  border: 1px solid gold
+  border: 1px solid gold;
 }
 
 #addButton {
@@ -322,8 +322,8 @@
 }
 
 #addButton:hover {
-  color: #007BFF;
-  border: 1px solid #007BFF;
+  color: #007bff;
+  border: 1px solid #007bff;
 }
 
 #deleteButton:hover {
@@ -344,7 +344,6 @@
 
 .productCard {
   height: 30rem;
-  
 }
 
 .productCarouselContainer {
@@ -541,7 +540,6 @@ table {
   width: 100%;
   height: 100%;
   display: cover;
-  
 }
 
 .carousel-item {
@@ -676,6 +674,7 @@ table {
 button.QnAButton {
   color: black;
   background-color: white;
+  margin-right: 2%;
   border-color: black;
 }
 

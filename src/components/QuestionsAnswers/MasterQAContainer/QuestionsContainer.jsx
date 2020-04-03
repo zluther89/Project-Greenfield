@@ -2,6 +2,7 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import { connect } from "react-redux";
 import Question from "./Question.jsx";
+import Row from "react-bootstrap/Row";
 
 const mapStateToProps = state => ({
   questionSet: state.questionSet,
@@ -26,15 +27,13 @@ const QuestionsContainer = props => {
   return (
     <div>
       <div id="select">
-        <table>
-          {loadedSortedQs.map(question => {
-            return (
-              <tr>
-                <Question key={question.question_id} q={question} />{" "}
-              </tr>
-            );
-          })}
-        </table>
+        {loadedSortedQs.map(question => {
+          return (
+            <Row>
+              <Question key={question.question_id} q={question} />{" "}
+            </Row>
+          );
+        })}
       </div>
     </div>
   );
