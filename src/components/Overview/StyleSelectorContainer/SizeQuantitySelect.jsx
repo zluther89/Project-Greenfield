@@ -111,9 +111,7 @@ export default class SizeQuantitySelect extends React.Component {
           style={{ float: "left" }}
         >
           {!this.props.styleClicked && (
-            <Dropdown.Item onClick={() => this.setQuantity(1)}>
-              Select Style
-            </Dropdown.Item>
+            <Dropdown.Item>Select Style</Dropdown.Item>
           )}
           {this.props.styleData &&
             this.props.styleClicked &&
@@ -125,9 +123,7 @@ export default class SizeQuantitySelect extends React.Component {
           style={{ float: "left" }}
         >
           {!this.state.sizeSelected && (
-            <Dropdown.Item onClick={() => this.setQuantity(1)}>
-              Select Size
-            </Dropdown.Item>
+            <Dropdown.Item>Select Size</Dropdown.Item>
           )}
           <div>
             {this.state.sizeSelected &&
