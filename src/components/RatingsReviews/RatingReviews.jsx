@@ -29,8 +29,11 @@ export default class RatingReviews extends React.Component {
         id="reviewsBox"
         style={{ height: "100%" }}
       >
+        <br/>
+        <h2>Ratings & Reviews</h2>
+        <br/>
         <div className="row RatingReviewsTitle">
-          <div className="col-3 ">RATINGS & REVIEWS</div>
+          <div className="col-3 "></div>
         </div>
 
         <div className="row RatingReviewsBody  " style={{ height: "100%" }}>

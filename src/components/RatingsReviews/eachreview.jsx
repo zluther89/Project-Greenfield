@@ -49,9 +49,7 @@ class EachReview extends React.Component {
       )
         .then(console.log("send successful"))
         .catch(err => console.log("fail putting request"));
-    } else {
-      alert("sorry, one user can only report once!");
-    }
+    } 
   }
   HandleReport() {
     var data = localStorage.getItem(
@@ -67,7 +65,11 @@ class EachReview extends React.Component {
       )
         .then(console.log("send successful"))
         .catch(err => console.log("fail putting request"));
+<<<<<<< HEAD
     }
+=======
+    } 
+>>>>>>> master
   }
   render() {
     let result = this.props.result;

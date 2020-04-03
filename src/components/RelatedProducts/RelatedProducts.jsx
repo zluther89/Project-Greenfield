@@ -11,14 +11,10 @@ import { connect } from "react-redux";
 import OutfitCarousel from "./Carousels/OutfitCarousel";
 
 const mapDispatchToProps = dispatch => {
-  return {
-    getNewProductThunk: id => dispatch(getNewProductThunk(id))
-  };
+  return {getNewProductThunk: id => dispatch(getNewProductThunk(id))};
 };
 
-const mapStateToProps = state => ({
-  selectedProduct: state.selectedProduct
-});
+const mapStateToProps = state => ({selectedProduct: state.selectedProduct});
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -89,13 +85,13 @@ class RelatedProducts extends React.Component {
           this.setState({relatedProducts: relatedProducts})
         })
       })
-}
+  }
 
   handleAddToOutfit() {
     let currentOutfit = this.state.outfitId.slice();
     if (currentOutfit.indexOf(this.state.current.id) === -1) {
       this.setState({ outfitLoaded: false });
-      currentOutfit.push(this.state.current.id);
+      currentOutfit.unshift(this.state.current.id);
     }
     this.setState({ outfitId: currentOutfit }, () => {
       localStorage.setItem("outfit", JSON.stringify(currentOutfit));
@@ -115,9 +111,9 @@ class RelatedProducts extends React.Component {
         .get(`http://3.134.102.30/products/${id}/styles`)
         .then(({ data }) => {outfitInfo[data.product_id] = data.results});
     }
-
     callback(outfitNames,outfitInfo)
   }
+
   getOutfits() {
     let outfitId = JSON.parse(localStorage.getItem("outfit"));
     if (!!outfitId) {
@@ -143,9 +139,9 @@ class RelatedProducts extends React.Component {
   render() {
     return (
       <div>
-        <br></br>
+        <br/>
         <h2 align="left">Related Products</h2>
-        <br></br>
+
         {this.state.showModal ? (
           <ComparisonModal
             product={this.state.current}
@@ -163,7 +159,7 @@ class RelatedProducts extends React.Component {
         />
         <br></br>
         <h2> Your Outfit </h2>
-        <br></br>
+
         <OutfitCarousel
           outfitNames={this.state.outfitNames}
           outfitInfo={this.state.outfitInfo}

@@ -5,7 +5,6 @@
 
 .overviewFull {
   height: 700px;
-  font-family: "Kalam";
 }
 
 .overviewBanner {
@@ -54,6 +53,9 @@
 .overviewRow {
   height: 100%;
 }
+* {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
 
 /* css code for RatingReviews component */
 /* rating&reviews box */
@@ -99,6 +101,10 @@
 /* css for rating part */
 .hoverStar:hover {
   background: gold;
+}
+
+.display-5 {
+  width: 100%;
 }
 /* end */
 /* css for individualreview */
@@ -160,11 +166,11 @@
   width: 100%;
   height: 10px;
   border-radius: 5px;
-  background:#FFF;
+  background: #fff;
   outline: none;
   opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
   background: #fff;
   outline: none;
   opacity: 0.7;
@@ -178,7 +184,7 @@
   width: 23px;
   height: 24px;
   border: 0;
-  background: url("./image/arrowdown.png")  no-repeat;
+  background: url("./image/arrowdown.png") no-repeat;
   -webkit-background-size: 100% 100% !important ;
   background-size: 100% 100% !important;
   background: url("./image/arrowdown.png") no-repeat;
@@ -200,23 +206,23 @@
   width: 23px;
   height: 24px;
   border: 0;
-  background: url("./image/arrowdown.png")  no-repeat;
+  background: url("./image/arrowdown.png") no-repeat;
   -webkit-background-size: 100% 100% !important ;
   background-size: 100% 100% !important;
 }
 /* end */
 /* css for write new review */
-.RadioMargin{
+.RadioMargin {
   margin-right: 1em;
 }
-.RadioNumber{
-  margin-left:5rem;
+.RadioNumber {
+  margin-left: 5rem;
 }
-.InPutWidth{
-  width:100%;
+.InPutWidth {
+  width: 100%;
 }
-.CharacteristicMargin{
-  margin-left:4.5rem;
+.CharacteristicMargin {
+  margin-left: 4.5rem;
 }
 
 /* end */
@@ -292,7 +298,8 @@
 
 /* Button styling */
 
-#compareButton {
+#compareButton,
+#deleteButton {
   position: absolute;
   right: 0em;
   color: black;
@@ -300,13 +307,28 @@
   border: 1px solid black;
 }
 
+#compareButton:hover {
+  color: gold;
+  border: 1px solid gold
+}
+
 #addButton {
   color: black;
   background-color: white;
   text-align: center;
   height: 100%;
-  font-size: 200%;
+  font-size: 500%;
   border-color: white;
+}
+
+#addButton:hover {
+  color: #007BFF;
+  border: 1px solid #007BFF;
+}
+
+#deleteButton:hover {
+  color: red;
+  border: 1px solid red;
 }
 
 /* Styling for cards */
@@ -317,23 +339,28 @@
 
 .card {
   width: 10rem;
+  border-radius: 100%;
 }
 
 .productCard {
   height: 30rem;
+  
 }
 
 .productCarouselContainer {
-  margin: 20px auto 20px auto;
-  width: 1110px;
+  width: 100%;
 }
 
-.productCarousel{
+.productCarousel {
   overflow-x: scroll;
   scroll-behavior: smooth;
 }
 
 .productCarousel::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollable::-webkit-scrollbar {
   display: none;
 }
 
@@ -513,6 +540,8 @@ table {
 .carousel-inner img {
   width: 100%;
   height: 100%;
+  display: cover;
+  
 }
 
 .carousel-item {
@@ -699,7 +728,7 @@ button.QnAButton {
 }
 
 #QuestionAnswerSet {
-  width: 150%;
+  width: 100%;
   /* border-bottom: 1px solid #dee2e6; */
   margin: 3%;
   padding: 2%;
@@ -740,9 +769,10 @@ button.QnAButton {
 }
 
 #selectedStyleCircle {
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 #companySlogan {
   font-size: 15px;
+  font-style: italic;
 }

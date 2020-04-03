@@ -60,7 +60,7 @@ class Question extends React.Component {
   render() {
     let questionID = this.props.q.question_id;
     return (
-      <div style={this.state.style} id="QuestionAnswerSet">
+      <div style={this.state.style} className='scrollable' id="QuestionAnswerSet">
         <Table borderless>
           <tbody>
             <tr>

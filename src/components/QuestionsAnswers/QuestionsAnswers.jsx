@@ -87,9 +87,9 @@ class QuestionAnswers extends React.Component {
       );
     return (
       <div className="masterQnAContaier">
-        <Container>
+        <Container >
           <SearchBar handler={this.searchHandler} />
-          <div style={this.state.style}>
+          <div className='scrollable' style={this.state.style}>
             <Container>
               {" "}
               <QuestionsContainer

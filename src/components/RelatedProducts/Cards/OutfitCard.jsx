@@ -26,13 +26,13 @@ let OutfitCard= (props) => {
             display: 'block'
           },
           width: '15rem',
-          height: '30rem',
-          marginRight: '2%'
+          height: '27rem',
+          marginRight: '2rem'
       }}
       className='productCard'
     >
       <Button  
-        id = "compareButton"
+        id = "deleteButton"
         variant="outline-primary"
         value={id}
         onClick={props.handleDelete}

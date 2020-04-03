@@ -17,7 +17,7 @@ let ProductCarousel = (props) => {
         );
       })
   }
-  
+
   return (
     <div className="productCarouselContainer">
       <div className="productCarousel" >

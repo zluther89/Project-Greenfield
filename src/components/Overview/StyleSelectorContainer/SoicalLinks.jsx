@@ -14,6 +14,9 @@ function SocialLinks(props) {
       <a target="_blank" href="https://www.instagram.com/forever404">
         <i className="fa fa-instagram" style={{ fontSize: "40px" }}></i>
       </a>
+      <a target="_blank" href="https://www.hooli.com">
+        <i className="fa fa-hooli" style={{ fontSize: "40px" }}></i>
+      </a>
     </span>
   );
 }
