@@ -48,7 +48,8 @@ getStar() {
   const arr = [1, 2, 3, 4, 5];
   arr.map((ele, index) => {
       starContainer.push(
-          <span
+        <span
+          key={ele}
               className="staricon"
               onClick={this.handleClick.bind(this, ele)}
               onMouseEnter={this.handleOnMouseEnter.bind(this, ele)}

@@ -22,8 +22,6 @@ class EachReview extends React.Component {
       // var id = $(e.relatedTarget).data("key");
       var src = $(e.relatedTarget).data("src");
       //populate the img
-      console.log(src);
-
       // $(e.currentTarget).find('input[name="id"]').val(id);
       $(e.currentTarget)
         .find('input[src="src"]')
@@ -51,7 +49,7 @@ class EachReview extends React.Component {
       )
         .then(console.log("send successful"))
         .catch(err => console.log("fail putting request"));
-    } 
+    }
   }
   HandleReport() {
     var data = localStorage.getItem(
@@ -67,7 +65,7 @@ class EachReview extends React.Component {
       )
         .then(console.log("send successful"))
         .catch(err => console.log("fail putting request"));
-    } 
+    }
   }
   render() {
     let result = this.props.result;
@@ -131,7 +129,7 @@ class EachReview extends React.Component {
             </u>
           ) : null}
         </div>
-        <div className="row ml-2 my-2" style={{ height: "5%" }}>
+        <div className="row ml-2 my-3" style={{ height: "15%" }}>
           {result.photos.length === 0
             ? null
             : result.photos.map(photo => {
@@ -152,7 +150,7 @@ class EachReview extends React.Component {
               })}
         </div>
         {result.recommend === 1 ? (
-          <div className="row  ml-2 my-4" style={{ height: "10%" }}>
+          <div className="row  ml-2 my-4" style={{ height: "5%" }}>
             <Check size={24} />
             <p>I recommend this product</p>
           </div>

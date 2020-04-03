@@ -60,8 +60,8 @@ render() {
         <div className="row " style={{ "overflow": "scroll", "height": "800px" }}><IndividualReview stars={this.props.StarFilter} results={this.state.results} /></div>
         <div className="row justify-content-start RatingReviewsFoot ">
         <div className="col-4" >
-            <button className="btn btn-outline-secondary btn-lg  " onClick={this.ReGetReview}>
-              <strong>{this.state.ShowAllReviews ?"FOLD REVIEWS UP": "MORE REVIEWS"}</strong>
+            <button className="btn btn-outline-secondary  QnAButton " onClick={this.ReGetReview}>
+              <strong>{this.state.ShowAllReviews ?"FOLD UP": "MORE REVIEWS"}</strong>
             </button>
         </div>
           <div className="col-4" >
