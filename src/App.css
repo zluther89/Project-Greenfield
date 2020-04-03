@@ -322,10 +322,8 @@
 }
 
 #addButton:hover {
-
   color: #007BFF;
   border: 1px solid #007BFF;
-
 }
 
 #deleteButton:hover {
@@ -341,15 +339,16 @@
 
 .card {
   width: 10rem;
+  border-radius: 100%;
 }
 
 .productCard {
   height: 30rem;
+  
 }
 
 .productCarouselContainer {
-  margin: 20px auto 20px auto;
-  width: 1110px;
+  width: 100%;
 }
 
 .productCarousel {
@@ -358,6 +357,10 @@
 }
 
 .productCarousel::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollable::-webkit-scrollbar {
   display: none;
 }
 
@@ -537,6 +540,8 @@ table {
 .carousel-inner img {
   width: 100%;
   height: 100%;
+  display: cover;
+  
 }
 
 .carousel-item {

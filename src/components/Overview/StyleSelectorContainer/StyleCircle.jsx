@@ -20,7 +20,7 @@ export default function StyleCircle(props) {
             className="rounded-circle"
             id="Matt"
             src={props.url}
-            alt="mehh"
+            alt="a"
             onMouseOver={() => {
               setHover(true);
             }}
