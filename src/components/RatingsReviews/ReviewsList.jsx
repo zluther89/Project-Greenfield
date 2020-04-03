@@ -57,7 +57,7 @@ render() {
             </select>
           </div>
         </div>
-        <div className="row " style={{ "overflow": "scroll", "height": "800px" }}><IndividualReview stars={this.props.StarFilter} results={this.state.results} /></div>
+        <div className="row scrollable" style={{ "overflow": "scroll", "height": "800px" }}><IndividualReview stars={this.props.StarFilter} results={this.state.results} /></div>
         <div className="row justify-content-start RatingReviewsFoot ">
         <div className="col-4" >
             <button className="btn btn-outline-secondary  QnAButton " onClick={this.ReGetReview}>

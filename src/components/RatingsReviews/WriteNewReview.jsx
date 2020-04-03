@@ -164,7 +164,7 @@ class WriteNewReview extends React.Component {
         }
         }, () => alert("send successfully!"));
       })
-      .catch(err => console.log("can't send request to api",err));
+      .catch(err => console.log("can't send request to api"));
   }
   handlePhoto(e) {
     let url = e.filesUploaded[0].url;   //https://cdn.filestackcontent.com/T3Fsobv8TAuqfmBsagCB
@@ -412,6 +412,13 @@ class WriteNewReview extends React.Component {
                   >
                     Close
                   </button>
+                  <button
+                    type="submit"
+                    className="QnAButton btn btn-primary "
+                    id="makePostRequire"
+                  >
+                    Check
+                  </button>
 
                   <button
                     type="reset"
@@ -421,6 +428,7 @@ class WriteNewReview extends React.Component {
                   >
                     Submit
                   </button>
+
                 </div>
               </div>
             </div>
