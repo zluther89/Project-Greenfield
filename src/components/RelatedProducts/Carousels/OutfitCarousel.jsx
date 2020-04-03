@@ -47,6 +47,7 @@ let OutfitCarousel = (props) => {
                         height: "27rem",
                         marginRight: '2rem'
                     }}
+                    id='testButton'
                 >
                     <Button
                         id="addButton"

@@ -103,7 +103,7 @@ class RatingBreakdown extends React.Component {
 
         </div>
         <div className="row " style={{ height: "5%" }}>
-          <p>total reviews</p>{" "}
+          <p>Total Reviews:</p>{" "}
           <div className="col-6" id="totalReviews">
             <strong ml-10="true">{this.state.count}</strong>
           </div>

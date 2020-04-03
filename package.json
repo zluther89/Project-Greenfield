@@ -11,6 +11,7 @@
     "bulma": "^0.8.1",
     "cloudinary": "^1.21.0",
     "cloudinary-react": "^1.4.0",
+    "dom-confetti": "^0.1.1",
     "express": "^4.17.1",
     "filestack-react": "^3.1.0",
     "jest": "^24.9.0",

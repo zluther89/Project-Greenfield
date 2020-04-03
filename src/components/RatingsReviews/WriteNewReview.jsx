@@ -191,7 +191,7 @@ class WriteNewReview extends React.Component {
             data-target="#createNewReview"
           >
             {" "}
-            <strong className="RightMargin QnAButton ">ADD A REVIEW</strong>{" "}
+            Add a Review{" "}
             <Plus size={20} style={{ marginBottom: "0.3em" }} />
           </button></div>
 
