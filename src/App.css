@@ -309,6 +309,7 @@
 
 #compareButton:hover {
   color: gold;
+  border: 1px solid gold
 }
 
 #addButton {
@@ -321,11 +322,15 @@
 }
 
 #addButton:hover {
-  color: #007bff;
+
+  color: #007BFF;
+  border: 1px solid #007BFF;
+
 }
 
 #deleteButton:hover {
   color: red;
+  border: 1px solid red;
 }
 
 /* Styling for cards */
