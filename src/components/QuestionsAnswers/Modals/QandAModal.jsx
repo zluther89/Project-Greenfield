@@ -24,9 +24,9 @@ class QuestionModal extends React.Component {
     super(props);
     this.state = {
       renderModal: false,
-      body: null,
-      name: null,
-      email: null,
+      body: "",
+      name: "",
+      email: "",
       files: [],
       filePreview: []
     };
