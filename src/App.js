@@ -1,6 +1,6 @@
 import React from "react";
 import Overview from "./components/Overview/Overview";
-import QuestionAnswers from "./components/QuestionsAnswers/QuestionsAnswers";
+import QuestionAnswers from "./components/QuestionsAnswers/Index";
 import RatingReviews from "./components/RatingsReviews/RatingReviews";
 import RelatedProducts from "./components/RelatedProducts/RelatedProducts";
 import ClickTracker from "./ClickDecorator";
