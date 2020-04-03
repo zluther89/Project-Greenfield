@@ -184,6 +184,7 @@ class WriteNewReview extends React.Component {
     return (
       <div>
         <form action="/action_page.php">
+        <div className="row">
           <button
             className="btn btn-outline-secondary btn-lg QnAButton RatingButton"
             data-toggle="modal"
@@ -192,7 +193,8 @@ class WriteNewReview extends React.Component {
             {" "}
             <strong className="RightMargin QnAButton ">ADD A REVIEW</strong>{" "}
             <Plus size={20} style={{ marginBottom: "0.3em" }} />
-          </button>
+          </button></div>
+
           {/* model */}
           <div
             className="modal fade "

@@ -49,7 +49,7 @@ class EachReview extends React.Component {
       )
         .then(console.log("send successful"))
         .catch(err => console.log("fail putting request"));
-    } 
+    }
   }
   HandleReport() {
     var data = localStorage.getItem(
@@ -65,11 +65,7 @@ class EachReview extends React.Component {
       )
         .then(console.log("send successful"))
         .catch(err => console.log("fail putting request"));
-<<<<<<< HEAD
     }
-=======
-    } 
->>>>>>> master
   }
   render() {
     let result = this.props.result;
