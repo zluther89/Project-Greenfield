@@ -3,6 +3,7 @@ import { Plus } from "react-feather";
 import StarMarking from "./StarMarking";
 import $ from "jquery";
 import Axios from "axios";
+import ReactFilestack from 'filestack-react';
 class WriteNewReview extends React.Component {
   //get characteristic
   constructor(props) {
@@ -28,7 +29,10 @@ class WriteNewReview extends React.Component {
     };
     this.handleCharacteristic = this.handleCharacteristic.bind(this);
     this.handleRating = this.handleRating.bind(this);
-    this.handleText = this.handleText.bind(this)
+    this.handleText = this.handleText.bind(this);
+    this.handleBoolean = this.handleBoolean.bind(this);
+    this.handlePost = this.handlePost.bind(this);
+    this.handlePhoto = this.handlePhoto.bind(this);
   }
   componentDidMount() {
     this.GetCharacterstics();
@@ -49,8 +53,10 @@ class WriteNewReview extends React.Component {
       .catch(err => console.log(err));
   }
   handleCharacteristic(e) {
-    let characteristic = e.target.id;
-    let select = e.target.value;
+    let characteristic = e.target.id; //name of characteristic e.x:size
+    let select = e.target.value; //number e.x:3
+    let id = e.target.name; //id of characteristic e.x:6
+
     const AllCharacteristics = {
       Size: {
         1: "A size too small",
@@ -98,7 +104,19 @@ class WriteNewReview extends React.Component {
     this.setState({
       [characteristic]: AllCharacteristics[characteristic][select]
     });
+    this.setState(prevState => ({
+      AddReview: {
+        // object that we want to update
+        ...prevState.AddReview, // keep all other key-value pairs
+        characteristics: {
+          // specific object of stateobject
+          ...prevState.AddReview.characteristics, // copy all key-value pairs
+          [id]: select // update value of specific key
+        }
+      }
+    }));
   }
+
   handleRating(rating) {
     this.setState(prevState => ({
       AddReview: {
@@ -109,24 +127,74 @@ class WriteNewReview extends React.Component {
     }));
   }
   handleText(e) {
-    console.log(e.target.id);
+    let name = e.target.id;
+    let value = e.target.value;
+    this.setState(prevState => ({
+      AddReview: {
+        // object that we want to update
+        ...prevState.AddReview, // keep all other key-value pairs
+        [name]: value // update the value of specific key
+      }
+    }));
+  }
+  handleBoolean(e) {
+    let value = e.target.value === "true" ? true : false;
+    this.setState(prevState => ({
+      AddReview: {
+        // object that we want to update
+        ...prevState.AddReview, // keep all other key-value pairs
+        recommend: value // update the value of specific key
+      }
+    }),()=>console.log(this.state.AddReview)
+    );
+  }
+  handlePost() {
+    let productId = this.props.productId || 3;
+    Axios.post(`http://3.134.102.30/reviews/${productId}`, this.state.AddReview)
+      .then(response => {
 
-  console.log(e.target.value);
+        this.setState({ AddReview: {  rating: 0,
+          summary: "",
+          body: "",
+          recommend: false,
+          name: "",
+          email: "",
+          photos: [],
+          characteristics: {}
+        }
+        }, () => alert("send successfully!"));
+      })
+      .catch(err => console.log("can't send request to api",err));
+  }
+  handlePhoto(e) {
+    let url = e.filesUploaded[0].url;   //https://cdn.filestackcontent.com/T3Fsobv8TAuqfmBsagCB
+    let tempt = this.state.AddReview.photos
+    tempt.push(url)
+    this.setState(prevState => ({
+      AddReview: {
+        // object that we want to update
+        ...prevState.AddReview, // keep all other key-value pairs
+        photos: tempt // update the value of specific key
+      }
+    }))
 
   }
+
   render() {
     return (
       <div>
         <form action="/action_page.php">
+        <div className="row">
           <button
-            className="btn btn-outline-secondary btn-lg RatingButton"
+            className="btn btn-outline-secondary QnAButton RatingButton"
             data-toggle="modal"
             data-target="#createNewReview"
           >
             {" "}
-            <strong className="RightMargin">ADD A REVIEW</strong>{" "}
+            <strong className="RightMargin QnAButton ">ADD A REVIEW</strong>{" "}
             <Plus size={20} style={{ marginBottom: "0.3em" }} />
-          </button>
+          </button></div>
+
           {/* model */}
           <div
             className="modal fade "
@@ -153,36 +221,38 @@ class WriteNewReview extends React.Component {
                 </div>
                 <div className="modal-body">
                   <p className="row">
-                    all information with * should be mandatory
+                    all information with <font color="red">*</font> should be mandatory
                   </p>
                   <div className="row">
-                    <h6>*Overall rating</h6>
+                    <h6><font color="red">*</font>Overall rating</h6>
                   </div>
                   <div className="row">
                     <StarMarking handleRating={this.handleRating} />
                   </div>
                   <div className="row">
-                    <h6>* Do you recommend this product?</h6>
+                    <h6><font color="red">*</font> Do you recommend this product?</h6>
                     <div className="col RadioNumber">
                       <input
                         type="radio"
                         id="recommend"
+                        onClick={this.handleBoolean}
                         name="recommend"
-                        value="1"
+                        value="true"
                         required
                       />
                       <label className="RadioMargin">Yes</label>
                       <input
                         type="radio"
                         id="Norecommend"
+                        onClick={this.handleBoolean}
                         name="recommend"
-                        value="0"
+                        value="flase"
                       />
                       <label>No</label>
                     </div>
                   </div>
                   <div>
-                    <h6>* Characteristics:</h6>
+                    <h6><font color="red">*</font> Characteristics:</h6>
                     {this.state.characteristics.map(characteristic => (
                       <div key={characteristic[1].id} className="container">
                         <div className="row align-items-start">
@@ -195,8 +265,9 @@ class WriteNewReview extends React.Component {
                           <div className=" CharacteristicMargin">
                             <input
                               type="radio"
+                              data_value="111"
                               id={characteristic[0]}
-                              name={characteristic[0]}
+                              name={characteristic[1].id}
                               onClick={this.handleCharacteristic}
                               value="1"
                               required
@@ -206,7 +277,7 @@ class WriteNewReview extends React.Component {
                             <input
                               type="radio"
                               id={characteristic[0]}
-                              name={characteristic[0]}
+                              name={characteristic[1].id}
                               onClick={this.handleCharacteristic}
                               value="2"
                             />{" "}
@@ -216,7 +287,7 @@ class WriteNewReview extends React.Component {
                               type="radio"
                               id={characteristic[0]}
                               onClick={this.handleCharacteristic}
-                              name={characteristic[0]}
+                              name={characteristic[1].id}
                               value="3"
                             />
                           </div>{" "}
@@ -225,7 +296,7 @@ class WriteNewReview extends React.Component {
                               type="radio"
                               id={characteristic[0]}
                               onClick={this.handleCharacteristic}
-                              name={characteristic[0]}
+                              name={characteristic[1].id}
                               value="4"
                             />{" "}
                           </div>
@@ -234,7 +305,7 @@ class WriteNewReview extends React.Component {
                               type="radio"
                               id={characteristic[0]}
                               onClick={this.handleCharacteristic}
-                              name={characteristic[0]}
+                              name={characteristic[1].id}
                               value="5"
                             />
                           </div>
@@ -263,7 +334,7 @@ class WriteNewReview extends React.Component {
                     ></input>
                   </div>
                   <div className="row">
-                    <h6>*Review body</h6>
+                    <h6><font color="red">*</font>Review body</h6>
                   </div>
                   <div className="row">
                     <input
@@ -271,35 +342,27 @@ class WriteNewReview extends React.Component {
                       minLength="50"
                       className="form-control"
                       type="text"
-                      id="summary"
+                      id="body"
+                      onChange={this.handleText}
                       required
                       placeholder="Why did you like the product or not？"
                     ></input>
                   </div>
                   <div className="row">
                     <h6>Upload your photos</h6>
+
                   </div>
-                  <div className="input-group mb-3">
-                    <div className="input-group-prepend">
-                      <span
-                        className="input-group-text"
-                        id="inputGroupFileAddon01"
-                      >
-                        Upload
-                      </span>
-                    </div>
-                    <div className="custom-file">
-                      <input
-                        type="file"
-                        className="custom-file-input"
-                        id="inputGroupFile01"
-                        aria-describedby="inputGroupFileAddon01"
-                      ></input>
-                      <label className="custom-file-label">Choose file</label>
-                    </div>
-                  </div>
+                  <h6>you can only upload 5 images</h6>
+                  {this.state.AddReview.photos.length >=5?null: <ReactFilestack
+  apikey={"A2l9xFCrQ4eiO9xGkZWggz"}
+  onSuccess={(res) => this.handlePhoto(res)}
+/>}
+
+                    {this.state.AddReview.photos.map(photo =>
+                    <img src={photo} alt="Smiley face" height="42" width="42"></img>)
+                    }
                   <div className="row">
-                    <h6>*What is your nick name</h6>
+                    <h6><font color="red">*</font>What is your nick name</h6>
                   </div>
                   <div className="row">
                     <input
@@ -308,7 +371,8 @@ class WriteNewReview extends React.Component {
                       minLength="1"
                       className="form-control"
                       type="text"
-                      id="summary"
+                      id="name"
+                      onChange={this.handleText}
                       placeholder="Example: jackson11!"
                     ></input>
                   </div>
@@ -319,7 +383,7 @@ class WriteNewReview extends React.Component {
                     </p>
                   </div>
                   <div className="row">
-                    <h6>*Your email</h6>
+                    <h6><font color="red">*</font>Your email</h6>
                   </div>
                   <div className="row">
                     <input
@@ -328,7 +392,8 @@ class WriteNewReview extends React.Component {
                       type="email"
                       maxLength="60"
                       minLength="1"
-                      id="summary"
+                      id="email"
+                      onChange={this.handleText}
                       placeholder="Example: jackson11@email.com"
                     ></input>
                   </div>
@@ -338,17 +403,20 @@ class WriteNewReview extends React.Component {
                 </div>
 
                 {/* footer */}
+
                 <div className="modal-footer">
                   <button
                     type="button"
-                    className="btn btn-secondary"
+                    className="QnAButton btn btn-secondary"
                     data-dismiss="modal"
                   >
                     Close
                   </button>
+
                   <button
-                    type="submit"
-                    className="btn btn-primary "
+                    type="reset"
+                    onClick={this.handlePost}
+                    className="QnAButton btn btn-primary "
                     id="makePostRequire"
                   >
                     Submit
@@ -357,7 +425,7 @@ class WriteNewReview extends React.Component {
               </div>
             </div>
           </div>
-        </form>
+          </form>
       </div>
     );
   }

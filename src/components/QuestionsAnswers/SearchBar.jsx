@@ -10,6 +10,7 @@ const SearchBar = props => {
           <Form.Label><h2>Questions & Answers</h2></Form.Label>
           <br/>
           <Form.Control
+          style={{ width: "100%" }}
             type="question"
             placeholder=" Have a Question? Search for answers..."
             size="sm"

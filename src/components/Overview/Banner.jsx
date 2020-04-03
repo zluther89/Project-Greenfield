@@ -21,7 +21,7 @@ export default function Banner() {
             ></i>
 
             <p id="companySlogan">
-              can't find what you're looking for, let us help
+              Can't find what you're looking for? Let us help
             </p>
           </span>
           <Cart show={modalShow} onHide={() => setModalShow(false)} />

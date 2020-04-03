@@ -5,7 +5,7 @@
 
 .overviewWidget {
   height: 700px;
-  margin-bottom: 40px;
+  margin-bottom: 45px;
 }
 
 .overviewFull {
@@ -314,6 +314,7 @@
 
 #compareButton:hover {
   color: gold;
+  border: 1px solid gold;
 }
 
 #addButton {
@@ -327,10 +328,12 @@
 
 #addButton:hover {
   color: #007bff;
+  border: 1px solid #007bff;
 }
 
 #deleteButton:hover {
   color: red;
+  border: 1px solid red;
 }
 
 /* Styling for cards */
@@ -341,6 +344,7 @@
 
 .card {
   width: 10rem;
+  border-radius: 100%;
 }
 
 .productCard {
@@ -348,8 +352,7 @@
 }
 
 .productCarouselContainer {
-  margin: 20px auto 20px auto;
-  width: 1110px;
+  width: 100%;
 }
 
 .productCarousel {
@@ -358,6 +361,10 @@
 }
 
 .productCarousel::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollable::-webkit-scrollbar {
   display: none;
 }
 
@@ -537,6 +544,7 @@ table {
 .carousel-inner img {
   width: 100%;
   height: 100%;
+  display: cover;
 }
 
 .carousel-item {
