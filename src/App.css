@@ -310,7 +310,7 @@
 #compareButton:hover {
   color: gold;
   border: 1px solid gold;
-  transition-duration: .4s;
+  transition-duration: 0.4s;
 }
 
 #addButton {
@@ -323,16 +323,16 @@
 }
 
 #addButton:hover {
-  color: #007BFF;
-  border: 3px solid #007BFF;
+  color: #007bff;
+  border: 3px solid #007bff;
   transition-timing-function: ease-in-out;
-  transition-duration: .4s;
+  transition-duration: 0.4s;
 }
 
 #deleteButton:hover {
   color: red;
   border: 1px solid red;
-  transition-duration: .4s;
+  transition-duration: 0.4s;
 }
 
 /* Styling for cards */
@@ -350,8 +350,8 @@
   height: 30rem;
 }
 
-.cardHover:hover{
-  box-shadow : 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 10px 30px 0 rgba(0, 0, 0, 0.19)
+.cardHover:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 10px 30px 0 rgba(0, 0, 0, 0.19);
 }
 
 .productCarouselContainer {
@@ -548,7 +548,6 @@ table {
   width: 100%;
   height: 100%;
   display: cover;
-  
 }
 
 .carousel-item {
@@ -684,6 +683,7 @@ button.QnAButton {
   color: black;
   background-color: white;
   border-color: black;
+  margin-left: 2%;
 }
 
 #cartIcon {
