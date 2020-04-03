@@ -10,6 +10,8 @@ import { getNewProductThunk } from "../Redux/ThunkMiddleware.js";
 import { connect } from "react-redux";
 import OutfitCarousel from "./Carousels/OutfitCarousel";
 
+import { confetti } from 'dom-confetti';
+
 const mapDispatchToProps = dispatch => {
   return {getNewProductThunk: id => dispatch(getNewProductThunk(id))};
 };
@@ -28,7 +30,8 @@ class RelatedProducts extends React.Component {
       outfitNames: [],
       outfitInfo: {},
       outfitLoaded: false,
-      showModal: false
+      showModal: false,
+      addedOutfit: false
     };
     this.handleCompare = this.handleCompare.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -85,18 +88,29 @@ class RelatedProducts extends React.Component {
           this.setState({relatedProducts: relatedProducts})
         })
       })
+      const button = document.querySelector("#addButton.btn")
+      button.addEventListener("click", () => {
+      
+          confetti(button, {
+            elementCount: '100'
+          })
+        
+ 
+      })
   }
 
   handleAddToOutfit() {
+    
     let currentOutfit = this.state.outfitId.slice();
     if (currentOutfit.indexOf(this.state.current.id) === -1) {
       this.setState({ outfitLoaded: false });
       currentOutfit.unshift(this.state.current.id);
+      this.setState({ outfitId: currentOutfit }, () => {
+        localStorage.setItem("outfit", JSON.stringify(currentOutfit));
+        this.getOutfits();
+      });
     }
-    this.setState({ outfitId: currentOutfit }, () => {
-      localStorage.setItem("outfit", JSON.stringify(currentOutfit));
-      this.getOutfits();
-    });
+    
   }
 
   async getOutfitData(outfitId, callback) {
