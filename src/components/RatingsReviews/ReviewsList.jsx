@@ -48,12 +48,12 @@ render() {
     return (
       <div style={{ height: "100%" }} >
         <div className="row" style={{ height: "5%" }}>
-          <p mt-3="true">{this.props.totalCount} reviews, sorted by</p>
+          <p mt-3="true">{this.props.totalCount} Reviews, Sorted by:</p>
           <div className="select">
             <select  onChange={(e) => { this.GetReviewList(e.target.value) }}>
-              <option value="relevance">relevance</option>
-              <option value="newest">newest</option>
-              <option value="helpful">helpful</option>
+              <option value="relevance">Relevance</option>
+              <option value="newest">Newest</option>
+              <option value="helpful">Helpful</option>
             </select>
           </div>
         </div>
@@ -61,7 +61,7 @@ render() {
         <div className="row justify-content-start RatingReviewsFoot ">
         <div className="col-4" >
             <button className="btn btn-outline-secondary  QnAButton " onClick={this.ReGetReview}>
-              <strong>{this.state.ShowAllReviews ?"FOLD UP": "MORE REVIEWS"}</strong>
+              {this.state.ShowAllReviews ?"Fold Up": "More Reviews"}
             </button>
         </div>
           <div className="col-4" >
