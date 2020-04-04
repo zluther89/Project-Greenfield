@@ -134,11 +134,11 @@
   height: 100%;
 }
 /* css for product breakdown */
-.Productprogress-bar {
+.productprogress-bar {
   border-right: solid 5px #fff;
   background-color: grey;
 }
-.Productprogress-bar:last-child {
+.productprogress-bar:last-child {
   border: none;
 }
 .grade-product-img {
@@ -344,7 +344,6 @@
 
 .card {
   width: 10rem;
-  border-radius: 100%;
 }
 
 .productCard {
@@ -684,7 +683,6 @@ button.QnAButton {
   color: black;
   background-color: white;
   border-color: black;
-  margin-left: 2%;
 }
 
 #cartIcon {

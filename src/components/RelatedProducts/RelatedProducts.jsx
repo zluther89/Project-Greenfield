@@ -89,20 +89,17 @@ class RelatedProducts extends React.Component {
         })
       })
       const button = document.querySelector("#addButton.btn")
-      button.addEventListener("click", () => {
-      
+      button.addEventListener("click", () => {    
           confetti(button, {
             elementCount: '100'
           })
-        
- 
       })
   }
 
   handleAddToOutfit() {
     
     let currentOutfit = this.state.outfitId.slice();
-    if (currentOutfit.indexOf(this.state.current.id) === -1) {
+    if (currentOutfit.indexOf(this.state.current.id) === -1 && this.state.current.id !== null) {
       this.setState({ outfitLoaded: false });
       currentOutfit.unshift(this.state.current.id);
       this.setState({ outfitId: currentOutfit }, () => {
