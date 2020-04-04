@@ -1,7 +1,6 @@
 import React from "react";
 import { Check } from "react-feather";
 import ShowStars from "../OverlapWork/ShowStars";
-import $ from "jquery";
 import Axios from "axios";
 class EachReview extends React.Component {
   constructor(props) {
@@ -15,19 +14,7 @@ class EachReview extends React.Component {
     this.HandleReport = this.HandleReport.bind(this)
   }
   componentDidMount() {
-    //imgmodal
     this.setState({ helpNum: this.props.result.helpfulness });
-    $("#imgModal").on("show.bs.modal", function(e) {
-      //get id and link attribute of the clicked element
-      // var id = $(e.relatedTarget).data("key");
-      var src = $(e.relatedTarget).data("src");
-      //populate the img
-      // $(e.currentTarget).find('input[name="id"]').val(id);
-      $(e.currentTarget)
-        .find('input[src="src"]')
-        .attr("src", src);
-    });
-    //triggered when modal is about to be shown
   }
   HandleShowAll() {
     this.setState({ ShowAll: !this.state.ShowAll });
@@ -89,7 +76,7 @@ class EachReview extends React.Component {
         >
           <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
-              <input type="image" src="src" className="EachPhoto" alt="" />
+              <input type="image" src="https://source.unsplash.com/random/600x800" className="EachPhoto" alt="" />
               <button
                 type="button"
                 className="btn btn-secondary"
