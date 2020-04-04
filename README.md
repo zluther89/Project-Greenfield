@@ -13,7 +13,7 @@ Forever404 is a front-end redesign of an e-commerce web application, built with 
 
 ## Description
 
-Forever404 comes with several features for product pages on e-commerce websites, following the direction of a design mock-up and business requirements document:
+Forever404 comes with several features for product pages on e-commerce websites, following the direction of a visual mock-up and business requirements document:
 
 - [Product Overview](#product-overview)
 - [Related Products](#related-products)
@@ -72,7 +72,8 @@ This project can be run by executing the following steps:
 
 ### Build <!-- omit in TOC -->
 
-In the same directory, run `npm build` to build the necessary files
+In the same directory, run `npm build` to build the app for production to the `build` folder.<br />
+This bundles React in production mode and optimizes the build for the best performance.
 
 ### Start the Server <!-- omit in TOC -->
 
@@ -90,15 +91,13 @@ The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
 
-### `npm run build`
-
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
-File structure
+## File structure
 
 - Src[Folder]
 
