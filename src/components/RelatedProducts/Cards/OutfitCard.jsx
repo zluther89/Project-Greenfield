@@ -57,7 +57,6 @@ let OutfitCard= (props) => {
               ${price}
             </Card.Text>
             <ShowStars productId={id}/>  
-            {/* number of reviews */}
           </Card.Body>
     </Card>
 

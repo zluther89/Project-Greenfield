@@ -1,10 +1,88 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Forever404 <!-- omit in TOC -->
+
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Description](#description)
+- [Getting Started](#getting-started)
+- [File Structure](#file-structure)
+
+## Overview
+
+Forever404 is a front-end redesign of an e-commerce web application, built with React.js
+
+## Description
+
+Forever404 comes with multi-feature product pages for e-commerce websites, following the direction of a visual mock-up and business requirements document:
+
+- [Product Overview](#product-overview)
+- [Related Products](#related-products)
+- [My Outfit](#my-outfit)
+- [Questions & Answers](#questions-&-answers)
+- [Ratings & Reviews](#ratings-&-reviews)
+
+
+<!-- omit in TOC -->
+
+### Product Overview
+_Developed by Matthew Brown_
+
+<!-- omit in TOC -->
+
+### Related Products
+_Developed by Andrew Jyan_
+
+The Related Products presents the user with products similar to the currently selected product, provided by the external API.
+
+This section shows four product cards at a time. They sit on a horizontally scrolling carousel that allows the user to scroll and view additional cards. 
+
+On each product card, essential information such as the category, name, price, image, and ratings are displayed. Selecting the name of a product will take the user to the overview page of the selected product. 
+
+When a user clicks on the star icon in the upper righthand corner of the card, a modal will pop up comparing the current product and the selected product. The modal displays a table with the features lined up for both products in a table, allowing the user to easily compare the two products.
+
+<!-- omit in TOC -->
+
+### My Outfit
+_Developed by Andrew Jyan_
+
+My Outfit provides the user a way to keep track of their favorite products. If the user wants to add the current product to their outfit, they can select the "+" button, adding the products card to the outfit.
+
+To remove an outfit item, the user can click the red "X" on the upper righthand corner of the card. The change will remove the selected product from the outfit list.
+
+My Outfit is also persistent, allowing the user to navigate around and even away from the application and maintain their list of saved products.
+
+<!-- omit in TOC -->
+
+### Questions & Answers
+_Developed by Zachary Luther_
+<!-- omit in TOC -->
+
+### Ratings & Reviews
+_Developed by Kane Qiu_
+
+## Getting Started
+
+This project can be run by executing the following steps:
+
+### Installation <!-- omit in the TOC -->
+
+1. Download or clone this git repository onto your local machine
+2. Navigate to the root directory and run `npm install` 
+
+### Build <!-- omit in TOC -->
+
+In the same directory, run `npm build` to build the app for production to the `build` folder.<br />
+This bundles React in production mode and optimizes the build for the best performance.
+
+### Start the Server <!-- omit in TOC -->
+
+Within the root directory, run `npm start` and then navigate to our [webpage](http://localhost:3010)
 
 ## Available Scripts
-
 In the project directory, you can run:
 
-### `npm start`
+### `npm start-dev`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -12,12 +90,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -25,51 +97,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-# Project-Greenfield
-
-File structure
+## File Structure
 
 - Src[Folder]
 
