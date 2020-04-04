@@ -9,8 +9,8 @@ const ProductBreakdown = ({ characteristics }) => {
           {/* progress bar */}
           <div className="row align-items-center">
             <div className="col">
-            <div className="ProductSlidercontainer">
-            <input type="range" min="1" max="100" defaultValue={`${characteristic[1].value*20}%`} className="ProductSlider"></input>
+            <div className="productslidercontainer">
+            <input type="range" min="1" max="100" defaultValue={`${characteristic[1].value*20}%`} className="productslider"></input>
 </div>
               <div className="progress border-0  grade-product-bar " >
         <div className="progress-bar "role="progressbar" aria-valuemin="0" aria-valuemax="100" ><div className="grade-product-img" ></div></div>
@@ -38,7 +38,7 @@ const ProductBreakdown = ({ characteristics }) => {
           {/* progress bar */}
           <div className="row align-items-center">
             <div className="col">
-            <div className="ProductSlidercontainer">
+            <div className="productslidercontainer">
             <input type="range" min="1" max="100" defaultValue={`${characteristic[1].value*20}%`} className="ProductSlider"></input>
 </div>
             <div className="progress border-0  grade-product-bar " >
