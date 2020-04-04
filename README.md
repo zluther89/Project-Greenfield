@@ -6,6 +6,7 @@
 - [Overview](#overview)
 - [Description](#description)
 - [Getting Started](#getting-started)
+- [File Structure](#file-structure)
 
 ## Overview
 
@@ -13,7 +14,7 @@ Forever404 is a front-end redesign of an e-commerce web application, built with 
 
 ## Description
 
-Forever404 comes with several features for product pages on e-commerce websites, following the direction of a visual mock-up and business requirements document:
+Forever404 comes with multi-feature product pages for e-commerce websites, following the direction of a visual mock-up and business requirements document:
 
 - [Product Overview](#product-overview)
 - [Related Products](#related-products)
@@ -55,7 +56,6 @@ My Outfit is also persistent, allowing the user to navigate around and even away
 
 ### Questions & Answers
 _Developed by Zachary Luther_
-
 <!-- omit in TOC -->
 
 ### Ratings & Reviews
@@ -97,7 +97,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
-## File structure
+## File Structure
 
 - Src[Folder]
 
