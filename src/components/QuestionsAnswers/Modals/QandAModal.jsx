@@ -6,16 +6,16 @@ import Axios from "axios";
 import { connect } from "react-redux";
 import { getQuestionsThunk } from "../../Redux/ThunkMiddleware.js";
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    getQuestionsThunk: id => dispatch(getQuestionsThunk(id))
+    getQuestionsThunk: (id) => dispatch(getQuestionsThunk(id)),
   };
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
     questionSet: state.questionSet,
-    selectedProduct: state.selectedProduct
+    selectedProduct: state.selectedProduct,
   };
 };
 
@@ -28,7 +28,7 @@ class QuestionModal extends React.Component {
       name: "",
       email: "",
       files: [],
-      filePreview: []
+      filePreview: [],
     };
     this.postAnswer = this.postAnswer.bind(this);
     this.postQuestion = this.postQuestion.bind(this);
@@ -54,7 +54,7 @@ class QuestionModal extends React.Component {
     let data = {
       body: this.state.body,
       email: this.state.email,
-      name: this.state.name
+      name: this.state.name,
     };
     console.log("data data data", data);
 
@@ -72,9 +72,9 @@ class QuestionModal extends React.Component {
           ? () => this.props.getQuestionsThunk(productID)
           : this.props.setAnswers;
       postHandler(data)
-        .then(res => console.log("response from post question", res))
+        .then((res) => console.log("response from post question", res))
         .then(updateHandler)
-        .catch(err => console.log("error from post question", err));
+        .catch((err) => console.log("error from post question", err));
 
       this.props.onHide();
     } else {
@@ -153,7 +153,7 @@ class QuestionModal extends React.Component {
                 type="email"
                 maxLength="60"
                 placeholder="Please Enter Email"
-                onChange={event => this.handleChange(event, "email")}
+                onChange={(event) => this.handleChange(event, "email")}
               />
               {emailAlert}
             </Form.Group>
@@ -163,7 +163,7 @@ class QuestionModal extends React.Component {
                 type="nickname"
                 maxLength="60"
                 placeholder="Example: jackson11!"
-                onChange={event => this.handleChange(event, "name")}
+                onChange={(event) => this.handleChange(event, "name")}
               />
               {nickNameAlert}
             </Form.Group>
@@ -174,10 +174,10 @@ class QuestionModal extends React.Component {
                 as="textarea"
                 maxLength="1000"
                 placeholder={`Please Enter: ${type}`}
-                onChange={event => this.handleChange(event, "body")}
+                onChange={(event) => this.handleChange(event, "body")}
               />
             </Form.Group>
-            {this.state.warning} <br></br>
+            {this.state.warning ? this.state.warning : null} <br></br>
             {this.state.warningTwo}
           </Form>
         </Modal.Body>
