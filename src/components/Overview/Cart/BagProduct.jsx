@@ -3,17 +3,18 @@ import React, { useState, useEffect } from "react";
 export default function BagProduct(props) {
   const [price, changePrice] = useState(0);
   const [isDeleted, setStatus] = useState(false);
-  function changeCart() {
+
+  async function changeCart() {
     setStatus(true);
-    let cart = JSON.parse(localStorage.getItem("cart"));
+    let cart = await JSON.parse(localStorage.getItem("cart"));
     if (!cart) {
       cart = [];
     }
 
-    let newCart = cart.filter(
-      el => JSON.stringify(el) !== JSON.stringify(props.content)
+    let newCart = await cart.filter(
+      (el) => JSON.stringify(el) !== JSON.stringify(props.content)
     );
-    console.log("new cart", newCart);
+
     window.localStorage.setItem("cart", JSON.stringify(newCart));
   }
 
