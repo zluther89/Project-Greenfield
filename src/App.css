@@ -87,9 +87,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("https://i.imgur.com/ZLrTQn4.png") no-repeat;
   -webkit-background-size: 100% 100% !important;
   background-size: 100% 100% !important;
+
 }
 .grade-star-bar {
   position: relative;
@@ -97,6 +97,7 @@
   overflow: hidden;
   vertical-align: middle;
   height: 100%;
+
 }
 /* end */
 /* css for rating part */
