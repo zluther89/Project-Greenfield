@@ -27,17 +27,6 @@ export default function Banner() {
           <Cart show={modalShow} onHide={() => setModalShow(false)} />
         </h1>
       </div>
-      {/* <div id="specialOffer">
-        <p>SITE WIDE ANNOUNCEMENT --- THIS IS THE GREATEST WEBSITE EVER</p>
-      </div> */}
     </div>
   );
 }
-
-/* <div>
-{this.props.salePrice ? (
-  <p>NOW ${this.props.price - this.props.salePrice}</p>
-) : (
-  <p>${this.props.price}</p>
-)}
-<h3>STYLE > SELECTED STYLE</h3> */

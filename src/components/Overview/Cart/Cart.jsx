@@ -3,15 +3,18 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import BagProduct from "./BagProduct";
 
+//The cart is a feature that I added towards the end of development
+
+//Whenever a user adds a product to their cart all the information of that purchase gets placed in local storage
+
 export default function CartModal(props) {
-  const [price, changePrice] = useState(0);
   function bagContents() {
     let newCart = JSON.parse(localStorage.getItem("cart"));
     if (!newCart) {
       newCart = [];
     }
 
-    return newCart.map(content => {
+    return newCart.map((content) => {
       return <BagProduct content={content} />;
     });
   }

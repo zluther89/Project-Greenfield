@@ -97,7 +97,7 @@ class RatingBreakdown extends React.Component {
   render() {
     return (
 
-      <div style={{"height":"100%"}}>
+      <div style={{ "height": "100%" }}>
         <div className="row " style={{ "height": "10%" }}>
           <div className="col-4  "><h1>{this.state.rating}</h1></div> <div className="col-8 "><ShowStars productId = {this.props.productId}/></div>
 

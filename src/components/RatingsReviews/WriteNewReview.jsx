@@ -1,7 +1,6 @@
 import React from "react";
 import { Plus } from "react-feather";
 import StarMarking from "./StarMarking";
-import $ from "jquery";
 import Axios from "axios";
 import ReactFilestack from 'filestack-react';
 class WriteNewReview extends React.Component {
