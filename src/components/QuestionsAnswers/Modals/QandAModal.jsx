@@ -48,7 +48,6 @@ class QuestionModal extends React.Component {
   }
 
   handleSubmit() {
-    console.log("here");
     let type = this.props.type === "question" ? "Question" : "Answer";
     let productID = this.props.selectedProduct.id;
     let data = {
@@ -56,7 +55,6 @@ class QuestionModal extends React.Component {
       email: this.state.email,
       name: this.state.name,
     };
-    console.log("data data data", data);
 
     if (
       data.body &&
@@ -78,19 +76,27 @@ class QuestionModal extends React.Component {
 
       this.props.onHide();
     } else {
-      let warningString = "You must enter the following:";
+      this.createWarningString(data, type);
+    }
+  }
+
+  createWarningString(data, type) {
+    let warningString;
+    if (!data.body || !data.email || !data.name) {
+      warningString = "You must enter the following:";
       warningString += !data.body ? ` ${type},` : "";
       warningString += !data.email ? " Email," : "";
       warningString += !data.name ? " Nickname," : "";
       warningString = warningString.slice(0, warningString.length - 1);
-      let warningStringTwo =
-        data.email.indexOf("@") === -1 ||
-        data.email.slice(data.email.indexOf("@")).indexOf(".") === -1
-          ? "Please enter email in valid format"
-          : "";
-      this.setState({ warning: warningString, warningTwo: warningStringTwo });
     }
+    let warningStringTwo =
+      data.email.indexOf("@") === -1 ||
+      data.email.slice(data.email.indexOf("@")).indexOf(".") === -1
+        ? "Please enter email in valid format"
+        : "";
+    this.setState({ warning: warningString, warningTwo: warningStringTwo });
   }
+
   postAnswer(data) {
     let questionID = this.props.questionID;
     return Axios.post(`http://3.134.102.30/qa/${questionID}/answers`, data);
