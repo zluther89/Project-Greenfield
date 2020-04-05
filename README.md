@@ -1,6 +1,5 @@
 # Forever404 <!-- omit in TOC -->
 
-
 ## Table of Contents
 
 - [Overview](#overview)
@@ -22,28 +21,39 @@ Forever404 comes with multi-feature product pages for e-commerce websites, follo
 - [Questions & Answers](#questions-&-answers)
 - [Ratings & Reviews](#ratings-&-reviews)
 
-
 <!-- omit in TOC -->
 
 ### Product Overview
+
 _Developed by Matthew Brown_
+
+The Overview module is the top-most module on the Product Detail page. The functionality contained within this module can be divided into several pieces:
+Image gallery
+Product information
+Style selector
+Add to cart
+This component guides the customer through selecting a specific style and size to add to their cart. As such, portions of the Overview module, such as the image gallery and cart selection, will be specific to a SKU chosen as opposed to the overarching product.
+
+The largest piece of the Overview module is the photo gallery showing images of the product. The photos presented in this gallery are specific to the currently selected product style. Each time a new style is chosen, the gallery will update to show photos corresponding to the new style.
 
 <!-- omit in TOC -->
 
 ### Related Products
+
 _Developed by Andrew Jyan_
 
 The Related Products presents the user with products similar to the currently selected product, provided by the external API.
 
-This section shows four product cards at a time. They sit on a horizontally scrolling carousel that allows the user to scroll and view additional cards. 
+This section shows four product cards at a time. They sit on a horizontally scrolling carousel that allows the user to scroll and view additional cards.
 
-On each product card, essential information such as the category, name, price, image, and ratings are displayed. Selecting the name of a product will take the user to the overview page of the selected product. 
+On each product card, essential information such as the category, name, price, image, and ratings are displayed. Selecting the name of a product will take the user to the overview page of the selected product.
 
 When a user clicks on the star icon in the upper righthand corner of the card, a modal will pop up comparing the current product and the selected product. The modal displays a table with the features lined up for both products in a table, allowing the user to easily compare the two products.
 
 <!-- omit in TOC -->
 
 ### My Outfit
+
 _Developed by Andrew Jyan_
 
 My Outfit provides the user a way to keep track of their favorite products. If the user wants to add the current product to their outfit, they can select the "+" button, adding the products card to the outfit.
@@ -55,10 +65,13 @@ My Outfit is also persistent, allowing the user to navigate around and even away
 <!-- omit in TOC -->
 
 ### Questions & Answers
+
 _Developed by Zachary Luther_
+
 <!-- omit in TOC -->
 
 ### Ratings & Reviews
+
 _Developed by Kane Qiu_
 
 ## Getting Started
@@ -68,7 +81,7 @@ This project can be run by executing the following steps:
 ### Installation <!-- omit in the TOC -->
 
 1. Download or clone this git repository onto your local machine
-2. Navigate to the root directory and run `npm install` 
+2. Navigate to the root directory and run `npm install`
 
 ### Build <!-- omit in TOC -->
 
@@ -80,6 +93,7 @@ This bundles React in production mode and optimizes the build for the best perfo
 Within the root directory, run `npm start` and then navigate to our [webpage](http://localhost:3010)
 
 ## Available Scripts
+
 In the project directory, you can run:
 
 ### `npm start-dev`
@@ -89,7 +103,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
-
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
