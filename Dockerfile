@@ -5,4 +5,4 @@ WORKDIR /app
 RUN npm install
 
 EXPOSE 3010
-CMD ["node", "./server/index.js"]
+CMD ["pm2 start", "./server/index.js"]
