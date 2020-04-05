@@ -1,11 +1,18 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
-// import Button from "react-bootstrap/Button";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ModalCarousel from "./ModalCarousel";
-let ImageModal = props => {
+
+//The imageModal shows an expanded carousel
+
+//i decided that using a modal was a cleaner way of writing code, rather than using conditional resizing of the image carousel
+
+//the carousel does not have a thumbnail row, but i have set this component up in a way that one could be easily added if desired
+
+let ImageModal = (props) => {
   return (
     <Modal
       {...props}
@@ -13,11 +20,6 @@ let ImageModal = props => {
       dialogClassName="modal-90w"
       aria-labelledby="contained-modal-title-vcenter"
     >
-      {/* <Modal.Header closeButton>
-     <Modal.Title id="contained-modal-title-vcenter">
-       <Button onClick={props.onHide}>Close</Button>
-     </Modal.Title>
-   </Modal.Header> */}
       <Container className="modalBackground">
         <Row className="overviewModalRow">
           <Col xs={12}>
