@@ -3,7 +3,7 @@ import React from "react";
 
 export default function OverviewStars(props) {
   let reviews = JSON.parse(localStorage.getItem("reviews"));
-  let element = document.getElementById("reviewsBox")
+  let element = document.getElementById("reviewsBox");
   return (
     <div id="starsBox">
       {" "}
@@ -15,11 +15,10 @@ export default function OverviewStars(props) {
         <a
           onClick={() => {
             return element.scrollIntoView({
-                behavior: "smooth"
-              });
-       
+              behavior: "smooth",
+            });
           }}
-          href='javascript:void(0)'
+          href="javascript:void(0)"
         >
           Read {reviews} Reviews
         </a>

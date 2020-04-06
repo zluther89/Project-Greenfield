@@ -11,7 +11,7 @@ export default class SizeQuantitySelect extends React.Component {
       sizesClicked: false,
       sizeSelected: null,
       sizeAvailable: null,
-      quantitySelected: null
+      quantitySelected: null,
     };
     this.populateSizes = this.populateSizes.bind(this);
     this.setQuantity = this.setQuantity.bind(this);
@@ -49,7 +49,7 @@ export default class SizeQuantitySelect extends React.Component {
               onClick={() => {
                 this.setState({
                   sizeSelected: size,
-                  sizeAvailable: amount[index]
+                  sizeAvailable: amount[index],
                 });
               }}
             >
@@ -63,7 +63,7 @@ export default class SizeQuantitySelect extends React.Component {
               onClick={() => {
                 this.setState({
                   sizeSelected: size,
-                  sizeAvailable: amount[index]
+                  sizeAvailable: amount[index],
                 });
               }}
             >
@@ -86,9 +86,6 @@ export default class SizeQuantitySelect extends React.Component {
     var cart = JSON.parse(localStorage.getItem("cart"));
     cart.push([quantity, size, style, styleName, productName, price]);
     window.localStorage.setItem("cart", JSON.stringify(cart));
-
-    // let newStorage = currentStorage.push("you");
-    // console.log(newStorage);
 
     this.resetValues();
   }

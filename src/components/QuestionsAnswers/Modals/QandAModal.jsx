@@ -6,16 +6,16 @@ import Axios from "axios";
 import { connect } from "react-redux";
 import { getQuestionsThunk } from "../../Redux/ThunkMiddleware.js";
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    getQuestionsThunk: id => dispatch(getQuestionsThunk(id))
+    getQuestionsThunk: (id) => dispatch(getQuestionsThunk(id)),
   };
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
     questionSet: state.questionSet,
-    selectedProduct: state.selectedProduct
+    selectedProduct: state.selectedProduct,
   };
 };
 
@@ -28,7 +28,7 @@ class QuestionModal extends React.Component {
       name: "",
       email: "",
       files: [],
-      filePreview: []
+      filePreview: [],
     };
     this.postAnswer = this.postAnswer.bind(this);
     this.postQuestion = this.postQuestion.bind(this);
@@ -48,15 +48,13 @@ class QuestionModal extends React.Component {
   }
 
   handleSubmit() {
-    console.log("here");
     let type = this.props.type === "question" ? "Question" : "Answer";
     let productID = this.props.selectedProduct.id;
     let data = {
       body: this.state.body,
       email: this.state.email,
-      name: this.state.name
+      name: this.state.name,
     };
-    console.log("data data data", data);
 
     if (
       data.body &&
@@ -72,25 +70,33 @@ class QuestionModal extends React.Component {
           ? () => this.props.getQuestionsThunk(productID)
           : this.props.setAnswers;
       postHandler(data)
-        .then(res => console.log("response from post question", res))
+        .then((res) => console.log("response from post question", res))
         .then(updateHandler)
-        .catch(err => console.log("error from post question", err));
+        .catch((err) => console.log("error from post question", err));
 
       this.props.onHide();
     } else {
-      let warningString = "You must enter the following:";
+      this.createWarningString(data, type);
+    }
+  }
+
+  createWarningString(data, type) {
+    let warningString;
+    if (!data.body || !data.email || !data.name) {
+      warningString = "You must enter the following:";
       warningString += !data.body ? ` ${type},` : "";
       warningString += !data.email ? " Email," : "";
       warningString += !data.name ? " Nickname," : "";
       warningString = warningString.slice(0, warningString.length - 1);
-      let warningStringTwo =
-        data.email.indexOf("@") === -1 ||
-        data.email.slice(data.email.indexOf("@")).indexOf(".") === -1
-          ? "Please enter email in valid format"
-          : "";
-      this.setState({ warning: warningString, warningTwo: warningStringTwo });
     }
+    let warningStringTwo =
+      data.email.indexOf("@") === -1 ||
+      data.email.slice(data.email.indexOf("@")).indexOf(".") === -1
+        ? "Please enter email in valid format"
+        : "";
+    this.setState({ warning: warningString, warningTwo: warningStringTwo });
   }
+
   postAnswer(data) {
     let questionID = this.props.questionID;
     return Axios.post(`http://3.134.102.30/qa/${questionID}/answers`, data);
@@ -153,7 +159,7 @@ class QuestionModal extends React.Component {
                 type="email"
                 maxLength="60"
                 placeholder="Please Enter Email"
-                onChange={event => this.handleChange(event, "email")}
+                onChange={(event) => this.handleChange(event, "email")}
               />
               {emailAlert}
             </Form.Group>
@@ -163,7 +169,7 @@ class QuestionModal extends React.Component {
                 type="nickname"
                 maxLength="60"
                 placeholder="Example: jackson11!"
-                onChange={event => this.handleChange(event, "name")}
+                onChange={(event) => this.handleChange(event, "name")}
               />
               {nickNameAlert}
             </Form.Group>
@@ -174,10 +180,10 @@ class QuestionModal extends React.Component {
                 as="textarea"
                 maxLength="1000"
                 placeholder={`Please Enter: ${type}`}
-                onChange={event => this.handleChange(event, "body")}
+                onChange={(event) => this.handleChange(event, "body")}
               />
             </Form.Group>
-            {this.state.warning} <br></br>
+            {this.state.warning ? this.state.warning : null} <br></br>
             {this.state.warningTwo}
           </Form>
         </Modal.Body>
