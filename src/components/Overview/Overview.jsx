@@ -59,14 +59,14 @@ class Overview extends React.Component {
     this.props.getNewProductThunk(productId);
 
     axios
-      .get(`http://3.134.102.30/products/${productId}`)
+      .get(`http://18.224.200.47/products/${productId}`)
       .then(response => {
         this.setState({
           data: response.data,
           currentPrice: response.data.default_price,
           currentProductName: response.data.name
         });
-        return axios.get(`http://3.134.102.30/products/${productId}/styles`); // using response.data
+        return axios.get(`http://18.224.200.47/products/${productId}/styles`); // using response.data
       })
       .then(response => {
         this.setState({ styleData: response.data });

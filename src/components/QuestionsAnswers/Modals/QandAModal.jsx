@@ -99,12 +99,12 @@ class QuestionModal extends React.Component {
 
   postAnswer(data) {
     let questionID = this.props.questionID;
-    return Axios.post(`http://3.134.102.30/qa/${questionID}/answers`, data);
+    return Axios.post(`http://18.224.200.47/qa/${questionID}/answers`, data);
   }
 
   postQuestion(params) {
     let productId = this.props.selectedProduct.id;
-    return Axios.post(`http://3.134.102.30/qa/${productId}?`, params);
+    return Axios.post(`http://18.224.200.47/qa/${productId}?`, params);
   }
 
   render() {

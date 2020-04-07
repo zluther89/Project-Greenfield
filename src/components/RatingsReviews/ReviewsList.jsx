@@ -26,13 +26,13 @@ class ReviewsList extends React.Component {
   GetReviewList(sort = "relevance") {
     let productId = this.props.productId || 3
     if (this.state.ShowAllReviews) {
-      Axios.get(`http://3.134.102.30/reviews/${productId}/list?sort=${sort}&count=100`)
+      Axios.get(`http://18.224.200.47/reviews/${productId}/list?sort=${sort}&count=100`)
         .then(response => {
         this.setState({results:response.data.results})
         })
       .catch(err => console.log("fail getting review list"))
     } else {
-      Axios.get(`http://3.134.102.30/reviews/${productId}/list?sort=${sort}&count=2&page=1`)
+      Axios.get(`http://18.224.200.47/reviews/${productId}/list?sort=${sort}&count=2&page=1`)
       .then(response => {
       this.setState({results:response.data.results})
       })

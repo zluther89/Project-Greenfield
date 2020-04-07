@@ -27,7 +27,7 @@ class Question extends React.Component {
   }
 
   getAnswers(id) {
-    return Axios.get(`http://3.134.102.30/qa/${id}/answers`);
+    return Axios.get(`http://18.224.200.47/qa/${id}/answers`);
   }
 
   setAnswers() {

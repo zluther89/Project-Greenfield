@@ -32,7 +32,7 @@ class EachReview extends React.Component {
         `${this.props.result.review_id}`
       );
       Axios.put(
-        ` http://3.134.102.30/reviews/helpful/${this.props.result.review_id}`
+        ` http://18.224.200.47/reviews/helpful/${this.props.result.review_id}`
       )
         .then(console.log("send successful"))
         .catch(err => console.log("fail putting request"));
@@ -48,7 +48,7 @@ class EachReview extends React.Component {
         `${this.props.result.review_id}`
       );
       Axios.put(
-        ` http://3.134.102.30/reviews/report/${this.props.result.review_id}`
+        ` http://18.224.200.47/reviews/report/${this.props.result.review_id}`
       )
         .then(console.log("send successful"))
         .catch(err => console.log("fail putting request"));

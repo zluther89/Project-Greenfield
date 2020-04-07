@@ -40,7 +40,7 @@ class ShowStars extends React.Component{
       this.setState({ratingPercen:ratingPercen})
     } else {
 
-      Axios.get(`http://3.134.102.30/reviews/${productId}/meta`)
+      Axios.get(`http://18.224.200.47/reviews/${productId}/meta`)
         .then(response => {
           const AllRatings = response.data.ratings
           for (let val in AllRatings) {
