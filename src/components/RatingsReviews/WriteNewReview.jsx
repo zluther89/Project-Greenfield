@@ -38,7 +38,7 @@ class WriteNewReview extends React.Component {
   }
   GetCharacterstics() {
     let productId = this.props.productId || 3;
-    Axios.get(`http://3.134.102.30/reviews/${productId}/meta`)
+    Axios.get(`http://18.224.200.47/reviews/${productId}/meta`)
       .then(response => {
         //get recommend percentage
         //change object to array
@@ -149,7 +149,7 @@ class WriteNewReview extends React.Component {
   }
   handlePost() {
     let productId = this.props.productId || 3;
-    Axios.post(`http://3.134.102.30/reviews/${productId}`, this.state.AddReview)
+    Axios.post(`http://18.224.200.47/reviews/${productId}`, this.state.AddReview)
       .then(response => {
 
         this.setState({ AddReview: {  rating: 0,

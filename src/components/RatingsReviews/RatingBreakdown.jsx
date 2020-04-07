@@ -51,7 +51,7 @@ class RatingBreakdown extends React.Component {
     let sum = 0;
 
     let pairArr =[]
-    Axios.get(`http://3.134.102.30/reviews/${productId}/meta`)
+    Axios.get(`http://18.224.200.47/reviews/${productId}/meta`)
 
       .then(response => {
         //get recommend percentage
