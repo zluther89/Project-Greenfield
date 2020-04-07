@@ -49,7 +49,7 @@ class RelatedProducts extends React.Component {
   handleCompare(e) {
     this.setState({ showModal: true });
     axios
-      .get(`http://3.134.102.30/products/${e.target.value}`)
+      .get(`http://18.224.200.47/products/${e.target.value}`)
       .then(({ data }) => {this.setState({ compare: data })});
   }
 
@@ -63,10 +63,10 @@ class RelatedProducts extends React.Component {
 
     for (let id of uniqueId) {
       await axios
-        .get(`http://3.134.102.30/products/${id}`)
+        .get(`http://18.224.200.47/products/${id}`)
         .then(({data}) => {relatedProducts.push(data)})
       await axios
-        .get(`http://3.134.102.30/products/${id}/styles`)
+        .get(`http://18.224.200.47/products/${id}/styles`)
         .then(({data}) => {productInfo[data.product_id] = data.results})
     }
     callback(productInfo, relatedProducts)
@@ -77,10 +77,10 @@ class RelatedProducts extends React.Component {
     this.props.getNewProductThunk(productId)
     this.getOutfits();
     axios
-      .get(`http://3.134.102.30/products/${productId}`)
+      .get(`http://18.224.200.47/products/${productId}`)
       .then( ({data}) => {this.setState({current: data})})
     axios
-      .get(`http://3.134.102.30/products/${productId}/related`)
+      .get(`http://18.224.200.47/products/${productId}/related`)
       .then(({ data }) => {
         let uniqueId = this.removeDuplicates(data)
         this.getRelatedData(uniqueId, (productInfo,relatedProducts) => {
@@ -89,7 +89,7 @@ class RelatedProducts extends React.Component {
         })
       })
       const button = document.querySelector("#addButton.btn")
-      button.addEventListener("click", () => {    
+      button.addEventListener("click", () => {
           confetti(button, {
             elementCount: '100'
           })
@@ -97,7 +97,7 @@ class RelatedProducts extends React.Component {
   }
 
   handleAddToOutfit() {
-    
+
     let currentOutfit = this.state.outfitId.slice();
     if (currentOutfit.indexOf(this.state.current.id) === -1 && this.state.current.id !== null) {
       this.setState({ outfitLoaded: false });
@@ -107,7 +107,7 @@ class RelatedProducts extends React.Component {
         this.getOutfits();
       });
     }
-    
+
   }
 
   async getOutfitData(outfitId, callback) {
@@ -116,10 +116,10 @@ class RelatedProducts extends React.Component {
 
     for (let id of outfitId) {
       await axios
-        .get(`http://3.134.102.30/products/${id}`)
+        .get(`http://18.224.200.47/products/${id}`)
         .then(({ data }) => {outfitNames.push(data)});
       await axios
-        .get(`http://3.134.102.30/products/${id}/styles`)
+        .get(`http://18.224.200.47/products/${id}/styles`)
         .then(({ data }) => {outfitInfo[data.product_id] = data.results});
     }
     callback(outfitNames,outfitInfo)
