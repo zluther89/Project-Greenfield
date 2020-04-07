@@ -27,7 +27,7 @@ class Helpful extends React.Component {
   }
 
   postHelpful(endpoint) {
-    return Axios.put(`http://3.134.102.30/qa/${endpoint}/helpful`);
+    return Axios.put(`http://18.224.200.47/qa/${endpoint}/helpful`);
   }
   localVote() {
     let votes = this.props.helpful + 1;
@@ -89,7 +89,7 @@ class Helpful extends React.Component {
   }
 
   postReport(endpoint) {
-    return Axios.put(`http://3.134.102.30/qa/${endpoint}/report`);
+    return Axios.put(`http://18.224.200.47/qa/${endpoint}/report`);
   }
 
   render() {

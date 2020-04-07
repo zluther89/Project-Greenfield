@@ -5,7 +5,7 @@ export const getQuestionsThunk = id => {
   return async dispatch => {
     try {
       const res = await Axios.get(
-        `http://3.134.102.30/qa/${id}?count=10000000`
+        `http://18.224.200.47/qa/${id}?count=10000000`
       );
       const questions = res.data.results;
       const action = setNewQuestion(questions);
@@ -19,7 +19,7 @@ export const getQuestionsThunk = id => {
 export const getNewProductThunk = id => {
   return async dispatch => {
     try {
-      const res = await Axios.get(`http://3.134.102.30/products/${id}`);
+      const res = await Axios.get(`http://18.224.200.47/products/${id}`);
       const product = res.data;
       const action = setNewProduct(product);
       dispatch(action);

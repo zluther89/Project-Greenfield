@@ -1,7 +1,6 @@
 import React from "react";
 const ProductBreakdown = ({ characteristics }) => {
   return characteristics.map(characteristic => {
-    console.log(characteristic[1].value*20);
 
     if (characteristic[0] === "Quality") {
       return (
