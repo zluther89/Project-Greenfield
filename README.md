@@ -80,6 +80,12 @@ Questions and answers may be submitted through a modal which appears after click
 
 _Developed by Kane Qiu_
 
+The Ratings & Reviews displays the ratings and reviews of selected product, ratings, rating breakdown bar and the characteristics of product are shown in the rating part, which also has the percentage of reviews that recommend the product.
+
+For the review part, it shows reviews of selected product, reviews can be voted by users, the reviews are sorted by Helpful, Newest and Relevant, reviews appear in order of relevance by default and it can be chosen by users
+
+The user can click button to add new review to the product. And the imputs for users have requirement, some are mandatory and some have words limitations.
+
 ## Getting Started
 
 This project can be run by executing the following steps:
