@@ -68,6 +68,12 @@ My Outfit is also persistent, allowing the user to navigate around and even away
 
 _Developed by Zachary Luther_
 
+The Q&A module offers users a chance to interact with products by asking questions to be answered by other users, or the seller directly. Both questions and answers can be voted 'helpful' by users at a rate of one vote per item per session. Users can also 'report' specific questions and answers which flags the items for review and removes from the the client side view.
+
+Questions are sorted in a descending order from most to least helpful. Answers are organized in the same order with the exception that answers directly from the seller take precedence over all other answers.
+
+Questions and answers may be submitted through a modal which appears after clicking the appropraite button. All fields are required.
+
 <!-- omit in TOC -->
 
 ### Ratings & Reviews
